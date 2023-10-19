@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.ComMemberMapper">
+	<resultMap type="com.care.root.dto.ComMemberDTO" id="commember">
+		<id property="id" column="c_id" />
+		<result property="pwd" column="c_pwd"/>
+		<result property="name" column="comname"/>
+		<result property="addr" column="addr"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	<select id="getMember" resultMap="commember">
+		select * from commember where c_id=#{id}
+	</select>
+	<select id="getList" resultMap="commember">
+		select * from  commember
+	</select>
+	<insert id="comregister">
+		insert into commember(c_id, c_pwd, comname, addr, email) values(#{id},#{pwd},#{name},#{addr},#{email})
+	</insert>
+	<update id="commodify">
+		update commember set c_pwd=#{pwd}, comname=#{name}, addr=#{addr}, email=#{email} where c_id=#{id}
+	</update>
+</mapper>
