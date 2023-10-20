@@ -2,6 +2,7 @@ package com.care.root.reservation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,7 +21,6 @@ public class reservationController {
 	public String wConcertForm() {
 		return "reservation/write_concert_form";
 	}
-	
 	@GetMapping("modify_concert_form")
 	public String mConcertForm() {
 		return "reservation/modify_concert_form";

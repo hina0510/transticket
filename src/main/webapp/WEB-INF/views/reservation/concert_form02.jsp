@@ -30,58 +30,19 @@
 					<small>N/A</small>
 				</li>
 				<li>
-					<div class="seat1 selected"></div>
+					<div class="seat2 selected"></div>
 					<small>Selected</small>
 				</li>
 				<li>
-					<div class="seat1 occupied"></div>
+					<div class="seat2 occupied"></div>
 					<small>Occupied</small>
 				</li>
 			</ul>
 		
 			<div class="container">
 				<div class="container2">
-					<nav>
-						<div class="rows">
-							<div style="height: 30px;">
-							</div>
-							<div class="row01">
-								<div class="seat1"></div>
-								<div class="seat1"></div>
-							</div>
-							<div class="row01">
-								<div class="seat1"></div>
-								<div class="seat1 occupied"></div>
-							</div>
-							<div class="row01">
-								<div class="seat1 occupied"></div>
-								<div class="seat1"></div>
-							</div>
-						</div>
-					</nav>
-					<section>
-						<div class="screen"></div>
-					</section>
-					<aside>
-						<div class="rows">
-							<div style="height: 30px;">
-							</div>
-							<div class="row01">
-								<div class="seat3 occupied"></div>
-								<div class="seat3"></div>
-							</div>
-							<div class="row01">
-								<div class="seat3"></div>
-								<div class="seat3"></div>
-							</div>
-							<div class="row01">
-								<div class="seat3"></div>
-								<div class="seat3 occupied"></div>
-							</div>
-						</div>
-					</aside>
+					<div class="screen"></div>
 				</div>
-					
 				<div>
 					<div class="rows">
 						<div class="row01">

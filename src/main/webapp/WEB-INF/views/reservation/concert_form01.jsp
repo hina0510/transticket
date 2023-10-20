@@ -119,6 +119,7 @@
 		<p class="text">
 			You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
 		</p>
+		<button onclick="payment()">결제</button>
 		</div>
 	</div>
 	<script src="<%=request.getContextPath() %>/resources/js/script01.js"></script>

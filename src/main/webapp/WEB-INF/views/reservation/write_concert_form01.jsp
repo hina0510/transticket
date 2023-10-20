@@ -8,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Movie Seat Booking</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/formstyle01.css">
-<script src="<%=request.getContextPath() %>/resources/js/script.js"></script>
 </head>
 <body>
 	write_concert_form01

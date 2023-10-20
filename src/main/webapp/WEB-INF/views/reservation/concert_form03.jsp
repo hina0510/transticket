@@ -42,47 +42,8 @@
 		
 			<div class="container">
 				<div class="container2">
-					<nav>
-						<div class="rows">
-							<div style="height: 30px;">
-							</div>
-							<div class="row01">
-								<div class="seat01"></div>
-								<div class="seat01"></div>
-							</div>
-							<div class="row01">
-								<div class="seat01"></div>
-								<div class="seat01 occupied"></div>
-							</div>
-							<div class="row01">
-								<div class="seat01 occupied"></div>
-								<div class="seat01"></div>
-							</div>
-						</div>
-					</nav>
-					<section>
-						<div class="screen"></div>
-					</section>
-					<aside>
-						<div class="rows">
-							<div style="height: 30px;">
-							</div>
-							<div class="row01">
-								<div class="seat03 occupied"></div>
-								<div class="seat03"></div>
-							</div>
-							<div class="row01">
-								<div class="seat03"></div>
-								<div class="seat03"></div>
-							</div>
-							<div class="row01">
-								<div class="seat03"></div>
-								<div class="seat03 occupied"></div>
-							</div>
-						</div>
-					</aside>
+					<div class="screen"></div>
 				</div>
-					
 				<div>
 					<div class="rows">
 						<div class="row01">

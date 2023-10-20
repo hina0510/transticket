@@ -8,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Movie Seat Booking</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/formstyle02.css">
-<script src="<%=request.getContextPath() %>/resources/js/script.js"></script>
 </head>
 <body>
 	write_concert_form02
@@ -39,45 +38,7 @@
 
 	<div class="container">
 		<div class="container2">
-			<nav>
-				<div class="rows">
-					<div style="height: 30px;">
-					</div>
-					<div class="row">
-						<div class="seat1"></div>
-						<div class="seat1"></div>
-					</div>
-					<div class="row">
-						<div class="seat1"></div>
-						<div class="seat1"></div>
-					</div>
-					<div class="row">
-						<div class="seat1"></div>
-						<div class="seat1"></div>
-					</div>
-				</div>
-			</nav>
-			<section>
-				<div class="screen"></div>
-			</section>
-			<aside>
-				<div class="rows">
-					<div style="height: 30px;">
-					</div>
-					<div class="row">
-						<div class="seat3"></div>
-						<div class="seat3"></div>
-					</div>
-					<div class="row">
-						<div class="seat3"></div>
-						<div class="seat3"></div>
-					</div>
-					<div class="row">
-						<div class="seat3"></div>
-						<div class="seat3"></div>
-					</div>
-				</div>
-			</aside>
+			<div class="screen"></div>
 		</div>
 			
 		<div>
