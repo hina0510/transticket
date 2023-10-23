@@ -7,20 +7,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Movie Seat Booking</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/formstyle02.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/wformstyle02.css">
 </head>
 <body>
-	write_concert_form02
-	<div class="movie-container">
-		<label for="movie">카테고리: </label>
-		<select id="movie">
-			<option value="10">Avengers: Endgame ($10)</option>
-			<option value="12">Joker ($12)</option>
-			<option value="8">Toy Story 4 ($8)</option>
-			<option value="9">The Lion King ($9)</option>
-		</select>
-	</div>
-
+	write_musical_form02
 	<ul class="showcase">
 		<li>
 			<div class="seat"></div>
@@ -37,9 +27,7 @@
 	</ul>
 
 	<div class="container">
-		<div class="container2">
-			<div class="screen"></div>
-		</div>
+		<div class="screen"></div>
 			
 		<div>
 			<div class="rows">
@@ -56,17 +44,6 @@
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
-				</div>
-				<div class="row">
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
@@ -75,17 +52,6 @@
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-					<div class="seat2"></div>
-				</div>
-				<div class="row">
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
@@ -112,8 +78,116 @@
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
 				</div>
 				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+				</div>
+				<div class="row">
+					<div class="seat2"></div>
+					<div class="seat2"></div>
+					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
 					<div class="seat2"></div>
@@ -130,9 +204,5 @@
 			</div>
 		</div>
 	</div>
-
-	<p class="text">
-		You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
-	</p>
 </body>
 </html>

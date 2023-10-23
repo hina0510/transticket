@@ -92,12 +92,12 @@
 				</li>
 				<li class="li01">
 				  	<button class="btn btn-light" style="font-size: 24px;">
-				  		<a href="#">뮤지컬</a>
+				  		<a href="${contextPath }/reservation/musical_board">뮤지컬</a>
 				  	</button>
 				</li>
 				<li class="li01">
 				  	<button class="btn btn-light" style="font-size: 24px;">
-				  		<a href="#">전시</a>
+				  		<a href="${contextPath }/reservation/exhibition_board">전시</a>
 				  	</button>
 				</li>
 				<li class="li01"> 

@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/formstyle02.css">
 </head>
 <body>
-<%@ include file="../default/header.jsp" %>	
-	concert_form02
+<%@ include file="../../default/header.jsp" %>	
+	musical_form02
 	<div class="con01">
 		<div class="con02">
 			<div class="movie-container">
@@ -26,7 +26,7 @@
 		
 			<ul class="showcase">
 				<li>
-					<div class="seat"></div>
+					<div class="seat2"></div>
 					<small>N/A</small>
 				</li>
 				<li>
@@ -38,23 +38,24 @@
 					<small>Occupied</small>
 				</li>
 			</ul>
-		
-			<div class="container">
-				<div class="container2">
+			
+			<ul class="showcase" style="padding: 15px;">
+				<div class="container">
 					<div class="screen"></div>
-				</div>
-				<div>
 					<div class="rows">
 						<div class="row01">
 							<div class="seat2"></div>
-							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
-							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
@@ -69,6 +70,9 @@
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
@@ -83,6 +87,9 @@
 							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
@@ -98,7 +105,10 @@
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 						</div>
 						<div class="row01">
@@ -111,6 +121,9 @@
 							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
@@ -120,7 +133,10 @@
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
@@ -128,17 +144,89 @@
 							<div class="seat2"></div>
 							<div class="seat2 occupied"></div>
 							<div class="seat2"></div>
+						</div>
+						<div class="row01">
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+						</div>
+						<div class="row01">
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+						</div>
+						<div class="row01">
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+						</div>
+						<div class="row01">
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2 occupied"></div>
+							<div class="seat2"></div>
+							<div class="seat2"></div>
+							<div class="seat2 occupied"></div>
 						</div>
 					</div>
 				</div>
-			</div>
-		
+			</ul>
 			<p class="text">
 				You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
 			</p>
+			<div class="frame">
+				<button class="custom-btn btn-3" onclick="payment()" style="float: right; "><span>결제</span></button>
+			</div>
+			<br>
+			<br>
 		</div>
 	</div>
 	<script src="<%=request.getContextPath() %>/resources/js/script02.js"></script>
-<%@ include file="../default/footer.jsp" %>
+<%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

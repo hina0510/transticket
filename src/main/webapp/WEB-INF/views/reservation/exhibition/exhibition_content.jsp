@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 </head>
 <body>
-<%@ include file="../default/header.jsp" %>
-	concert_content
+<%@ include file="../../default/header.jsp" %>
+	exhibition_content
 	<div class="con01">
 		<div class="con02">
 			<div class="board_wrap">
         		<div class="board_title">
-        			<strong>콘서트 제목</strong>
-		            <p>콘서트 예매</p>
+        			<strong>전시 제목</strong>
+		            <p>전시 예매</p>
 		        </div>
 		        <div class="board_view_wrap">
 		            <div class="board_view">
@@ -61,7 +61,9 @@
 					                        <dd>d</dd>
 					                    </dl>
 					                    <dl>
-					                        <dt><button onclick="location.href='concert_form01'">예매하기</button></dt>
+					                        <div class="frame">
+												<button class="custom-btn btn-3" onclick="location.href='exhibition_form01'"><span>예매하기</span></button>
+											</div>
 					                    </dl>
 				                	</div>
 				                </div>
@@ -152,8 +154,10 @@
 									</div>
 		                    </dl>
 		                </div>
-		                <button type="button" onclick="location.href='modify_concert_form'">수정</button>
-								<button type="button" onclick="location.href='concert_board'">목록</button>
+		                <div class="frame">
+							<button class="custom-btn btn-3" onclick="location.href='modify_exhibition_form'"><span>수정</span></button>
+							<button class="custom-btn btn-3" onclick="location.href='exhibition_board'"><span>목록</span></button>
+						</div>
 		            </div>
 		        </div>
 			</div>
@@ -161,6 +165,6 @@
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<%@ include file="../default/footer.jsp" %>
+<%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

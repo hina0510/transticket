@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 
 .con01 {margin: 0 7%;}
-.con02 {margin: 5% 17%;flex:1;}
+.con02 {margin: 5% 17%; flex:1; padding: 2%;flex:1; background: #f8f8f8; border-radius: 20px;}
 * {
   box-sizing: border-box;
 }
@@ -27,29 +27,7 @@
   margin-bottom: 30px;
 }
 
-.container2{
-  display:flex;
-  flex-flow:row;
- }
-.container2>nav {
-	order:1;
-	text-align: center;
-	width: 20%;
-	margin: 20px 0 0 0;
-}
-.container2>section {
-	order:2;
-	text-align: center;
-	width: 60%;
-}
-.container2>aside {
-	order:3;
-	text-align: center;
-	width: 20%;
-	margin: 20px 0 0 0;
-}
-
-.seat01 {
+.seat3 {
   background-color: #444451;
   height: 12px;
   width: 12px;
@@ -59,86 +37,36 @@
   border-top-right-radius: 8px;
 }
 
-.seat01.selected {
+.seat3.selected {
   background-color: #68d0fd;
 }
 
-.seat01.occupied {
+.seat3.occupied {
   background-color: #fff;
 }
 
-.seat01:nth-of-type(2) {
-  margin-right: 10px;
-}
-
-.seat01:not(.occupied):hover {
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-.seat02 {
-  background-color: #444451;
-  height: 12px;
-  width: 12px;
-  margin: 3px;
-  padding:0 10px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.seat02.selected {
-  background-color: #68d0fd;
-}
-
-.seat02.occupied {
-  background-color: #fff;
-}
-
-.seat02:nth-of-type(2) {
+.seat3:nth-of-type(2) {
   margin-right: 18px;
 }
 
-.seat02:nth-of-type(6) {
+.seat3:nth-of-type(6) {
   margin-right: 18px;
 }
 
-.seat02:nth-last-of-type(2) {
+.seat3:nth-of-type(10) {
+  margin-right: 18px;
+}
+
+.seat3:nth-last-of-type(2) {
   margin-left: 18px;
 }
 
-.seat02:not(.occupied):hover {
+.seat3:not(.occupied):hover {
   cursor: pointer;
   transform: scale(1.2);
 }
 
-.seat03 {
-  background-color: #444451;
-  height: 12px;
-  width: 12px;
-  margin: 3px;
-  padding:0 10px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.seat03.selected {
-  background-color: #68d0fd;
-}
-
-.seat03.occupied {
-  background-color: #fff;
-}
-
-.seat03:nth-last-of-type(2) {
-  margin-left: 10px;
-}
-
-.seat03:not(.occupied):hover {
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-.showcase .seat:not(.occupied):hover {
+.showcase .seat3:not(.occupied):hover {
   cursor: default;
   transform: scale(1);
 }
@@ -157,7 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
+  margin: 0 10%;
 }
 
 .showcase li small {
@@ -167,8 +95,8 @@
 .screen {
   background-color: #fff;
   height: 70px;
-  width: 100%;
-  margin: 15px 0;
+  width: 70%;
+  margin: 15px 15%;
   transform: rotateX(-45deg);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
@@ -187,4 +115,101 @@
 
 p.text span {
   color: #6feaf6;
+}
+
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 10px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.btn-3 {
+  background: rgba(210,210,210,1);
+background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 100%);
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+   background: rgba(210,210,210,1);
+  transition: all 0.3s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+   background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgba(100,100,100,1);
+   font-weight: bold;
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+   background: rgba(210,210,210,1);
+  transition: all 0.3s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
 }
