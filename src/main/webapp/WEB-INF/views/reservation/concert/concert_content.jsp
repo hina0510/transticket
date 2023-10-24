@@ -7,6 +7,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
+<script type="text/javascript">
+	$(document).ready(function(){
+		  
+		  $('ul.tabs li').click(function(){
+		    var tab_id = $(this).attr('data-tab');
+
+		    $('ul.tabs li').removeClass('current');
+		    $('.tab-content').removeClass('current');
+
+		    $(this).addClass('current');
+		    $("#"+tab_id).addClass('current');
+		  })
+
+		})
+</script>
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
@@ -70,97 +85,25 @@
 			        		</section>
 		                </div>
 		                <div class="info2">
-		                    <dl>
-		                        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-										<ul class="nav nav-pills">
-											<li class="nav-item">
-												<a class="nav-link" href="#scrollspyHeading1">First</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#scrollspyHeading2">Second</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#scrollspyHeading3">Third</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#scrollspyHeading4">Fourth</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#scrollspyHeading5">Fifth</a>
-											</li>
-										</ul>
-									</nav>
-									<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-									  <h4 id="scrollspyHeading1">
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading<br>
-									  First headingFirst headingFirst heading</h4>
-									  <p>...</p>
-									  <h4 id="scrollspyHeading2">
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading<br>
-									  Second headingSecond headingSecond heading</h4>
-									  <p>...</p>
-									  <h4 id="scrollspyHeading3">
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading<br>
-									  Third headingThird headingThird heading</h4>
-									  <p>...</p>
-									  <h4 id="scrollspyHeading4">
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading<br>
-									  Fourth headingFourth headingFourth heading</h4>
-									  <p>...</p>
-									  <h4 id="scrollspyHeading5">
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading<br>
-									  Fifth headingFifth headingFifth heading</h4>
-									  <p>...</p>
-									</div>
-		                    </dl>
-		                </div>
-		                <div class="frame">
-							<button class="custom-btn btn-3" onclick="location.href='modify_concert_form'"><span>수정</span></button>
-							<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+		                	<div class="container">
+								<ul class="tabs">
+									<li class="tab-link current" data-tab="tab-1">공연정보</li>
+								    <li class="tab-link" data-tab="tab-2">판매정보</li>
+								    <li class="tab-link" data-tab="tab-3">기대평</li>
+								</ul>
+								<hr>
+								<div id="tab-1" class="tab-content current"><%@ include file="concert_info01.jsp" %></div>
+								<div id="tab-2" class="tab-content"><%@ include file="concert_info02.jsp" %></div>
+								<div id="tab-3" class="tab-content"><%@ include file="concert_info03.jsp" %></div>
+							</div>
 						</div>
-		            </div>
+					</div>
+		            <div class="frame">
+						<button class="custom-btn btn-3" onclick="location.href='modify_concert_form'"><span>수정</span></button>
+						<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+					</div>
 		        </div>
-			</div>
+		    </div>
 		</div>
 	</div>
 	
