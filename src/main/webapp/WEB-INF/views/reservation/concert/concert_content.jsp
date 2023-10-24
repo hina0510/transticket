@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script type="text/javascript">
@@ -87,16 +86,16 @@
 		                <div class="info2">
 		                	<div class="container">
 								<ul class="tabs">
-									<li class="tab-link current" data-tab="tab-1">공연정보</li>
-								    <li class="tab-link" data-tab="tab-2">판매정보</li>
-								    <li class="tab-link" data-tab="tab-3">기대평</li>
+								  	<label for="tab1"><li class="tab-link current" data-tab="tab-1">tab1</li></label>
+								  	<label for="tab2"><li class="tab-link" data-tab="tab-2">tab2</li></label>
+								  	<label for="tab3"><li class="tab-link" data-tab="tab-3">tab3</li></label>
 								</ul>
-								<hr>
+								
 								<div id="tab-1" class="tab-content current"><%@ include file="concert_info01.jsp" %></div>
 								<div id="tab-2" class="tab-content"><%@ include file="concert_info02.jsp" %></div>
 								<div id="tab-3" class="tab-content"><%@ include file="concert_info03.jsp" %></div>
 							</div>
-						</div>
+		                </div>
 					</div>
 		            <div class="frame">
 						<button class="custom-btn btn-3" onclick="location.href='modify_concert_form'"><span>수정</span></button>

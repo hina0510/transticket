@@ -15,7 +15,7 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="con03">
-				<form action="write_exhibition_Save">
+				<form action="write_exhibition_save" method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
 							<td>
@@ -27,9 +27,41 @@
 						</tr>
 						<tr>
 							<td>
+								<b>공연 타입 : </b>
+							</td>
+							<td><input type="text" name="type" readonly value="exhibition"></td>
+						</tr>
+						<tr style="height: 10px;">
+						<tr>
+							<td>
 								<b>작성자 : </b>
 							</td>
-							<td><textarea cols="80" rows="1" readonly name="name"></textarea></td>
+							<td><textarea cols="80" rows="1" readonly name="comname"></textarea></td>
+						</tr>
+						<tr style="height: 10px;">
+						</tr>
+						<tr>
+							<td>
+								<b>공연 일시 : </b>
+							</td>
+							<td>
+								<input type="date" id="firstDate">
+								<div id="betweenDate">~</div>
+           						<input type="date" id="secondDate">
+							</td>
+						</tr>
+						<tr style="height: 10px;">
+						</tr>
+						<tr>
+							<td>
+								<b>공연장 : </b>
+							</td>
+							<td>
+								<input type="text" readonly id = "addr1" placeholder="우편번호">
+								<button type="button" onclick="daumPost()">위치 찾기</button><br>
+							    <input type="text" readonly id = "addr2" name="con_place" placeholder="주소"><br>
+							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
+							</td>
 						</tr>
 						<tr style="height: 10px;">
 						</tr>
@@ -37,29 +69,27 @@
 							<td>
 								<b>내용 : </b>
 							</td>
-							<td><textarea cols="80" rows="5" name="title"></textarea></td>
+							<td><textarea cols="80" rows="5" name="content"></textarea></td>
 						</tr>
 						<tr style="height: 10px;">
 						</tr>
 						<tr>
 							<td>
-								<b>파일 : </b>
+								<b>사진 : </b>
 							</td>
-							<td><input type="file" name="file"></td>
+							<td>
+								<div class="imgs">
+									<div class="img01"><input type="file" name="file_name" onchange="readURL(this)"></div>
+									<div class="img02"><img id="preview" width="100" height="100" alt="선택없음"></div>
+								</div>
+							</td>
 						</tr>
 						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="container">
-								  <div id="tab-1" class="tab-content current"><%@ include file="write_exhibition_form01.jsp" %></div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
 								<div class="frame">
-									<button class="custom-btn btn-3" type="submit" onclick="location.href='exhibition_board'"><span>전송</span></button>
+									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
 								</div>
 							</td>
 						</tr>
@@ -71,6 +101,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="<%=request.getContextPath() %>/resources/js/writeFormScript.js"></script>
 <%@ include file="../../default/footer.jsp" %>
 </body>
 </html>
