@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.reservation.concertBoardMapper">
+   	<insert id="cWriteSave" >
+		insert into concertBoard(write_no, title, type, comname, con_date, con_place, content, image_file_name, form)
+		values(mvc_board_seq.nextval,#{title},#{type},#{comname},#{con_date},#{con_place},#{content},#{image_file_name},#{form})
+	</insert>
+</mapper>
