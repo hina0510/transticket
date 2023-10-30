@@ -65,6 +65,29 @@
     	margin: 0 2%;
     }
 </style>
+<script>
+function clogchk(){
+	 if (confirm("로그아웃 하겠습니까??") == true){
+		 location.href='${contextPath }/member/clogout'
+	 }else{
+		 return false;
+	}
+}
+function glogchk(){
+	 if (confirm("로그아웃 하겠습니까??") == true){
+		 location.href='${contextPath }/member/glogout'
+	 }else{
+		 return false;
+	}
+}
+function loginfo(){
+	if (confirm("로그인 먼저하세요") == true){
+		 location.href='${contextPath }/member/prelogin'
+	 }else{
+		 return false;
+	}
+}
+</script>
 </head>
 <body>
 	<header>
@@ -73,14 +96,31 @@
 			    <a href="${contextPath }/">transticket</a>
 			</dd>
 			<dd id="login">
-				<c:if test="${login==null }">	
-					<a href="${contextPath }/member/prelogin" class="login01">로그인</a>
+				<c:choose>
+					<c:when test="${clogin!=null }">
+						<a onclick="clogchk()" class="login01">로그아웃</a>
+					</c:when>
+					<c:when test="${glogin!=null }">
+						<a onclick="glogchk()" class="login01">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${contextPath }/member/prelogin" class="login01">로그인</a>
+					</c:otherwise>
+				</c:choose>
+				<c:if test="${clogin==null and glogin==null  }">	
+					<a href="${contextPath }/member/gen_register_view" class="login01">회원가입</a>
 				</c:if>
-				<c:if test="${login!=null }">
-					<a href="${contextPath }/member/logout" class="login01">로그아웃</a>
-				</c:if>
-			    <a href="${contextPath }/member/gen_register_view" class="login01">회원가입</a>
-			    <a href="#" class="login01">마이페이지</a>
+				<c:choose>
+					<c:when test="${clogin!=null }">
+						<a href="${contextPath }/member/com_mypage" class="login01">마이페이지</a>	
+					</c:when>
+					<c:when test="${glogin!=null }">
+						<a href="${contextPath }/member/gen_mypage" class="login01">마이페이지</a>	
+					</c:when>
+					<c:otherwise>
+						<a onclick="loginfo()" class="login01">마이페이지</a>
+					</c:otherwise>
+				</c:choose>
 			    <a href="#" class="login01">예약확인/취소</a>
 			</dd>
 		</div>

@@ -1,7 +1,7 @@
 package com.care.root.member.dto;
 
 public class ComMemberDTO {
-	String id,pwd,name,addr,email,sessionId;
+	String id, pwd, name, addr, email, sessionId;
 
 	public String getSessionId() {
 		return sessionId;
