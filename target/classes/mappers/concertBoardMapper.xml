@@ -3,8 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.care.root.mybatis.reservation.concertBoardMapper">
+   	<resultMap type="com.care.root.reservation.dto.concertBoardDTO" id="board">
+   		<id property="writeNo" column="writeNo"/><!-- primary key -->
+   		<result property="title" column="title"/>
+   		<result property="type" column="type"/>
+   		<result property="comname" column="comname"/>
+   		<result property="con_date" column="pf_date"/>
+   		<result property="con_place" column="pf_place"/>
+   		<result property="content" column="content"/>
+   		<result property="image_file_name" column="Image_file_name"/>
+   		<result property="hit" column="hit"/>
+   		<result property="saveDate" column="saveDate"/>
+   		<result property="form" column="form"/>
+	</resultMap>
+   	<select id="cBoardList" resultMap="board" >
+	select B.* from(select rownum rn, A.* from
+	(select * from performBoard order by writeNo desc)A)B
+	where rn between #{s} and #{e}
+	</select>
+	<select id="cGetContent" resultMap="board">
+   		select * from performBoard where writeNo=#{writeNo}
+   	</select>
+   	<update id="cUpHit">
+		update performBoard set hit=hit+1 where writeNo=#{writeNo}
+	</update>
    	<insert id="cWriteSave" >
-		insert into concertBoard(write_no, title, type, comname, con_date, con_place, content, image_file_name, form)
-		values(mvc_board_seq.nextval,#{title},#{type},#{comname},#{con_date},#{con_place},#{content},#{image_file_name},#{form})
+		insert into performBoard(writeNo, title, type, comname, pf_date, pf_place, content, image_file_name, form)
+		values(perform_board_seq.nextval,#{title},#{type},#{comname},#{con_date},#{con_place},#{content},#{image_file_name},#{form})
 	</insert>
+	<update id="cModify">
+		update performBoard set title=#{title}, pf_date=#{con_date}, pf_place=#{con_place}, content=#{content}, image_file_name=#{image_file_name}, form=#{form} where write_no=#{writeNo}
+	</update>
+	<delete id="cDelete">
+		delete from performBoard where writeNo=#{writeNo}
+	</delete>
+	<select id="selectCBoardCount" resultType="integer">
+   		select count(*) from performBoard
+   	</select>
 </mapper>

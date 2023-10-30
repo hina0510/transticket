@@ -6,4 +6,5 @@ public interface reservationFileService {
 	public String IMAGE_REPO="C:\\spring\\image_repo"; // C:/spring/image_repo
 	public String getMessage(String msg, String url);
 	public String saveFile(MultipartFile file);
+	public void deleteImage(String fileName);
 }
