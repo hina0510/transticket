@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.care.root.member.dto.ComMemberDTO;
-import com.care.root.mybatis.ComMemberMapper;
+import com.care.root.mybatis.member.ComMemberMapper;
 
 
 @Service

@@ -1,0 +1,18 @@
+package com.care.root.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+@Configuration
+public class FileConfig {
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		System.out.println("@Configuration");
+		CommonsMultipartResolver mr = new CommonsMultipartResolver();
+		mr.setMaxUploadSize(52428800); // 50MBÁ¤µµ
+		mr.setDefaultEncoding("utf-8");
+		return mr;
+	}
+}
+

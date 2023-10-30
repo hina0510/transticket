@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.root.mybatis.board.GenBoardMapper">
+	<resultMap type="com.care.root.board.dto.GenBoardDTO" id="genboard">
+		<id property="writeNo" column="write_no"/>
+		<result property="category" column="category"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="saveDate" column="saveDate"/>
+		<result property="viewCount" column="viewCount"/>
+		<result property="likes" column="likes"/>
+		<result property="id" column="n_id"/>
+		<result property="imageName1" column="imageName1"/>
+		<result property="imageName2" column="imageName2"/>
+		<result property="imageName3" column="imageName3"/>
+		<result property="imageName4" column="imageName4"/>
+		<result property="imageName5" column="imageName5"/>
+	</resultMap>
+	
+	<select id="selectBoardCount" resultType="Integer">
+		select count(*) from genBoard
+	</select>
+
+	<select id="boardAllList" resultMap="genboard">
+		select B.* from(select rownum rn, A.* from
+		(select * from genBoard order by write_no desc)A)B where rn between #{s} and #{e}
+	</select>
+	
+	<insert id="saveWrite">
+		insert into genBoard (write_no, category, n_id, title, content, imageName1, imageName2, imageName3, imageName4, imageName5)
+		values (genBoard_seq.NEXTVAL, #{category}, #{id}, #{title}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5})
+	</insert>
+	
+	<select id="genView" resultMap="genboard">
+		select * from genBoard where write_no = #{writeNo}
+	</select>
+	
+	<update id="modify">
+		update genBoard set category = #{category}, n_id = #{id}, title = #{title}, content = #{content}, 
+						imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
+									imageName4 = #{imageName4}, imageName5 = #{imageName5} where write_no = #{writeNo}
+	</update>
+	
+	<delete id="genDelete">
+		delete from genBoard where write_no = #{writeNo}
+	</delete>
+	
+	
+</mapper>

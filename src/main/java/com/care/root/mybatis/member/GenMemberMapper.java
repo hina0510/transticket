@@ -1,4 +1,4 @@
-package com.care.root.mybatis;
+package com.care.root.mybatis.member;
 
 import java.util.List;
 import java.util.Map;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.care.root.member.dto.GenMemberDTO;
-import com.care.root.mybatis.GenMemberMapper;
+import com.care.root.mybatis.member.GenMemberMapper;
 
 @Service
 public class GenMemberServiceImpl implements GenMemberService{
