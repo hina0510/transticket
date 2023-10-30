@@ -22,7 +22,18 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.care.root" />
-	
+	<beans:bean id="comautoLogin" class="com.care.root.interceptor.ComAutoLoginInterceptor" />
+		<beans:bean id="genautoLogin" class="com.care.root.interceptor.GenAutoLoginInterceptor" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:ref bean="comautoLogin"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:ref bean="genautoLogin"/>
+		</interceptor>
+	</interceptors>
 	
 	
 </beans:beans>

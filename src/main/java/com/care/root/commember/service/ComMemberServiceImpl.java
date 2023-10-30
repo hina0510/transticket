@@ -1,28 +1,31 @@
 package com.care.root.commember.service;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.care.root.dto.ComMemberDTO;
+
+import com.care.root.member.dto.ComMemberDTO;
 import com.care.root.mybatis.ComMemberMapper;
 
 
 @Service
 public class ComMemberServiceImpl implements ComMemberService{
-	@Autowired(required = false) ComMemberMapper mapper;
-	
+	BCryptPasswordEncoder encoder;
+	@Autowired ComMemberMapper mapper;
+	public ComMemberServiceImpl() {
+		encoder = new BCryptPasswordEncoder();
+	}
 	public int logChk(String id, String pwd) {
 		ComMemberDTO dto = mapper.getMember(id);
 		int result = 1;
 		if(dto!=null) {
-			System.out.println(dto.getId());
-			System.out.println(dto.getPwd());
-			System.out.println(dto.getAddr());
-			if(pwd.equals(dto.getPwd())) {
+			if(encoder.matches(pwd, dto.getPwd())||pwd.equals(dto.getPwd())) {
 				result = 0;
 			}
 		}
@@ -35,8 +38,7 @@ public class ComMemberServiceImpl implements ComMemberService{
 			ad += a+"/";
 		}
 		dto.setAddr(ad);
-		
-		dto.setPwd(dto.getPwd());
+		dto.setPwd(encoder.encode(dto.getPwd()));
 		try {
 			mapper.comregister(dto);
 		} catch (Exception e) {
@@ -72,14 +74,26 @@ public class ComMemberServiceImpl implements ComMemberService{
 		for(String a : addr) {
 			ad += a+"/";
 		}
-		System.out.println(dto.getName());
 		dto.setAddr(ad);
-		
+		dto.setPwd(encoder.encode(dto.getPwd()));
 		try {
 			mapper.commodify(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	
+	}
+	public void comdelete(String id) {
+		mapper.comdelete(id);
+	}
+	public void keepLogin(String sessionId, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sessionId", sessionId);
+		map.put("id", id);
+		mapper.keepLogin(map);
+		
+	}
+	public ComMemberDTO getComSessionId(String sessionId) {
+		return mapper.getComSessionId(sessionId);
 	}
 }

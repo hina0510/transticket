@@ -1,5 +1,6 @@
 package com.care.root.common;
 
 public interface LoginSession {
-	public String LOGIN = "login";
+	public String CLOGIN = "clogin";
+	public String GLOGIN = "glogin";
 }

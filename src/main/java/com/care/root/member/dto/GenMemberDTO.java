@@ -1,7 +1,13 @@
-package com.care.root.dto;
+package com.care.root.member.dto;
 
 public class GenMemberDTO {
-	String id,pwd,name,email,addr;
+	String id,pwd,name,email,addr,sessionId;
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	int birth,tel;
 	public String getId() {
 		return id;

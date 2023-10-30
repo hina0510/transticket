@@ -5,24 +5,26 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-import com.care.root.dto.GenMemberDTO;
+import com.care.root.member.dto.GenMemberDTO;
 import com.care.root.mybatis.GenMemberMapper;
 
 @Service
 public class GenMemberServiceImpl implements GenMemberService{
+	BCryptPasswordEncoder encoder;
 	@Autowired GenMemberMapper mapper;
+	
+	public GenMemberServiceImpl() {
+		encoder = new BCryptPasswordEncoder();
+	}
 	public int logChk1(String id, String pwd) {
 		GenMemberDTO dto = mapper.getMember(id);
 		int result = 1;
 		if(dto!=null) {
-			System.out.println(dto.getId());
-			System.out.println(dto.getPwd());
-			System.out.println(dto.getName());
-			System.out.println(dto.getAddr());
-			if(pwd.equals(dto.getPwd())) {
+			if(encoder.matches(pwd, dto.getPwd())||pwd.equals(dto.getPwd())) {
 				result = 0;
 			}
 		}
@@ -36,7 +38,7 @@ public class GenMemberServiceImpl implements GenMemberService{
 		}
 		dto.setAddr(ad);
 		
-		dto.setPwd(dto.getPwd());
+		dto.setPwd(encoder.encode(dto.getPwd()));
 		try {
 			mapper.genregister(dto);
 		} catch (Exception e) {
@@ -72,14 +74,25 @@ public class GenMemberServiceImpl implements GenMemberService{
 		for(String a : addr) {
 			ad += a+"/";
 		}
-		System.out.println(dto.getName());
 		dto.setAddr(ad);
-		
+		dto.setPwd(encoder.encode(dto.getPwd()));
 		try {
 			mapper.genmodify(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+	}
+	public void gendelete(String id) {
+		mapper.gendelete(id);
+	}
+	public void keepLogin(String sessionId, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sessionId", sessionId);
+		map.put("id", id);
+		mapper.keepLogin(map);
+		
+	}
+	public GenMemberDTO getGenSessionId(String sessionId) {
+		return mapper.getGenSessionId(sessionId);
 	}
 }
