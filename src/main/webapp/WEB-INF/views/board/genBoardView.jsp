@@ -63,7 +63,6 @@
 				}else {
 					imgId.src = "imgView?name=${dto.imageName1 }";
 				}
-				
 			}
 			
 			if(num == 2) {
