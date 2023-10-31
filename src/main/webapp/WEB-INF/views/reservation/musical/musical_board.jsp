@@ -104,9 +104,9 @@
 			        </div>
 				</div>
 				<br>
-				<div class="frame">
+				<c:if test="${clogin!=null}">	
 					<button class="custom-btn btn-3" onclick="location.href='write_musical_form'"><span>글 작성</span></button>
-				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

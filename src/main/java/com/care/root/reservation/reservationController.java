@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.care.root.common.LoginSession;
+import com.care.root.member.dto.ComMemberDTO;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
 import com.care.root.reservation.dto.musicalBoardDTO;
@@ -22,16 +24,18 @@ import com.care.root.reservation.service.reservationService;
 
 @Controller
 @RequestMapping("reservation")
-public class reservationController {
+public class reservationController implements LoginSession{
 	@Autowired(required=false) reservationService  rs;
 	
 	//콘서트
 	@GetMapping("concert_board")
-	public String concertBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
+	public String concertBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num,
+								concertBoardDTO dto) {
 		Map<String, Object> map = rs.cBoardList(num);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("repeat", map.get("repeat"));
+		model.addAttribute("cdto", dto);
 		
 		return "reservation/concert/concert_board";
 	}
@@ -41,7 +45,7 @@ public class reservationController {
 		return "reservation/concert/concert_content";
 	}
 	@GetMapping("write_concert_form")
-	public String wConcertForm() {
+	public String wConcertForm(ComMemberDTO dto) {
 		return "reservation/concert/write_concert_form";
 	}
 	@PostMapping("write_concert_save")
@@ -93,11 +97,13 @@ public class reservationController {
 	
 	//뮤지컬
 	@GetMapping("musical_board")
-	public String musicalBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
+	public String musicalBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num,
+								musicalBoardDTO dto) {
 		Map<String, Object> map = rs.mBoardList(num);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("repeat", map.get("repeat"));
+		model.addAttribute("mdto", dto);
 		return "reservation/musical/musical_board";
 	}
 	@GetMapping("musical_content")
@@ -158,11 +164,13 @@ public class reservationController {
 	
 	//전시
 	@GetMapping("exhibition_board")
-	public String exhibitionBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
+	public String exhibitionBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num,
+									exhibitionBoardDTO dto) {
 		Map<String, Object> map = rs.eBoardList(num);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("repeat", map.get("repeat"));
+		model.addAttribute("edto", dto);
 		return "reservation/exhibition/exhibition_board";
 	}
 	@GetMapping("exhibition_content")
