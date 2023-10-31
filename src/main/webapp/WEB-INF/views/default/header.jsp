@@ -107,7 +107,7 @@
 				</li>
 				<li class="li01">
 				  	<button class="btn btn-light" style="font-size: 24px;">
-				  		<a href="#">자유게시판</a>
+				  		<a href="${contextPath }/board/genBoardList">자유게시판</a>
 				  	</button>
 				</li>
 			</div>
