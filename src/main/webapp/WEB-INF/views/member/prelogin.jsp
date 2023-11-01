@@ -19,7 +19,21 @@
 		    $(this).addClass('current');
 		    $("#"+tab_id).addClass('current');
 		  })
-
+		var msg = '${msg}';
+		console.log(msg);
+		if(msg =='가입완료') {
+		    alert("회원가입완료");
+		  }else if(msg=='로그인실패'){
+			  alert("아이디나 비밀번호를 확인해주세요.");
+		  }else if(msg=='기업로그인성공'){
+		    	alert("기업 로그인 성공");
+		    	location.href='${contextPath }/root'
+		  }else if(msg=='개인로그인성공'){
+		    	alert("개인 로그인 성공");
+		    	location.href='${contextPath }/root'
+		  }
+		  
+		
 		})
 </script>
 </head>

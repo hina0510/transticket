@@ -15,6 +15,8 @@
 			<input type="text" name="pwd" placeholder="PWD"><br>
 			<input type="submit" value ="로그인">
 			<a href="${contextPath }/member/gen_register_view">개인회원가입</a>
+			<br>	
+			<input type="checkbox" name="autoLogin">자동로그인
 		</form>
 	</div>
 </body>

@@ -87,15 +87,15 @@ public class GenFileServiceImpl implements GenFileService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	    String saveNow = dateFormat.format(new Date());
 		
-	    if(nan[0].equals("nan")) { // ÀÌ¹ÌÁö°¡ nan.png·Î ¼³Á¤µÇ¾úÀ» °æ¿ì
-	    	if(!dto.getImageName1().equals(nan[0])) { //Ã³À½ dto¿¡ ÀúÀåµÈ °ªÀÌ nan.pngÀÌ ¾Æ´Ò °æ¿ì ±âÁ¸ ÀÌ¹ÌÁö »èÁ¦ÇÏ°í nanÀ¸·Î ¹Ù²Û´Ù.
+	    if(nan[0].equals("nan")) { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngæ¿¡ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¦ºï¿½ë¿€ï¿½ì“£ å¯ƒìŒìŠ¦
+	    	if(!dto.getImageName1().equals(nan[0])) { //ï§£ì„ì“¬ dtoï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ åª›ë¯ªì”  nan.pngï¿½ì”  ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦ æ¹²ê³—ã€ˆ ï¿½ì” èª˜ëª„ï¿½ ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯æ€¨ï¿½ nanï¿½ì‘æ¿¡ï¿½ è«›ë¶½ì””ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				
 				dto.setImageName1("nan");
 	    	}
-	    }else { // ÀÌ¹ÌÁö°¡ nan.png°¡ ¾Æ´Ò °æ¿ì
-	    	if(!fileNames[0].isEmpty()) { // ¹è¿­ÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é ÀÌ¹ÌÁö°¡ º¯°æµÈ °ÍÀÌ´Ù.
+	    }else { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngåª›ï¿½ ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦
+	    	if(!fileNames[0].isEmpty()) { // è«›ê³—ë¿´ï¿½ì”  é®ê¾©ë¼±ï¿½ì—³ï§ï¿½ ï¿½ë¸¡ï¿½ë–ï§ï¿½ ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ è¹‚ï¿½å¯ƒìˆë§‚ å¯ƒê»‹ì” ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				try {
@@ -109,15 +109,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[1].equals("nan")) { // ÀÌ¹ÌÁö°¡ nan.png·Î ¼³Á¤µÇ¾úÀ» °æ¿ì
-	    	if(!dto.getImageName2().equals(nan[1])) { //Ã³À½ dto¿¡ ÀúÀåµÈ °ªÀÌ nan.pngÀÌ ¾Æ´Ò °æ¿ì ±âÁ¸ ÀÌ¹ÌÁö »èÁ¦ÇÏ°í nanÀ¸·Î ¹Ù²Û´Ù.
+	    if(nan[1].equals("nan")) { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngæ¿¡ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¦ºï¿½ë¿€ï¿½ì“£ å¯ƒìŒìŠ¦
+	    	if(!dto.getImageName2().equals(nan[1])) { //ï§£ì„ì“¬ dtoï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ åª›ë¯ªì”  nan.pngï¿½ì”  ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦ æ¹²ê³—ã€ˆ ï¿½ì” èª˜ëª„ï¿½ ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯æ€¨ï¿½ nanï¿½ì‘æ¿¡ï¿½ è«›ë¶½ì””ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		
 	    		dto.setImageName2("nan");
 	    	}
-	    }else { // ÀÌ¹ÌÁö°¡ nan.png°¡ ¾Æ´Ò °æ¿ì
-	    	if(!fileNames[1].isEmpty()) { // ¹è¿­ÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é ÀÌ¹ÌÁö°¡ º¯°æµÈ °ÍÀÌ´Ù.
+	    }else { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngåª›ï¿½ ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦
+	    	if(!fileNames[1].isEmpty()) { // è«›ê³—ë¿´ï¿½ì”  é®ê¾©ë¼±ï¿½ì—³ï§ï¿½ ï¿½ë¸¡ï¿½ë–ï§ï¿½ ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ è¹‚ï¿½å¯ƒìˆë§‚ å¯ƒê»‹ì” ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		try {
@@ -131,15 +131,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[2].equals("nan")) { // ÀÌ¹ÌÁö°¡ nan.png·Î ¼³Á¤µÇ¾úÀ» °æ¿ì
-	    	if(!dto.getImageName3().equals(nan[2])) { //Ã³À½ dto¿¡ ÀúÀåµÈ °ªÀÌ nan.pngÀÌ ¾Æ´Ò °æ¿ì ±âÁ¸ ÀÌ¹ÌÁö »èÁ¦ÇÏ°í nanÀ¸·Î ¹Ù²Û´Ù.
+	    if(nan[2].equals("nan")) { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngæ¿¡ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¦ºï¿½ë¿€ï¿½ì“£ å¯ƒìŒìŠ¦
+	    	if(!dto.getImageName3().equals(nan[2])) { //ï§£ì„ì“¬ dtoï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ åª›ë¯ªì”  nan.pngï¿½ì”  ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦ æ¹²ê³—ã€ˆ ï¿½ì” èª˜ëª„ï¿½ ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯æ€¨ï¿½ nanï¿½ì‘æ¿¡ï¿½ è«›ë¶½ì””ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		
 	    		dto.setImageName3("nan");
 	    	}
-	    }else { // ÀÌ¹ÌÁö°¡ nan.png°¡ ¾Æ´Ò °æ¿ì
-	    	if(!fileNames[2].isEmpty()) { // ¹è¿­ÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é ÀÌ¹ÌÁö°¡ º¯°æµÈ °ÍÀÌ´Ù.
+	    }else { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngåª›ï¿½ ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦
+	    	if(!fileNames[2].isEmpty()) { // è«›ê³—ë¿´ï¿½ì”  é®ê¾©ë¼±ï¿½ì—³ï§ï¿½ ï¿½ë¸¡ï¿½ë–ï§ï¿½ ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ è¹‚ï¿½å¯ƒìˆë§‚ å¯ƒê»‹ì” ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		try {
@@ -153,15 +153,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[3].equals("nan")) { // ÀÌ¹ÌÁö°¡ nan.png·Î ¼³Á¤µÇ¾úÀ» °æ¿ì
-	    	if(!dto.getImageName4().equals(nan[3])) { //Ã³À½ dto¿¡ ÀúÀåµÈ °ªÀÌ nan.pngÀÌ ¾Æ´Ò °æ¿ì ±âÁ¸ ÀÌ¹ÌÁö »èÁ¦ÇÏ°í nanÀ¸·Î ¹Ù²Û´Ù.
+	    if(nan[3].equals("nan")) { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngæ¿¡ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¦ºï¿½ë¿€ï¿½ì“£ å¯ƒìŒìŠ¦
+	    	if(!dto.getImageName4().equals(nan[3])) { //ï§£ì„ì“¬ dtoï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ åª›ë¯ªì”  nan.pngï¿½ì”  ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦ æ¹²ê³—ã€ˆ ï¿½ì” èª˜ëª„ï¿½ ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯æ€¨ï¿½ nanï¿½ì‘æ¿¡ï¿½ è«›ë¶½ì””ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		
 	    		dto.setImageName4("nan");
 	    	}
-	    }else { // ÀÌ¹ÌÁö°¡ nan.png°¡ ¾Æ´Ò °æ¿ì
-	    	if(!fileNames[3].isEmpty()) { // ¹è¿­ÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é ÀÌ¹ÌÁö°¡ º¯°æµÈ °ÍÀÌ´Ù.
+	    }else { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngåª›ï¿½ ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦
+	    	if(!fileNames[3].isEmpty()) { // è«›ê³—ë¿´ï¿½ì”  é®ê¾©ë¼±ï¿½ì—³ï§ï¿½ ï¿½ë¸¡ï¿½ë–ï§ï¿½ ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ è¹‚ï¿½å¯ƒìˆë§‚ å¯ƒê»‹ì” ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		try {
@@ -175,15 +175,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[4].equals("nan")) { // ÀÌ¹ÌÁö°¡ nan.png·Î ¼³Á¤µÇ¾úÀ» °æ¿ì
-	    	if(!dto.getImageName5().equals(nan[4])) { //Ã³À½ dto¿¡ ÀúÀåµÈ °ªÀÌ nan.pngÀÌ ¾Æ´Ò °æ¿ì ±âÁ¸ ÀÌ¹ÌÁö »èÁ¦ÇÏ°í nanÀ¸·Î ¹Ù²Û´Ù.
+	    if(nan[4].equals("nan")) { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngæ¿¡ï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¦ºï¿½ë¿€ï¿½ì“£ å¯ƒìŒìŠ¦
+	    	if(!dto.getImageName5().equals(nan[4])) { //ï§£ì„ì“¬ dtoï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ åª›ë¯ªì”  nan.pngï¿½ì”  ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦ æ¹²ê³—ã€ˆ ï¿½ì” èª˜ëª„ï¿½ ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯æ€¨ï¿½ nanï¿½ì‘æ¿¡ï¿½ è«›ë¶½ì””ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		
 	    		dto.setImageName5("nan");
 	    	}
-	    }else { // ÀÌ¹ÌÁö°¡ nan.png°¡ ¾Æ´Ò °æ¿ì
-	    	if(!fileNames[4].isEmpty()) { // ¹è¿­ÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é ÀÌ¹ÌÁö°¡ º¯°æµÈ °ÍÀÌ´Ù.
+	    }else { // ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ nan.pngåª›ï¿½ ï¿½ë¸˜ï¿½ë•º å¯ƒìŒìŠ¦
+	    	if(!fileNames[4].isEmpty()) { // è«›ê³—ë¿´ï¿½ì”  é®ê¾©ë¼±ï¿½ì—³ï§ï¿½ ï¿½ë¸¡ï¿½ë–ï§ï¿½ ï¿½ì” èª˜ëª„ï¿½åª›ï¿½ è¹‚ï¿½å¯ƒìˆë§‚ å¯ƒê»‹ì” ï¿½ë–.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		try {
@@ -203,11 +203,10 @@ public class GenFileServiceImpl implements GenFileService {
 		String[] fileNames = {dto.getImageName1(), dto.getImageName2(), dto.getImageName3(), dto.getImageName4(),dto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("ÀÌ¸§ : " + fileName);
+			System.out.println("ï¿½ì” ç”±ï¿½ : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
 	}
-	
 	
 }

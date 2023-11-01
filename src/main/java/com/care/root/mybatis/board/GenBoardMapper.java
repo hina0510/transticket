@@ -13,7 +13,8 @@ public interface GenBoardMapper {
 	public List<GenBoardDTO> boardAllList(@Param("s") int start, @Param("e") int end);
 	public void saveWrite(GenBoardDTO dto);
 	public GenBoardDTO genView(int writeNo);
+	public void upViewCount(int writeNo);
 	public void modify(GenBoardDTO dto);
 	public void genDelete(int writeNo);
-	public void upViewCount(int writeNo);
+	
 }

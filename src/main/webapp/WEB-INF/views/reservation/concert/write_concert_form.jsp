@@ -36,7 +36,7 @@
 							<td>
 								<b>작성자 : </b>
 							</td>
-							<td><textarea cols="80" rows="1" readonly name="comname"></textarea></td>
+							<td><input type="text" name="comname" readonly value="${clogin}"></td>
 						</tr>
 						<tr style="height: 10px;">
 						</tr>

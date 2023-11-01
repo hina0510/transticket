@@ -85,7 +85,6 @@ public class BoardController {
 	@PostMapping("genModifySave") 
 	public String genModifySave(@RequestParam int writeNo, 
 								MultipartHttpServletRequest mt){
-		System.out.println("게시글 번호 : " + writeNo);
 
 		GenBoardDTO dto = gbs.genView(writeNo);
 		dto.setCategory(mt.getParameter("category"));
@@ -93,11 +92,10 @@ public class BoardController {
 		dto.setId(mt.getParameter("id"));
 		dto.setContent(mt.getParameter("content"));
 		
-		// 여기부터 삭제를 눌러서 nan을 저장한 것
+		// 여기는 새로운 이미지파일을 넣은 것
 		String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
 				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
 		
-		// 여기는 새로운 이미지파일을 넣은 것
 		MultipartFile[] fileNames = {
 				mt.getFile("imageName1"),
 				mt.getFile("imageName2"),
@@ -106,7 +104,6 @@ public class BoardController {
 				mt.getFile("imageName5")
 		};
 		
-		//이제 1번, 2번, 3번을 한번에 서비스로 옮기고 if문을 사용하여 dto.set~를 해준다.
 		
 		gfs.modify(dto, nan, fileNames);
 		
@@ -121,5 +118,4 @@ public class BoardController {
 		return "redirect:genBoardList";
 	}
 	
-
 }

@@ -25,6 +25,4 @@
 </bean>
 <!-- 해당 위치의 interface를 빈으로 등록  -->
 <mybatis-spring:scan base-package="com.care.root.mybatis"/>
-<mybatis-spring:scan base-package="com.care.root.mybatis.board"/>
 </beans>
-

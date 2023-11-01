@@ -1,8 +1,13 @@
-package com.care.root.dto;
+package com.care.root.member.dto;
 
 public class GenMemberDTO {
-	String id,pwd,name,email,addr;
-	int birth,tel;
+	String id, pwd, name, email, birth, addr, tel, sessionId;
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public String getId() {
 		return id;
 	}
@@ -33,16 +38,16 @@ public class GenMemberDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public int getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 }
