@@ -65,23 +65,6 @@ public class GenFileServiceImpl implements GenFileService {
 			 mapper.saveWrite(dto);
 	   }
 	
-	public void deleteImage(GenBoardDTO dto) {
-		File file1 = new File(IMAGE_REPO + "/" + dto.getImageName1());
-		file1.delete();
-		
-		File file2 = new File(IMAGE_REPO + "/" + dto.getImageName2());
-		file2.delete();
-		
-		File file3 = new File(IMAGE_REPO + "/" + dto.getImageName3());
-		file3.delete();
-		
-		File file4 = new File(IMAGE_REPO + "/" + dto.getImageName4());
-		file4.delete();
-		
-		File file5 = new File(IMAGE_REPO + "/" + dto.getImageName5());
-		file5.delete();
-	}
-	
 	public void modify(GenBoardDTO dto, String[] nan,  MultipartFile[] fileNames) {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
@@ -208,5 +191,5 @@ public class GenFileServiceImpl implements GenFileService {
     		file.delete();
 		}
 	}
-	
+
 }

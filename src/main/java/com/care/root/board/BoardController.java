@@ -46,14 +46,15 @@ public class BoardController {
 	
 	@PostMapping("genWriteSave")
 	public String genWriteSave(MultipartHttpServletRequest mt, 
-								GenBoardDTO dto,
-							   @RequestParam("imageFiles") MultipartFile[] files) {
-		dto.setCategory(mt.getParameter("category"));
-		dto.setTitle(mt.getParameter("title"));
-		dto.setId(mt.getParameter("id"));
-		dto.setContent(mt.getParameter("content"));
-        gfs.saveImage(dto, files);
-        
+								GenBoardDTO dto) {
+//		dto.setCategory(mt.getParameter("category"));
+//		dto.setTitle(mt.getParameter("title"));
+//		dto.setId(mt.getParameter("id"));
+//		dto.setContent(mt.getParameter("content"));
+//        gfs.saveImage(dto, files);
+//        
+		System.out.println("¿ÃπÃ¡ˆ 1 : " + mt.getFile("image1").getOriginalFilename());
+		
 		return "redirect:genBoardList";
 	}
 	
