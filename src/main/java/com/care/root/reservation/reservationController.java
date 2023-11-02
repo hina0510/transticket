@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.care.root.board.service.GenBoardService;
 import com.care.root.common.LoginSession;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
@@ -131,6 +130,10 @@ public class reservationController implements LoginSession{
 	@GetMapping("concert_form3")
 	public String concertForm3() {
 		return "reservation/concert/concert_form03";
+	}
+	@GetMapping("concert_calendar")
+	public String concertCalendar() {
+		return "reservation/concert/concert_calendar";
 	}
 	
 	//뮤지컬

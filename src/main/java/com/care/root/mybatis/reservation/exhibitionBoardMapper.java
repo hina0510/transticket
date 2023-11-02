@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
 
 public interface exhibitionBoardMapper {

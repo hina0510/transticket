@@ -64,37 +64,20 @@ public class GenFileServiceImpl implements GenFileService {
 			 mapper.saveWrite(dto);
 	   }
 	
-	public void deleteImage(GenBoardDTO dto) {
-		File file1 = new File(IMAGE_REPO + "/" + dto.getImageName1());
-		file1.delete();
-		
-		File file2 = new File(IMAGE_REPO + "/" + dto.getImageName2());
-		file2.delete();
-		
-		File file3 = new File(IMAGE_REPO + "/" + dto.getImageName3());
-		file3.delete();
-		
-		File file4 = new File(IMAGE_REPO + "/" + dto.getImageName4());
-		file4.delete();
-		
-		File file5 = new File(IMAGE_REPO + "/" + dto.getImageName5());
-		file5.delete();
-	}
-	
 	public void modify(GenBoardDTO dto, String[] nan,  MultipartFile[] fileNames) {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	    String saveNow = dateFormat.format(new Date());
 		
-	    if(nan[0].equals("nan")) { 
-	    	if(!dto.getImageName1().equals(nan[0])) { 
+	    if(nan[0].equals("nan")) { // �씠誘몄�媛� nan.png濡� �꽕�젙�릺�뿀�쓣 寃쎌슦
+	    	if(!dto.getImageName1().equals(nan[0])) { //泥섏쓬 dto�뿉 ���옣�맂 媛믪씠 nan.png�씠 �븘�땺 寃쎌슦 湲곗〈 �씠誘몄� �궘�젣�븯怨� nan�쑝濡� 諛붽씔�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				
 				dto.setImageName1("nan");
 	    	}
-	    }else { 
-	    	if(!fileNames[0].isEmpty()) { 
+	    }else { // �씠誘몄�媛� nan.png媛� �븘�땺 寃쎌슦
+	    	if(!fileNames[0].isEmpty()) { // 諛곗뿴�씠 鍮꾩뼱�엳吏� �븡�떎硫� �씠誘몄�媛� 蹂�寃쎈맂 寃껋씠�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				try {
@@ -108,15 +91,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[1].equals("nan")) { 
-	    	if(!dto.getImageName2().equals(nan[1])) { 
+	    if(nan[1].equals("nan")) { // �씠誘몄�媛� nan.png濡� �꽕�젙�릺�뿀�쓣 寃쎌슦
+	    	if(!dto.getImageName2().equals(nan[1])) { //泥섏쓬 dto�뿉 ���옣�맂 媛믪씠 nan.png�씠 �븘�땺 寃쎌슦 湲곗〈 �씠誘몄� �궘�젣�븯怨� nan�쑝濡� 諛붽씔�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		
 	    		dto.setImageName2("nan");
 	    	}
-	    }else { 
-	    	if(!fileNames[1].isEmpty()) { 
+	    }else { // �씠誘몄�媛� nan.png媛� �븘�땺 寃쎌슦
+	    	if(!fileNames[1].isEmpty()) { // 諛곗뿴�씠 鍮꾩뼱�엳吏� �븡�떎硫� �씠誘몄�媛� 蹂�寃쎈맂 寃껋씠�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		try {
@@ -130,15 +113,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[2].equals("nan")) { 
-	    	if(!dto.getImageName3().equals(nan[2])) { 
+	    if(nan[2].equals("nan")) { // �씠誘몄�媛� nan.png濡� �꽕�젙�릺�뿀�쓣 寃쎌슦
+	    	if(!dto.getImageName3().equals(nan[2])) { //泥섏쓬 dto�뿉 ���옣�맂 媛믪씠 nan.png�씠 �븘�땺 寃쎌슦 湲곗〈 �씠誘몄� �궘�젣�븯怨� nan�쑝濡� 諛붽씔�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		
 	    		dto.setImageName3("nan");
 	    	}
-	    }else { 
-	    	if(!fileNames[2].isEmpty()) { 
+	    }else { // �씠誘몄�媛� nan.png媛� �븘�땺 寃쎌슦
+	    	if(!fileNames[2].isEmpty()) { // 諛곗뿴�씠 鍮꾩뼱�엳吏� �븡�떎硫� �씠誘몄�媛� 蹂�寃쎈맂 寃껋씠�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		try {
@@ -152,15 +135,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[3].equals("nan")) { 
-	    	if(!dto.getImageName4().equals(nan[3])) { 
+	    if(nan[3].equals("nan")) { // �씠誘몄�媛� nan.png濡� �꽕�젙�릺�뿀�쓣 寃쎌슦
+	    	if(!dto.getImageName4().equals(nan[3])) { //泥섏쓬 dto�뿉 ���옣�맂 媛믪씠 nan.png�씠 �븘�땺 寃쎌슦 湲곗〈 �씠誘몄� �궘�젣�븯怨� nan�쑝濡� 諛붽씔�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		
 	    		dto.setImageName4("nan");
 	    	}
-	    }else { 
-	    	if(!fileNames[3].isEmpty()) { 
+	    }else { // �씠誘몄�媛� nan.png媛� �븘�땺 寃쎌슦
+	    	if(!fileNames[3].isEmpty()) { // 諛곗뿴�씠 鍮꾩뼱�엳吏� �븡�떎硫� �씠誘몄�媛� 蹂�寃쎈맂 寃껋씠�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		try {
@@ -174,15 +157,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[4].equals("nan")) { 
-	    	if(!dto.getImageName5().equals(nan[4])) {
+	    if(nan[4].equals("nan")) { // �씠誘몄�媛� nan.png濡� �꽕�젙�릺�뿀�쓣 寃쎌슦
+	    	if(!dto.getImageName5().equals(nan[4])) { //泥섏쓬 dto�뿉 ���옣�맂 媛믪씠 nan.png�씠 �븘�땺 寃쎌슦 湲곗〈 �씠誘몄� �궘�젣�븯怨� nan�쑝濡� 諛붽씔�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		
 	    		dto.setImageName5("nan");
 	    	}
-	    }else { 
-	    	if(!fileNames[4].isEmpty()) { 
+	    }else { // �씠誘몄�媛� nan.png媛� �븘�땺 寃쎌슦
+	    	if(!fileNames[4].isEmpty()) { // 諛곗뿴�씠 鍮꾩뼱�엳吏� �븡�떎硫� �씠誘몄�媛� 蹂�寃쎈맂 寃껋씠�떎.
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		try {
@@ -202,11 +185,10 @@ public class GenFileServiceImpl implements GenFileService {
 		String[] fileNames = {dto.getImageName1(), dto.getImageName2(), dto.getImageName3(), dto.getImageName4(),dto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("파일 : " + fileName);
+			System.out.println("�씠由� : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
 	}
-	
-	
+
 }

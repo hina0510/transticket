@@ -33,7 +33,7 @@ public class reservationServiceImpl implements reservationService{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("repeat", repeat);
 		map.put("list", cmapper.cBoardList(start, end));
-		
+
 		return map;
 	}
 	public concertBoardDTO cGetContent(int writeNo) {

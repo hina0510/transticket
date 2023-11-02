@@ -38,7 +38,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 			try {
 		        String[] savePath = new String[5];
 		        String[] nowImgName = new String[5];
-		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		        String saveNow = dateFormat.format(new Date());
 		        
 		        for(int i = 0; i < 5; i++) {
