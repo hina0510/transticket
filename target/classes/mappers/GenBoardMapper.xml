@@ -38,6 +38,10 @@
 		select * from genBoard where write_no = #{writeNo}
 	</select>
 	
+	<update id="upViewCount">
+		update genBoard set viewCount = viewCount+1 where write_no = #{writeNo}
+	</update>
+	
 	<update id="modify">
 		update genBoard set category = #{category}, n_id = #{id}, title = #{title}, content = #{content}, 
 						imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 

@@ -1,7 +1,6 @@
 package com.care.root.board.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -87,15 +86,15 @@ public class GenFileServiceImpl implements GenFileService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	    String saveNow = dateFormat.format(new Date());
 		
-	    if(nan[0].equals("nan")) { // 이미지가 nan.png로 설정되었을 경우
-	    	if(!dto.getImageName1().equals(nan[0])) { //처음 dto에 저장된 값이 nan.png이 아닐 경우 기존 이미지 삭제하고 nan으로 바꾼다.
+	    if(nan[0].equals("nan")) { 
+	    	if(!dto.getImageName1().equals(nan[0])) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				
 				dto.setImageName1("nan");
 	    	}
-	    }else { // 이미지가 nan.png가 아닐 경우
-	    	if(!fileNames[0].isEmpty()) { // 배열이 비어있지 않다면 이미지가 변경된 것이다.
+	    }else { 
+	    	if(!fileNames[0].isEmpty()) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName1());
 				file.delete();
 				try {
@@ -109,15 +108,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[1].equals("nan")) { // 이미지가 nan.png로 설정되었을 경우
-	    	if(!dto.getImageName2().equals(nan[1])) { //처음 dto에 저장된 값이 nan.png이 아닐 경우 기존 이미지 삭제하고 nan으로 바꾼다.
+	    if(nan[1].equals("nan")) { 
+	    	if(!dto.getImageName2().equals(nan[1])) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		
 	    		dto.setImageName2("nan");
 	    	}
-	    }else { // 이미지가 nan.png가 아닐 경우
-	    	if(!fileNames[1].isEmpty()) { // 배열이 비어있지 않다면 이미지가 변경된 것이다.
+	    }else { 
+	    	if(!fileNames[1].isEmpty()) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName2());
 	    		file.delete();
 	    		try {
@@ -131,15 +130,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[2].equals("nan")) { // 이미지가 nan.png로 설정되었을 경우
-	    	if(!dto.getImageName3().equals(nan[2])) { //처음 dto에 저장된 값이 nan.png이 아닐 경우 기존 이미지 삭제하고 nan으로 바꾼다.
+	    if(nan[2].equals("nan")) { 
+	    	if(!dto.getImageName3().equals(nan[2])) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		
 	    		dto.setImageName3("nan");
 	    	}
-	    }else { // 이미지가 nan.png가 아닐 경우
-	    	if(!fileNames[2].isEmpty()) { // 배열이 비어있지 않다면 이미지가 변경된 것이다.
+	    }else { 
+	    	if(!fileNames[2].isEmpty()) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName3());
 	    		file.delete();
 	    		try {
@@ -153,15 +152,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[3].equals("nan")) { // 이미지가 nan.png로 설정되었을 경우
-	    	if(!dto.getImageName4().equals(nan[3])) { //처음 dto에 저장된 값이 nan.png이 아닐 경우 기존 이미지 삭제하고 nan으로 바꾼다.
+	    if(nan[3].equals("nan")) { 
+	    	if(!dto.getImageName4().equals(nan[3])) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		
 	    		dto.setImageName4("nan");
 	    	}
-	    }else { // 이미지가 nan.png가 아닐 경우
-	    	if(!fileNames[3].isEmpty()) { // 배열이 비어있지 않다면 이미지가 변경된 것이다.
+	    }else { 
+	    	if(!fileNames[3].isEmpty()) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName4());
 	    		file.delete();
 	    		try {
@@ -175,15 +174,15 @@ public class GenFileServiceImpl implements GenFileService {
 	    	}
 	    }
 	    
-	    if(nan[4].equals("nan")) { // 이미지가 nan.png로 설정되었을 경우
-	    	if(!dto.getImageName5().equals(nan[4])) { //처음 dto에 저장된 값이 nan.png이 아닐 경우 기존 이미지 삭제하고 nan으로 바꾼다.
+	    if(nan[4].equals("nan")) { 
+	    	if(!dto.getImageName5().equals(nan[4])) {
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		
 	    		dto.setImageName5("nan");
 	    	}
-	    }else { // 이미지가 nan.png가 아닐 경우
-	    	if(!fileNames[4].isEmpty()) { // 배열이 비어있지 않다면 이미지가 변경된 것이다.
+	    }else { 
+	    	if(!fileNames[4].isEmpty()) { 
 	    		File file = new File(IMAGE_REPO + "/" + dto.getImageName5());
 	    		file.delete();
 	    		try {
@@ -203,7 +202,7 @@ public class GenFileServiceImpl implements GenFileService {
 		String[] fileNames = {dto.getImageName1(), dto.getImageName2(), dto.getImageName3(), dto.getImageName4(),dto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("이름 : " + fileName);
+			System.out.println("파일 : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}

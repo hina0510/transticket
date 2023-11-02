@@ -32,7 +32,12 @@ public class GenBoardServiceImpl implements GenBoardService{
 	
 	
 	public GenBoardDTO genView(int writeNo) {
+		upViewConunt(writeNo);
 		return mapper.genView(writeNo);
+	}
+	
+	private void upViewConunt(int writeNo) {
+		mapper.upViewCount(writeNo);
 	}
 	
 	public void genDelete(int writeNo) {

@@ -2,8 +2,38 @@ package com.care.root.reservation.dto;
 
 public class concertBoardDTO {
 	private int writeNo, hit;
-	private String title, type, comname, con_date, con_place, content, image_file_name, form, saveDate;
-	
+	private String title, type, comname, con_stDate, con_endDate, con_place, content, form, saveDate;
+	private String imageName1, imageName2, imageName3, imageName4, imageName5;
+	public String getImageName1() {
+		return imageName1;
+	}
+	public void setImageName1(String imageName1) {
+		this.imageName1 = imageName1;
+	}
+	public String getImageName2() {
+		return imageName2;
+	}
+	public void setImageName2(String imageName2) {
+		this.imageName2 = imageName2;
+	}
+	public String getImageName3() {
+		return imageName3;
+	}
+	public void setImageName3(String imageName3) {
+		this.imageName3 = imageName3;
+	}
+	public String getImageName4() {
+		return imageName4;
+	}
+	public void setImageName4(String imageName4) {
+		this.imageName4 = imageName4;
+	}
+	public String getImageName5() {
+		return imageName5;
+	}
+	public void setImageName5(String imageName5) {
+		this.imageName5 = imageName5;
+	}
 	public int getWriteNo() {
 		return writeNo;
 	}
@@ -34,11 +64,17 @@ public class concertBoardDTO {
 	public void setComname(String comname) {
 		this.comname = comname;
 	}
-	public String getCon_date() {
-		return con_date;
+	public String getCon_stDate() {
+		return con_stDate;
 	}
-	public void setCon_date(String con_date) {
-		this.con_date = con_date;
+	public void setCon_stDate(String con_stDate) {
+		this.con_stDate = con_stDate;
+	}
+	public String getCon_endDate() {
+		return con_endDate;
+	}
+	public void setCon_endDate(String con_endDate) {
+		this.con_endDate = con_endDate;
 	}
 	public String getCon_place() {
 		return con_place;
@@ -51,12 +87,6 @@ public class concertBoardDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getImage_file_name() {
-		return image_file_name;
-	}
-	public void setImage_file_name(String image_file_name) {
-		this.image_file_name = image_file_name;
 	}
 	public String getForm() {
 		return form;

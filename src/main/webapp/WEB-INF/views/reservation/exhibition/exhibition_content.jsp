@@ -22,39 +22,39 @@
 		            <div class="board_view">
 		            	<div class="board_view_title">
 			            	<nav class="board_view_title_nav">
-			            		<img src="#">
+			            		<img src="download?file=${edto.imageName1 }">
 			            	</nav>
 			        		<section class="board_view_title_sec">
 			        			<div class="title">
-				                	<p>d</p>
+				                	<p>${edto.title }</p>
 				                </div>
 				                <div class="info">
 				                	<div class="info_div01">
 				                		<dl>
 					                        <dt>글 번호</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.writeNo }</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>작성자</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.comname }</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>작성일</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.saveDate}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>조회수</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.hit}</dd>
 					                    </dl>
 				                	</div>
 				                	<div class="info_div02">
 					                    <dl>
 					                        <dt>장소</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.ex_place}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>일시</dt>
-					                        <dd>d</dd>
+					                        <dd>${edto.ex_stDate} ~ ${edto.ex_endDate}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>좋아요</dt>
@@ -62,7 +62,7 @@
 					                    </dl>
 					                    <dl>
 					                        <div class="frame">
-												<button class="custom-btn btn-3" onclick="location.href='exhibition_form01'"><span>예매하기</span></button>
+												<button class="custom-btn btn-3" onclick="location.href='exhibition_form01?writeNo=${edto.writeNo }'"><span>예매하기</span></button>
 											</div>
 					                    </dl>
 				                	</div>

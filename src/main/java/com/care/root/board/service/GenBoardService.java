@@ -2,8 +2,6 @@ package com.care.root.board.service;
 
 import java.util.Map;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import com.care.root.board.dto.GenBoardDTO;
 
 public interface GenBoardService {

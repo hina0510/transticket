@@ -19,7 +19,7 @@
                 this.value = ''; // 이미지 선택 취소
             }
         });
-    </script>
+</script>
 <style>
         /* 중앙 정렬을 위한 CSS 스타일 */
        #writeForm {
@@ -31,15 +31,6 @@
         }
         form {
             text-align: center;
-        }
-        .image-preview {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .image-preview img {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
         }
 </style>
 </head>

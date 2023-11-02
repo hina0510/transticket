@@ -85,7 +85,7 @@ public class BoardController {
 	@PostMapping("genModifySave") 
 	public String genModifySave(@RequestParam int writeNo, 
 								MultipartHttpServletRequest mt){
-		System.out.println("ê²Œì‹œê¸€ ë²ˆí˜¸ : " + writeNo);
+		System.out.println("°Ô½Ã±Û ¹øÈ£ : " + writeNo);
 
 		GenBoardDTO dto = gbs.genView(writeNo);
 		dto.setCategory(mt.getParameter("category"));
@@ -93,11 +93,11 @@ public class BoardController {
 		dto.setId(mt.getParameter("id"));
 		dto.setContent(mt.getParameter("content"));
 		
-		// ì—¬ê¸°ë¶€í„° ì‚­ì œë¥¼ ëˆŒëŸ¬ì„œ nanì„ ì €ì¥í•œ ê²ƒ
+		// ¿©±âºÎÅÍ »èÁ¦¸¦ ´­·¯¼­ nanÀ» ÀúÀåÇÑ °Í
 		String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
 				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
 		
-		// ì—¬ê¸°ëŠ” ìƒˆë¡œìš´ ì´ë¯¸ì§€íŒŒì¼ì„ ë„£ì€ ê²ƒ
+		// ¿©±â´Â »õ·Î¿î ÀÌ¹ÌÁöÆÄÀÏÀ» ³ÖÀº °Í
 		MultipartFile[] fileNames = {
 				mt.getFile("imageName1"),
 				mt.getFile("imageName2"),
@@ -106,7 +106,7 @@ public class BoardController {
 				mt.getFile("imageName5")
 		};
 		
-		//ì´ì œ 1ë²ˆ, 2ë²ˆ, 3ë²ˆì„ í•œë²ˆì— ì„œë¹„ìŠ¤ë¡œ ì˜®ê¸°ê³  ifë¬¸ì„ ì‚¬ìš©í•˜ì—¬ dto.set~ë¥¼ í•´ì¤€ë‹¤.
+		//ÀÌÁ¦ 1¹ø, 2¹ø, 3¹øÀ» ÇÑ¹ø¿¡ ¼­ºñ½º·Î ¿Å±â°í if¹®À» »ç¿ëÇÏ¿© dto.set~¸¦ ÇØÁØ´Ù.
 		
 		gfs.modify(dto, nan, fileNames);
 		

@@ -8,6 +8,19 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="../resources/js/toolbar.js"></script>
+<script src="../resources/js/img_view.js"></script>
+<script src="https://cdn.tiny.cloud/1/p7nrha7bnxiiydg98puzjwfijyui35ns1hd90lfpwxju9p9o/tinymce/6/tinymce.min.js" 
+			referrerpolicy="origin"></script>
+<script>
+        document.getElementById('imageFiles').addEventListener('change', function() {
+            const files = this.files;
+            if (files.length > 5) {
+                alert('최대 5개의 이미지만 선택할 수 있습니다.');
+                this.value = ''; // 이미지 선택 취소
+            }
+        });
+</script>
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
@@ -45,9 +58,9 @@
 								<b>공연 일시 : </b>
 							</td>
 							<td>
-								<input type="date" id="firstDate">
+								<input type="date" name="startDate">
 								<div id="betweenDate">~</div>
-           						<input type="date" id="secondDate">
+           						<input type="date" name="endDate">
 							</td>
 						</tr>
 						<tr style="height: 10px;">
@@ -59,32 +72,29 @@
 							<td>
 								<input type="text" readonly id = "addr1" placeholder="우편번호">
 								<button type="button" onclick="daumPost()">위치 찾기</button><br>
-							    <input type="text" readonly id = "addr2" name="con_place" placeholder="주소"><br>
+							    <input type="text" readonly id = "addr2" name="ex_place" placeholder="주소"><br>
 							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
 							</td>
 						</tr>
 						<tr style="height: 10px;">
 						</tr>
 						<tr>
-							<td>
-								<b>내용 : </b>
-							</td>
-							<td><textarea cols="80" rows="5" name="content"></textarea></td>
+							<td colspan="2"><textarea rows="25" cols="80" name="content" id="content"></textarea></td>
 						</tr>
 						<tr style="height: 10px;">
 						</tr>
 						<tr>
-							<td>
-								<b>사진 : </b>
-							</td>
-							<td>
-								<div class="imgs">
-									<div class="img01"><input type="file" name="file_name" onchange="readURL(this)"></div>
-									<div class="img02"><img id="preview" width="100" height="100" alt="선택없음"></div>
-								</div>
+							<td colspan="2">
+								<input type="file" name="file_name" id="imageFiles" multiple onchange="previewImages()">
+								<div class="image-preview" id="imagePreview"></div>
 							</td>
 						</tr>
 						<tr style="height: 20px;">
+						</tr>
+						<tr><!-- 폼 -->
+							<td colspan="2">
+								<input type="hidden" name="form" value="exhibition">
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2">

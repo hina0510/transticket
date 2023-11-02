@@ -18,8 +18,7 @@
 		    $(this).addClass('current');
 		    $("#"+tab_id).addClass('current');
 		  })
-
-		})
+	})
 </script>
 </head>
 <body>
@@ -36,47 +35,47 @@
 		            <div class="board_view">
 		            	<div class="board_view_title">
 			            	<nav class="board_view_title_nav">
-			            		<img src="#">
+			            		<img src="download?file=${cdto.imageName1 }">
 			            	</nav>
 			        		<section class="board_view_title_sec">
 			        			<div class="title">
-				                	<p>d</p>
+				                	<p>${cdto.title }</p>
 				                </div>
 				                <div class="info">
 				                	<div class="info_div01">
 				                		<dl>
 					                        <dt>글 번호</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.writeNo }</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>작성자</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.comname }</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>작성일</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.saveDate}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>조회수</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.hit}</dd>
 					                    </dl>
 				                	</div>
 				                	<div class="info_div02">
 					                    <dl>
 					                        <dt>장소</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.con_place}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>일시</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.con_stDate} ~ ${cdto.con_endDate}</dd>
 					                    </dl>
 					                    <dl>
 					                        <dt>좋아요</dt>
-					                        <dd>d</dd>
+					                        <dd>${cdto.form}</dd>
 					                    </dl>
 					                    <dl>
 					                        <div class="frame">
-												<button class="custom-btn btn-3" onclick="location.href='concert_form01'"><span>예매하기</span></button>
+												<button class="custom-btn btn-3" onclick="location.href='concert_${cdto.form}?writeNo=${cdto.writeNo }'"><span>예매하기</span></button>
 											</div>
 					                    </dl>
 				                	</div>

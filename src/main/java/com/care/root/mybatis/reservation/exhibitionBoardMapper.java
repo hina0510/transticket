@@ -8,7 +8,7 @@ import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
 
 public interface exhibitionBoardMapper {
-	public List<exhibitionBoardDTO> eBoardList(@Param("s") int end, @Param("e") int start);
+	public List<exhibitionBoardDTO> eBoardList(@Param("s") int start, @Param("e") int end);
 	public exhibitionBoardDTO eGetContent(int writeNo);
 	public void eUpHit(int writeNo);
 	public int eWriteSave(exhibitionBoardDTO mdto);

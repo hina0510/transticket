@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
 		#modal_wrap {
-			display:none;
+			display : none;
 			position : fixed; z-index: 9; margin: auto;
 			top: 0; left: 1000; right:0; width: 100%; height: 100%;
 			background-color: rgba(0, 0, 0, 0.4); 
@@ -22,58 +22,198 @@
 <body>
 <%@ include file="../default/header.jsp" %>
 
-	<div id="modal_wrap">
-		<div style="display:inline-block; width: 200px; background: red;" onclick="showNextImage()">ㅇㅇㅇㅇㅇ</div>
-		<div style="display:inline-block; width : 650px; margin : auto; padding-top: 20px;">
-			<img src="imgView?name=${dto.imageName1 }" width="600" height="600" alt="없음">
+	<div id="modal_wrap" style="margin: auto; border: solid 1px black;">
+		<div style="text-align:center; display:inline-block; width: 30%;">
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" onclick="prevImage()">
+		        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		        <span class="visually-hidden">Previous</span>
+		    </button>
+		</div>
+		
+		<div style="display:inline-block; width : 40%; margin : auto; padding-top: 20px; text-align: center;">
+			<img id="mainImg" width="600" height="600" alt="없음">
 			<hr>
-			<button type="button" onclick="rep()">답글</button>
 			<button type="button" onclick="slide_hide()">취소</button>
 		</div>
-		<div style="display: inline; width: 200px; background: red;" onclick="showPreviousImage()">asddd</div>
+		
+		<div style="text-align:center;  display:inline-block; width:25%;">
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" onclick="nextImage()">
+	        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	        <span class="visually-hidden">Next</span>
+      		</button>
+		</div>
 	</div>
 	
 	<script type="text/javascript">	
-	var currentImage = 1; // 현재 이미지 인덱스
-	var totalImages = 5; // 전체 이미지 수
-	
-	function slide_hide() {
-		$("#first").hide();
-		$("#modal_wrap").hide();
-	}
-	
-	function showNextImage() {
-	    if (currentImage < totalImages) {
-	        currentImage++;
-	    } else {
-	        currentImage = 1; // 마지막 이미지 다음에는 첫 번째 이미지로 이동
-	    }
-	    updateSlideshow();
-	}
-
-	function showPreviousImage() {
-	    if (currentImage > 1) {
-	        currentImage--;
-	    } else {
-	        currentImage = totalImages; // 첫 번째 이미지에서 이전에는 마지막 이미지로 이동
-	    }
-	    updateSlideshow();
-	}
-	
-	function updateSlideshow() {
-		$("#modal_wrap").show();
-	    for (var i = 1; i <= totalImages; i++) {
-	        var image = document.getElementById('img' + i);
-	        if (i === currentImage) {
-	            image.style.display = 'block'; // 현재 이미지 표시
-	        } else {
-	            image.style.display = 'none'; // 다른 이미지 숨김
-	        }
-	    }
-	}
-
-	updateSlideshow();
-	
+		var num;
+		
+		function slide_hide() {
+			$("#first").hide();
+			$("#modal_wrap").hide();
+		}
+		
+		function imgShow(su) {
+			var imgId = document.getElementById("mainImg");
+			
+			num = su;
+			console.log("imgShow > ", num)
+			if(num == 1) {
+				if("${dto.imageName1 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName1 }";
+				}
+				
+			}
+			
+			if(num == 2) {
+				if("${dto.imageName2 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName2 }";
+				}
+			}
+			
+			if(num == 3) {
+				if("${dto.imageName3 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName3 }";
+				}
+			}
+			
+			if(num == 4) {
+				if("${dto.imageName4 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName4 }";
+				}
+			}
+			
+			if(num == 5) {
+				if("${dto.imageName5 }" == "nan") {
+					num = 1;
+					nextShow(num);
+				}else {
+					imgId.src = "imgView?name=${dto.imageName5 }";
+				}
+			}
+			
+			$("#modal_wrap").show();
+		}
+		
+		function nextImage() {
+			num++;
+			if(num > 5) {
+				num = 1;
+			}
+			nextShow(num);
+		}
+		
+		function nextShow(num) {
+			var imgId = document.getElementById("mainImg");
+			
+			console.log("nextShow > ", num)
+			
+			if(num == 1) {
+				if("${dto.imageName1 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName1 }";
+				}
+			}
+			console.log("1 > ", num);
+			if(num == 2) {
+				if("${dto.imageName2 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName2 }";
+				}
+			}
+			console.log("2 > ", num);
+			if(num == 3) {
+				if("${dto.imageName3 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName3 }";
+				}
+			}
+			console.log("3 >", num);
+			if(num == 4) {
+				if("${dto.imageName4 }" == "nan") {
+					num++;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName4 }";
+				}
+			}
+			console.log("4 >", num);
+			if(num == 5) {
+				if("${dto.imageName5 }" == "nan") {
+					num = 1;
+					imgShow(num);
+				}else {
+					imgId.src = "imgView?name=${dto.imageName5 }";
+				}
+			}
+			console.log("5 > ", num);
+		}
+		
+		function prevImage() {
+			num--;
+			if(num < 1) {
+				num = 5;
+			}
+			prevShow(num);
+		}
+		
+		function prevShow() {
+			
+			var imgId = document.getElementById("mainImg");
+			console.log("prevShow > ", num);
+			
+			if(num == 5) {
+				if("${dto.imageName5 }" == "nan") {
+					num--;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName5 }";
+				}
+			}
+			console.log("5 > ", num);
+			if(num == 4) {
+				if("${dto.imageName4 }" == "nan") {
+					num--;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName4 }";
+				}
+			}
+			console.log("4 > ", num);
+			if(num == 3) {
+				if("${dto.imageName3 }" == "nan") {
+					num--;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName3 }";
+				}
+			}
+			console.log("3 > ", num);
+			if(num == 2) {
+				if("${dto.imageName2 }" == "nan") {
+					num--;
+				}else {
+					imgId.src = "imgView?name=${dto.imageName2 }";
+				}
+			}
+			console.log("2 > ", num);
+			if(num == 1) {
+				if("${dto.imageName1 }" == "nan") {
+					num = 5;
+					imgShow(num);
+				}else {
+					imgId.src = "imgView?name=${dto.imageName1 }";
+				}
+			}
+			console.log("1 > ", num);
+		}
+		
 	</script>
 	
 	
@@ -114,48 +254,33 @@
                 	<div style="text-align: center;">
 	                	<c:choose>
 	                		<c:when test="${dto.imageName1 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="updateSlideshow()" width="100" height="100" alt="없음">
+	                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="imgShow(1)" width="100" height="100" alt="없음">
 	                		</c:when>
-	                		<c:otherwise>
-	                			<img src="<%=request.getContextPath() %>/resources/images/nan.png" id="img1" onclick="slideClick()" width="100" height="100" alt="없음" >
-	                		</c:otherwise>
 	                	</c:choose>
 
 						  
 						<c:choose>
 	                		<c:when test="${dto.imageName2 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="updateSlideshow()" width="100" height="100" alt="없음">
+	                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="imgShow(2)" width="100" height="100" alt="없음">
 	                		</c:when>
-	                		<c:otherwise>
-	                			<img src="<%=request.getContextPath() %>/resources/images/nan.png" id="img2" onclick="" width="100" height="100" alt="없음" >
-	                		</c:otherwise>
 	                	</c:choose>
 						  
 						  <c:choose>
 	                		<c:when test="${dto.imageName3 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="updateSlideshow()" width="100" height="100" alt="없음">
+	                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="imgShow(3)" width="100" height="100" alt="없음">
 	                		</c:when>
-	                		<c:otherwise>
-	                			<img src="<%=request.getContextPath() %>/resources/images/nan.png" id="img3" onclick="" width="100" height="100" alt="없음" >
-	                		</c:otherwise>
 	                	</c:choose>
 						  
 						  <c:choose>
 	                		<c:when test="${dto.imageName4 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="" width="100" height="100" alt="없음">
+	                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="imgShow(4)" width="100" height="100" alt="없음">
 	                		</c:when>
-	                		<c:otherwise>
-	                			<img src="<%=request.getContextPath() %>/resources/images/nan.png" id="img4" onclick="" width="100" height="100" alt="없음" >
-	                		</c:otherwise>
 	                	</c:choose>
 						  
 						  <c:choose>
 	                		<c:when test="${dto.imageName5 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="" width="100" height="100" alt="없음">
+	                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="imgShow(5)" width="100" height="100" alt="없음">
 	                		</c:when>
-	                		<c:otherwise>
-	                			<img src="<%=request.getContextPath() %>/resources/images/nan.png" id="img5" onclick="" width="100" height="100" alt="없음" >
-	                		</c:otherwise>
 	                	</c:choose>
 						  <br>
 						  <b style="font-size: 12px;">※이미지를 클릭하면 확대됩니다.</b>

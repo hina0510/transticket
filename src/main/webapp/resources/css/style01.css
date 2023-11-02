@@ -91,6 +91,16 @@ ul.tabs2 li.current{
     font-family: 'omyu_pretty';
 }
 
+.image-preview {
+	display: flex;
+    flex-wrap: wrap;
+}
+.image-preview img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+td {height: 50px;}
 .board_title {
     margin-bottom: 30px;
 }
