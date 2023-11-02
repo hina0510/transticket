@@ -12,13 +12,13 @@
 <script src="https://cdn.tiny.cloud/1/p7nrha7bnxiiydg98puzjwfijyui35ns1hd90lfpwxju9p9o/tinymce/6/tinymce.min.js" 
 			referrerpolicy="origin"></script>
 <script>
-        document.getElementById('imageFiles').addEventListener('change', function() {
-            const files = this.files;
-            if (files.length > 5) {
-                alert('최대 5개의 이미지만 선택할 수 있습니다.');
-                this.value = ''; // 이미지 선택 취소
-            }
-        });
+	document.getElementById('imageFiles').addEventListener('change', function() {
+		const files = this.files;
+		if (files.length > 5) {
+			alert('최대 5개의 이미지만 선택할 수 있습니다.');
+			this.value = ''; // 이미지 선택 취소
+		}
+	});
 </script>
 </head>
 <body>
@@ -81,6 +81,9 @@
 							<td colspan="2"><textarea rows="25" cols="80" name="content" id="content"></textarea></td>
 						</tr>
 						<tr style="height: 10px;">
+						</tr>
+						<tr style="height: 10px;">
+							<td colspan="2">사진을 한 장 이상 선택해주세요</td>
 						</tr>
 						<tr>
 							<td colspan="2">
