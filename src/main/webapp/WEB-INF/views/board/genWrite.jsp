@@ -65,6 +65,8 @@
 	                			</label>
 							</td>
 							
+							
+							
 							<td>
 		               			<input type="file" id="img3" name="imageName3"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img3Pre', 'image3')">
 				    			<label for="img3">
