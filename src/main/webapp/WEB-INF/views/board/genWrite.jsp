@@ -46,76 +46,49 @@
 				제목 : <input type="text" name="title">
 				작성자 : <input type="text" name="id"><br>
 				<textarea rows="25" cols="80" name="content" id="content"></textarea><br>
-				<div style="text-align: center;">
-					<table style="margin: auto">
+				<table style="margin: auto">
 						<tr>
 							<td>
-	                			<input type="file" id="img1" name="imageName1"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img1Pre', 'image1')">
+	                			<input type="file" id="img1" name="imgN1"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img1Pre', 'image1')">
 				    			<label for="img1">
-	                				<img src="<%=request.getContextPath() %>/resources/images/1.png" id="img1Pre" onclick="" width="100" height="100" alt="없음">
-	                				<input type="hidden" name="image1" id="image1" value="${dto.imageName1 }">
+	                				<img src="<%=request.getContextPath() %>/resources/images/1.png" id="img1Pre" width="100" height="100" alt="없음">
+	                				<input type="hidden" name="image1" id="image1" value="0">
 	                			</label>
 							</td>
 							
 							<td>
-	                			<input type="file" id="img2" name="imageName2"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img2Pre', 'image2')">
+	                			<input type="file" id="img2" name="imgN2"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img2Pre', 'image2')">
 				    			<label for="img2">
-	                				<img src="<%=request.getContextPath() %>/resources/images/2.png" id="img2Pre" onclick="" width="100" height="100" alt="없음">
-	                				<input type="hidden" name="image2" id="image2" value="${dto.imageName2 }">
+	                				<img src="<%=request.getContextPath() %>/resources/images/2.png" id="img2Pre" width="100" height="100" alt="없음">
+	                				<input type="hidden" name="image2" id="image2" value="0">
 	                			</label>
 							</td>
 							
-							
-							
 							<td>
-		               			<input type="file" id="img3" name="imageName3"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img3Pre', 'image3')">
+		               			<input type="file" id="img3" name="imgN3"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img3Pre', 'image3')">
 				    			<label for="img3">
-		               				<img src="<%=request.getContextPath() %>/resources/images/3.png" id="img3Pre" onclick="" width="100" height="100" alt="없음">
-		               				<input type="hidden" name="image3" id="image3" value="${dto.imageName3 }">
+		               				<img src="<%=request.getContextPath() %>/resources/images/3.png" id="img3Pre" width="100" height="100" alt="없음">
+		               				<input type="hidden" name="image3" id="image3" value="0">
 		               			</label>
 							</td>
 							
 							<td>
-		               			<input type="file" id="img4" name="imageName4"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img4Pre', 'image4')">
+		               			<input type="file" id="img4" name="imgN4"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img4Pre', 'image4')">
 				    			<label for="img4">
-		               				<img src="<%=request.getContextPath() %>/resources/images/4.png" id="img4Pre" onclick="" width="100" height="100" alt="없음">
-		               				<input type="hidden" name="image4" id="image4" value="${dto.imageName4 }">
+		               				<img src="<%=request.getContextPath() %>/resources/images/4.png" id="img4Pre" width="100" height="100" alt="없음">
+		               				<input type="hidden" name="image4" id="image4" value="0">
 		               			</label>
 							</td>
 							
 							<td>
-		               			<input type="file" id="img5" name="imageName5"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img5Pre', 'image5')">
+		               			<input type="file" id="img5" name="imgN5"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img5Pre', 'image5')">
 				    			<label for="img5">
-		               				<img src="<%=request.getContextPath() %>/resources/images/5.png" id="img5Pre" onclick="" width="100" height="100" alt="없음">
-		               				<input type="hidden" name="image5" id="image5" value="${dto.imageName5 }">
+		               				<img src="<%=request.getContextPath() %>/resources/images/5.png" id="img5Pre" width="100" height="100" alt="없음">
+		               				<input type="hidden" name="image5" id="image5" value="0">
 		               			</label>
 							</td>
 						</tr>
-						
-						<tr>
-							<td>
-								<input type="button" onclick="deleteImage('img1Pre', 'image1')" value="삭제">
-							</td>
-							
-							<td>
-								<input type="button" onclick="deleteImage('img2Pre', 'image2')" value="삭제">
-							</td>
-							
-							<td>
-								<input type="button" onclick="deleteImage('img3Pre', 'image3')" value="삭제">
-							</td>
-							
-							<td>
-								<input type="button" onclick="deleteImage('img4Pre', 'image4')" value="삭제">
-							</td>
-							
-							<td>
-								<input type="button" onclick="deleteImage('img5Pre', 'image5')" value="삭제">
-							</td>
-						</tr>					
 					</table>
-				</div>
-				<div class="image-preview" id="imagePreview"></div><br>
 				<input type="submit" value="전송"><br>
 			</form>
 		</div>

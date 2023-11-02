@@ -16,22 +16,15 @@ public class GenFileServiceImpl implements GenFileService {
 	@Autowired GenBoardMapper mapper;
 	
 	
-	public void saveImage(GenBoardDTO dto, MultipartFile[] file) {
-		if(file[0].isEmpty()) {
-			dto.setImageName1("nan");
-			dto.setImageName2("nan");
-			dto.setImageName3("nan");
-			dto.setImageName4("nan");
-			dto.setImageName5("nan");
-		}else {
-			try {
+	public void saveImage(GenBoardDTO dto, MultipartFile[] file, String[] nan) {
+		try {
 		        String[] savePath = new String[5];
 		        String[] nowImgName = new String[5];
 		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
 		        String saveNow = dateFormat.format(new Date());
 		        
 		        for(int i = 0; i < 5; i++) {
-		        	if(file.length > i) {
+		        	if(nan[i].equals("1")) {
 		        		nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
 		        		savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
 		        		file[i].transferTo(new File(savePath[i]));
@@ -50,19 +43,19 @@ public class GenFileServiceImpl implements GenFileService {
 		    } catch (Exception e) {
 		        e.printStackTrace();
 		    }
+		 System.out.println(dto.getCategory());
+		 System.out.println(dto.getTitle());
+		 System.out.println(dto.getId());
+		 System.out.println(dto.getContent());
+		 System.out.println(dto.getImageName1());
+		 System.out.println(dto.getImageName2());
+		 System.out.println(dto.getImageName3());
+		 System.out.println(dto.getImageName4());
+		 System.out.println(dto.getImageName5());
+		 
+		 mapper.saveWrite(dto);
 		}
-			 System.out.println(dto.getCategory());
-			 System.out.println(dto.getTitle());
-			 System.out.println(dto.getId());
-			 System.out.println(dto.getContent());
-			 System.out.println(dto.getImageName1());
-			 System.out.println(dto.getImageName2());
-			 System.out.println(dto.getImageName3());
-			 System.out.println(dto.getImageName4());
-			 System.out.println(dto.getImageName5());
-			 
-			 mapper.saveWrite(dto);
-	   }
+
 	
 	public void modify(GenBoardDTO dto, String[] nan,  MultipartFile[] fileNames) {
 		
@@ -190,5 +183,6 @@ public class GenFileServiceImpl implements GenFileService {
     		file.delete();
 		}
 	}
+
 
 }

@@ -7,6 +7,7 @@ public class GenBoardDTO {
 	private int WriteNo, viewCount, likes;
 	private String category, title, content, id, saveDate;
 	private String imageName1, imageName2, imageName3, imageName4, imageName5;
+	
 	public int getWriteNo() {
 		return WriteNo;
 	}
