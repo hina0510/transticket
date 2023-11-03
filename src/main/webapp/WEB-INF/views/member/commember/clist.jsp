@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../default/header.jsp" %>
+	<%@ include file="../../default/header.jsp" %>
 	<h3>list page</h3>
 	<table border="1">
 		<tr>
@@ -28,5 +28,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

@@ -27,46 +27,40 @@ public class reservationFileServiceImpl implements reservationFileService{
 		message +="location.href='"+url+"';</script>";
 		return message;
 	}
-	public void cSaveImage(concertBoardDTO cdto, MultipartFile[] file) {
-		if(file[0].isEmpty()) {
-			cdto.setImageName1("nan");
-			cdto.setImageName2("nan");
-			cdto.setImageName3("nan");
-			cdto.setImageName4("nan");
-			cdto.setImageName5("nan");
-		}else {
-			try {
-		        String[] savePath = new String[5];
-		        String[] nowImgName = new String[5];
-		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-		        String saveNow = dateFormat.format(new Date());
-		        
-		        for(int i = 0; i < 5; i++) {
-		        	if(file.length > i) {
-		        		nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
-		        		savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
-		        		file[i].transferTo(new File(savePath[i]));
-		        	}else {
-		        		nowImgName[i] = "nan";
-		        	}
-		        	System.out.println("sdwaa ::" + nowImgName[i]);
-		        }
-		        cdto.setImageName1(nowImgName[0]);
-		        cdto.setImageName2(nowImgName[1]);
-		        cdto.setImageName3(nowImgName[2]);
-		        cdto.setImageName4(nowImgName[3]);
-		        cdto.setImageName5(nowImgName[4]);
-		        
-		    } catch (Exception e) {
-		        e.printStackTrace();
-		    }
-		}
+	public void cSaveImage(concertBoardDTO cdto, MultipartFile[] file, String[] nan) {
+		try {
+	        String[] savePath = new String[5];
+	        String[] nowImgName = new String[5];
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+	        String saveNow = dateFormat.format(new Date());
+	        
+	        for(int i = 0; i < 5; i++) {
+	        	if(nan[i].equals("1")) {
+	        		nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
+	        		savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
+	        		file[i].transferTo(new File(savePath[i]));
+	        	}else {
+	        		nowImgName[i] = "nan";
+	        	}
+	        		
+	        	System.out.println("sdwaa ::" + nowImgName[i]);
+	        }
+	        cdto.setImageName1(nowImgName[0]);
+	        cdto.setImageName2(nowImgName[1]);
+	        cdto.setImageName3(nowImgName[2]);
+	        cdto.setImageName4(nowImgName[3]);
+	        cdto.setImageName5(nowImgName[4]);
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 		System.out.println(cdto.getTitle());
 		System.out.println(cdto.getType());
 		System.out.println(cdto.getComname());
 		System.out.println(cdto.getCon_stDate());
 		System.out.println(cdto.getCon_endDate());
 		System.out.println(cdto.getCon_place());
+		System.out.println(cdto.getPrice());
 		System.out.println(cdto.getContent());
 		System.out.println(cdto.getForm());
 		System.out.println(cdto.getImageName1());
@@ -225,46 +219,40 @@ public class reservationFileServiceImpl implements reservationFileService{
 		}
 	}
 	
-	public void mSaveImage(musicalBoardDTO mdto, MultipartFile[] file) {
-		if(file[0].isEmpty()) {
-			mdto.setImageName1("nan");
-			mdto.setImageName2("nan");
-			mdto.setImageName3("nan");
-			mdto.setImageName4("nan");
-			mdto.setImageName5("nan");
-		}else {
-			try {
-				String[] savePath = new String[5];
-				String[] nowImgName = new String[5];
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-				String saveNow = dateFormat.format(new Date());
-				
-				for(int i = 0; i < 5; i++) {
-					if(file.length > i) {
-						nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
-						savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
-						file[i].transferTo(new File(savePath[i]));
-					}else {
-						nowImgName[i] = "nan";
-					}
-					System.out.println("sdwaa ::" + nowImgName[i]);
-				}
-				mdto.setImageName1(nowImgName[0]);
-				mdto.setImageName2(nowImgName[1]);
-				mdto.setImageName3(nowImgName[2]);
-				mdto.setImageName4(nowImgName[3]);
-				mdto.setImageName5(nowImgName[4]);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	public void mSaveImage(musicalBoardDTO mdto, MultipartFile[] file, String[] nan) {
+		try {
+	        String[] savePath = new String[5];
+	        String[] nowImgName = new String[5];
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+	        String saveNow = dateFormat.format(new Date());
+	        
+	        for(int i = 0; i < 5; i++) {
+	        	if(nan[i].equals("1")) {
+	        		nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
+	        		savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
+	        		file[i].transferTo(new File(savePath[i]));
+	        	}else {
+	        		nowImgName[i] = "nan";
+	        	}
+	        		
+	        	System.out.println("sdwaa ::" + nowImgName[i]);
+	        }
+	        mdto.setImageName1(nowImgName[0]);
+	        mdto.setImageName2(nowImgName[1]);
+	        mdto.setImageName3(nowImgName[2]);
+	        mdto.setImageName4(nowImgName[3]);
+	        mdto.setImageName5(nowImgName[4]);
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 		System.out.println(mdto.getTitle());
 		System.out.println(mdto.getType());
 		System.out.println(mdto.getComname());
 		System.out.println(mdto.getMu_stDate());
 		System.out.println(mdto.getMu_endDate());
 		System.out.println(mdto.getMu_place());
+		System.out.println(mdto.getPrice());
 		System.out.println(mdto.getContent());
 		System.out.println(mdto.getForm());
 		System.out.println(mdto.getImageName1());
@@ -423,46 +411,40 @@ public class reservationFileServiceImpl implements reservationFileService{
 		}
 	}
 	
-	public void eSaveImage(exhibitionBoardDTO edto, MultipartFile[] file) {
-		if(file[0].isEmpty()) {
-			edto.setImageName1("nan");
-			edto.setImageName2("nan");
-			edto.setImageName3("nan");
-			edto.setImageName4("nan");
-			edto.setImageName5("nan");
-		}else {
-			try {
-				String[] savePath = new String[5];
-				String[] nowImgName = new String[5];
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-				String saveNow = dateFormat.format(new Date());
-				
-				for(int i = 0; i < 5; i++) {
-					if(file.length > i) {
-						nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
-						savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
-						file[i].transferTo(new File(savePath[i]));
-					}else {
-						nowImgName[i] = "nan";
-					}
-					System.out.println("sdwaa ::" + nowImgName[i]);
-				}
-				edto.setImageName1(nowImgName[0]);
-				edto.setImageName2(nowImgName[1]);
-				edto.setImageName3(nowImgName[2]);
-				edto.setImageName4(nowImgName[3]);
-				edto.setImageName5(nowImgName[4]);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	public void eSaveImage(exhibitionBoardDTO edto, MultipartFile[] file, String[] nan) {
+		try {
+	        String[] savePath = new String[5];
+	        String[] nowImgName = new String[5];
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+	        String saveNow = dateFormat.format(new Date());
+	        
+	        for(int i = 0; i < 5; i++) {
+	        	if(nan[i].equals("1")) {
+	        		nowImgName[i] = saveNow + "-" + file[i].getOriginalFilename();
+	        		savePath[i] = IMAGE_REPO + "/" + nowImgName[i];
+	        		file[i].transferTo(new File(savePath[i]));
+	        	}else {
+	        		nowImgName[i] = "nan";
+	        	}
+	        		
+	        	System.out.println("sdwaa ::" + nowImgName[i]);
+	        }
+	        edto.setImageName1(nowImgName[0]);
+	        edto.setImageName2(nowImgName[1]);
+	        edto.setImageName3(nowImgName[2]);
+	        edto.setImageName4(nowImgName[3]);
+	        edto.setImageName5(nowImgName[4]);
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 		System.out.println(edto.getTitle());
 		System.out.println(edto.getType());
 		System.out.println(edto.getComname());
 		System.out.println(edto.getEx_stDate());
 		System.out.println(edto.getEx_endDate());
 		System.out.println(edto.getEx_place());
+		System.out.println(edto.getPrice());
 		System.out.println(edto.getContent());
 		System.out.println(edto.getForm());
 		System.out.println(edto.getImageName1());

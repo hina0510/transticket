@@ -14,13 +14,9 @@
 	musical_form02
 	<div class="con01">
 		<div class="con02">
-			<div class="movie-container">
-				<label for="movie">카테고리: </label>
+			<div class="movie-container" style="display:none">
 				<select id="movie">
-					<option value="10">Avengers: Endgame ($10)</option>
-					<option value="12">Joker ($12)</option>
-					<option value="8">Toy Story 4 ($8)</option>
-					<option value="9">The Lion King ($9)</option>
+					<option value="${dto.price}">${dto.title}</option>
 				</select>
 			</div>
 		

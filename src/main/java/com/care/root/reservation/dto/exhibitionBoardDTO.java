@@ -1,7 +1,7 @@
 package com.care.root.reservation.dto;
 
 public class exhibitionBoardDTO {
-	private int writeNo, hit;
+	private int writeNo, hit, price, likes;
 	private String title, type, comname, ex_stDate, ex_endDate, ex_place, content, form, saveDate;
 	public String getEx_stDate() {
 		return ex_stDate;
@@ -63,6 +63,18 @@ public class exhibitionBoardDTO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 	public String getTitle() {
 		return title;

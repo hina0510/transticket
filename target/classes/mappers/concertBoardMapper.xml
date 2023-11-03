@@ -11,6 +11,7 @@
    		<result property="con_stDate" column="pf_stDate"/>
    		<result property="con_endDate" column="pf_endDate"/>
    		<result property="con_place" column="pf_place"/>
+   		<result property="price" column="price"/>
    		<result property="content" column="content"/>
    		<result property="imageName1" column="imageName1"/>
 		<result property="imageName2" column="imageName2"/>
@@ -33,11 +34,11 @@
 		update performBoard set hit=hit+1 where writeNo=#{writeNo}
 	</update>
    	<insert id="cWriteSave" >
-		insert into performBoard(writeNo, title, type, comname, pf_stDate, pf_endDate, pf_place, content, imageName1, imageName2, imageName3, imageName4, imageName5, form)
-		values(perform_board_seq.nextval, #{title}, #{type}, #{comname}, #{con_stDate}, #{con_endDate}, #{con_place}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5}, #{form})
+		insert into performBoard(writeNo, title, type, comname, pf_stDate, pf_endDate, pf_place, price, content, imageName1, imageName2, imageName3, imageName4, imageName5, form)
+		values(perform_board_seq.nextval, #{title}, #{type}, #{comname}, #{con_stDate}, #{con_endDate}, #{con_place}, #{price}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5}, #{form})
 	</insert>
 	<update id="cModify">
-		update performBoard set title=#{title}, pf_stDate=#{con_stDate}, pf_endDate=#{con_endDate}, pf_place=#{con_place}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
+		update performBoard set title=#{title}, pf_stDate=#{con_stDate}, pf_endDate=#{con_endDate}, pf_place=#{con_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
 									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where write_no=#{writeNo}
 	</update>
 	<delete id="cDelete">

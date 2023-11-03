@@ -1,7 +1,7 @@
 package com.care.root.reservation.dto;
 
 public class concertBoardDTO {
-	private int writeNo, hit;
+	private int writeNo, hit, price, likes;
 	private String title, type, comname, con_stDate, con_endDate, con_place, content, form, saveDate;
 	private String imageName1, imageName2, imageName3, imageName4, imageName5;
 	public String getImageName1() {
@@ -45,6 +45,18 @@ public class concertBoardDTO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 	public String getTitle() {
 		return title;

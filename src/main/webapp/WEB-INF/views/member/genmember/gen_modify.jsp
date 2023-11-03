@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function modichk(){
+	 if (confirm("수정 하시겠습니까??") == true){
+		 }else{
+		 return false;
+	}
+}
+</script>
 </head>
 <body>
 <%
@@ -20,18 +28,21 @@
   return;
  }
 %>
-<%@ include file="../default/header.jsp" %>
-	<h3>기업회원가입</h3>
-	<form action="${contextPath }/member/comregister" method="post">
-		<input type="text" name="id" placeholder="id"><br>
+<%@ include file="../../default/header.jsp" %>
+<h3>개인수정페이지</h3>
+<form action="${contextPath }/member/genmodify" method="post">
+		<input type="text" readonly name="id" value="${geninfo.dto.id}"><br>
 		<input type="text" name="pwd" placeholder="pwd"><br>
 		<input type="text" name="name" placeholder="이름"><br>
-		<input type="text" readonly id="addr1" name="addr" placeholder="우편번호">
-		<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
-		<input type="text" readonly id="addr2" name="addr" placeholder="주소"><br>
-		<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
+		<input type="text" name="birth" placeholder="생년월일"><br>
 		<input type="text" name="email" placeholder="email"><br>
-		<input type="submit" value="회원가입"><br>
+		<input type="text" id="addr1" name="addr" placeholder="우편번호">
+		<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
+		<input type="text" id="addr2" name="addr" placeholder="주소"><br>
+		<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
+		<input type="text" name="tel" placeholder="tel"><br>
+		<input type="submit" onclick="modichk()" value="수정"><br>
 	</form>
+<%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

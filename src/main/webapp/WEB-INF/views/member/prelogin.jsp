@@ -47,8 +47,8 @@
 					<li class="tab-link" data-tab="tab-2" >기업회원 로그인</li>
 				</ul>
 									
-				<div id="tab-1" class="tab-content current"><%@ include file="gen_login.jsp" %></div>
-				<div id="tab-2" class="tab-content"><%@ include file="com_login.jsp" %></div>
+				<div id="tab-1" class="tab-content current"><%@ include file="genmember/gen_login.jsp" %></div>
+				<div id="tab-2" class="tab-content"><%@ include file="commember/com_login.jsp" %></div>
 			</div>
 		</div>
 	</div>

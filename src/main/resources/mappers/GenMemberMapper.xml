@@ -34,4 +34,12 @@
 	<select id="getGenSessionId" resultMap="genmember">
 		select * from genmember where n_sessionid = #{sessionId}
 	</select>
+
+	<select id="selectMember" resultMap="genmember">
+		select * from genmember where n_email = #{email}
+	</select>
+
+	<update id ="pwUpdate">
+		update genmember set n_pwd=#{pwd} where n_email= #{email}
+	</update>
 </mapper>

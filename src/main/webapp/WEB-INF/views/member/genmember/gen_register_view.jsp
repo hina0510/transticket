@@ -20,7 +20,7 @@
   return;
  }
 %>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../../default/header.jsp" %>
 	<h3>개인회원가입</h3>
 	<form action="${contextPath }/member/genregister" method="post">
 		<input type="text" name="id" placeholder="id"><br>
@@ -35,5 +35,6 @@
 		<input type="text" name="tel" placeholder="tel"><br>
 		<input type="submit" value="회원가입"><br>
 	</form>
+	<%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

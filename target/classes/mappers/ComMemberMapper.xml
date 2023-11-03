@@ -32,4 +32,11 @@
 	<select id="getComSessionId" resultMap="commember">
 		select * from commember where c_sessionid = #{sessionId}
 	</select>
+	<select id="selectMember" resultMap="commember">
+		select * from commember where c_email = #{email}
+	</select>
+
+	<update id ="pwUpdate">
+		update commember set c_pwd=#{pwd} where c_email= #{email}
+	</update>
 </mapper>

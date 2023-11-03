@@ -1,3 +1,4 @@
+/* 기본 레이아웃 */
 .con01 {margin: 0 7%;}
 .con02 {margin: 5% 17%; flex:1;}
 .con03 {padding: 7% 15%;background: #f8f8f8; border-radius: 20px;}
@@ -13,6 +14,8 @@
 		text-align: center;background: blue;border: solid 2px grey;border-radius: 5px;}
 .form01{width:20%;}
 .form02{width:30%;}
+
+/* writeform tab */
 .container{
   width: 500px;
   margin: 0 auto;
@@ -24,31 +27,36 @@ ul.tabs{
   padding: 0px;
   list-style: none;
 }
+
 ul.tabs li{
   background: none;
   color: #222;
   display: inline-block;
-  padding: 10px 82px;
+  padding: 10px 80px;
   cursor: pointer;
 }
+
 ul.tabs li.current{
   background: #ededed;
   color: #222;
 }
 
-.imgs{
-    display:flex;
-    flex-flow:row;  
+.tab-content{
+  display: none;
+  background: #ededed;
+  border-radius: 10px;
+  padding: 15px;
 }
-.imgs .img01 {
-	order:1;
-	text-align:center;
-	width: 30%;
+
+.tab-content.current{
+  display: inherit;
 }
-.imgs .img02 {
-	order:2;
-	text-align: center;
-	width: 70%;
+
+/* loginform tab */
+.loginform {
+  text-align:center;
+  margin: 5%;
+  padding: 0 20%;
 }
 
 ul.tabs2{
@@ -56,6 +64,7 @@ ul.tabs2{
   padding: 0px;
   list-style: none;
 }
+
 ul.tabs2 li{
   background: none;
   color: #222;
@@ -69,38 +78,13 @@ ul.tabs2 li.current{
   color: #222;
 }
 
-.tab-content{
-  display: none;
-  background: #ededed;
-  padding: 15px;
-}
-
-.tab-content.current{
-  display: inherit;
-}
-
-.loginform {
-  text-align:center;
-  margin: 5%;
-  padding: 0 20%;
-}
-
+/* content css */
 .board_wrap {
     width: 100%;
     margin: 5% auto;
     font-family: 'omyu_pretty';
 }
 
-.image-preview {
-	display: flex;
-    flex-wrap: wrap;
-}
-.image-preview img {
-    width: 100px;
-    height: 100px;
-    margin: 5px;
-}
-td {height: 50px;}
 .board_title {
     margin-bottom: 30px;
 }
@@ -149,15 +133,18 @@ td {height: 50px;}
     font-size: 2rem;
 	border-bottom: 1px dashed #ddd;
 }
+
 .board_view .info .info_div01{
 	border-bottom: 1px dashed #ddd;
 }
+
 .board_view .info .info_div01 dl {
     position: relative;
     display: inline-block;
     padding: 0 20px;
     margin:0 0 20px 0;
 }
+
 .board_view .info .info_div02 dl {
     position: relative;
     display: inline-block;
@@ -185,6 +172,7 @@ td {height: 50px;}
 .board_view .info dl:first-child::before {
     display: none;
 }
+
 .board_view .info .info_div02 dl:last-child::before {
     margin-top: 5px;
 }
@@ -200,49 +188,48 @@ td {height: 50px;}
     color: #777;
 }
 
-.board_view .info2 {
-    padding: 20px 10%;
+.board_view .board_view_info {
+    padding: 20px 0;
     font-size: 0;
-    text-align: center;
 }
 
-.board_view .info2 dl {
-    position: relative;
-    display: inline-block;
-    padding: 0 10px;
-}
-
-.board_view .info2 dl:first-child {
-    padding-left: 0;
-}
-
-.board_view .info2 dl::before {
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 0;
-    display: block;
-    width: 1px;
-    height: 13px;
-    background: #ddd;
-}
-
-.board_view .info2 dl:first-child::before {
-    display: none;
-}
-
-.board_view .info2 dl dt {
-    display: inline-block;
+.board_view_info p{
     font-size: 1rem;
 }
 
-.board_view .info2 dl dd {
-	display: inline-block;
-    font-size: 1rem;
-    margin: 0 10px;
-    color: #777;
+/* content tab */
+ul.tabs3{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
 }
 
+ul.tabs3 li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 120px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+ul.tabs3 li.current{
+  color: #222;
+}
+
+.tab-content3{
+  display: none;
+  background: #ededed;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.tab-content3.current{
+  display: inherit;
+}
+
+/* button css */
 .frame {
   width: 100%;
   margin: 0;
@@ -276,12 +263,14 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   border: none;
   
 }
+
 .btn-3 span {
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
 }
+
 .btn-3:before,
 .btn-3:after {
   position: absolute;
@@ -291,28 +280,35 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
    background: rgba(210,210,210,1);
   transition: all 0.3s ease;
 }
+
 .btn-3:before {
   height: 0%;
   width: 2px;
 }
+
 .btn-3:after {
   width: 0%;
   height: 2px;
 }
+
 .btn-3:hover{
    background: transparent;
   box-shadow: none;
 }
+
 .btn-3:hover:before {
   height: 100%;
 }
+
 .btn-3:hover:after {
   width: 100%;
 }
+
 .btn-3 span:hover{
    color: rgba(100,100,100,1);
    font-weight: bold;
 }
+
 .btn-3 span:before,
 .btn-3 span:after {
   position: absolute;
@@ -322,17 +318,21 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
    background: rgba(210,210,210,1);
   transition: all 0.3s ease;
 }
+
 .btn-3 span:before {
   width: 2px;
   height: 0%;
 }
+
 .btn-3 span:after {
   width: 0%;
   height: 2px;
 }
+
 .btn-3 span:hover:before {
   height: 100%;
 }
+
 .btn-3 span:hover:after {
   width: 100%;
 }

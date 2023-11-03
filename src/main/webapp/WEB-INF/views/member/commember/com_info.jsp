@@ -30,7 +30,7 @@ function delchk(){
  }
 %>
 <body>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../../default/header.jsp" %>
 	id : ${cominfo.dto.id }<br>
 	pwd : ${cominfo.dto.pwd }<br>
 	이름 : ${cominfo.dto.name }<br>
@@ -42,5 +42,6 @@ function delchk(){
 	<hr>
 	<button type="button" onclick="location.href='com_modify?id=${cominfo.dto.id}'">수정</button>
 	<button type="button" onclick="delchk()">삭제</button>
+<%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

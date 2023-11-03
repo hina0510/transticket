@@ -29,7 +29,7 @@ function delchk(){
   return;
  }
 %>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../../default/header.jsp" %>
 	id : ${geninfo.dto.id }<br>
 	pwd : ${geninfo.dto.pwd }<br>
 	이름 : ${geninfo.dto.name }<br>
@@ -43,6 +43,6 @@ function delchk(){
 	<hr>
 	<button type="button" onclick="location.href='gen_modify?id=${geninfo.dto.id}'">수정</button>
 	<button type="button" onclick="delchk()">삭제</button>
-	
+<%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

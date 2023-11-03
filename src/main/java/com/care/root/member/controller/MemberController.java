@@ -1,4 +1,4 @@
-package com.care.root.commember.controller;
+package com.care.root.member.controller;
 
 
 import javax.servlet.http.Cookie;
@@ -32,15 +32,11 @@ public class MemberController implements LoginSession{
 	public String prelogin() {
 		return "member/prelogin";
 	}
-	@GetMapping("preregister")
-	public String preregister() {
-		return "member/preregister";
-	}
-	@GetMapping("gen_login")
+	@GetMapping("genmember/gen_login")
 	public String genlogin() {
 		return "member/gen_login";
 	}
-	@GetMapping("com_login")
+	@GetMapping("commember/com_login")
 	public String comlogin() {
 		return "member/com_login";
 	}
@@ -108,11 +104,11 @@ public class MemberController implements LoginSession{
 	}
 	@GetMapping("com_register_view")
 	public String comregisterView() {
-		return "member/com_register_view";
+		return "member/commember/com_register_view";
 	}
 	@GetMapping("gen_register_view")
 	public String genregisterView() {
-		return "member/gen_register_view";
+		return "member/genmember/gen_register_view";
 	}
 	@PostMapping("comregister")
 	public String comregister(HttpServletRequest req, ComMemberDTO dto, RedirectAttributes rtt) {
@@ -152,17 +148,17 @@ public class MemberController implements LoginSession{
 	public String cominfo(@RequestParam String id, Model model) {
 		
 		model.addAttribute("cominfo", cms.getMember(id));
-		return "member/com_info";
+		return "member/commember/com_info";
 	}
 	@GetMapping("clist")
 	public String clist( Model model) {
 		model.addAttribute("clist", cms.getList());
-		return "member/clist";
+		return "member/commember/clist";
 	}
 	@GetMapping("com_modify")
 	public String com_modify(@RequestParam String id, Model model) {
 		model.addAttribute("cominfo", cms.getMember(id));
-		return "member/com_modify";
+		return "member/commember/com_modify";
 	}
 	@PostMapping("commodify")
 	public String commodify(HttpServletRequest req, ComMemberDTO dto) {
@@ -173,17 +169,17 @@ public class MemberController implements LoginSession{
 	@GetMapping("gen_info")
 	public String geninfo(@RequestParam String id, Model model) {
 		model.addAttribute("geninfo", gms.getMember(id));
-		return "member/gen_info";
+		return "member/genmember/gen_info";
 	}
 	@GetMapping("glist")
 	public String glist( Model model) {
 		model.addAttribute("glist", gms.getList());
-		return "member/glist";
+		return "member/genmember/glist";
 	}
 	@GetMapping("gen_modify")
 	public String gen_modify(@RequestParam String id, Model model) {
 		model.addAttribute("geninfo", gms.getMember(id));
-		return "member/gen_modify";
+		return "member/genmember/gen_modify";
 	
 	}
 	@PostMapping("genmodify")
@@ -208,12 +204,12 @@ public class MemberController implements LoginSession{
 	public String gen_mypage(Model model, HttpSession session) {
 		String id = (String) session.getAttribute(GLOGIN);
 		model.addAttribute("geninfo", gms.getMember(id));
-		return "member/gen_mypage";
+		return "member/genmember/gen_mypage";
 	}
 	@GetMapping("com_mypage")
 	public String com_mypage(Model model, HttpSession session) {
 		String id = (String) session.getAttribute(CLOGIN);
 		model.addAttribute("cominfo", cms.getMember(id));
-		return "member/com_mypage";
+		return "member/commember/com_mypage";
 	}
 }

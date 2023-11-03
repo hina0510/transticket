@@ -45,7 +45,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("concert_content")
 	public String concertContent(@RequestParam int writeNo, Model model) {
 		rs.cUpHit(writeNo);
-		model.addAttribute("cdto", rs.cGetContent(writeNo));
+		model.addAttribute("dto", rs.cGetContent(writeNo));
 		return "reservation/concert/concert_content";
 	}
 	@GetMapping("write_concert_form")
@@ -53,8 +53,9 @@ public class reservationController implements LoginSession{
 		return "reservation/concert/write_concert_form";
 	}
 	@PostMapping("write_concert_save")
-	public String writeConcertSave(MultipartHttpServletRequest mt, concertBoardDTO cdto,
-			@RequestParam("file_name") MultipartFile[] files, HttpServletResponse res) throws IOException {
+	public String writeConcertSave(MultipartHttpServletRequest mt, concertBoardDTO cdto){
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		cdto.setTitle(mt.getParameter("title"));
 		cdto.setType(mt.getParameter("type"));
@@ -62,9 +63,16 @@ public class reservationController implements LoginSession{
 		cdto.setCon_stDate(mt.getParameter("startDate"));
 		cdto.setCon_endDate(mt.getParameter("endDate"));
 		cdto.setCon_place(mt.getParameter("con_place"));
+		cdto.setPrice(price);
 		cdto.setContent(mt.getParameter("content"));
 		cdto.setForm(mt.getParameter("form"));
-		fs.cSaveImage(cdto, files);
+		
+		MultipartFile[] files = {mt.getFile("imgN1"),mt.getFile("imgN2"),mt.getFile("imgN3"),mt.getFile("imgN4"),mt.getFile("imgN5")};
+        
+        String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
+				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
+		
+		fs.cSaveImage(cdto, files, nan);
 		
 		return "redirect:concert_board";
 	}
@@ -79,12 +87,15 @@ public class reservationController implements LoginSession{
 	}
 	@GetMapping("modify_concert_form")
 	public String mConcertForm(@RequestParam int writeNo, Model model) {
-		model.addAttribute("content", rs.cGetContent(writeNo));
+		model.addAttribute("cdto", rs.cGetContent(writeNo));
 		return "reservation/concert/modify_concert_form";
 	}
 	@PostMapping("modify_concert")
 	public String cModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
+		
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		concertBoardDTO cdto = rs.cGetContent(writeNo);
 		cdto.setTitle(mt.getParameter("title"));
@@ -93,6 +104,7 @@ public class reservationController implements LoginSession{
 		cdto.setCon_stDate(mt.getParameter("startDate"));
 		cdto.setCon_endDate(mt.getParameter("endDate"));
 		cdto.setCon_place(mt.getParameter("con_place"));
+		cdto.setPrice(price);
 		cdto.setContent(mt.getParameter("content"));
 		cdto.setForm(mt.getParameter("form"));
 		
@@ -120,15 +132,18 @@ public class reservationController implements LoginSession{
 	}
 	
 	@GetMapping("concert_form1")
-	public String concertForm1() {
+	public String concertForm1(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.cGetContent(writeNo));
 		return "reservation/concert/concert_form01";
 	}
 	@GetMapping("concert_form2")
-	public String concertForm2() {
+	public String concertForm2(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.cGetContent(writeNo));
 		return "reservation/concert/concert_form02";
 	}
 	@GetMapping("concert_form3")
-	public String concertForm3() {
+	public String concertForm3(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.cGetContent(writeNo));
 		return "reservation/concert/concert_form03";
 	}
 	@GetMapping("concert_calendar")
@@ -149,7 +164,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("musical_content")
 	public String musicalContent(@RequestParam int writeNo, Model model) {
 		rs.mUpHit(writeNo);
-		model.addAttribute("mdto", rs.mGetContent(writeNo));
+		model.addAttribute("dto", rs.mGetContent(writeNo));
 		return "reservation/musical/musical_content";
 	}
 	@GetMapping("write_musical_form")
@@ -157,8 +172,9 @@ public class reservationController implements LoginSession{
 		return "reservation/musical/write_musical_form";
 	}
 	@PostMapping("write_musical_save")
-	public String writeMusicalSave(MultipartHttpServletRequest mt, musicalBoardDTO mdto,
-			@RequestParam("file_name") MultipartFile[] files, HttpServletResponse res) throws IOException {
+	public String writeMusicalSave(MultipartHttpServletRequest mt, musicalBoardDTO mdto){
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		mdto.setTitle(mt.getParameter("title"));
 		mdto.setType(mt.getParameter("type"));
@@ -166,20 +182,30 @@ public class reservationController implements LoginSession{
 		mdto.setMu_stDate(mt.getParameter("startDate"));
 		mdto.setMu_endDate(mt.getParameter("endDate"));
 		mdto.setMu_place(mt.getParameter("mu_place"));
+		mdto.setPrice(price);
 		mdto.setContent(mt.getParameter("content"));
 		mdto.setForm(mt.getParameter("form"));
-		fs.mSaveImage(mdto, files);
+		
+		MultipartFile[] files = {mt.getFile("imgN1"),mt.getFile("imgN2"),mt.getFile("imgN3"),mt.getFile("imgN4"),mt.getFile("imgN5")};
+        
+        String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
+				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
+		
+		fs.mSaveImage(mdto, files, nan);
 		
 		return "redirect:musical_board";
 	}
 	@GetMapping("modify_musical_form")
 	public String mMusicalForm(@RequestParam int writeNo, Model model) {
-		model.addAttribute("content", rs.mGetContent(writeNo));
+		model.addAttribute("mdto", rs.mGetContent(writeNo));
 		return "reservation/musical/modify_musical_form";
 	}
 	@PostMapping("modify_musical")
 	public String mModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
+		
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		musicalBoardDTO mdto = rs.mGetContent(writeNo);
 		mdto.setTitle(mt.getParameter("title"));
@@ -188,6 +214,7 @@ public class reservationController implements LoginSession{
 		mdto.setMu_stDate(mt.getParameter("startDate"));
 		mdto.setMu_endDate(mt.getParameter("endDate"));
 		mdto.setMu_place(mt.getParameter("mu_place"));
+		mdto.setPrice(price);
 		mdto.setContent(mt.getParameter("content"));
 		mdto.setForm(mt.getParameter("form"));
 		
@@ -215,15 +242,18 @@ public class reservationController implements LoginSession{
 	}
 	
 	@GetMapping("musical_form1")
-	public String musicalForm1() {
+	public String musicalForm1(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.mGetContent(writeNo));
 		return "reservation/musical/musical_form01";
 	}
 	@GetMapping("musical_form2")
-	public String musicalForm2() {
+	public String musicalForm2(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.mGetContent(writeNo));
 		return "reservation/musical/musical_form02";
 	}
 	@GetMapping("musical_form3")
-	public String musicalForm3() {
+	public String musicalForm3(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.mGetContent(writeNo));
 		return "reservation/musical/musical_form03";
 	}
 	
@@ -240,7 +270,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("exhibition_content")
 	public String exhibitionContent(@RequestParam int writeNo, Model model) {
 		rs.eUpHit(writeNo);
-		model.addAttribute("edto", rs.eGetContent(writeNo));
+		model.addAttribute("dto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/exhibition_content";
 	}
 	@GetMapping("write_exhibition_form")
@@ -248,8 +278,9 @@ public class reservationController implements LoginSession{
 		return "reservation/exhibition/write_exhibition_form";
 	}
 	@PostMapping("write_exhibition_save")
-	public String writeExhibitionSave(MultipartHttpServletRequest mt, exhibitionBoardDTO edto,
-			@RequestParam("file_name") MultipartFile[] files, HttpServletResponse res) throws IOException {
+	public String writeExhibitionSave(MultipartHttpServletRequest mt, exhibitionBoardDTO edto){
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		edto.setTitle(mt.getParameter("title"));
 		edto.setType(mt.getParameter("type"));
@@ -257,20 +288,30 @@ public class reservationController implements LoginSession{
 		edto.setEx_stDate(mt.getParameter("startDate"));
 		edto.setEx_endDate(mt.getParameter("endDate"));
 		edto.setEx_place(mt.getParameter("ex_place"));
+		edto.setPrice(price);
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
-		fs.eSaveImage(edto, files);
+		
+		MultipartFile[] files = {mt.getFile("imgN1"),mt.getFile("imgN2"),mt.getFile("imgN3"),mt.getFile("imgN4"),mt.getFile("imgN5")};
+        
+        String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
+				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
+		
+		fs.eSaveImage(edto, files, nan);
 		
 		return "redirect:exhibition_board";
 	}
 	@GetMapping("modify_exhibition_form")
 	public String mExhibitionForm(@RequestParam int writeNo, Model model) {
-		model.addAttribute("content", rs.eGetContent(writeNo));
+		model.addAttribute("edto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/modify_exhibition_form";
 	}
 	@PostMapping("modify_exhibition")
 	public String eModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
+		
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
 		
 		exhibitionBoardDTO edto = rs.eGetContent(writeNo);
 		edto.setTitle(mt.getParameter("title"));
@@ -279,6 +320,7 @@ public class reservationController implements LoginSession{
 		edto.setEx_stDate(mt.getParameter("startDate"));
 		edto.setEx_endDate(mt.getParameter("endDate"));
 		edto.setEx_place(mt.getParameter("ex_place"));
+		edto.setPrice(price);
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
 		
@@ -306,7 +348,8 @@ public class reservationController implements LoginSession{
 	}
 	
 	@GetMapping("exhibition_form01")
-	public String exhibitionForm01() {
+	public String exhibitionForm01(@RequestParam int writeNo, Model model) {
+		model.addAttribute("dto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/exhibition_form01";
 	}
 }

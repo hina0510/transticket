@@ -20,11 +20,11 @@
   return;
  }
 %>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../../default/header.jsp" %>
 
 <h3>mypage</h3>
-<a href="${contextPath }/member/gen_info?id=${geninfo.dto.id }">개인정보</a><br>
+<a href="${contextPath }/member/com_info?id=${cominfo.dto.id }">기업정보</a><br>
 <a href="">작성한 글 목록</a><br>
-<%@ include file="../default/footer.jsp" %>
+<%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

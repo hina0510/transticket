@@ -13,4 +13,6 @@ public interface GenMemberMapper {
 	public void gendelete(String id);
 	public void keepLogin(Map<String, Object> map);
 	public GenMemberDTO getGenSessionId(String sessionId);
+	public GenMemberDTO selectMember(String email);
+	public void pwUpdate(GenMemberDTO dto);
 }

@@ -10,6 +10,7 @@ $(document).ready(function(){
       $("#"+tab_id).addClass('current');
     })
   })
+  
 function readURL(input) {
 var file = input.files[0] //파일에 대한 정보
 console.log(file)
@@ -22,6 +23,7 @@ if (file != '') {
     }
 }
 }
+
 function daumPost() {
   new daum.Postcode({
       oncomplete: function(data) {
