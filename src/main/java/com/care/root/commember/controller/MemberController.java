@@ -56,6 +56,7 @@ public class MemberController implements LoginSession{
 			rs.addAttribute("id", id);
 			session.setAttribute( CLOGIN , id);
 			rs.addAttribute("autoLogin", autoLogin);
+			System.out.println("session : " + session.getAttribute(CLOGIN));
 			return "redirect:successLogin";
 		}
 		rs.addFlashAttribute("msg", "로그인실패");
@@ -72,6 +73,7 @@ public class MemberController implements LoginSession{
 			rs.addAttribute("id", id);
 			session.setAttribute( GLOGIN , id);
 			rs.addAttribute("autoLogin", autoLogin);
+			System.out.println("session : " + session.getAttribute(GLOGIN));
 			return "redirect:successLogin1";
 		}
 		rs.addFlashAttribute("msg", "로그인실패");

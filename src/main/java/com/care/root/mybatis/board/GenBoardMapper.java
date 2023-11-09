@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.care.root.board.dto.GenBoardDTO;
+import com.care.root.board.dto.LikeDTO;
 
 @Repository
 public interface GenBoardMapper {
@@ -16,5 +17,8 @@ public interface GenBoardMapper {
 	public void upViewCount(int writeNo);
 	public void modify(GenBoardDTO dto);
 	public void genDelete(int writeNo);
+	public void genLikeUpdate(int writeNo);
+	public void genLikeInsert(LikeDTO ld);
+	public String genLikeChk(LikeDTO ld);
 	
 }

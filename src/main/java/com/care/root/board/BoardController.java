@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.care.root.board.dto.GenBoardDTO;
 import com.care.root.board.service.GenBoardService;
 import com.care.root.board.service.GenFileService;
+import com.care.root.common.LoginSession;
 
 @Controller
 @RequestMapping("/board")
@@ -40,7 +42,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("genWrite")
-	public String genWrite() {
+	public String genWrite(HttpSession session, Model model) {
+		System.out.println("asd : " + session.getAttribute(LoginSession.GLOGIN));
+		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
 		return "board/genWrite";
 	}
 	
@@ -64,9 +68,29 @@ public class BoardController {
 	
 	@GetMapping("genBoardView")
 	public String genBoardView(@RequestParam int writeNo,
-							   Model model) {
+							   Model model,
+							   HttpSession session) {
+		String id;
+		System.out.println("chk : " + session.getAttribute(LoginSession.GLOGIN));
+		if(session.getAttribute(LoginSession.GLOGIN) == null) {
+			id = "undefined";
+		}else {
+			id = (String) session.getAttribute(LoginSession.GLOGIN);
+		}
+		System.out.println("asdsada " +id);
 		model.addAttribute("dto", gbs.genView(writeNo));
+		model.addAttribute("genId", id);
+		System.out.println(id + ", " + writeNo);
+		model.addAttribute("likes", gbs.genLikeChk(id, writeNo));
 		return "board/genBoardView";
+	}
+	
+	@PostMapping("likes")
+	public String likes(@RequestParam String id,
+						@RequestParam int writeNo) {
+		System.out.println(id + writeNo);
+		gbs.genLike(id, writeNo);
+		return "redirect:genBoardView?writeNo="+ writeNo;
 	}
 	
 	@GetMapping("imgView")
@@ -108,8 +132,6 @@ public class BoardController {
 				mt.getFile("imageName4"),
 				mt.getFile("imageName5")
 		};
-		
-		
 		gfs.modify(dto, nan, fileNames);
 		
 		return "redirect:genBoardView?writeNo="+writeNo;

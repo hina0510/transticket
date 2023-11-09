@@ -20,6 +20,11 @@
 		<result property="imageName5" column="imageName5"/>
 	</resultMap>
 	
+	<resultMap type="com.care.root.board.dto.LikeDTO" id="genLikes">
+		<result property="id" column="n_id"/>
+		<result property="writeNo" column="write_no"/>
+	</resultMap>
+	
 	<select id="selectBoardCount" resultType="Integer">
 		select count(*) from genBoard
 	</select>
@@ -52,5 +57,16 @@
 		delete from genBoard where write_no = #{writeNo}
 	</delete>
 	
+	<update id="genLikeUpdate">
+		update genBoard set likes=likes+1 where write_no=#{writeNo}	
+	</update>
+	
+	<insert id="genLikeInsert">
+	    insert into genLikes (n_id, write_no) values (#{id}, #{writeNo})
+	</insert>
+	
+	<select id="genLikeChk" resultType="String">
+		select n_id from genLikes where n_id = #{id} and write_no = #{writeNo} 
+	</select>
 	
 </mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.care.root.board.dto.GenBoardDTO;
+import com.care.root.board.dto.LikeDTO;
 import com.care.root.mybatis.board.GenBoardMapper;
 
 @Service
@@ -42,6 +43,35 @@ public class GenBoardServiceImpl implements GenBoardService{
 	
 	public void genDelete(int writeNo) {
 		mapper.genDelete(writeNo);
+	}
+	
+	public void genLike(String id, int writeNo) {
+		LikeDTO ld = new LikeDTO();
+		ld.setId(id);
+		ld.setWriteNo(writeNo);
+		mapper.genLikeUpdate(writeNo);
+		mapper.genLikeInsert(ld);
+	}
+	
+	
+	public String genLikeChk(String id, int writeNo) {
+		String likesId;
+		LikeDTO ldto = new LikeDTO();
+		ldto.setId(id);
+		ldto.setWriteNo(writeNo);
+		
+		System.out.println(ldto.getId());
+		System.out.println(ldto.getWriteNo());
+		
+		String s = mapper.genLikeChk(ldto);
+		if(s == null) {
+			likesId = "none";
+		}else {
+			likesId = s;
+		}
+		System.out.println(likesId);
+		
+	return likesId;
 	}
 }
 
