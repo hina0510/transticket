@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const seats = document.querySelectorAll('.row01 .seat:not(.occupied)');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
+const seatList = document.getElementById('seatList');
 const movieSelect = document.getElementById('movie');
 
 populateUI();
@@ -15,18 +16,29 @@ function setMovieData(movieIndex, moviePrice) {
 }
 
 // 선택좌석 갯수와 가격 반환
+var arr=[];
 function updateSelectedCount() {
   // 선택된 좌석 목록 selectedSeats1는 list로 반환
   const selectedSeats1 = document.querySelectorAll('.row01 .seat.selected');
-  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴
+  
+  //선택 좌석 id값 출력
+  arr=[];
+  for (var i=0; i<selectedSeats1.length; i++){
+  	//console.log("selectedSeats1[i] : ",selectedSeats1[i]);
+  	var item = $(selectedSeats1[i]).attr('id');
+  	console.log("item : ",item);
+  	arr.push(item);
+  }
+  console.log("arr : ",arr);
+  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴, 구매 가능한 좌석 리스트 중 위치정보
   const seatsIndex = [...selectedSeats1].map((seat) => [...seats].indexOf(seat));
   localStorage.setItem('selectedSeats1', JSON.stringify(seatsIndex));
   const selectedSeatsCount = selectedSeats1.length;
 
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * ticketPrice;
+  count.value = selectedSeatsCount;
+  total.value = selectedSeatsCount * ticketPrice;
+  seatList.value = arr;
 }
-
 // Get data from localstorage and populate UI
 function populateUI() {
   const selectedSeats1 = JSON.parse(localStorage.getItem('selectedSeats1'));
@@ -67,15 +79,3 @@ container.addEventListener('click', (event) => {
 
 // Initial count and total set
 updateSelectedCount();
-
-function payment(){
-  // 선택된 좌석 목록
-  const selectedSeats = document.querySelectorAll('.row01 .seat.selected');
-  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴
-  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
-  const selectedSeatsCount = selectedSeats.length;
-
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * ticketPrice;
-}

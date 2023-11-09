@@ -2,8 +2,9 @@ package com.care.root.reservation;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -60,8 +63,20 @@ public class reservationController implements LoginSession{
 		cdto.setTitle(mt.getParameter("title"));
 		cdto.setType(mt.getParameter("type"));
 		cdto.setComname(mt.getParameter("comname"));
-		cdto.setCon_stDate(mt.getParameter("startDate"));
-		cdto.setCon_endDate(mt.getParameter("endDate"));
+		StringBuilder stDate = new StringBuilder(mt.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		StringBuilder eDate = new StringBuilder(mt.getParameter("endDate"));
+		eDate = eDate.deleteCharAt(11);
+		eDate = eDate.deleteCharAt(12);
+		eDate = eDate.deleteCharAt(13);
+		String endDate = eDate.toString();
+		endDate = endDate.replace(" ", "");
+		cdto.setCon_stDate(startDate);
+		cdto.setCon_endDate(endDate);
 		cdto.setCon_place(mt.getParameter("con_place"));
 		cdto.setPrice(price);
 		cdto.setContent(mt.getParameter("content"));
@@ -150,6 +165,18 @@ public class reservationController implements LoginSession{
 	public String concertCalendar() {
 		return "reservation/concert/concert_calendar";
 	}
+	@RequestMapping(value="seatCheck", method = RequestMethod.POST)
+	public String seatCheck(@RequestParam(value="seatList") String[] seatList, Model model) {
+		System.out.println(seatList);
+		model.addAttribute("seatList",seatList);
+		return "redirect:concert_Payment";
+	}
+	@GetMapping("concert_Payment")
+	public String concertPayment(@RequestParam String[] seatList, Model model) {
+		System.out.println(seatList);
+		return "reservation/concert/concert_Payment";
+	}
+	
 	
 	//뮤지컬
 	@GetMapping("musical_board")
@@ -257,6 +284,12 @@ public class reservationController implements LoginSession{
 		return "reservation/musical/musical_form03";
 	}
 	
+	
+	@GetMapping("musical_Payment")
+	public String musicalPayment() {
+		return "reservation/musical/musical_Payment";
+	}
+	
 	//전시
 	@GetMapping("exhibition_board")
 	public String exhibitionBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
@@ -351,5 +384,11 @@ public class reservationController implements LoginSession{
 	public String exhibitionForm01(@RequestParam int writeNo, Model model) {
 		model.addAttribute("dto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/exhibition_form01";
+	}
+	
+	
+	@GetMapping("exhibition_Payment")
+	public String exhibitionPayment() {
+		return "reservation/exhibition/exhibition_Payment";
 	}
 }

@@ -100,6 +100,13 @@ p.text span {
   color: #6feaf6;
 }
 
+input[type="text"]{
+  height: 10px;
+  width: auto;
+  padding: 10px;
+  border-radius: 20px; 
+}
+
 .frame {
   width: 90%;
   margin: 40px auto;

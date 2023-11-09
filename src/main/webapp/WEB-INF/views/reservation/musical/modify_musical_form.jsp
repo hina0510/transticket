@@ -12,6 +12,10 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/imgchg_delete.js"></script>
 <script src="https://cdn.tiny.cloud/1/p7nrha7bnxiiydg98puzjwfijyui35ns1hd90lfpwxju9p9o/tinymce/6/tinymce.min.js" 
 			referrerpolicy="origin"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/calendar.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="<%=request.getContextPath() %>/resources/js/modify_calendar.js"></script>
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
@@ -25,9 +29,9 @@
 							<td>
 								<b>제목 : </b>
 							</td>
-							<td><textarea cols="80" rows="1" name="title">${mdto.title }</textarea></td>
+							<td><input type="text" name="title" value="${edto.title }"></td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td>
@@ -35,7 +39,7 @@
 							</td>
 							<td><input type="text" name="type" readonly value="musical"></td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td>
@@ -43,19 +47,69 @@
 							</td>
 							<td><input type="text" name="comname" readonly value="${mdto.comname}"></td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td>
 								<b>공연 일시 : </b>
 							</td>
 							<td>
-								<input type="date" name="startDate" value="${mdto.mu_stDate}">
-								<div id="betweenDate">~</div>
-           						<input type="date" name="endDate" value="${mdto.mu_endDate}">
+								<div class="calendar-wrap">
+								    <div class="calendar-middle-wrap">
+								      <div class="cal_nav">
+								        <a href="javascript:;" class="nav-btn go-prev"></a>
+								        <span class="year-month start-year-month"></span>
+								        <a href="javascript:;" class="nav-btn go-next"></a>
+								      </div>
+								      <div class="cal_wrap">
+								        <div class="days">
+								          <div class="day">일</div>
+								          <div class="day">월</div>
+								          <div class="day">화</div>
+								          <div class="day">수</div>
+								          <div class="day">목</div>
+								          <div class="day">금</div>
+								          <div class="day">토</div>
+								        </div>
+								        <div class="dates start-calendar"></div>
+								      </div>
+								    </div>
+								
+								    <div class="calendar-middle-wrap" style="display:none">
+								      <div class="cal_nav">
+								        <a href="javascript:;" class="nav-btn go-prev"></a>
+								        <span class="year-month last-year-month"></span>
+								        <a href="javascript:;" class="nav-btn go-next"></a>
+								      </div>
+								      <div class="cal_wrap">
+								        <div class="days">
+								          <div class="day">일</div>
+								          <div class="day">월</div>
+								          <div class="day">화</div>
+								          <div class="day">수</div>
+								          <div class="day">목</div>
+								          <div class="day">금</div>
+								          <div class="day">토</div>
+								        </div>
+								        <div class="dates last-calendar"></div>
+								      </div>
+								    </div>
+								
+								    <div class="checkInOutInfo" style="display:none">
+								    	<div>
+									        <p>
+									          <input type="text" id="check_in_day" name="startDate" value="${cdto.con_stDate}">
+									        </p>
+									        <p class="space">~</p>
+									        <p>
+									          <input type="text" id="check_out_day" name="endDate" value="${cdto.con_endDate}">
+									        </p>
+									    </div>
+								    </div>
+								</div>
 							</td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td>
@@ -68,7 +122,7 @@
 							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
 							</td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td>
@@ -78,12 +132,12 @@
 								<input type="number" name="price" min="0" max="1000000">
 							</td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td colspan="2"><textarea rows="25" cols="80" name="content" id="content">${mdto.content}</textarea></td>
 						</tr>
-						<tr style="height: 10px;">
+						<tr style="height: 20px;">
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -229,15 +283,13 @@
 						<tr>
 							<td colspan="2">
 								<div class="frame">
-									<button class="custom-btn btn-3" type="submit" onclick="location.href='musical_board'"><span>전송</span></button>
+									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
+									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
 								</div>
 							</td>
 						</tr>
 					</table>
 				</form>
-				<div class="frame">
-					<button class="custom-btn btn-3" onclick="location.href='musical_board'"><span>목록</span></button>
-				</div>
 			</div>
 		</div>
 	</div>

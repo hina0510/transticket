@@ -15,14 +15,25 @@ function setMovieData(movieIndex, moviePrice) {
 }
 
 // 선택좌석 갯수와 가격 반환
+var arr=[];
 function updateSelectedCount() {
-  // 선택된 좌석 목록
+  // 선택된 좌석 목록 selectedSeats1는 list로 반환
   const selectedSeats1 = document.querySelectorAll('.row01 .seat3.selected');
-  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴
+  
+  //선택 좌석 id값 출력
+  arr=[];
+  for (var i=0; i<selectedSeats1.length; i++){
+  	//console.log("selectedSeats1[i] : ",selectedSeats1[i]);
+  	var item = $(selectedSeats1[i]).attr('id');
+  	console.log("item : ",item);
+  	arr.push(item);
+  }
+  console.log("arr : ",arr);
+  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴, 구매 가능한 좌석 리스트 중 위치정보
   const seatsIndex = [...selectedSeats1].map((seat3) => [...seats].indexOf(seat3));
   localStorage.setItem('selectedSeats1', JSON.stringify(seatsIndex));
   const selectedSeatsCount = selectedSeats1.length;
-
+  
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
 }
@@ -67,15 +78,3 @@ container.addEventListener('click', (event) => {
 
 // Initial count and total set
 updateSelectedCount();
-
-function payment(){
-  // 선택된 좌석 목록
-  const selectedSeats = document.querySelectorAll('.row01 .seat3.selected');
-  // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴
-  const seatsIndex = [...selectedSeats].map((seat3) => [...seats].indexOf(seat3));
-  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
-  const selectedSeatsCount = selectedSeats.length;
-
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * ticketPrice;
-}

@@ -1,5 +1,8 @@
 package com.care.root.reservation.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 public class exhibitionBoardDTO {
 	private int writeNo, hit, price, likes;
 	private String title, type, comname, ex_stDate, ex_endDate, ex_place, content, form, saveDate;
@@ -110,7 +113,8 @@ public class exhibitionBoardDTO {
 	public String getSaveDate() {
 		return saveDate;
 	}
-	public void setSaveDate(String saveDate) {
-		this.saveDate = saveDate;
+	public void setSaveDate(Timestamp saveDate) {
+		SimpleDateFormat fo = new SimpleDateFormat("YYYY-MM-dd");
+		this.saveDate = fo.format(saveDate);
 	}
 }

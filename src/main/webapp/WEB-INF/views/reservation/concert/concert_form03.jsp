@@ -225,7 +225,7 @@
 				You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
 			</p>
 			<div class="frame">
-				<button class="custom-btn btn-3" onclick="payment()" style="float: right; "><span>결제</span></button>
+				<button class="custom-btn btn-3" onclick="location.href='concert_Payment?writeNo=${dto.writeNo }'" style="float: right; "><span>결제</span></button>
 			</div>
 			<br>
 			<br>

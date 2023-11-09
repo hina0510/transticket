@@ -2,39 +2,9 @@
 const regexDate = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
 // date 객체 만들기
 const thisDate = new Date();
-// 선택 날짜 (yyyy-mm-dd 00:00:00)
-const stdate = document.getElementById('stDate').innerText;
-let styear = stdate.substring(0, 4);
-let stmonth = stdate.substring(5, 7);
-let stday = stdate.substring(8, 10);
-stday = parseInt(stday, 10);
-console.log(stday);
-stmonth = parseInt(stmonth, 10);
-console.log(stmonth);
-styear = parseInt(styear, 10);
-console.log(styear);
-const today = new Date(styear, stmonth-1, stday);
-console.log(today);
-
-// 종료 날짜 (yyyy-mm-dd 00:00:00)
-const endate = document.getElementById('endDate').innerText;
-let endyear = endate.substring(0, 4);
-let endmonth = endate.substring(5, 7);
-let enday = endate.substring(8, 10);
-enday = parseInt(enday, 10);
-console.log(enday);
-endmonth = parseInt(endmonth, 10);
-console.log(endmonth);
-endyear = parseInt(endyear, 10);
-console.log(endyear);
-const today2 = new Date(endyear, endmonth-1, enday);
-console.log(today2.getDate());
-// 달력에서 표기하는 종료 년
-let edYear = today2.getFullYear();
-// 달력에서 표기하는 종료 월
-let edMonth = today2.getMonth();
-
-// 달력이동 최대 개월 수
+// 오늘 날짜 (yyyy-mm-dd 00:00:00)
+const today = new Date();
+// 달력이도 최대 개월 수
 const limitMonth = 4;
 // 달력에서 표기하는 날짜 객체
 let thisMonth = today;
@@ -44,6 +14,8 @@ let currentYear = thisMonth.getFullYear();
 let currentMonth = thisMonth.getMonth();
 // 체크인 날짜
 let checkInDate = "";
+// 체크아웃 날짜
+let checkOutDate = "";
 
 $(document).ready(function () {
     // 달력 만들기
@@ -115,22 +87,17 @@ function calendarInit(thisMonth) {
 
         // 이번달
         for (let i = 1; i <= nextDate; i++) {
-            if (currentYear === today.getFullYear()) {// 선택 년도가 현재 년도가 같을경우
-            	if (currentMonth === today.getMonth()) {// 선택 월이 현재 월과 같을 경우
-            		if (today.getMonth() === today2.getMonth()) {// 선택 월이 종료 월과 같을 경우
-		                if (i < today.getDate()) {// 지난 날짜는 disable 처리
-		                    start_calendar += pervDisableDay(i);
-		                } else if (i <= today2.getDate()){ // 예약기간 이후 disable 처리
-		                	start_calendar += dailyDay(currentYear, currentMonth, i);
-		                } else if (i > today2.getDate()){ 
-		                    start_calendar += nextDisableDay(i);
-		                }
-	            	} 
-		        }
+            // 이번달이 현재 년도와 월이 같을경우
+            if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
+                // 지난 날짜는 disable 처리
+                if (i < today.getDate()) {
+                    start_calendar += pervDisableDay(i)
+                } else {
+                    start_calendar += dailyDay(currentYear, currentMonth, i);
+                }
             } else {
-                last_calendar += dailyDay(tempCurrentYear, tempCurrentMonth, i);
+                start_calendar += dailyDay(currentYear, currentMonth, i);
             }
-
         }
 
         // 다음달 7 일 표시
@@ -183,7 +150,7 @@ function calendarInit(thisMonth) {
             }
 
         }
-        
+
         // 다음달 7 일 표시
         for (let i = 1; i <= (6 - nextDay); i++) {
             last_calendar += nextDisableDay(i);
@@ -206,6 +173,8 @@ function calendarInit(thisMonth) {
 
         if (checkInDate === date) {
             return '<div class="day current checkIn" data-day="' + date + '" onclick="selectDay(this)"><span>' + day + '</span><p class="check_in_out_p"></p><p>' + '</div>';
+        } else if (checkOutDate === date) {
+            return '<div class="day current checkOut" data-day="' + date + '" onclick="selectDay(this)"><span>' + day + '</span><p class="check_in_out_p"></p><p>' + '</div>';
         } else {
             return '<div class="day current" data-day="' + date + '" onclick="selectDay(this)"><span>' + day + '</span><p class="check_in_out_p"></p><p>' + '</div>';
         }
@@ -219,14 +188,19 @@ function calendarInit(thisMonth) {
     addClassSelectDay();
 }
 
-// 선택 끝 기간 안에 날짜 선택 처리
+// 시작 끝 기간 안에 날짜 선택 처리
 function addClassSelectDay() {
-    if (checkInDate !== "") {
+    if (checkInDate !== "" && checkOutDate != "") {
         $('.day').each(function () {
             const data_day = $(this).data('day');
+
+            if (data_day !== undefined && data_day >= checkInDate && data_day <= checkOutDate) {
+                $(this).addClass('selectDay');
+            }
         });
 
-        $('.checkIn').find('.check_in_out_p').html('선택');
+        $('.checkIn').find('.check_in_out_p').html('시작');
+        $('.checkOut').find('.check_in_out_p').html('끝');
     }
 }
 
@@ -234,7 +208,7 @@ function addClassSelectDay() {
 function selectDay(obj) {
     if (checkInDate === "") {
         $(obj).addClass('checkIn');
-        $('.checkIn').find('.check_in_out_p').html('선택');
+        $('.checkIn').find('.check_in_out_p').html('시작');
 
         checkInDate = $(obj).data('day');
 
@@ -243,37 +217,128 @@ function selectDay(obj) {
 
         lastCheckInDate();
     } else {
-        // 선택 날짜를 한번더 클릭했을때 아무 동작 하지 않기
+        // 시작 날짜를 한번더 클릭했을때 아무 동작 하지 않기
         if (parseInt(checkInDate) === $(obj).data('day')) {
             return;
         }
 
-        // 선택 날짜보다 끝 날짜를 더 앞으로 찍었을경우 선택 날짜와 체크아웃 날짜를 바꿔준다
-        if (parseInt(checkInDate) != $(obj).data('day')) {
+        // 시작 날짜보다 끝 날짜를 더 앞으로 찍었을경우 시작 날짜와 체크아웃 날짜를 바꿔준다
+        if (checkOutDate === "" && parseInt(checkInDate) > $(obj).data('day')) {
             $('.checkIn').find('.check_in_out_p').html('');
             $('.day').removeClass('checkIn');
             $('input[name=startDate]').attr('value',"");
         	//$('#check_in_day').html("");
 
+            checkOutDate = checkInDate
             checkInDate = $(obj).data('day');
 
             $(obj).addClass('checkIn');
-            $('.checkIn').find('.check_in_out_p').html('선택');
+            $('.checkIn').find('.check_in_out_p').html('시작');
+
+            $('.day[data-day="' + checkOutDate + '"]').addClass('checkOut');
+            $('.checkOut').find('.check_in_out_p').html('끝');
 
             $('input[name=startDate]').attr('value',getCheckIndateHtml());
         	//$('#check_in_day').html(getCheckIndateHtml());
+            $('input[name=endDate]').attr('value',getCheckOutdateHtml());
+            //$('#check_out_day').html(getCheckOutdateHtml());
 
             addClassSelectDay();
 
             return;
         }
+
+        // 끝
+        if (checkOutDate === "") {
+            $(obj).addClass('checkOut');
+            $('.checkOut').find('.check_in_out_p').html('끝');
+
+            checkOutDate = $(obj).data('day');
+
+            $('input[name=endDate]').attr('value',getCheckOutdateHtml());
+            //$('#check_out_day').html(getCheckOutdateHtml());
+
+            addClassSelectDay();
+        } else {
+            // 끝 날짜 까지 지정했지만 시작 날짜를 변경할 경우
+            if (confirm('시작 날짜를 변경 하시겠습니까?')) {
+                $('.checkIn').find('.check_in_out_p').html('');
+                $('.checkOut').find('.check_in_out_p').html('');
+
+                $('.day').removeClass('checkIn');
+                $('.day').removeClass('checkOut');
+                $('.day').removeClass('selectDay');
+
+                $(obj).addClass('checkIn');
+                $('.checkIn').find('.check_in_out_p').html('시작');
+
+                checkInDate = $(obj).data('day');
+                checkOutDate = "";
+
+                $('input[name=startDate]').attr('value',getCheckIndateHtml());
+        		//$('#check_in_day').html(getCheckIndateHtml());
+                $('input[name=endDate]').attr('value', "");
+                //$('#check_out_day').html("");
+
+                lastCheckInDate();
+            }
+        }
     }
 }
 
-// 선택 날짜 표기
+// 시작 날짜 표기
 function getCheckIndateHtml() {
     checkInDate = checkInDate.toString();
     return checkInDate.substring('0', '4') + "-" + checkInDate.substring('4', '6') + "-" + checkInDate.substring('6', '8') + " ( " + strWeekDay(weekday(checkInDate)) + " )";
+}
+
+// 끝 날짜 표기
+function getCheckOutdateHtml() {
+    checkOutDate = checkOutDate.toString();
+    return checkOutDate.substring('0', '4') + "-" + checkOutDate.substring('4', '6') + "-" + checkOutDate.substring('6', '8') + " ( " + strWeekDay(weekday(checkOutDate)) + " )";
+}
+
+// 시작 날짜 클릭시 예약 가능한 마지막 날인지 체크 마지막날 일경우 끝 날짜 자동 선택
+function lastCheckInDate() {
+    // 날짜 비교를 위해 시간값을 초기화 하기위해 시작 날짜 다시 셋팅
+    let thisCheckDate = new Date(conversion_date(checkInDate, 1));
+    thisCheckDate = new Date(thisCheckDate.getFullYear(), thisCheckDate.getMonth(), thisCheckDate.getDate());
+
+    // 예약 가능한 마지막달의 마지막 날짜 셋팅
+    let thisLastDate = new Date(today.getFullYear(), ((today.getMonth() + 1) + limitMonth), 0);
+
+    // 시작 날짜 클릭시 해당일이 예약 가능한 달에 마지막 날짜 일때 끝 강제 표기
+    if (thisCheckDate.getTime() === thisLastDate.getTime()) {
+        // 시작 날짜에 하루 더하기
+        let thisCheckOutDate = new Date(thisCheckDate.getFullYear(), thisCheckDate.getMonth(), thisCheckDate.getDate());
+        thisCheckOutDate.setDate(thisCheckOutDate.getDate() + 1);
+        // YYYYMMDD 형태로 변환
+        thisCheckOutDate = thisCheckOutDate.getFullYear() + "" + zf((thisCheckOutDate.getMonth() + 1)) + "" + zf(thisCheckOutDate.getDate());
+
+        checkOutDate = thisCheckOutDate;
+
+        $($(".day div[data-day='" + checkOutDate + "']")).addClass('checkOut');
+
+        if ($('.checkOut').find('p').hasClass('holi_day_p')) {
+            $('.checkOut').find('.holi_day_p').hide();
+        }
+
+        $('.checkOut').find('.check_in_out_p').html('끝');
+
+        $('input[name=endDate]').attr('value', getCheckOutdateHtml());
+        //$('#check_out_day').html(getCheckOutdateHtml());
+
+        addClassSelectDay();
+    }
+}
+
+// 최대 개월수 체크
+function getLimitMonthCheck(year, month) {
+    let months = ((today.getFullYear() - year) * 12);
+    months -= (today.getMonth() + 1);
+    months += month;
+
+    return months;
 }
 
 // 날짜형태 변환
