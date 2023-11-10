@@ -9,55 +9,6 @@
 .divCal{padding:0 3%;display: flex;}
 .con03 {padding: 2%;flex:1; background: #f8f8f8; border-radius: 20px; align-items: center;}
 
-.container {
-  perspective: 1000px;
-  margin-bottom: 30px;
-}
-
-.seat2 {
-  background-color: #444451;
-  height: 12px;
-  width: 12px;
-  margin: 3px;
-  padding:0 10px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.seat2.selected {
-  background-color: #68d0fd;
-}
-
-.seat2.occupied {
-  background-color: #fff;
-}
-
-.seat2:nth-of-type(3) {
-  margin-right: 20px;
-}
-
-.seat2:nth-of-type(6) {
-  margin-right: 18px;
-}
-
-.seat2:nth-of-type(9) {
-  margin-right: 18px;
-}
-
-.seat2:nth-last-of-type(3) {
-  margin-left: 20px;
-}
-
-.seat2:not(.occupied):hover {
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-.showcase .seat2:not(.occupied):hover {
-  cursor: default;
-  transform: scale(1);
-}
-
 .showcase {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 5px 10px;
@@ -79,32 +30,17 @@
   margin-left: 2px;
 }
 
-.screen {
-  background-color: #fff;
-  height: 70px;
-  width: 70%;
-  margin: 15px 15%;
-  transform: rotateX(-45deg);
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
-}
-
-.rows {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-.row01 {
-  display: flex;
-}
-
 p.text span {
   color: #6feaf6;
 }
 
 input[type="text"]{
+  height: 10px;
+  width: auto;
+  padding: 10px;
+  border-radius: 20px; 
+}
+input[type="number"]{
   height: 10px;
   width: auto;
   padding: 10px;
@@ -131,7 +67,7 @@ button {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
@@ -139,7 +75,7 @@ button {
 
 .btn-3 {
   background: rgba(210,210,210,1);
-background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 100%);
+  background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 100%);
   width: 130px;
   height: 40px;
   line-height: 42px;
@@ -159,7 +95,7 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   content: "";
   right: 0;
   top: 0;
-   background: rgba(210,210,210,1);
+  background: rgba(210,210,210,1);
   transition: all 0.3s ease;
 }
 .btn-3:before {
@@ -171,7 +107,7 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   height: 2px;
 }
 .btn-3:hover{
-   background: transparent;
+  background: transparent;
   box-shadow: none;
 }
 .btn-3:hover:before {
@@ -181,8 +117,8 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   width: 100%;
 }
 .btn-3 span:hover{
-   color: rgba(100,100,100,1);
-   font-weight: bold;
+  color: rgba(100,100,100,1);
+  font-weight: bold;
 }
 .btn-3 span:before,
 .btn-3 span:after {
@@ -190,7 +126,7 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   content: "";
   left: 0;
   bottom: 0;
-   background: rgba(210,210,210,1);
+  background: rgba(210,210,210,1);
   transition: all 0.3s ease;
 }
 .btn-3 span:before {

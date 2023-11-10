@@ -3,7 +3,7 @@ package com.care.root.reservation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,9 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -25,7 +23,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.care.root.common.LoginSession;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
+import com.care.root.reservation.dto.exhibitionSeatDTO;
 import com.care.root.reservation.dto.musicalBoardDTO;
+import com.care.root.reservation.dto.musicalSeatDTO;
+import com.care.root.reservation.dto.concertSeatDTO;
 import com.care.root.reservation.service.reservationFileService;
 import com.care.root.reservation.service.reservationService;
 
@@ -105,7 +106,7 @@ public class reservationController implements LoginSession{
 		model.addAttribute("cdto", rs.cGetContent(writeNo));
 		return "reservation/concert/modify_concert_form";
 	}
-	@PostMapping("modify_concert")
+	@PostMapping("modify_concert")//수정
 	public String cModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
 		
@@ -165,15 +166,55 @@ public class reservationController implements LoginSession{
 	public String concertCalendar() {
 		return "reservation/concert/concert_calendar";
 	}
-	@RequestMapping(value="seatCheck", method = RequestMethod.POST)
-	public String seatCheck(@RequestParam(value="seatList") String[] seatList, Model model) {
-		System.out.println(seatList);
-		model.addAttribute("seatList",seatList);
+	@PostMapping("cSeatCheck")
+	public String cSeatCheck(MultipartHttpServletRequest mt, concertSeatDTO cdto) {
+		cdto.setCon_title(mt.getParameter("title"));
+		cdto.setCon_date(mt.getParameter("startDate"));
+		cdto.setCon_place(mt.getParameter("con_place"));
+		String cnt = mt.getParameter("count");
+		int count = Integer.parseInt(cnt);
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
+		
+		cdto.setConS_num(count);
+		cdto.setConS_price(price);
+		/*
+		sdto.setConS_id(CLOGIN);
+		sdto.setConSr_id(CLOGIN);
+		sdto.setConS_pwd(CLOGIN);
+		*/
+		String seatArr = mt.getParameter("seatList");
+		List<String> seatList = new ArrayList<>();
+		for (int i=0; i<count; i++) {
+			String seat = seatArr.substring(0, 4);
+			String seatId = mt.getParameter("title")+"_"+mt.getParameter("startDate")+"_"+seat;
+			if(i==0) {
+				cdto.setConS_id01(seatId);
+			}else if(i==1) {
+				cdto.setConS_id02(seatId);
+			}else if(i==2) {
+				cdto.setConS_id03(seatId);
+			}else if(i==3) {
+				cdto.setConS_id04(seatId);
+			}else if(i==4) {
+				cdto.setConS_id05(seatId);
+			}
+			seatList.add(seat);
+			seatArr=seatArr.substring(4);
+		}
+		cdto.setSeatList(seatList);
+		System.out.println(cdto.getSeatList());
+		
 		return "redirect:concert_Payment";
 	}
 	@GetMapping("concert_Payment")
-	public String concertPayment(@RequestParam String[] seatList, Model model) {
-		System.out.println(seatList);
+	public String concertPayment(concertSeatDTO cdto, Model model) {
+		System.out.println(cdto.getCon_title());
+		System.out.println(cdto.getConS_id01());
+		System.out.println(cdto.getConS_id02());
+		System.out.println(cdto.getConS_id03());
+		System.out.println(cdto.getConS_id04());
+		System.out.println(cdto.getConS_id05());
 		return "reservation/concert/concert_Payment";
 	}
 	
@@ -206,8 +247,20 @@ public class reservationController implements LoginSession{
 		mdto.setTitle(mt.getParameter("title"));
 		mdto.setType(mt.getParameter("type"));
 		mdto.setComname(mt.getParameter("comname"));
-		mdto.setMu_stDate(mt.getParameter("startDate"));
-		mdto.setMu_endDate(mt.getParameter("endDate"));
+		StringBuilder stDate = new StringBuilder(mt.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		StringBuilder eDate = new StringBuilder(mt.getParameter("endDate"));
+		eDate = eDate.deleteCharAt(11);
+		eDate = eDate.deleteCharAt(12);
+		eDate = eDate.deleteCharAt(13);
+		String endDate = eDate.toString();
+		endDate = endDate.replace(" ", "");
+		mdto.setMu_stDate(startDate);
+		mdto.setMu_endDate(endDate);
 		mdto.setMu_place(mt.getParameter("mu_place"));
 		mdto.setPrice(price);
 		mdto.setContent(mt.getParameter("content"));
@@ -227,7 +280,7 @@ public class reservationController implements LoginSession{
 		model.addAttribute("mdto", rs.mGetContent(writeNo));
 		return "reservation/musical/modify_musical_form";
 	}
-	@PostMapping("modify_musical")
+	@PostMapping("modify_musical")//수정
 	public String mModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
 		
@@ -283,10 +336,59 @@ public class reservationController implements LoginSession{
 		model.addAttribute("dto", rs.mGetContent(writeNo));
 		return "reservation/musical/musical_form03";
 	}
-	
-	
+	@GetMapping("musical_calendar")
+	public String musicalCalendar() {
+		return "reservation/musical/musical_calendar";
+	}
+	@PostMapping("mSeatCheck")
+	public String mSeatCheck(MultipartHttpServletRequest mt, musicalSeatDTO mdto) {
+		mdto.setMu_title(mt.getParameter("title"));
+		mdto.setMu_date(mt.getParameter("startDate"));
+		mdto.setMu_place(mt.getParameter("Mu_place"));
+		String cnt = mt.getParameter("count");
+		int count = Integer.parseInt(cnt);
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
+		
+		mdto.setMuS_num(count);
+		mdto.setMuS_price(price);
+		/*
+		sdto.setConS_id(CLOGIN);
+		sdto.setConSr_id(CLOGIN);
+		sdto.setConS_pwd(CLOGIN);
+		*/
+		String seatArr = mt.getParameter("seatList");
+		List<String> seatList = new ArrayList<>();
+		for (int i=0; i<count; i++) {
+			String seat = seatArr.substring(0, 4);
+			String seatId = mt.getParameter("title")+"_"+mt.getParameter("startDate")+"_"+seat;
+			if(i==0) {
+				mdto.setMuS_id01(seatId);
+			}else if(i==1) {
+				mdto.setMuS_id02(seatId);
+			}else if(i==2) {
+				mdto.setMuS_id03(seatId);
+			}else if(i==3) {
+				mdto.setMuS_id04(seatId);
+			}else if(i==4) {
+				mdto.setMuS_id05(seatId);
+			}
+			seatList.add(seat);
+			seatArr=seatArr.substring(4);
+		}
+		mdto.setSeatList(seatList);
+		System.out.println(mdto.getSeatList());
+		
+		return "redirect:musical_Payment";
+	}
 	@GetMapping("musical_Payment")
-	public String musicalPayment() {
+	public String musicalPayment(musicalSeatDTO mdto, Model model) {
+		System.out.println(mdto.getMu_title());
+		System.out.println(mdto.getMuS_id01());
+		System.out.println(mdto.getMuS_id02());
+		System.out.println(mdto.getMuS_id03());
+		System.out.println(mdto.getMuS_id04());
+		System.out.println(mdto.getMuS_id05());
 		return "reservation/musical/musical_Payment";
 	}
 	
@@ -318,13 +420,25 @@ public class reservationController implements LoginSession{
 		edto.setTitle(mt.getParameter("title"));
 		edto.setType(mt.getParameter("type"));
 		edto.setComname(mt.getParameter("comname"));
-		edto.setEx_stDate(mt.getParameter("startDate"));
-		edto.setEx_endDate(mt.getParameter("endDate"));
+		StringBuilder stDate = new StringBuilder(mt.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		StringBuilder eDate = new StringBuilder(mt.getParameter("endDate"));
+		eDate = eDate.deleteCharAt(11);
+		eDate = eDate.deleteCharAt(12);
+		eDate = eDate.deleteCharAt(13);
+		String endDate = eDate.toString();
+		endDate = endDate.replace(" ", "");
+		edto.setEx_stDate(startDate);
+		edto.setEx_endDate(endDate);
 		edto.setEx_place(mt.getParameter("ex_place"));
 		edto.setPrice(price);
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
-		
+
 		MultipartFile[] files = {mt.getFile("imgN1"),mt.getFile("imgN2"),mt.getFile("imgN3"),mt.getFile("imgN4"),mt.getFile("imgN5")};
         
         String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
@@ -339,7 +453,7 @@ public class reservationController implements LoginSession{
 		model.addAttribute("edto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/modify_exhibition_form";
 	}
-	@PostMapping("modify_exhibition")
+	@PostMapping("modify_exhibition")//수정
 	public String eModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
 		System.out.println("게시글 번호 : " + writeNo);
 		
@@ -380,15 +494,64 @@ public class reservationController implements LoginSession{
 		return "redirect:exhibition_board";
 	}
 	
-	@GetMapping("exhibition_form01")
-	public String exhibitionForm01(@RequestParam int writeNo, Model model) {
+	@GetMapping("exhibition_form1")
+	public String exhibitionForm1(@RequestParam int writeNo, Model model) {
 		model.addAttribute("dto", rs.eGetContent(writeNo));
 		return "reservation/exhibition/exhibition_form01";
 	}
-	
-	
+	@GetMapping("exhibition_calendar")
+	public String exhibitionCalendar() {
+		return "reservation/exhibition/exhibition_calendar";
+	}
+	@PostMapping("eSeatCheck")
+	public String eSeatCheck(MultipartHttpServletRequest mt, exhibitionSeatDTO edto) {
+		edto.setEx_title(mt.getParameter("title"));
+		edto.setEx_date(mt.getParameter("startDate"));
+		edto.setEx_place(mt.getParameter("con_place"));
+		String cnt = mt.getParameter("count");
+		int count = Integer.parseInt(cnt);
+		String pri = mt.getParameter("price");
+		int price = Integer.parseInt(pri);
+		
+		edto.setExS_num(count);
+		edto.setExS_price(price);
+		/*
+		sdto.setConS_id(CLOGIN);
+		sdto.setConSr_id(CLOGIN);
+		sdto.setConS_pwd(CLOGIN);
+		*/
+		String seatArr = mt.getParameter("seatList");
+		List<String> seatList = new ArrayList<>();
+		for (int i=0; i<count; i++) {
+			String seat = seatArr.substring(0, 4);
+			String seatId = mt.getParameter("title")+"_"+mt.getParameter("startDate")+"_"+seat;
+			if(i==0) {
+				edto.setExS_id01(seatId);
+			}else if(i==1) {
+				edto.setExS_id02(seatId);
+			}else if(i==2) {
+				edto.setExS_id03(seatId);
+			}else if(i==3) {
+				edto.setExS_id04(seatId);
+			}else if(i==4) {
+				edto.setExS_id05(seatId);
+			}
+			seatList.add(seat);
+			seatArr=seatArr.substring(4);
+		}
+		edto.setSeatList(seatList);
+		System.out.println(edto.getSeatList());
+		
+		return "redirect:exhibition_Payment";
+	}
 	@GetMapping("exhibition_Payment")
-	public String exhibitionPayment() {
+	public String exhibitionPayment(exhibitionSeatDTO edto, Model model) {
+		System.out.println(edto.getEx_title());
+		System.out.println(edto.getExS_id01());
+		System.out.println(edto.getExS_id02());
+		System.out.println(edto.getExS_id03());
+		System.out.println(edto.getExS_id04());
+		System.out.println(edto.getExS_id05());
 		return "reservation/exhibition/exhibition_Payment";
 	}
 }

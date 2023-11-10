@@ -17,28 +17,52 @@ function setMovieData(movieIndex, moviePrice) {
 
 // 선택좌석 갯수와 가격 반환
 var arr=[];
+var seat1="";
 function updateSelectedCount() {
   // 선택된 좌석 목록 selectedSeats1는 list로 반환
   const selectedSeats1 = document.querySelectorAll('.row01 .seat.selected');
   
-  //선택 좌석 id값 출력
-  arr=[];
-  for (var i=0; i<selectedSeats1.length; i++){
-  	//console.log("selectedSeats1[i] : ",selectedSeats1[i]);
-  	var item = $(selectedSeats1[i]).attr('id');
-  	console.log("item : ",item);
-  	arr.push(item);
-  }
-  console.log("arr : ",arr);
   // 모든 좌석 DOM 목록(seats)에서 선택된 좌석에 해당하는 인덱스를 가져옴, 구매 가능한 좌석 리스트 중 위치정보
   const seatsIndex = [...selectedSeats1].map((seat) => [...seats].indexOf(seat));
   localStorage.setItem('selectedSeats1', JSON.stringify(seatsIndex));
   const selectedSeatsCount = selectedSeats1.length;
-
-  count.value = selectedSeatsCount;
-  total.value = selectedSeatsCount * ticketPrice;
-  seatList.value = arr;
+  
+  //선택 좌석 id값 출력
+  arr=[];
+  seat1="";
+  for (var i=0; i<selectedSeats1.length; i++){
+  	//console.log("selectedSeats1[i] : ",selectedSeats1[i]);
+  	if( selectedSeats1.length<6 ){
+	  	var item = $(selectedSeats1[i]).attr('id');
+		console.log("push item : ",item);
+	  	arr.push(item);
+	} else {
+	  	var item = $(selectedSeats1[i]).attr('id');
+		console.log("pop item : ",item);
+	  	arr.pop(item);
+	  	alert("좌석 선택은 5개까지 가능합니다.\n좌석을 취소하세요.");
+	  	break;
+	}
+  }
+  console.log("arr : ",arr);
+  
+  if( arr.length<6 ){
+  	count.value = selectedSeatsCount;
+  	total.value = selectedSeatsCount * ticketPrice;
+	for (var j=0; j<selectedSeatsCount; j++) {
+		seat1+=arr[j];
+	}
+	seatList.value = seat1;
+  }
 }
+
+$("#payment").click(function(){
+	if($("#count").val()>5){
+		alert("티켓 수가 5개를 초과해 결제할 수 없습니다.\n티켓을 취소해주세요.");
+		return false;
+	}
+});
+
 // Get data from localstorage and populate UI
 function populateUI() {
   const selectedSeats1 = JSON.parse(localStorage.getItem('selectedSeats1'));
