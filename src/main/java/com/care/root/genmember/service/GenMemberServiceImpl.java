@@ -20,6 +20,7 @@ public class GenMemberServiceImpl implements GenMemberService{
 	public GenMemberServiceImpl() {
 		encoder = new BCryptPasswordEncoder();
 	}
+	
 	public int logChk1(String id, String pwd) {
 		GenMemberDTO dto = mapper.getMember(id);
 		int result = 1;
@@ -28,9 +29,9 @@ public class GenMemberServiceImpl implements GenMemberService{
 				result = 0;
 			}
 		}
-		
 		return result;
 	}
+	
 	public void genregister(GenMemberDTO dto, String[] addr) {
 		String ad = "";
 		for(String a : addr) {
@@ -56,6 +57,7 @@ public class GenMemberServiceImpl implements GenMemberService{
 		
 		return list;
 	}
+	
 	public Map<String, Object> getMember(String id){
 		GenMemberDTO dto = mapper.getMember(id);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -82,9 +84,11 @@ public class GenMemberServiceImpl implements GenMemberService{
 			e.printStackTrace();
 		}
 	}
+	
 	public void gendelete(String id) {
 		mapper.gendelete(id);
 	}
+	
 	public void keepLogin(String sessionId, String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("sessionId", sessionId);
@@ -92,7 +96,16 @@ public class GenMemberServiceImpl implements GenMemberService{
 		mapper.keepLogin(map);
 		
 	}
+	
 	public GenMemberDTO getGenSessionId(String sessionId) {
 		return mapper.getGenSessionId(sessionId);
+	}
+	public int idchk(String id) {
+		int result = mapper.idchk(id);
+		return result;
+	}
+	public int emailchk(String email) {
+		int result = mapper.emailchk(email);
+		return result;
 	}
 }

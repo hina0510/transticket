@@ -20,12 +20,12 @@ var msg = '${msg}';
 
 <form action="gen_pw_set" method="post">
 	<input type="hidden" name ="num" value="${num }">
-		<div class="content">
+		<div class=content>
 			<div class="textbox">
-				<input type="text" name="email_injeung" placeholder="인증번호를 입력하세요"><label>인증번호 </label>
-			</div><br><br>
+			<input type="text" name="email_injeung" placeholder="인증번호를 입력하세요"><label>인증번호 </label>
+			
+		</div><br><br>
 			<input type="submit" id="check" value="확인">
-		</div>
 </form>
 <%@ include file="../../default/footer.jsp" %>
 </body>

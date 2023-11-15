@@ -42,4 +42,10 @@
 	<update id ="pwUpdate">
 		update genmember set n_pwd=#{pwd} where n_email= #{email}
 	</update>
+	<select id="idchk" resultType="int">
+		select count(*) from genmember where n_id = #{id}
+	</select>
+	<select id="emailchk" resultType="int">
+		select count(*) from genmember where n_email = #{email}
+	</select>
 </mapper>

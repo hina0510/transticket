@@ -17,40 +17,92 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="container">
-				<c:choose>
-					<c:when test="${list.size()==0}">
-						작성된 글이 없습니다
-					</c:when>
-					<c:otherwise>
-						<c:set var="edto" value="${list}" />
-						<c:forEach var="i" begin="0" end="${list.size()-1}">
-							<c:if test="${i%3==0}">
-								<div class="row">
-							</c:if>
-							<div class="col-4">
-								<div class="card">
-						            <a href="exhibition_content?writeNo=${edto[i].writeNo }">
-						            	<img src="download?file=${edto[i].imageName1 }" class="card-img-top" alt="card">
-						            </a>
-						            <div class="card-body">
-						              <a href="exhibition_content?writeNo=${edto[i].writeNo }">
-						              	<dt class="card-title">${edto[i].title}</dt>
-						              </a>
-						              <dd>${edto[i].ex_place}</dd>
-						              <dd>${edto[i].ex_stDate} ~ ${edto[i].ex_endDate}</dd>
-						            </div>
-								</div>
-					        </div>
-					        <c:if test="${i%3==2}">
-					    </div>
-						<div style="height: 20px;"></div>    	
-					        </c:if>
-					        <c:if test="${i==list.size()-1}">
-					    </div>   	
-					        </c:if>
-					    </c:forEach>
-					</c:otherwise>
-				</c:choose>
+				<div class="row">
+					<div class="col-4">
+						<div class="card">
+				            <a href="${contextPath }/reservation/exhibition_content">
+				            	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+				            </a>
+				            <div class="card-body">
+				              <a href="${contextPath }/reservation/exhibition_content">
+				              	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				              </a>
+				              <dd>블루스퀘어 신한카드홀</dd>
+				              <dd>2023.8.19 ~ 11.19</dd>
+				            </div>
+						</div>
+			        </div>
+			        <div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+			        <div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+				</div>
+				<div style="height: 20px;"></div>
+				<div class="row">
+					<div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+					<div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+			        <div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+				</div>
+				<div style="height: 20px;"></div>
+				<div class="row">
+					<div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+					<div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+			        <div class="col-4">
+						<div class="card">
+				            <img src="#" class="card-img-top" alt="card">
+				            <div class="card-body">
+				              <h5 class="card-title">Lorem</h5>
+				            </div>
+						</div>
+			        </div>
+				</div>
 				<br>
 				<c:if test="${clogin!=null}">	
 					<button class="custom-btn btn-3" onclick="location.href='write_exhibition_form'"><span>글 작성</span></button>

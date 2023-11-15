@@ -8,23 +8,17 @@
    		<result property="title" column="title"/>
    		<result property="type" column="type"/>
    		<result property="comname" column="comname"/>
-   		<result property="con_stDate" column="pf_stDate"/>
-   		<result property="con_endDate" column="pf_endDate"/>
+   		<result property="con_date" column="pf_date"/>
    		<result property="con_place" column="pf_place"/>
-   		<result property="price" column="price"/>
    		<result property="content" column="content"/>
-   		<result property="imageName1" column="imageName1"/>
-		<result property="imageName2" column="imageName2"/>
-		<result property="imageName3" column="imageName3"/>
-		<result property="imageName4" column="imageName4"/>
-		<result property="imageName5" column="imageName5"/>
+   		<result property="image_file_name" column="Image_file_name"/>
    		<result property="hit" column="hit"/>
    		<result property="saveDate" column="saveDate"/>
    		<result property="form" column="form"/>
 	</resultMap>
    	<select id="cBoardList" resultMap="board" >
 	select B.* from(select rownum rn, A.* from
-	(select * from performBoard where type='concert' order by writeNo desc)A)B
+	(select * from performBoard order by writeNo desc)A)B
 	where rn between #{s} and #{e}
 	</select>
 	<select id="cGetContent" resultMap="board">
@@ -34,12 +28,11 @@
 		update performBoard set hit=hit+1 where writeNo=#{writeNo}
 	</update>
    	<insert id="cWriteSave" >
-		insert into performBoard(writeNo, title, type, comname, pf_stDate, pf_endDate, pf_place, price, content, imageName1, imageName2, imageName3, imageName4, imageName5, form)
-		values(perform_board_seq.nextval, #{title}, #{type}, #{comname}, #{con_stDate}, #{con_endDate}, #{con_place}, #{price}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5}, #{form})
+		insert into performBoard(writeNo, title, type, comname, pf_date, pf_place, content, image_file_name, form)
+		values(perform_board_seq.nextval,#{title},#{type},#{comname},#{con_date},#{con_place},#{content},#{image_file_name},#{form})
 	</insert>
 	<update id="cModify">
-		update performBoard set title=#{title}, pf_stDate=#{con_stDate}, pf_endDate=#{con_endDate}, pf_place=#{con_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
-									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where write_no=#{writeNo}
+		update performBoard set title=#{title}, pf_date=#{con_date}, pf_place=#{con_place}, content=#{content}, image_file_name=#{image_file_name}, form=#{form} where write_no=#{writeNo}
 	</update>
 	<delete id="cDelete">
 		delete from performBoard where writeNo=#{writeNo}

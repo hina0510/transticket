@@ -123,6 +123,7 @@
 		    <version>${org.springframework-version}</version>
 		    <scope>test</scope>
 		</dependency>
+		
 		<!-- 풀 관리 및 DB 연동, 설정 -->
 		<dependency>
 		    <groupId>com.zaxxer</groupId>
@@ -153,77 +154,72 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.3.2</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${org.springframework-version}</version>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-config</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency> <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-core</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-taglibs</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+				<!-- commons-fileupload -->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${org.springframework-version}</version>
+    		<groupId>commons-fileupload</groupId>
+    		<artifactId>commons-fileupload</artifactId>
+    		<version>1.3.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-		<!-- commons-fileupload -->
-		<dependency>
-	    	<groupId>commons-fileupload</groupId>
-	    	<artifactId>commons-fileupload</artifactId>
-	    	<version>1.4</version>
-		</dependency>
-	
+
 		<!-- commons-io -->
 		<dependency>
-	    	<groupId>commons-io</groupId>
-	    	<artifactId>commons-io</artifactId>
-	    	<version>2.4</version>
+    		<groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>2.4</version>
 		</dependency>
-		<!-- lucy-xss-servlet -->
-		<dependency>
-   			<groupId>com.navercorp.lucy</groupId>
-    		<artifactId>lucy-xss-servlet</artifactId>
-    		<version>2.0.1</version>
-		</dependency>
-		<!-- 이메일 -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context-support</artifactId>
-		    <version>${org.springframework-version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>javax.mail-api</artifactId>
-		    <version>1.5.4</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.sun.mail</groupId>
-		    <artifactId>javax.mail</artifactId>
-		    <version>1.5.3</version>
-		</dependency>
-		<!-- JSON.stringify(문자열 json타입 변경)  -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.5</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.webjars.npm</groupId>
-		    <artifactId>tinymce</artifactId>
-		    <version>6.7.0</version>
-		</dependency>
-	</dependencies>
+		 <!-- lucy-xss-servlet -->
+			<dependency>
+   				<groupId>com.navercorp.lucy</groupId>
+    			<artifactId>lucy-xss-servlet</artifactId>
+    			<version>2.0.1</version>
+			</dependency>
+					<!-- 이메일 -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>javax.mail-api</artifactId>
+    <version>1.5.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.5.3</version>
+</dependency>
+			<!-- JSON.stringify(문자열 json타입 변경)  -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.5</version>
+			</dependency>
+		</dependencies>
     <build>
         <plugins>
             <plugin>
@@ -238,6 +234,7 @@
                     </additionalBuildcommands>
                     <downloadSources>true</downloadSources>
                     <downloadJavadocs>true</downloadJavadocs>
+                    
                 </configuration>
             </plugin>
             <plugin>
@@ -245,6 +242,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
+                
                     <source>1.8</source>
                     <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
@@ -257,9 +255,11 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
+                
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+           
         </plugins>
     </build>
 </project>

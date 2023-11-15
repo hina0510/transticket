@@ -80,13 +80,28 @@ function glogchk(){
 		 return false;
 	}
 }
+function mlogchk(){
+	 if (confirm("로그아웃 하겠습니까??") == true){
+		 location.href='${contextPath }/member/mlogout'
+	 }else{
+		 return false;
+	}
+}
 function loginfo(){
 	if (confirm("로그인 먼저하세요") == true){
 		 location.href='${contextPath }/member/prelogin'
 	 }else{
 		 return false;
 	}
+}	
+function allog(){
+	if (confirm("이미 로그인 되있습니다") == true){
+		 location.href='${contextPath }/'
+	 }else{
+		 return false;
+	}
 }
+
 </script>
 </head>
 <body>
@@ -103,19 +118,32 @@ function loginfo(){
 					<c:when test="${glogin!=null }">
 						<a onclick="glogchk()" class="login01">로그아웃</a>
 					</c:when>
+					<c:when test="${mlogin!=null }">
+						<a onclick="mlogchk()" class="login01">로그아웃</a>
+					</c:when>
 					<c:otherwise>
 						<a href="${contextPath }/member/prelogin" class="login01">로그인</a>
 					</c:otherwise>
 				</c:choose>
+				
 				<c:if test="${clogin==null and glogin==null  }">	
 					<a href="${contextPath }/member/gen_register_view" class="login01">회원가입</a>
 				</c:if>
+				
+				<c:if test="${clogin!=null or glogin!=null }">
+					<a onclick="allog()" class="login01">회원가입</a>
+				</c:if>
+				
+				
 				<c:choose>
 					<c:when test="${clogin!=null }">
 						<a href="${contextPath }/member/com_mypage" class="login01">마이페이지</a>	
 					</c:when>
 					<c:when test="${glogin!=null }">
 						<a href="${contextPath }/member/gen_mypage" class="login01">마이페이지</a>	
+					</c:when>
+					<c:when test="${mlogin!=null }">
+						<a href="${contextPath }/member/admin" class="login01">마이페이지</a>	
 					</c:when>
 					<c:otherwise>
 						<a onclick="loginfo()" class="login01">마이페이지</a>

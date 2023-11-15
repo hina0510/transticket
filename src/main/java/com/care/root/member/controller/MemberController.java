@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.care.root.commember.service.ComMemberService;
@@ -46,13 +47,22 @@ public class MemberController implements LoginSession{
 						@RequestParam(required=false, defaultValue="off") String autoLogin,
 						HttpSession session,
 						RedirectAttributes rs) {
-		System.out.println(autoLogin);
 		int result = cms.logChk(id,pwd);
 		if(result==0) {
-			rs.addAttribute("id", id);
-			session.setAttribute( CLOGIN , id);
-			rs.addAttribute("autoLogin", autoLogin);
-			return "redirect:successLogin";
+
+			
+			if("admin".equals(id)) {
+				System.out.println(id);
+				session.setAttribute( MLOGIN , id);
+				return "redirect:admin";
+			} else {
+				rs.addAttribute("id", id);
+				session.setAttribute( CLOGIN , id);
+				rs.addAttribute("autoLogin", autoLogin);
+				return "redirect:successLogin";
+			}
+			
+
 		}
 		rs.addFlashAttribute("msg", "로그인실패");
 		return "redirect:prelogin";
@@ -68,6 +78,7 @@ public class MemberController implements LoginSession{
 			rs.addAttribute("id", id);
 			session.setAttribute( GLOGIN , id);
 			rs.addAttribute("autoLogin", autoLogin);
+			System.out.println("session : " + session.getAttribute(GLOGIN));
 			return "redirect:successLogin1";
 		}
 		rs.addFlashAttribute("msg", "로그인실패");
@@ -115,6 +126,7 @@ public class MemberController implements LoginSession{
 		cms.comregister(dto , req.getParameterValues("addr"));
 		rtt.addFlashAttribute("msg","가입완료");
 		return "redirect:prelogin";
+		
 	}
 	@PostMapping("genregister")
 	public String genregister(HttpServletRequest req,GenMemberDTO dto, RedirectAttributes rtt) {
@@ -141,6 +153,11 @@ public class MemberController implements LoginSession{
 			res.addCookie(cookie);
 			gms.keepLogin("nan", (String)session.getAttribute(GLOGIN));
 		}
+		session.invalidate();
+		return "redirect:/";
+	}
+	@GetMapping("mlogout")
+	public String mlogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -211,5 +228,33 @@ public class MemberController implements LoginSession{
 		String id = (String) session.getAttribute(CLOGIN);
 		model.addAttribute("cominfo", cms.getMember(id));
 		return "member/commember/com_mypage";
+	}
+	@ResponseBody
+	@PostMapping(value="com_idchk", produces="application/json; charset=utf-8")
+	public int com_idchk(@RequestParam String id) {
+		int result = cms.idchk(id);
+		return result;
+	}
+	@ResponseBody
+	@PostMapping(value="com_emailchk", produces="application/json; charset=utf-8")
+	public int com_emailchk(@RequestParam String email) {
+		int result = cms.emailchk(email);
+		return result;
+	}
+	@ResponseBody
+	@PostMapping(value="gen_idchk", produces="application/json; charset=utf-8")
+	public int gen_idchk(@RequestParam String id) {
+		int result = gms.idchk(id);
+		return result;
+	}
+	@ResponseBody
+	@PostMapping(value="gen_emailchk", produces="application/json; charset=utf-8")
+	public int gen_emailchk(@RequestParam String email) {
+		int result = gms.emailchk(email);
+		return result;
+	}
+	@GetMapping("admin")
+	public String admin(Model model, HttpSession session) {
+		return "member/admin";
 	}
 }

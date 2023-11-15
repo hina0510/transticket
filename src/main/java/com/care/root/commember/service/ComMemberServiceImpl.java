@@ -96,4 +96,14 @@ public class ComMemberServiceImpl implements ComMemberService{
 	public ComMemberDTO getComSessionId(String sessionId) {
 		return mapper.getComSessionId(sessionId);
 	}
+	public int idchk(String id) {
+		int result = mapper.idchk(id);
+		return result;
+	}
+	
+	
+	public int emailchk(String email) {
+		int result = mapper.emailchk(email);
+		return result;
+	}
 }

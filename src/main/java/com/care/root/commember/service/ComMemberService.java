@@ -17,4 +17,6 @@ public interface ComMemberService {
 	public void comdelete(String id);
 	public void keepLogin(String sessionId, String id);
 	public ComMemberDTO getComSessionId(String id);
+	public int idchk(String id);
+	public int emailchk(String email);
 }

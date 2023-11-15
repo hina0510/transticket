@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -311,65 +312,56 @@
 									</ul>
 								</nav>
 								<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-								  <h4 id="scrollspyHeading1">
-								  ${dto.content }
-								  <p>...</p>
-								  <h4 id="scrollspyHeading2">
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading<br>
-								  Second headingSecond headingSecond heading</h4>
-								  <p>...</p>
-								  <h4 id="scrollspyHeading3">
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading<br>
-								  Third headingThird headingThird heading</h4>
-								  <p>...</p>
-								  <h4 id="scrollspyHeading4">
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading<br>
-								  Fourth headingFourth headingFourth heading</h4>
-								  <p>...</p>
-								  <h4 id="scrollspyHeading5">
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading<br>
-								  Fifth headingFifth headingFifth heading</h4>
-								  <p>...</p>
+								  ${dto.content },  asdsad : ${genId }, likes : ${likes }
+								 
+								  
 								</div>
 	                        </dd>
 	                    </dl>
+	                    <br>
 	                    <dl>
 	                    	<dd>
-	                    		<button type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
-	                    		<button type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
-								<button type="button" onclick="location.href='genBoardList'">목록</button>
+	                    		 <form action="likes" method="post">
+	                    		 <c:choose>
+	                    		 	<c:when test="${genId != 'undefined' }">
+		                    		 	<c:choose>
+												<c:when test="${genId != dto.id }">
+													<c:choose>
+														<c:when test="${likes == 'none' }">
+															<input type="hidden" value="${genId }" name="id">
+									  						<input type="hidden" value="${dto.writeNo }" name="writeNo">
+									  						<button>♡</button>
+														</c:when>
+														<c:otherwise>
+															<button disabled>♥</button>
+														</c:otherwise>
+													</c:choose>	
+												</c:when>
+												
+												<c:otherwise>
+													<c:choose>
+														<c:when test="${likes == 'none' }">
+															<input type="hidden" value="${genId }" name="id">
+									  						<input type="hidden" value="${dto.writeNo }" name="writeNo">
+									  						<button>♡</button>
+														</c:when>
+														<c:otherwise>
+															<button disabled>♥</button>
+														</c:otherwise>
+													</c:choose>
+												</c:otherwise>
+											</c:choose>
+	                    		 	</c:when>
+	                    		 	<c:otherwise>
+	                    		 	</c:otherwise>
+	                    		 	
+	                    		 </c:choose>
+								  </form>
+					 			<c:if test="${genId == dto.id }">
+								<button type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
+                    			<button type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
+								</c:if>
+					  			<button type="button" onclick="location.href='genBoardList'">목록</button>
 							</dd>
 	                    </dl>
 	                </div>

@@ -10,6 +10,19 @@
 </head>
 <body>
 <%@ include file="../default/header.jsp" %>
+	<form action="${contextPath }/board/genBoardList" method="get" id="searchFoam" name="search-form">
+        <select name="type" class="type-box">
+			<option value="">검색 유형 선택</option>
+			<option value="title">제목</option>
+			<option value="n_id">작성자1</option>
+		</select>
+		<td colspan="2">
+          <input class="inputId" type="text" name="keyword" placeholder="검색어 입력">
+        </td>
+		<td>
+          <input class="submitBtn" type="submit" value="검색하기">
+		</td>
+	</form>
 	<table border="1">
 			<tr>
 				<th>번호</th><th>id</th><th>제목</th><th>날짜</th><th>조회수</th>
