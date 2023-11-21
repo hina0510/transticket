@@ -44,7 +44,17 @@
 					<option value="자유">자유</option>
 				</select>
 				제목 : <input type="text" name="title">
-				작성자 :<input type="text" readonly name="id" value="${genId }"><br>
+				작성자 :
+				<c:choose>
+					<c:when test="${comId == null }">
+						<input type="text" readonly name="id" value="${genId }"><br>
+					</c:when>
+					<c:otherwise>
+						<input type="text" readonly name="id" value="${comId }"><br>
+					</c:otherwise>
+				</c:choose>
+				
+				
 				<textarea rows="25" cols="80" name="content" id="content"></textarea><br>
 				<table style="margin: auto">
 						<tr>

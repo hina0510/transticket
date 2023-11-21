@@ -14,7 +14,7 @@ public class GenBoardServiceImpl implements GenBoardService{
 	@Autowired GenBoardMapper mapper;
 	
 	public Map<String, Object> boardAllList(int num) {
-		int pageLetter = 3; 
+		int pageLetter =5; 
 		int allCount = mapper.selectBoardCount();
 		int repeat = allCount / pageLetter; 
 		if(allCount % pageLetter != 0) { 
