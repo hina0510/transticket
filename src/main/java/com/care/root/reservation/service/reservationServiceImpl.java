@@ -15,7 +15,6 @@ import com.care.root.mybatis.reservation.exhibitionSeatMapper;
 import com.care.root.mybatis.reservation.musicalBoardMapper;
 import com.care.root.mybatis.reservation.musicalSeatMapper;
 import com.care.root.reservation.dto.rLikeDTO;
-import com.care.root.reservation.dto.cBoardDTO;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.concertSeatDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
