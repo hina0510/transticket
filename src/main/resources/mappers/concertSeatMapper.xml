@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.reservation.concertSeatMapper">
+	<resultMap type="com.care.root.reservation.dto.concertSeatDTO" id="seat">
+   		<id property="con_title" column="s_title"/><!-- primary key -->
+   		<result property="conS_id" column="s_id"/>
+   		<result property="conSr_id" column="sr_id"/>
+   		<result property="conS_pwd" column="s_pwd"/>
+   		<result property="con_buyer" column="s_buyer"/>
+   		<result property="con_payed" column="s_payed"/>
+   		<result property="con_date" column="s_date"/>
+   		<result property="con_place" column="s_place"/>
+   		<result property="conS_price" column="s_price"/>
+	</resultMap>
+	<insert id="cSeatSave" >
+		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)
+		values(#{con_title}, #{conS_id}, #{con_buyer}, #{con_date}, #{con_place}, #{conS_price})
+	</insert>
+	<select id="cGetSeat" resultMap="seat">
+		select * from seat where s_buyer=#{con_buyer}
+	</select>
+</mapper>
