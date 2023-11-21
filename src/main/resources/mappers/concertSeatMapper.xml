@@ -21,4 +21,12 @@
 	<select id="cGetSeat" resultMap="seat">
 		select * from seat where s_buyer=#{con_buyer}
 	</select>
+	<update id="cBuySeat">
+		update seat set s_payed='payed' where s_title=#{con_title} AND s_buyer=#{con_buyer}
+	</update>
+	
+	
+	<select id="reservationAllList" resultMap="seat">
+		select * from seat where s_buyer=#{con_buyer}
+	</select>
 </mapper>

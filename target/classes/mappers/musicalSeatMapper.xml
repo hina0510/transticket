@@ -21,4 +21,7 @@
 	<select id="mGetSeat" resultMap="seat">
 		select * from seat where s_buyer=#{mu_buyer} AND s_payed='unpayed'
 	</select>
+	<update id="mBuySeat">
+		update seat set s_payed='payed' where s_title=#{mu_title} AND s_buyer=#{mu_buyer}
+	</update>
 </mapper>

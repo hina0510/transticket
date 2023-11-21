@@ -121,7 +121,14 @@ function loginfo(){
 						<a onclick="loginfo()" class="login01">마이페이지</a>
 					</c:otherwise>
 				</c:choose>
-			    <a href="#" class="login01">예약확인/취소</a>
+				<c:choose>
+					<c:when test="${glogin!=null }">
+						<a href="${contextPath }/reservation/reservationAllList" class="login01">예약확인/취소</a>
+					</c:when>
+					<c:otherwise>
+						<a onclick="loginfo()" class="login01">예약확인/취소</a>
+					</c:otherwise>
+				</c:choose>
 			</dd>
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0% 5%;">

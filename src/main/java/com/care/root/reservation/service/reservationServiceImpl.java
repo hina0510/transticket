@@ -14,6 +14,7 @@ import com.care.root.mybatis.reservation.exhibitionBoardMapper;
 import com.care.root.mybatis.reservation.exhibitionSeatMapper;
 import com.care.root.mybatis.reservation.musicalBoardMapper;
 import com.care.root.mybatis.reservation.musicalSeatMapper;
+import com.care.root.mybatis.reservation.paySeatMapper;
 import com.care.root.reservation.dto.rLikeDTO;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.concertSeatDTO;
@@ -21,6 +22,7 @@ import com.care.root.reservation.dto.exhibitionBoardDTO;
 import com.care.root.reservation.dto.exhibitionSeatDTO;
 import com.care.root.reservation.dto.musicalBoardDTO;
 import com.care.root.reservation.dto.musicalSeatDTO;
+import com.care.root.reservation.dto.payDTO;
 
 @Service
 public class reservationServiceImpl implements reservationService{
@@ -30,6 +32,7 @@ public class reservationServiceImpl implements reservationService{
 	@Autowired musicalSeatMapper msmapper;
 	@Autowired exhibitionBoardMapper emapper;
 	@Autowired exhibitionSeatMapper esmapper;
+	@Autowired paySeatMapper pmapper;
 	@Autowired reservationFileService fs;
 	
 	public Map<String, Object> cBoardList(int num){
@@ -90,10 +93,22 @@ public class reservationServiceImpl implements reservationService{
 		}
 		System.out.println(likesId);
 		
-	return likesId;
+		return likesId;
 	}
 	public List<concertSeatDTO> cGetSeat(@RequestParam String con_buyer) {
 		return csmapper.cGetSeat(con_buyer);
+	}
+	public int BuySeat(String account, int price){
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		money = money-price;
+		System.out.println("계산 후 금액 : "+money);
+		pdto.setMoney(money);
+		System.out.println("계산 후 금액 : "+pdto.getMoney());
+		return pmapper.saveAccount(money, account);
+	}
+	public void cBuySeat(String con_title, String con_buyer){
+		csmapper.cBuySeat(con_title, con_buyer);
 	}
 	
 	public Map<String, Object> mBoardList(int num){
@@ -154,10 +169,13 @@ public class reservationServiceImpl implements reservationService{
 		}
 		System.out.println(likesId);
 		
-	return likesId;
+		return likesId;
 	}
 	public List<musicalSeatDTO> mGetSeat(@RequestParam String mu_buyer){
 		return msmapper.mGetSeat(mu_buyer);
+	}
+	public void mBuySeat(String mu_title, String mu_buyer){
+		msmapper.mBuySeat(mu_title, mu_buyer);
 	}
 	
 	public Map<String, Object> eBoardList(int num){
@@ -218,9 +236,16 @@ public class reservationServiceImpl implements reservationService{
 		}
 		System.out.println(likesId);
 		
-	return likesId;
+		return likesId;
 	}
 	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer){
 		return esmapper.eGetSeat(ex_buyer);
+	}
+	public void eBuySeat(String ex_title, String ex_buyer){
+		esmapper.eBuySeat(ex_title, ex_buyer);
+	}
+	
+	public List<concertSeatDTO> reservationAllList(String con_buyer){
+		return csmapper.reservationAllList(con_buyer);
 	}
 }

@@ -21,6 +21,8 @@ public interface reservationService {
 	public String cLikeChk(String id, int writeNo);
 	
 	public List<concertSeatDTO> cGetSeat(@RequestParam String con_buyer);
+	public int BuySeat(String account, int price);
+	public void cBuySeat(String con_title, String con_buyer);
 	
 	public Map<String, Object> mBoardList(int num);
 	public musicalBoardDTO mGetContent(int writeNo);
@@ -30,6 +32,7 @@ public interface reservationService {
 	public String mLikeChk(String id, int writeNo);
 	
 	public List<musicalSeatDTO> mGetSeat(@RequestParam String mu_buyer);
+	public void mBuySeat(String mu_title, String mu_buyer);
 	
 	public Map<String, Object> eBoardList(int num);
 	public exhibitionBoardDTO eGetContent(int writeNo);
@@ -39,4 +42,7 @@ public interface reservationService {
 	public String eLikeChk(String id, int writeNo);
 	
 	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer);
+	public void eBuySeat(String ex_title, String ex_buyer);
+	
+	public List<concertSeatDTO> reservationAllList(String con_buyer);
 }
