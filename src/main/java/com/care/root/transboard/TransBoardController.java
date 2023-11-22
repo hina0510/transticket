@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.common.LoginSession;
+import com.care.root.reservation.service.reservationService;
 import com.care.root.transboard.dto.TransBoardDTO;
 import com.care.root.transboard.service.TransBoardService;
 
 @Controller
 @RequestMapping("/transboard")
 public class TransBoardController {
+	@Autowired reservationService  rs;
 	@Autowired TransBoardService ts;
+	
 	@GetMapping("transBoardList")
 	public String transboardAllList(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		if(type != null  && keyword !=null) {
@@ -36,9 +39,18 @@ public class TransBoardController {
 		return "transboard/transBoardList";
 	}
 	
+	/*
 	@GetMapping("transWrite")
 	public String transWrite(HttpSession session, Model model) {
 		System.out.println("asd : " + session.getAttribute(LoginSession.GLOGIN));
+		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
+		return "transboard/transBoardWrite";
+	}
+	*/
+	@GetMapping("transWrite")
+	public String transWrite(HttpSession session, Model model) {
+		String con_buyer = (String) session.getAttribute(LoginSession.GLOGIN);
+		model.addAttribute("list", rs.reservationAllList(con_buyer));
 		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
 		return "transboard/transBoardWrite";
 	}
