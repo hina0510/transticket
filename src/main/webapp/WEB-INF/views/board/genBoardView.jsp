@@ -10,15 +10,167 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
-		#modal_wrap {
-			display : none;
-			position : fixed; z-index: 9; margin: auto;
-			top: 0; left: 1000; right:0; width: 100%; height: 100%;
-			background-color: rgba(0, 0, 0, 0.4); 
-			
-		}
+	#modal_wrap {
+		display : none;
+		position : fixed; z-index: 9; margin: auto;
+		top: 0; left: 1000; right:0; width: 100%; height: 100%;
+		background-color: rgba(0, 0, 0, 0.4); 
+	}
+</style>
+<script type="text/javascript">
+var num;
+function slide_hide() {
+	$("#first").hide();
+	$("#modal_wrap").hide();
+}
 		
-	</style>
+function imgShow(su) {
+	var imgId = document.getElementById("mainImg");
+	num = su;
+	console.log("imgShow > ", num)
+	if(num == 1) {
+		if("${dto.imageName1 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName1 }";
+		}
+	}
+	if(num == 2) {
+		if("${dto.imageName2 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName2 }";
+		}
+	}
+	if(num == 3) {
+		if("${dto.imageName3 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName3 }";
+		}
+	}
+	if(num == 4) {
+		if("${dto.imageName4 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName4 }";
+		}
+	}
+	if(num == 5) {
+		if("${dto.imageName5 }" == "nan") {
+			num = 1;
+			nextShow(num);
+		}else {
+			imgId.src = "imgView?name=${dto.imageName5 }";
+		}
+	}
+	$("#modal_wrap").show();
+}
+function nextImage() {
+	num++;
+	if(num > 5) {
+		num = 1;
+	}
+	nextShow(num);
+}
+function nextShow(num) {
+	var imgId = document.getElementById("mainImg");
+	console.log("nextShow > ", num)
+	if(num == 1) {
+		if("${dto.imageName1 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName1 }";
+		}
+	}
+	console.log("1 > ", num);
+	if(num == 2) {
+		if("${dto.imageName2 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName2 }";
+		}
+	}
+	console.log("2 > ", num);
+	if(num == 3) {
+		if("${dto.imageName3 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName3 }";
+		}
+	}
+	console.log("3 >", num);
+	if(num == 4) {
+		if("${dto.imageName4 }" == "nan") {
+			num++;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName4 }";
+		}
+	}
+	console.log("4 >", num);
+	if(num == 5) {
+		if("${dto.imageName5 }" == "nan") {
+			num = 1;
+			imgShow(num);
+		}else {
+			imgId.src = "imgView?name=${dto.imageName5 }";
+		}
+	}
+	console.log("5 > ", num);
+}
+	function prevImage() {
+	num--;
+	if(num < 1) {
+		num = 5;
+	}
+	prevShow(num);
+}
+function prevShow() {
+	var imgId = document.getElementById("mainImg");
+	console.log("prevShow > ", num);
+	if(num == 5) {
+		if("${dto.imageName5 }" == "nan") {
+			num--;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName5 }";
+		}
+	}
+	console.log("5 > ", num);
+	if(num == 4) {
+		if("${dto.imageName4 }" == "nan") {
+			num--;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName4 }";
+		}
+	}
+	console.log("4 > ", num);
+	if(num == 3) {
+		if("${dto.imageName3 }" == "nan") {
+			num--;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName3 }";
+		}
+	}
+	console.log("3 > ", num);
+	if(num == 2) {
+		if("${dto.imageName2 }" == "nan") {
+			num--;
+		}else {
+			imgId.src = "imgView?name=${dto.imageName2 }";
+		}
+	}
+	console.log("2 > ", num);
+	if(num == 1) {
+		if("${dto.imageName1 }" == "nan") {
+			num = 5;
+			imgShow(num);
+		}else {
+			imgId.src = "imgView?name=${dto.imageName1 }";
+		}
+	}
+	console.log("1 > ", num);
+}
+</script>
 </head>
 <body>
 <%@ include file="../default/header.jsp" %>
@@ -45,177 +197,7 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript">	
-		var num;
-		
-		function slide_hide() {
-			$("#first").hide();
-			$("#modal_wrap").hide();
-		}
-		
-		function imgShow(su) {
-			var imgId = document.getElementById("mainImg");
-			
-			num = su;
-			console.log("imgShow > ", num)
-			if(num == 1) {
-				if("${dto.imageName1 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName1 }";
-				}
-				
-			}
-			
-			if(num == 2) {
-				if("${dto.imageName2 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName2 }";
-				}
-			}
-			
-			if(num == 3) {
-				if("${dto.imageName3 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName3 }";
-				}
-			}
-			
-			if(num == 4) {
-				if("${dto.imageName4 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName4 }";
-				}
-			}
-			
-			if(num == 5) {
-				if("${dto.imageName5 }" == "nan") {
-					num = 1;
-					nextShow(num);
-				}else {
-					imgId.src = "imgView?name=${dto.imageName5 }";
-				}
-			}
-			
-			$("#modal_wrap").show();
-		}
-		
-		function nextImage() {
-			num++;
-			if(num > 5) {
-				num = 1;
-			}
-			nextShow(num);
-		}
-		
-		function nextShow(num) {
-			var imgId = document.getElementById("mainImg");
-			
-			console.log("nextShow > ", num)
-			
-			if(num == 1) {
-				if("${dto.imageName1 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName1 }";
-				}
-			}
-			console.log("1 > ", num);
-			if(num == 2) {
-				if("${dto.imageName2 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName2 }";
-				}
-			}
-			console.log("2 > ", num);
-			if(num == 3) {
-				if("${dto.imageName3 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName3 }";
-				}
-			}
-			console.log("3 >", num);
-			if(num == 4) {
-				if("${dto.imageName4 }" == "nan") {
-					num++;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName4 }";
-				}
-			}
-			console.log("4 >", num);
-			if(num == 5) {
-				if("${dto.imageName5 }" == "nan") {
-					num = 1;
-					imgShow(num);
-				}else {
-					imgId.src = "imgView?name=${dto.imageName5 }";
-				}
-			}
-			console.log("5 > ", num);
-		}
-		
-		function prevImage() {
-			num--;
-			if(num < 1) {
-				num = 5;
-			}
-			prevShow(num);
-		}
-		
-		function prevShow() {
-			
-			var imgId = document.getElementById("mainImg");
-			console.log("prevShow > ", num);
-			
-			if(num == 5) {
-				if("${dto.imageName5 }" == "nan") {
-					num--;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName5 }";
-				}
-			}
-			console.log("5 > ", num);
-			if(num == 4) {
-				if("${dto.imageName4 }" == "nan") {
-					num--;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName4 }";
-				}
-			}
-			console.log("4 > ", num);
-			if(num == 3) {
-				if("${dto.imageName3 }" == "nan") {
-					num--;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName3 }";
-				}
-			}
-			console.log("3 > ", num);
-			if(num == 2) {
-				if("${dto.imageName2 }" == "nan") {
-					num--;
-				}else {
-					imgId.src = "imgView?name=${dto.imageName2 }";
-				}
-			}
-			console.log("2 > ", num);
-			if(num == 1) {
-				if("${dto.imageName1 }" == "nan") {
-					num = 5;
-					imgShow(num);
-				}else {
-					imgId.src = "imgView?name=${dto.imageName1 }";
-				}
-			}
-			console.log("1 > ", num);
-		}
-		
-	</script>
+	
 	
 	
 	concert_content
@@ -292,30 +274,7 @@
 	                    <dl>
 	                        <dt>내용</dt>
 	                        <dd>
-	                        	<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-									<ul class="nav nav-pills">
-										<li class="nav-item">
-											<a class="nav-link" href="#scrollspyHeading1">First</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#scrollspyHeading2">Second</a>
-										</li>
-										<li class="nav-item dropdown">
-											<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-												<li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-												<li><hr class="dropdown-divider"></li>
-												<li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-											</ul>
-										</li>
-									</ul>
-								</nav>
-								<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
 								  ${dto.content },  asdsad : ${genId }, likes : ${likes }
-								 
-								  
-								</div>
 	                        </dd>
 	                    </dl>
 	                    <br>

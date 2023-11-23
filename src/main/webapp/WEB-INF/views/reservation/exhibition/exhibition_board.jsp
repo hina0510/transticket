@@ -52,9 +52,11 @@
 					    </c:forEach>
 					</c:otherwise>
 				</c:choose>
+				<button class="custom-btn6" onclick="">&lt;</button>
 				<c:forEach var="n" begin="1" end="${repeat }">
-					<a href="exhibition_board?num=${n }">${n }</a>
+					<button class="custom-btn6" onclick="location.href='concert_board?num=${n }'">${n }</button>
 				</c:forEach>
+				<button class="custom-btn6" onclick="">&gt;</button>
 				<br>
 				<c:if test="${clogin!=null}">	
 					<button class="custom-btn btn-3" onclick="location.href='write_exhibition_form'"><span>글 작성</span></button>
