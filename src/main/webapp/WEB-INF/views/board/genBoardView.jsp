@@ -385,9 +385,9 @@ function prevShow() {
 		        				</div>
 		        			</c:if> <br>
 		        			작성 내용 : ${rep.content } <br>
-		        			
 		        		</c:otherwise>
 		        	</c:choose>
+		        </c:forEach>
 			</div>
 		</div>
 	</div>

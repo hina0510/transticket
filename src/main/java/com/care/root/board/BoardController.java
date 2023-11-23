@@ -215,5 +215,13 @@ public class BoardController {
 		gbs.genDelete(writeNo);
 		return "redirect:genBoardList";
 	}
-	
+	@GetMapping("genBoardMypage")
+	public String genBoardMypage(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+		System.out.println(type);
+		System.out.println(keyword);
+		Map<String, Object> map = gbs.selectSearch(model, type, keyword, num);
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("repeat", map.get("repeat"));
+		return "board/genBoardMypage";
+	}
 }
