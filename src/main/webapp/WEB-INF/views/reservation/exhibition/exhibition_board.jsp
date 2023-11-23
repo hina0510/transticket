@@ -17,6 +17,7 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="container">
+			<br><br>
 				<c:choose>
 					<c:when test="${list.size()==0}">
 						작성된 글이 없습니다
@@ -51,10 +52,14 @@
 					    </c:forEach>
 					</c:otherwise>
 				</c:choose>
+				<c:forEach var="n" begin="1" end="${repeat }">
+					<a href="exhibition_board?num=${n }">${n }</a>
+				</c:forEach>
 				<br>
 				<c:if test="${clogin!=null}">	
 					<button class="custom-btn btn-3" onclick="location.href='write_exhibition_form'"><span>글 작성</span></button>
 				</c:if>
+				<br><br>
 			</div>
 		</div>
 	</div>

@@ -51,7 +51,7 @@
 		delete from performBoard where writeNo=#{writeNo}
 	</delete>
 	<select id="selectEBoardCount" resultType="integer">
-   		select count(*) from performBoard
+   		select count(*) from performBoard where type='exhibition'
    	</select>
    	<update id="eLikeUpdate">
 		update performBoard set likes=likes+1 where writeNo=#{writeNo}	

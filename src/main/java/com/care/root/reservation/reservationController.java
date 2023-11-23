@@ -574,10 +574,8 @@ public class reservationController implements LoginSession{
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
 		
-		// 占쎈연疫꿸퀡占쏙옙苑� 占쎄텣占쎌젫�몴占� 占쎈땭占쎌쑎占쎄퐣 nan占쎌뱽 占쏙옙占쎌삢占쎈립 野껓옙
 		String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
 						mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
-		// 占쎈연疫꿸퀡�뮉 占쎄퉱嚥≪뮇�뒲 占쎌뵠沃섎챷占쏙옙�솁占쎌뵬占쎌뱽 占쎄퐫占쏙옙 野껓옙
 		MultipartFile[] fileNames = {
 			mt.getFile("imageName1"),
 			mt.getFile("imageName2"),
