@@ -27,6 +27,15 @@
 		<result property="writeNo" column="write_no"/>
 	</resultMap>
 	
+	<resultMap type="com.care.root.board.dto.ReplyDTO" id="reply">
+		<result property="nId" column="n_id"/>
+		<result property="cId" column="c_id"/>
+		<result property="writeNo" column="write_no"/>
+		<result property="replyNo" column="reply_no"/>
+		<result property="content" column="content"/>
+		<result property="saveDate" column="saveDate"/>
+	</resultMap>
+	
 	<select id="selectBoardCount" resultType="Integer">
 		select count(*) from genBoard
 	</select>
