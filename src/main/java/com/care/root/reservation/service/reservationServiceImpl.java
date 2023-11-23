@@ -248,4 +248,10 @@ public class reservationServiceImpl implements reservationService{
 	public List<concertSeatDTO> reservationAllList(String con_buyer){
 		return csmapper.reservationAllList(con_buyer);
 	}
+	public List<concertSeatDTO> selectTicket(String conS_id){
+		return csmapper.selectTicket(conS_id);
+	}
+	public void presentTicket(String con_buyer, String conS_id) {
+		csmapper.presentTicket(con_buyer, conS_id);
+	}
 }

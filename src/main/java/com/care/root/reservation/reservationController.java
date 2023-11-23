@@ -247,7 +247,6 @@ public class reservationController implements LoginSession{
 	}
 	@PostMapping("concert_BuySeat")
 	public String concertBuySeat(HttpServletRequest req, payDTO pdto) {
-		//寃곗젣
 		pdto.setAccount(req.getParameter("account"));
 		String account= pdto.getAccount();
 		pdto.setTitle(req.getParameter("title"));
@@ -461,7 +460,6 @@ public class reservationController implements LoginSession{
 	}
 	@PostMapping("musical_BuySeat")
 	public String musicalBuySeat(HttpServletRequest req, payDTO pdto) {
-		//寃곗젣
 		pdto.setAccount(req.getParameter("account"));
 		String account= pdto.getAccount();
 		pdto.setTitle(req.getParameter("title"));
@@ -677,7 +675,6 @@ public class reservationController implements LoginSession{
 	}
 	@PostMapping("exhibition_BuySeat")
 	public String exhibitionBuySeat(HttpServletRequest req, payDTO pdto) {
-		//寃곗젣
 		pdto.setAccount(req.getParameter("account"));
 		String account= pdto.getAccount();
 		pdto.setTitle(req.getParameter("title"));
@@ -707,5 +704,21 @@ public class reservationController implements LoginSession{
 		String con_buyer = (String) session.getAttribute(LoginSession.GLOGIN);
 		model.addAttribute("list", rs.reservationAllList(con_buyer));
 		return "reservation/reservationAllList";
+	}
+	@PostMapping("presentTicket")
+	public String presentTicket(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		model.addAttribute("list", rs.selectTicket(conS_id));
+		return "reservation/presentTicket";
+	}
+	@PostMapping("presentChk")
+	public String presentChk(HttpServletRequest req) {
+		System.out.println(req.getParameter("receiver"));
+		System.out.println(req.getParameter("seat"));
+		String con_buyer = req.getParameter("receiver");
+		String conS_id = req.getParameter("seat");
+		rs.presentTicket(con_buyer, conS_id);
+		return "redirect:reservationAllList";
 	}
 }

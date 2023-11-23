@@ -29,4 +29,10 @@
 	<select id="reservationAllList" resultMap="seat">
 		select * from seat where s_buyer=#{con_buyer}
 	</select>
+	<select id="selectTicket" resultMap="seat">
+		select * from seat where s_id=#{conS_id}
+	</select>
+	<update id="presentTicket">
+		update seat set s_buyer=#{con_buyer} where s_id=#{conS_id}
+	</update>
 </mapper>

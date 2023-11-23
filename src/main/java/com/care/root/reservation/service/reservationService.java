@@ -45,4 +45,6 @@ public interface reservationService {
 	public void eBuySeat(String ex_title, String ex_buyer);
 	
 	public List<concertSeatDTO> reservationAllList(String con_buyer);
+	public List<concertSeatDTO> selectTicket(String conS_id);
+	public void presentTicket(String con_buyer, String conS_id);
 }
