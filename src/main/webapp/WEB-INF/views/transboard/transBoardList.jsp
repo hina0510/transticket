@@ -56,7 +56,6 @@
 					<c:forEach var="n" begin="1" end="${repeat }">
 						<a href="transBoardList?num=${n }">${n }</a>
 					</c:forEach>
-					<a href="transWrite">글 작성</a>
 				</td>
 			</tr>
 	</table>

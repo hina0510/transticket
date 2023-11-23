@@ -13,6 +13,7 @@
    		<result property="mu_date" column="s_date"/>
    		<result property="mu_place" column="s_place"/>
    		<result property="muS_price" column="s_price"/>
+   		<result property="muS_write" column="s_write"/>
 	</resultMap>
 	<insert id="mSeatSave" >
 		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)

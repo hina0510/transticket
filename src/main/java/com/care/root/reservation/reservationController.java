@@ -33,6 +33,7 @@ import com.care.root.reservation.dto.payDTO;
 import com.care.root.reservation.dto.concertSeatDTO;
 import com.care.root.reservation.service.reservationFileService;
 import com.care.root.reservation.service.reservationService;
+import com.care.root.transboard.service.TransBoardService;
 
 @Controller
 @RequestMapping("reservation")
@@ -40,6 +41,7 @@ public class reservationController implements LoginSession{
 	@Autowired reservationService  rs;
 	@Autowired reservationFileService  fs;
 	@Autowired GenMemberService gms;
+	@Autowired TransBoardService ts;
 	
 	@GetMapping("concert_board")
 	public String concertBoard(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
@@ -193,8 +195,8 @@ public class reservationController implements LoginSession{
 		String cnt = mt.getParameter("count");
 		int count = Integer.parseInt(cnt);
 		String pri = mt.getParameter("price");
-		int price = Integer.parseInt(pri);//寃곗젣�븸
-		int rprice = price/count;//�떚耳� 媛�寃�
+		int price = Integer.parseInt(pri);
+		int rprice = price/count;
 		
 		cdto.setConS_num(count);
 		cdto.setConS_price(rprice);
@@ -263,7 +265,7 @@ public class reservationController implements LoginSession{
 		}else {
 			return "redirect:concert_board";
 		}
-		return "redirect:successPay";
+		return "redirect:cSuccessPay";
 	}
 	@GetMapping("cSuccessPay")
 	public String cSuccessPay() {
@@ -343,7 +345,7 @@ public class reservationController implements LoginSession{
 	}
 	@PostMapping("modify_musical")
 	public String mModify(@RequestParam int writeNo, MultipartHttpServletRequest mt){
-		System.out.println("野껊슣�뻻疫뀐옙 甕곕뜇�깈 : " + writeNo);
+		System.out.println("writeNo : " + writeNo);
 		
 		String pri = mt.getParameter("price");
 		int price = Integer.parseInt(pri);
@@ -700,7 +702,7 @@ public class reservationController implements LoginSession{
 	
 	
 	@GetMapping("reservationAllList")
-	public String reservationAllList(Model model, HttpSession session) {
+	public String reservationAllList(Model model, HttpSession session, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		String con_buyer = (String) session.getAttribute(LoginSession.GLOGIN);
 		model.addAttribute("list", rs.reservationAllList(con_buyer));
 		return "reservation/reservationAllList";

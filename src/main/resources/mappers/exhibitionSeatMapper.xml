@@ -13,6 +13,7 @@
    		<result property="ex_date" column="s_date"/>
    		<result property="ex_place" column="s_place"/>
    		<result property="exS_price" column="s_price"/>
+   		<result property="exS_write" column="s_write"/>
 	</resultMap>
 	<insert id="eSeatSave" >
 		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)

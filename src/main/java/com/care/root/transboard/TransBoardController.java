@@ -2,6 +2,7 @@ package com.care.root.transboard;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,21 +48,22 @@ public class TransBoardController {
 		return "transboard/transBoardWrite";
 	}
 	*/
-	@GetMapping("transWrite")
-	public String transWrite(HttpSession session, Model model) {
-		String con_buyer = (String) session.getAttribute(LoginSession.GLOGIN);
-		model.addAttribute("list", rs.reservationAllList(con_buyer));
-		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
+	@PostMapping("transWrite")
+	public String transWrite(HttpServletRequest req, HttpSession session, Model model) {
+		System.out.println(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		model.addAttribute("list", rs.selectTicket(conS_id));
 		return "transboard/transBoardWrite";
 	}
 	
 	@PostMapping("transWriteSave")
-	public String transWriteSave(MultipartHttpServletRequest mt, TransBoardDTO dto) {
-		dto.setCategory(mt.getParameter("category"));
-		dto.setTitle(mt.getParameter("title"));
-		dto.setId(mt.getParameter("id"));
-		dto.setContent(mt.getParameter("content"));
-		ts.transWriteSave(dto);
+	public String transWriteSave(HttpServletRequest req, TransBoardDTO dto) {
+		dto.setCategory(req.getParameter("category"));
+		dto.setTitle(req.getParameter("title"));
+		dto.setId(req.getParameter("id"));
+		dto.setContent(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		ts.transWriteSave(dto, conS_id);
 		
 		return "redirect:transBoardList";
 	}

@@ -15,4 +15,6 @@ public interface concertSeatMapper {
 	public List<concertSeatDTO> reservationAllList(String con_buyer);
 	public List<concertSeatDTO> selectTicket(String conS_id);
 	public void presentTicket(@Param("con_buyer") String con_buyer, @Param("conS_id") String conS_id);
+	public void seatWriteUpdate(String conS_id);
+	public List<concertSeatDTO> seatWriteChk(String con_buyer);
 }

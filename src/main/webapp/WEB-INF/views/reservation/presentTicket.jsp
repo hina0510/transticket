@@ -22,25 +22,18 @@
 		<div class="con02">
 			<div class="container2">
 				<p style="font-size: 30px;">선물하기<br></p>
-				<c:choose>
-					<c:when test="${list.size()==0}">
-						예매한 티켓이 없습니다<br>
-					</c:when>
-					<c:otherwise>
-					<c:set var="cdto" value="${list}" />
-					<c:forEach var="i" begin="0" end="${list.size()-1}">
-						<form action="presentChk" method="post">
-							제목 : ${cdto[i].con_title }<br>
-							구매자 ID : ${cdto[i].con_buyer }<br>
-							선물할 사람 ID : <input type="text" name="receiver"><br>
-							좌석 : ${cdto[i].conS_id }
-							<input type="hidden" name="seat" value="${cdto[i].conS_id }"><br>
-							<input type="submit" value="선물하기">
-						</form>
-						<hr>
-					</c:forEach>
-					</c:otherwise>
-				</c:choose>
+				<c:set var="cdto" value="${list}" />
+				<c:forEach var="i" begin="0" end="${list.size()-1}">
+					<form action="presentChk" method="post">
+						제목 : ${cdto[i].con_title }<br>
+						구매자 ID : ${cdto[i].con_buyer }<br>
+						선물할 사람 ID : <input type="text" name="receiver"><br>
+						좌석 : ${cdto[i].conS_id }
+						<input type="hidden" name="seat" value="${cdto[i].conS_id }"><br>
+						<button class="custom-btn btn-3" type="submit"><span>선물하기</span></button>
+					</form>
+					<hr>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

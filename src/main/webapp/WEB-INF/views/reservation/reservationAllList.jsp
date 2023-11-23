@@ -43,8 +43,14 @@
 						가격 : ${cdto[i].conS_price }<br>
 						<form action="presentTicket" method="post">
 							<input type="hidden" name="seat" value="${cdto[i].conS_id }">
-							<button type="submit">선물하기</button>
+							<button class="custom-btn btn-3" type="submit"><span>선물하기</span></button>
 						</form>
+						<c:if test="${cdto[i].conS_write == 0 }">
+							<form action="/root/transboard/transWrite" method="post">
+								<input type="hidden" name="seat" value="${cdto[i].conS_id }">
+								<button class="custom-btn btn-3" type="submit"><span>양도글 게시</span></button>
+							</form>
+						</c:if>
 						<hr>
 					</c:forEach>
 					</c:otherwise>
