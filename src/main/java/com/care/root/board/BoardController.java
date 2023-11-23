@@ -20,8 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.dto.GenBoardDTO;
+import com.care.root.board.dto.ReplyDTO;
 import com.care.root.board.service.GenBoardService;
 import com.care.root.board.service.GenFileService;
+import com.care.root.board.service.ReplyService;
 import com.care.root.common.LoginSession;
 
 @Controller
@@ -30,7 +32,7 @@ public class BoardController {
 	
 	@Autowired GenBoardService gbs;
 	@Autowired GenFileService gfs;
-	
+	@Autowired ReplyService rs;
 	
 	@GetMapping("genBoardList")
 	public String boardAllList(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
@@ -76,18 +78,26 @@ public class BoardController {
 	public String genBoardView(@RequestParam int writeNo,
 							   Model model,
 							   HttpSession session) {
-		String id;
+		String id1 = null;
+		String id2 = null;
 		System.out.println("chk : " + session.getAttribute(LoginSession.GLOGIN));
-		if(session.getAttribute(LoginSession.GLOGIN) == null) {
-			id = "undefined";
-		}else {
-			id = (String) session.getAttribute(LoginSession.GLOGIN);
+		
+		if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) != null)) {
+			id1 = "undefined";
+			id2 = (String) session.getAttribute(LoginSession.CLOGIN);
+		}else if((session.getAttribute(LoginSession.GLOGIN) != null) && (session.getAttribute(LoginSession.CLOGIN) == null)){
+			id1 = (String) session.getAttribute(LoginSession.GLOGIN);
+			id2 = "undefined";
+		} else {
+			id1 = "undefined";
+			id2 = "undefined";
 		}
-		System.out.println("asdsada " +id);
+		
 		model.addAttribute("dto", gbs.genView(writeNo));
-		model.addAttribute("genId", id);
-		System.out.println(id + ", " + writeNo);
-		model.addAttribute("likes", gbs.genLikeChk(id, writeNo));
+		model.addAttribute("genId", id1);
+		model.addAttribute("comId", id2);
+		model.addAttribute("likes", gbs.genLikeChk(id1, writeNo));
+		model.addAttribute("reply", rs.viewRep(writeNo));
 		return "board/genBoardView";
 	}
 	
@@ -108,6 +118,61 @@ public class BoardController {
 		FileInputStream in = new FileInputStream(file);
 		FileCopyUtils.copy(in, response.getOutputStream());
 		in.close();
+	}
+	
+	@PostMapping("reply")
+	public String reply(@RequestParam(required = false) String gId,
+						@RequestParam(required = false) String cId,
+						@RequestParam String content,
+						@RequestParam int writeNo,
+						ReplyDTO dto,
+						Model model) {
+		
+		System.out.println("gggid : " + gId);
+		System.out.println("cccid : " + cId);
+		
+		dto.setWriteNo(writeNo);
+		if(gId == null && cId != null) {
+			dto.setnId("nan");
+			dto.setcId(cId);
+		}else if(gId != null && cId == null){
+			dto.setnId(gId);
+			dto.setcId("nan");
+		} else {
+			dto.setnId("nan");
+			dto.setcId("nan");
+		}
+		dto.setContent(content);
+		
+		if(dto.getcId().equals("nan") && dto.getnId().equals("nan")) {
+			return "redirect:genBoardView?writeNo="+ writeNo;
+		}else {
+			rs.addReply(dto);
+			return "redirect:genBoardView?writeNo="+ writeNo;
+		}
+	}
+	
+	@PostMapping("replyModify")
+	public String repMod(@RequestParam int writeNo,
+			 			 @RequestParam int replyNo,
+			 			 @RequestParam String modify) {
+		System.out.println("writeNo : " + writeNo);
+		System.out.println("replyNo : " + replyNo );
+		System.out.println("modify : " + modify);
+		ReplyDTO dto = new ReplyDTO();
+		dto.setContent(modify);
+		dto.setReplyNo(replyNo);
+		dto.setWriteNo(writeNo);
+		rs.replyModify(dto);
+		
+		return "redirect:genBoardView?writeNo="+ writeNo;
+	}
+	
+	@GetMapping("replyDelete")
+	public String repDel(@RequestParam int writeNo,
+						 @RequestParam int replyNo) {
+		rs.replyDelete(replyNo);
+		return "redirect:genBoardView?writeNo="+ writeNo;
 	}
 	
 	@GetMapping("genModify")
