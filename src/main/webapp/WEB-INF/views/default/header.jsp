@@ -26,7 +26,8 @@
     }
     #trin {width: 190px; height: 120px;}
     #main01 {width: 100%; height: 150px; display:flex; flex-flow:row;}
-    #main01>#title{padding: 1.2% 15%; width: 65%;}
+    #main01>#title{padding: 2.5% 25% 0 17%; width: 65%; }
+    #title img{width: 100%; height: 100%;}
     #main01>#login{width: 45%; font-family: 'omyu_pretty'; 
     	font-size: 20px; text-align: center; margin: 4%;}
 
@@ -93,7 +94,7 @@ function loginfo(){
 	<header>
 		<div id="main01">
 			<dd id="title">
-			    <a href="${contextPath }/">transticket</a>
+			    <a href="${contextPath }/"><img src="${contextPath }/resources/images/transticket.jpg" alt="transticket"></a>
 			</dd>
 			<dd id="login">
 				<c:choose>
