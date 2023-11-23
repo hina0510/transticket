@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.root.mybatis.reservation.paySeatMapper">
+	<resultMap type="com.care.root.reservation.dto.payDTO" id="payAccount">
+		<id property="account" column="account"/>
+		<result property="name" column="name"/>
+		<result property="money" column="money"/>
+	</resultMap>
+	<select id="selectAccount" resultMap="payAccount">
+		select * from payAccount where account=#{account}
+	</select>
+	<update id="saveAccount">
+		update payAccount set money=#{money} where account=#{account}
+	</update>
+</mapper>

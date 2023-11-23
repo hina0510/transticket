@@ -10,13 +10,10 @@
 	<h4>상품관련 정보</h4>
 		<table>
 			<tr>
-				<th>주최/기획</th><td>d</td><th>고객문의</th><td>d</td>
+				<th>주최/기획</th><td>${dto.comname }</td><th>고객문의</th><td>d</td>
 			</tr>
 			<tr>
-				<th>공연시간</th><td>d</td><th>관람등급</th><td>d</td>
-			</tr>
-			<tr>
-				<th>주연</th><td>d</td><th>공연장소</th><td>d</td>
+				<th>공연시간</th><td>d</td><th>공연장소</th><td>${dto.con_place }</td>
 			</tr>
 			<tr>
 				<th>예매수수료</th><td>d</td><th>배송료</th><td>d</td>

@@ -1,7 +1,5 @@
 package com.care.root.board.service;
 
-
-
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -16,5 +14,5 @@ public interface GenBoardService {
 	public void genDelete(int writeNo);
 	public void genLike(String id, int writeNo);
 	public String genLikeChk(String id, int writeNo);
-	public Map<String, Object> selectSearch(@Param("type")Model model,@Param("type")String type, @Param("keyword")String keyword, int num)throws Exception;
+	public Map<String, Object> selectSearch(@Param("type")Model model, @Param("type")String type, @Param("keyword")String keyword, int num)throws Exception;
 }

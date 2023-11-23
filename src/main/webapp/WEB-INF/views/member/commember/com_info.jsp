@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script>
 function delchk(){
 	 if (confirm("정말 삭제하시겠습니까??") == true){
@@ -31,17 +32,27 @@ function delchk(){
 %>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	id : ${cominfo.dto.id }<br>
-	pwd : ${cominfo.dto.pwd }<br>
-	이름 : ${cominfo.dto.name }<br>
-	기본주소 : ${cominfo.dto.addr }<br>
-	우편번호 : ${cominfo.addr1 }<br>
-	주소 : ${cominfo.addr2 }<br>
-	상세주소 : ${cominfo.addr3 }<br>
-	이메일 : ${cominfo.dto.email }<br>
-	<hr>
-	<button type="button" onclick="location.href='com_modify?id=${cominfo.dto.id}'">수정</button>
-	<button type="button" onclick="delchk()">삭제</button>
+	<div class="con01">
+		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>기업정보</strong>
+		        </div>
+				<div class="board_view_info">
+					id : ${cominfo.dto.id }<br>
+					pwd : ${cominfo.dto.pwd }<br>
+					이름 : ${cominfo.dto.name }<br>
+					기본주소 : ${cominfo.dto.addr }<br>
+					우편번호 : ${cominfo.addr1 }<br>
+					주소 : ${cominfo.addr2 }<br>
+					상세주소 : ${cominfo.addr3 }<br>
+					이메일 : ${cominfo.dto.email }<br>
+				</div>
+			</div>
+			<button class="custom-btn btn-3" onclick="location.href='com_modify?id=${cominfo.dto.id}'"><span>수정</span></button>
+			<button class="custom-btn btn-3" onclick="delchk()"><span>삭제</span></button>
+		</div>
+	</div>
 <%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

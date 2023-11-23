@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 </head>
 <body>
 <script type="text/javascript">
@@ -28,19 +29,26 @@
  }
 %>
 <%@ include file="../../default/header.jsp" %>
-<form class = "content" action="com_pw_auth" method="post">
-	<div class="textbox">
-  		<input id="text" name=id type="text" />
-  		<label for="text">아이디</label>
-   		
- 	</div>
-	<div class="textbox">
-  		<input id="email" name=email required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
-  		<label for="email">이메일</label>
-  
-	</div><br><br>
-   	<input type="submit" id="check" value="비밀번호찾기">
-</form>
+	<div class="con01">
+		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>비밀번호 찾기</strong>
+		        </div>
+				<div class="board_view_info">
+					<form class = "content" action="com_pw_auth" method="post">
+						<div class="textbox">
+					  		<label for="text">아이디</label><input id="text" name=id type="text" />
+					 	</div>
+						<div class="textbox">
+					  		<label for="email">이메일</label><input id="email" name=email required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
+						</div><br>
+					   	<input type="submit" id="check" value="비밀번호찾기">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 <%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

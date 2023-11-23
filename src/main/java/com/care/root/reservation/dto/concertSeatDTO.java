@@ -4,10 +4,22 @@ import java.util.List;
 
 public class concertSeatDTO {
 	private int conS_num, conS_price;
-	private String conS_id01, conS_id02, conS_id03, conS_id04, conS_id05, con_title, con_date, con_place;
+	private String conS_id, con_title, con_date, con_place, con_buyer, con_payed;
 	private String conSr_id, conS_pwd;
 	private List<String> seatList;
 	
+	public String getCon_payed() {
+		return con_payed;
+	}
+	public void setCon_payed(String con_payed) {
+		this.con_payed = con_payed;
+	}
+	public String getCon_buyer() {
+		return con_buyer;
+	}
+	public void setCon_buyer(String con_buyer) {
+		this.con_buyer = con_buyer;
+	}
 	public List<String> getSeatList() {
 		return seatList;
 	}
@@ -26,35 +38,11 @@ public class concertSeatDTO {
 	public void setConS_price(int conS_price) {
 		this.conS_price = conS_price;
 	}
-	public String getConS_id01() {
-		return conS_id01;
+	public String getConS_id() {
+		return conS_id;
 	}
-	public void setConS_id01(String conS_id01) {
-		this.conS_id01 = conS_id01;
-	}
-	public String getConS_id02() {
-		return conS_id02;
-	}
-	public void setConS_id02(String conS_id02) {
-		this.conS_id02 = conS_id02;
-	}
-	public String getConS_id03() {
-		return conS_id03;
-	}
-	public void setConS_id03(String conS_id03) {
-		this.conS_id03 = conS_id03;
-	}
-	public String getConS_id04() {
-		return conS_id04;
-	}
-	public void setConS_id04(String conS_id04) {
-		this.conS_id04 = conS_id04;
-	}
-	public String getConS_id05() {
-		return conS_id05;
-	}
-	public void setConS_id05(String conS_id05) {
-		this.conS_id05 = conS_id05;
+	public void setConS_id(String conS_id) {
+		this.conS_id = conS_id;
 	}
 	public String getConSr_id() {
 		return conSr_id;

@@ -7,20 +7,7 @@ public class GenBoardDTO {
 	private int WriteNo, viewCount, likes;
 	private String category, title, content, id, saveDate;
 	private String imageName1, imageName2, imageName3, imageName4, imageName5;
-	private String keyword; // 검색 키워드
-	private String type; // 검색 타입
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 	public int getWriteNo() {
 		return WriteNo;
 	}

@@ -100,12 +100,4 @@ public class GenMemberServiceImpl implements GenMemberService{
 	public GenMemberDTO getGenSessionId(String sessionId) {
 		return mapper.getGenSessionId(sessionId);
 	}
-	public int idchk(String id) {
-		int result = mapper.idchk(id);
-		return result;
-	}
-	public int emailchk(String email) {
-		int result = mapper.emailchk(email);
-		return result;
-	}
 }

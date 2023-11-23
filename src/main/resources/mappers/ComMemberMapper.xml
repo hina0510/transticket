@@ -35,13 +35,8 @@
 	<select id="selectMember" resultMap="commember">
 		select * from commember where c_email = #{email}
 	</select>
+
 	<update id ="pwUpdate">
 		update commember set c_pwd=#{pwd} where c_email= #{email}
 	</update>
-	<select id="idchk" resultType="int">
-		select count(*) from commember where c_id = #{id}
-	</select>
-	<select id="emailchk" resultType="int">
-		select count(*) from commember where c_email = #{email}
-	</select>
 </mapper>

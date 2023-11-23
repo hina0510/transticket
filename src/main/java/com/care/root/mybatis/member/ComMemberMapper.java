@@ -19,6 +19,4 @@ public interface ComMemberMapper {
 	public ComMemberDTO getComSessionId(String sessionId);
 	public ComMemberDTO selectMember(String email);
 	public void pwUpdate(ComMemberDTO dto);
-	public int idchk(String id);
-	public int emailchk(String email);
 }

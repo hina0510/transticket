@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.reservation.musicalSeatMapper">
+	<resultMap type="com.care.root.reservation.dto.musicalSeatDTO" id="seat">
+   		<id property="mu_title" column="s_title"/><!-- primary key -->
+   		<result property="muS_id" column="s_id"/>
+   		<result property="muSr_id" column="sr_id"/>
+   		<result property="muS_pwd" column="s_pwd"/>
+   		<result property="mu_buyer" column="s_buyer"/>
+   		<result property="mu_payed" column="s_payed"/>
+   		<result property="mu_date" column="s_date"/>
+   		<result property="mu_place" column="s_place"/>
+   		<result property="muS_price" column="s_price"/>
+	</resultMap>
+	<insert id="mSeatSave" >
+		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)
+		values(#{mu_title}, #{muS_id}, #{mu_buyer}, #{mu_date}, #{mu_place}, #{muS_price})
+	</insert>
+	<select id="mGetSeat" resultMap="seat">
+		select * from seat where s_buyer=#{mu_buyer} AND s_payed='unpayed'
+	</select>
+	<update id="mBuySeat">
+		update seat set s_payed='payed' where s_title=#{mu_title} AND s_buyer=#{mu_buyer}
+	</update>
+</mapper>

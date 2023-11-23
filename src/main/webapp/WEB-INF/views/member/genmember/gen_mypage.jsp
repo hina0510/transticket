@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 </head>
 <body>
 <%
@@ -21,10 +22,21 @@
  }
 %>
 <%@ include file="../../default/header.jsp" %>
-
-<h3>mypage</h3>
-<a href="${contextPath }/member/gen_info?id=${geninfo.dto.id }">개인정보</a><br>
-<a href="">작성한 글 목록</a><br>
+	<div class="con01">
+		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>mypage</strong>
+		        </div>
+		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/gen_info?id=${geninfo.dto.id }'"><span>개인정보</span></button><br><br>
+				<form action="/root/board/genBoardMypage">
+				<input type="hidden" type="text" name="type" value="n_id">
+				<input type="hidden" type="text" name="keyword" value="${geninfo.dto.id }">
+				<button class="custom-btn btn-3" type="submit"><span>작성한 글</span></button>
+				</form>
+			</div>
+		</div>
+	</div>
 <%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

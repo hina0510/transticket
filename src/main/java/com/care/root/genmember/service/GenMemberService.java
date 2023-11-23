@@ -14,6 +14,4 @@ public interface GenMemberService {
 	public void gendelete(String id);
 	public void keepLogin(String sessionId, String id);
 	public GenMemberDTO getGenSessionId(String id);
-	public int idchk(String id);
-	public int emailchk(String email);
 }

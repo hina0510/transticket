@@ -38,7 +38,7 @@
 	
 	<insert id="saveWrite">
 		insert into genBoard (write_no, category, n_id, title, content, imageName1, imageName2, imageName3, imageName4, imageName5)
-		values (genBoard_seq.NEXTVAL, #{category}, #{id}, #{title}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5})
+		values (genBoard_seq.NEXTVAL, #{category}, #{id}, #{title}, #{content}, #{imageName1, jdbcType=VARCHAR}, #{imageName2, jdbcType=VARCHAR}, #{imageName3, jdbcType=VARCHAR}, #{imageName4, jdbcType=VARCHAR}, #{imageName5, jdbcType=VARCHAR})
 	</insert>
 	
 	<select id="genView" resultMap="genboard">

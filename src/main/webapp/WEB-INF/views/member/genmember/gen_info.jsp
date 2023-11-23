@@ -14,6 +14,7 @@ function delchk(){
 	}
 }
 </script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 </head>
 <body>
 <%
@@ -30,19 +31,29 @@ function delchk(){
  }
 %>
 <%@ include file="../../default/header.jsp" %>
-	id : ${geninfo.dto.id }<br>
-	pwd : ${geninfo.dto.pwd }<br>
-	이름 : ${geninfo.dto.name }<br>
-	생년월일 : ${geninfo.dto.birth }<br>
-	이메일 : ${geninfo.dto.email }<br>
-	기본주소 : ${geninfo.dto.addr }<br>
-	우편번호 : ${geninfo.addr1 }<br>
-	주소 : ${geninfo.addr2 }<br>
-	상세주소 : ${geninfo.addr3 }<br>
-	전화번호 : ${geninfo.dto.tel }<br>
-	<hr>
-	<button type="button" onclick="location.href='gen_modify?id=${geninfo.dto.id}'">수정</button>
-	<button type="button" onclick="delchk()">삭제</button>
+	<div class="con01">
+		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>개인정보</strong>
+		        </div>
+				<div class="board_view_info">
+					id : ${geninfo.dto.id }<br>
+					pwd : ${geninfo.dto.pwd }<br>
+					이름 : ${geninfo.dto.name }<br>
+					생년월일 : ${geninfo.dto.birth }<br>
+					이메일 : ${geninfo.dto.email }<br>
+					기본주소 : ${geninfo.dto.addr }<br>
+					우편번호 : ${geninfo.addr1 }<br>
+					주소 : ${geninfo.addr2 }<br>
+					상세주소 : ${geninfo.addr3 }<br>
+					전화번호 : ${geninfo.dto.tel }<br>
+				</div>
+			</div>
+			<button class="custom-btn btn-3" onclick="location.href='gen_modify?id=${geninfo.dto.id}'"><span>수정</span></button>
+			<button class="custom-btn btn-3" onclick="delchk()"><span>삭제</span></button>
+		</div>
+	</div>
 <%@ include file="../../default/footer.jsp" %>	
 </body>
 </html>

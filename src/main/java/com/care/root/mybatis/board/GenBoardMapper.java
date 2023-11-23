@@ -2,7 +2,6 @@ package com.care.root.mybatis.board;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

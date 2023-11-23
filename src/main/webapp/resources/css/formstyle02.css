@@ -1,26 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
 
-.con01 {margin: 0 7%;}
-.con02 {margin: 5% 17%;flex:1; padding: 2%;flex:1; background: #f8f8f8; border-radius: 20px;}
+.con01 {margin: 5% 7%; display: flex;}
+.con02 {padding: 2%;flex:1; background: #f8f8f8; border-radius: 20px;}
+
 * {
   box-sizing: border-box;
 }
-
-.movie-container {
-  margin: 20px 0;
-}
-
-.movie-container select {
-  background-color: #fff;
-  border: 0;
-  border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
-  padding: 5px 15px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
+.divCal{padding:0 3%;display: flex;}
+.con03 {padding: 2%;flex:1; background: #f8f8f8; border-radius: 20px; align-items: center;}
 
 .container {
   perspective: 1000px;
@@ -115,6 +102,13 @@
 
 p.text span {
   color: #6feaf6;
+}
+
+input[type="text"]{
+  height: 10px;
+  width: auto;
+  padding: 10px;
+  border-radius: 20px; 
 }
 
 .frame {

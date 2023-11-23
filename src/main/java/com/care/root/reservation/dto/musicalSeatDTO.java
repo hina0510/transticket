@@ -4,16 +4,10 @@ import java.util.List;
 
 public class musicalSeatDTO {
 	private int muS_num, muS_price;
-	private String muS_id01, muS_id02, muS_id03, muS_id04, muS_id05, mu_title, mu_date, mu_place;
+	private String muS_id, mu_title, mu_date, mu_place, mu_buyer, mu_payed;
 	private String muSr_id, muS_pwd;
 	private List<String> seatList;
 	
-	public List<String> getSeatList() {
-		return seatList;
-	}
-	public void setSeatList(List<String> seatList) {
-		this.seatList = seatList;
-	}
 	public int getMuS_num() {
 		return muS_num;
 	}
@@ -26,47 +20,23 @@ public class musicalSeatDTO {
 	public void setMuS_price(int muS_price) {
 		this.muS_price = muS_price;
 	}
-	public String getMuS_id01() {
-		return muS_id01;
+	public String getMuS_id() {
+		return muS_id;
 	}
-	public void setMuS_id01(String muS_id01) {
-		this.muS_id01 = muS_id01;
+	public void setMuS_id(String muS_id) {
+		this.muS_id = muS_id;
 	}
-	public String getMuS_id02() {
-		return muS_id02;
+	public String getMu_buyer() {
+		return mu_buyer;
 	}
-	public void setMuS_id02(String muS_id02) {
-		this.muS_id02 = muS_id02;
+	public void setMu_buyer(String mu_buyer) {
+		this.mu_buyer = mu_buyer;
 	}
-	public String getMuS_id03() {
-		return muS_id03;
+	public String getMu_payed() {
+		return mu_payed;
 	}
-	public void setMuS_id03(String muS_id03) {
-		this.muS_id03 = muS_id03;
-	}
-	public String getMuS_id04() {
-		return muS_id04;
-	}
-	public void setMuS_id04(String muS_id04) {
-		this.muS_id04 = muS_id04;
-	}
-	public String getMuS_id05() {
-		return muS_id05;
-	}
-	public void setMuS_id05(String muS_id05) {
-		this.muS_id05 = muS_id05;
-	}
-	public String getMuSr_id() {
-		return muSr_id;
-	}
-	public void setMuSr_id(String muSr_id) {
-		this.muSr_id = muSr_id;
-	}
-	public String getMuS_pwd() {
-		return muS_pwd;
-	}
-	public void setMuS_pwd(String muS_pwd) {
-		this.muS_pwd = muS_pwd;
+	public void setMu_payed(String mu_payed) {
+		this.mu_payed = mu_payed;
 	}
 	public String getMu_title() {
 		return mu_title;
@@ -85,5 +55,23 @@ public class musicalSeatDTO {
 	}
 	public void setMu_place(String mu_place) {
 		this.mu_place = mu_place;
+	}
+	public String getMuSr_id() {
+		return muSr_id;
+	}
+	public void setMuSr_id(String muSr_id) {
+		this.muSr_id = muSr_id;
+	}
+	public String getMuS_pwd() {
+		return muS_pwd;
+	}
+	public void setMuS_pwd(String muS_pwd) {
+		this.muS_pwd = muS_pwd;
+	}
+	public List<String> getSeatList() {
+		return seatList;
+	}
+	public void setSeatList(List<String> seatList) {
+		this.seatList = seatList;
 	}
 }

@@ -13,8 +13,8 @@ CREATE TABLE genBoard
     imageName3    VARCHAR2(255)      NULL,
     imageName4    VARCHAR2(255)      NULL,
     imageName5    VARCHAR2(255)      NULL,
-type      VARCHAR2(100)    NULL,
-keyword      VARCHAR2(100)   NULL,
+    type      VARCHAR2(100)    NULL,
+    keyword      VARCHAR2(100)   NULL,
      PRIMARY KEY (write_no)
 );
 

@@ -15,6 +15,4 @@ public interface GenMemberMapper {
 	public GenMemberDTO getGenSessionId(String sessionId);
 	public GenMemberDTO selectMember(String email);
 	public void pwUpdate(GenMemberDTO dto);
-	public int idchk(String id);
-	public int emailchk(String email);
 }

@@ -46,10 +46,6 @@
 				제목 : <input type="text" name="title">
 				작성자 :<input type="text" readonly name="id" value="${genId }"><br>
 				<textarea rows="25" cols="80" name="content" id="content"></textarea><br>
-<<<<<<< HEAD
-				<input type="file" name="imageFiles" id="imageFiles"  accept="image/*"  multiple onchange="previewImages()">
-				<div class="image-preview" id="imagePreview"></div><br>
-=======
 				<table style="margin: auto">
 						<tr>
 							<td>
@@ -93,7 +89,6 @@
 							</td>
 						</tr>
 					</table>
->>>>>>> 13021e7012101b44bf9e67562261658f279930af
 				<input type="submit" value="전송"><br>
 			</form>
 		</div>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 </head>
 <body>
 <%
@@ -21,10 +22,17 @@
  }
 %>
 <%@ include file="../../default/header.jsp" %>
-
-<h3>mypage</h3>
-<a href="${contextPath }/member/com_info?id=${cominfo.dto.id }">기업정보</a><br>
-<a href="">작성한 글 목록</a><br>
+	<div class="con01">
+		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>mypage</strong>
+		        </div>
+		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/com_info?id=${cominfo.dto.id }'"><span>기업정보</span></button><br><br>
+				<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>작성한 글</span></button>
+			</div>
+		</div>
+	</div>
 <%@ include file="../../default/footer.jsp" %>
 </body>
 </html>

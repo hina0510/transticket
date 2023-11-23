@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.root.mybatis.transboard.TransBoardMapper">
+	<resultMap type="com.care.root.transboard.dto.TransBoardDTO" id="transboard">
+		<id property="writeNo" column="write_no"/>
+		<result property="category" column="category"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="saveDate" column="saveDate"/>
+		<result property="viewCount" column="viewCount"/>
+		<result property="likes" column="likes"/>
+		<result property="id" column="n_id"/>
+		<result property="type" column="type" />
+		<result property="keyword" column="keyword" />
+	</resultMap>
+	
+	<resultMap type="com.care.root.transboard.dto.TransLikeDTO" id="transLikes">
+		<result property="id" column="n_id"/>
+		<result property="writeNo" column="write_no"/>
+	</resultMap>
+	
+	<select id="selectBoardCount" resultType="Integer">
+		select count(*) from transBoard
+	</select>
+
+	<select id="boardAllList" resultMap="transboard">
+		select B.* from(select rownum rn, A.* from
+		(select * from transBoard order by write_no desc)A)B where rn between #{s} and #{e}
+	</select>
+	
+	<insert id="transWriteSave">
+		insert into transBoard (write_no, category, n_id, title, content)
+		values (transBoard_seq.NEXTVAL, #{category}, #{id}, #{title}, #{content})
+	</insert>
+	
+	<select id="transView" resultMap="transboard">
+		select * from transBoard where write_no = #{writeNo}
+	</select>
+	
+	<update id="upViewCount">
+		update transBoard set viewCount = viewCount+1 where write_no = #{writeNo}
+	</update>
+	
+	<update id="transModifySave">
+		update transBoard set category = #{category}, n_id = #{id}, title = #{title}, 
+		content = #{content} where write_no = #{writeNo}
+	</update>
+	
+	<delete id="transDelete">
+		delete from transBoard where write_no = #{writeNo}
+	</delete>
+	
+	<update id="transLikeUpdate">
+		update transBoard set likes=likes+1 where write_no=#{writeNo}	
+	</update>
+	
+	<insert id="transLikeInsert">
+	    insert into transLikes (n_id, write_no) values (#{id}, #{writeNo})
+	</insert>
+	
+	<select id="transLikeChk" resultType="String">
+		select n_id from transLikes where n_id = #{id} and write_no = #{writeNo} 
+	</select>
+	<select id="selectSearch" resultMap="transboard">
+		select B.* from(select
+		rownum rn,
+		A.* from
+		(select * from transBoard where
+		${type} like
+		'%'||#{keyword}||'%'
+		order by write_no desc)A)B where rn
+		between #{s}
+		and
+		#{e}
+	</select>
+
+	<select id="selectSearchCount" resultType="Integer">
+		select count(*) from
+		transBoard where ${type} like '%'||#{keyword}||'%'
+	</select>
+</mapper>

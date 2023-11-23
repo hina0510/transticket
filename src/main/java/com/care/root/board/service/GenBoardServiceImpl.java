@@ -1,6 +1,4 @@
 package com.care.root.board.service;
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,7 +74,7 @@ public class GenBoardServiceImpl implements GenBoardService{
 		
 	return likesId;
 	}
-	public Map<String, Object> selectSearch(Model model, String type, String keyword,int num)throws Exception{
+	public Map<String, Object> selectSearch(Model model, String type, String keyword, int num)throws Exception{
 		int pageLetter = 5;
 		int allCount = mapper.selectSearchCount(type,keyword);
 		int repeat = allCount / pageLetter;
@@ -84,7 +82,6 @@ public class GenBoardServiceImpl implements GenBoardService{
 			repeat += 1;
 		}
         
-        //시작,끝번호
 		int end = num * pageLetter;
 		int start = end + 1 - pageLetter;
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -93,7 +90,5 @@ public class GenBoardServiceImpl implements GenBoardService{
 		
 		return map;
 	}
-
-
 }
 

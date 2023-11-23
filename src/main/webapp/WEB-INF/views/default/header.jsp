@@ -26,7 +26,8 @@
     }
     #trin {width: 190px; height: 120px;}
     #main01 {width: 100%; height: 150px; display:flex; flex-flow:row;}
-    #main01>#title{padding: 1.2% 15%; width: 65%;}
+    #main01>#title{padding: 2.5% 25% 0 17%; width: 65%; }
+    #title img{width: 100%; height: 100%;}
     #main01>#login{width: 45%; font-family: 'omyu_pretty'; 
     	font-size: 20px; text-align: center; margin: 4%;}
 
@@ -80,35 +81,20 @@ function glogchk(){
 		 return false;
 	}
 }
-function mlogchk(){
-	 if (confirm("로그아웃 하겠습니까??") == true){
-		 location.href='${contextPath }/member/mlogout'
-	 }else{
-		 return false;
-	}
-}
 function loginfo(){
 	if (confirm("로그인 먼저하세요") == true){
 		 location.href='${contextPath }/member/prelogin'
 	 }else{
 		 return false;
 	}
-}	
-function allog(){
-	if (confirm("이미 로그인 되있습니다") == true){
-		 location.href='${contextPath }/'
-	 }else{
-		 return false;
-	}
 }
-
 </script>
 </head>
 <body>
 	<header>
 		<div id="main01">
 			<dd id="title">
-			    <a href="${contextPath }/">transticket</a>
+			    <a href="${contextPath }/"><img src="${contextPath }/resources/images/transticket.jpg" alt="transticket"></a>
 			</dd>
 			<dd id="login">
 				<c:choose>
@@ -118,23 +104,13 @@ function allog(){
 					<c:when test="${glogin!=null }">
 						<a onclick="glogchk()" class="login01">로그아웃</a>
 					</c:when>
-					<c:when test="${mlogin!=null }">
-						<a onclick="mlogchk()" class="login01">로그아웃</a>
-					</c:when>
 					<c:otherwise>
 						<a href="${contextPath }/member/prelogin" class="login01">로그인</a>
 					</c:otherwise>
 				</c:choose>
-				
 				<c:if test="${clogin==null and glogin==null  }">	
 					<a href="${contextPath }/member/gen_register_view" class="login01">회원가입</a>
 				</c:if>
-				
-				<c:if test="${clogin!=null or glogin!=null }">
-					<a onclick="allog()" class="login01">회원가입</a>
-				</c:if>
-				
-				
 				<c:choose>
 					<c:when test="${clogin!=null }">
 						<a href="${contextPath }/member/com_mypage" class="login01">마이페이지</a>	
@@ -142,14 +118,18 @@ function allog(){
 					<c:when test="${glogin!=null }">
 						<a href="${contextPath }/member/gen_mypage" class="login01">마이페이지</a>	
 					</c:when>
-					<c:when test="${mlogin!=null }">
-						<a href="${contextPath }/member/admin" class="login01">마이페이지</a>	
-					</c:when>
 					<c:otherwise>
 						<a onclick="loginfo()" class="login01">마이페이지</a>
 					</c:otherwise>
 				</c:choose>
-			    <a href="#" class="login01">예약확인/취소</a>
+				<c:choose>
+					<c:when test="${glogin!=null }">
+						<a href="${contextPath }/reservation/reservationAllList" class="login01">예약확인/취소</a>
+					</c:when>
+					<c:otherwise>
+						<a onclick="loginfo()" class="login01">예약확인/취소</a>
+					</c:otherwise>
+				</c:choose>
 			</dd>
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0% 5%;">
@@ -171,7 +151,7 @@ function allog(){
 				</li>
 				<li class="li01"> 
 				  	<button class="btn btn-light" style="font-size: 24px;">
-				  		<a href="${contextPath }/board/genBoardList">양도게시판</a>
+				  		<a href="${contextPath }/transboard/transBoardList">양도게시판</a>
 				  	</button>
 				</li>
 				<li class="li01">

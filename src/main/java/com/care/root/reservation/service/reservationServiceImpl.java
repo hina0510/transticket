@@ -1,28 +1,42 @@
 package com.care.root.reservation.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.care.root.mybatis.reservation.concertBoardMapper;
+import com.care.root.mybatis.reservation.concertSeatMapper;
 import com.care.root.mybatis.reservation.exhibitionBoardMapper;
+import com.care.root.mybatis.reservation.exhibitionSeatMapper;
 import com.care.root.mybatis.reservation.musicalBoardMapper;
+import com.care.root.mybatis.reservation.musicalSeatMapper;
+import com.care.root.mybatis.reservation.paySeatMapper;
+import com.care.root.reservation.dto.rLikeDTO;
 import com.care.root.reservation.dto.concertBoardDTO;
+import com.care.root.reservation.dto.concertSeatDTO;
 import com.care.root.reservation.dto.exhibitionBoardDTO;
+import com.care.root.reservation.dto.exhibitionSeatDTO;
 import com.care.root.reservation.dto.musicalBoardDTO;
+import com.care.root.reservation.dto.musicalSeatDTO;
+import com.care.root.reservation.dto.payDTO;
 
 @Service
 public class reservationServiceImpl implements reservationService{
 	@Autowired concertBoardMapper cmapper;
+	@Autowired concertSeatMapper csmapper;
 	@Autowired musicalBoardMapper mmapper;
+	@Autowired musicalSeatMapper msmapper;
 	@Autowired exhibitionBoardMapper emapper;
+	@Autowired exhibitionSeatMapper esmapper;
+	@Autowired paySeatMapper pmapper;
 	@Autowired reservationFileService fs;
 	
 	public Map<String, Object> cBoardList(int num){
-		int pageLetter = 3; //몇 개 글
+		int pageLetter = 9; //몇 개 글
 		int allCount = cmapper.selectCBoardCount(); //글 총 개수
 		int repeat = allCount/pageLetter; //총 페이지 수
 		if(allCount%pageLetter !=0) {//나머지 페이지가 있으면
@@ -34,59 +48,19 @@ public class reservationServiceImpl implements reservationService{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("repeat", repeat);
 		map.put("list", cmapper.cBoardList(start, end));
-		
+
 		return map;
-	}
-	public concertBoardDTO cContentView(int writeNo) {
-		cUpHit(writeNo);
-		return cmapper.cGetContent(writeNo);
-	}
-	private void cUpHit(int writeNo) {
-		cmapper.cUpHit(writeNo);
-	}
-	public String cWriteSave(concertBoardDTO cdto, MultipartFile file) {
-		cdto.setImage_file_name(fs.saveFile(file));
-		
-		int result = cmapper.cWriteSave(cdto);
-		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
-			url="/root/reservation/concert_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
-			url="/root/reservation/write_concert_form";
-		}
-		return fs.getMessage(msg, url);
 	}
 	public concertBoardDTO cGetContent(int writeNo) {
 		return cmapper.cGetContent(writeNo);
 	}
-	public String cModify(concertBoardDTO cdto, MultipartFile file) {
-		String originName = null;
-		if(!file.isEmpty()) { //수정됨
-			originName = cdto.getImage_file_name();
-			cdto.setImage_file_name(fs.saveFile(file));
-		}
-		int result = cmapper.cModify(cdto);
-		String msg = "", url="";
-		if(result==1) {
-			//기본 이미지 삭제 originName
-			fs.deleteImage(originName);
-			msg="수정되었습니다";
-			url="/root/reservation/concert_content?writeNo="+cdto.getWriteNo();
-		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
-			fs.deleteImage(cdto.getImage_file_name());
-			msg="문제 발생";
-			url="/root/reservation/modify_concert_form?writeNo="+cdto.getWriteNo();
-		}
-		return fs.getMessage(msg, url);
+	public void cUpHit(int writeNo) {
+		cmapper.cUpHit(writeNo);
 	}
-	public String cDelete(int writeNo, String fileName) {
+	public String cDelete(int writeNo) {
 		int result = cmapper.cDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			fs.deleteImage(fileName);
 			msg="삭제되었습니다";
 			url="/root/reservation/concert_board";
 		}else {
@@ -95,9 +69,50 @@ public class reservationServiceImpl implements reservationService{
 		}
 		return fs.getMessage(msg, url);
 	}
+	public void cLike(String id, int writeNo) {
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		cmapper.cLikeUpdate(writeNo);
+		cmapper.cLikeInsert(rdto);
+	}
+	public String cLikeChk(String id, int writeNo) {
+		String likesId;
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		
+		System.out.println(rdto.getId());
+		System.out.println(rdto.getWriteNo());
+		
+		String s = cmapper.cLikeChk(rdto);
+		if(s == null) {
+			likesId = "none";
+		}else {
+			likesId = s;
+		}
+		System.out.println(likesId);
+		
+		return likesId;
+	}
+	public List<concertSeatDTO> cGetSeat(@RequestParam String con_buyer) {
+		return csmapper.cGetSeat(con_buyer);
+	}
+	public int BuySeat(String account, int price){
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		money = money-price;
+		System.out.println("계산 후 금액 : "+money);
+		pdto.setMoney(money);
+		System.out.println("계산 후 금액 : "+pdto.getMoney());
+		return pmapper.saveAccount(money, account);
+	}
+	public void cBuySeat(String con_title, String con_buyer){
+		csmapper.cBuySeat(con_title, con_buyer);
+	}
 	
 	public Map<String, Object> mBoardList(int num){
-		int pageLetter = 3; //몇 개 글
+		int pageLetter = 9; //몇 개 글
 		int allCount = mmapper.selectMBoardCount(); //글 총 개수
 		int repeat = allCount/pageLetter; //총 페이지 수
 		if(allCount%pageLetter !=0) {//나머지 페이지가 있으면
@@ -112,56 +127,16 @@ public class reservationServiceImpl implements reservationService{
 		
 		return map;
 	}
-	public musicalBoardDTO mContentView(int writeNo) {
-		mUpHit(writeNo);
-		return mmapper.mGetContent(writeNo);
-	}
-	private void mUpHit(int writeNo) {
-		mmapper.mUpHit(writeNo);
-	}
-	public String mWriteSave(musicalBoardDTO mdto, MultipartFile file) {
-		mdto.setImage_file_name(fs.saveFile(file));
-		
-		int result = mmapper.mWriteSave(mdto);
-		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
-			url="/root/reservation/musical_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
-			url="/root/reservation/write_musical_form";
-		}
-		return fs.getMessage(msg, url);
-	}
 	public musicalBoardDTO mGetContent(int writeNo) {
 		return mmapper.mGetContent(writeNo);
 	}
-	public String mModify(musicalBoardDTO mdto, MultipartFile file) {
-		String originName = null;
-		if(!file.isEmpty()) { //수정됨
-			originName = mdto.getImage_file_name();
-			mdto.setImage_file_name(fs.saveFile(file));
-		}
-		int result = mmapper.mModify(mdto);
-		String msg = "", url="";
-		if(result==1) {
-			//기본 이미지 삭제 originName
-			fs.deleteImage(originName);
-			msg="수정되었습니다";
-			url="/root/reservation/musical_content?writeNo="+mdto.getWriteNo();
-		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
-			fs.deleteImage(mdto.getImage_file_name());
-			msg="문제 발생";
-			url="/root/reservation/modify_musical_form?writeNo="+mdto.getWriteNo();
-		}
-		return fs.getMessage(msg, url);
+	public void mUpHit(int writeNo) {
+		mmapper.mUpHit(writeNo);
 	}
-	public String mDelete(int writeNo, String fileName) {
+	public String mDelete(int writeNo) {
 		int result = mmapper.mDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			fs.deleteImage(fileName);
 			msg="삭제되었습니다";
 			url="/root/reservation/musical_board";
 		}else {
@@ -170,9 +145,41 @@ public class reservationServiceImpl implements reservationService{
 		}
 		return fs.getMessage(msg, url);
 	}
+	public void mLike(String id, int writeNo) {
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		mmapper.mLikeUpdate(writeNo);
+		mmapper.mLikeInsert(rdto);
+	}
+	public String mLikeChk(String id, int writeNo) {
+		String likesId;
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		
+		System.out.println(rdto.getId());
+		System.out.println(rdto.getWriteNo());
+		
+		String s = mmapper.mLikeChk(rdto);
+		if(s == null) {
+			likesId = "none";
+		}else {
+			likesId = s;
+		}
+		System.out.println(likesId);
+		
+		return likesId;
+	}
+	public List<musicalSeatDTO> mGetSeat(@RequestParam String mu_buyer){
+		return msmapper.mGetSeat(mu_buyer);
+	}
+	public void mBuySeat(String mu_title, String mu_buyer){
+		msmapper.mBuySeat(mu_title, mu_buyer);
+	}
 	
 	public Map<String, Object> eBoardList(int num){
-		int pageLetter = 3; //몇 개 글
+		int pageLetter = 9; //몇 개 글
 		int allCount = emapper.selectEBoardCount(); //글 총 개수
 		int repeat = allCount/pageLetter; //총 페이지 수
 		if(allCount%pageLetter !=0) {//나머지 페이지가 있으면
@@ -187,56 +194,16 @@ public class reservationServiceImpl implements reservationService{
 		
 		return map;
 	}
-	public exhibitionBoardDTO eContentView(int writeNo) {
-		eUpHit(writeNo);
-		return emapper.eGetContent(writeNo);
-	}
-	private void eUpHit(int writeNo) {
-		emapper.eUpHit(writeNo);
-	}
-	public String eWriteSave(exhibitionBoardDTO edto, MultipartFile file){
-		edto.setImage_file_name(fs.saveFile(file));
-		
-		int result = emapper.eWriteSave(edto);
-		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
-			url="/root/reservation/exhibition_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
-			url="/root/reservation/write_exhibition_form";
-		}
-		return fs.getMessage(msg, url);
-	}
 	public exhibitionBoardDTO eGetContent(int writeNo) {
 		return emapper.eGetContent(writeNo);
 	}
-	public String eModify(exhibitionBoardDTO edto, MultipartFile file) {
-		String originName = null;
-		if(!file.isEmpty()) { //수정됨
-			originName = edto.getImage_file_name();
-			edto.setImage_file_name(fs.saveFile(file));
-		}
-		int result = emapper.eModify(edto);
-		String msg = "", url="";
-		if(result==1) {
-			//기본 이미지 삭제 originName
-			fs.deleteImage(originName);
-			msg="수정되었습니다";
-			url="/root/reservation/exhibition_content?writeNo="+edto.getWriteNo();
-		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
-			fs.deleteImage(edto.getImage_file_name());
-			msg="문제 발생";
-			url="/root/reservation/modify_exhibition_form?writeNo="+edto.getWriteNo();
-		}
-		return fs.getMessage(msg, url);
+	public void eUpHit(int writeNo) {
+		emapper.eUpHit(writeNo);
 	}
-	public String eDelete(int writeNo, String fileName) {
+	public String eDelete(int writeNo) {
 		int result = emapper.eDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			fs.deleteImage(fileName);
 			msg="삭제되었습니다";
 			url="/root/reservation/exhibition_board";
 		}else {
@@ -244,5 +211,47 @@ public class reservationServiceImpl implements reservationService{
 			url="/root/reservation/exhibition_content?writeNo="+writeNo;
 		}
 		return fs.getMessage(msg, url);
+	}
+	public void eLike(String id, int writeNo) {
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		emapper.eLikeUpdate(writeNo);
+		emapper.eLikeInsert(rdto);
+	}
+	public String eLikeChk(String id, int writeNo) {
+		String likesId;
+		rLikeDTO rdto = new rLikeDTO();
+		rdto.setId(id);
+		rdto.setWriteNo(writeNo);
+		
+		System.out.println(rdto.getId());
+		System.out.println(rdto.getWriteNo());
+		
+		String s = emapper.eLikeChk(rdto);
+		if(s == null) {
+			likesId = "none";
+		}else {
+			likesId = s;
+		}
+		System.out.println(likesId);
+		
+		return likesId;
+	}
+	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer){
+		return esmapper.eGetSeat(ex_buyer);
+	}
+	public void eBuySeat(String ex_title, String ex_buyer){
+		esmapper.eBuySeat(ex_title, ex_buyer);
+	}
+	
+	public List<concertSeatDTO> reservationAllList(String con_buyer){
+		return csmapper.reservationAllList(con_buyer);
+	}
+	public List<concertSeatDTO> selectTicket(String conS_id){
+		return csmapper.selectTicket(conS_id);
+	}
+	public void presentTicket(String con_buyer, String conS_id) {
+		csmapper.presentTicket(con_buyer, conS_id);
 	}
 }
