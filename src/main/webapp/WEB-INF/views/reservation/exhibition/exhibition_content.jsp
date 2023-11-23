@@ -92,24 +92,14 @@
 			        		</section>
 		                </div>
 		                <div class="board_view_info">
-							<ul class="tabs3"><!-- 폼 탭 -->
-								<label><li class="tab-link current" data-tab="tab-1">form01</li></label>
-								<label><li class="tab-link" data-tab="tab-2">form02</li></label>
-								<label><li class="tab-link" data-tab="tab-3">form03</li></label>
-							</ul>
-							<div id="tab-1" class="tab-content3 current">
-								<h4>캐스팅</h4>
-									<img src="#" alt="#">
-									<h6>artist name</h6><br>
-														
-								<h4>공연시간 정보</h4>
-									<h6>예매가능시간: 전일17시(월~토 관람 시)까지/전일 11시(일요일 관람 시)까지<br>
-										금 19시 30분 / 토 18시 / 일 17시</h6><br>
+							<h4>공연시간 정보</h4>
+								<h6>예매가능시간: 전일17시(월~토 관람 시)까지/전일 11시(일요일 관람 시)까지<br>
+									금 19시 30분 / 토 18시 / 일 17시</h6><br>
 										
 								<%@ include file="exhibition_info01.jsp" %><br>
 								
 								<h4>공연상세 / 출연진정보<br></h4>
-									<div style="text-align: center;">
+									<div class="image">
 				                		<c:if test="${dto.imageName1 != 'nan' }">
 				                			<img src="download?file=${dto.imageName1 }" alt="${dto.imageName1 }">
 				                		</c:if>
@@ -128,8 +118,6 @@
 									</div>
 								<p>${dto.content}</p>
 							</div>
-							<div id="tab-2" class="tab-content3"><%@ include file="exhibition_info02.jsp" %></div>
-							<div id="tab-3" class="tab-content3"><%@ include file="exhibition_info03.jsp" %></div>
 		                </div>
 					</div>
 		            <div class="frame">
