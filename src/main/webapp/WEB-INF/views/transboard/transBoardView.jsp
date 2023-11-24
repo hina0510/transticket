@@ -46,6 +46,7 @@
 		                        	<c:if test="${genId != 'undefined' }">
 			                        	<c:if test="${genId != dto.id }">
 				                        	<form action="buyTicket" method="post">
+												<input type="hidden" name="writeNo" value="${dto.writeNo }">
 												<input type="hidden" name="seller" value="${dto.id }">
 												<input type="hidden" name="seat" value="${dto.content }">
 												<button class="custom-btn btn-3" type="submit"><span>양도받기</span></button>

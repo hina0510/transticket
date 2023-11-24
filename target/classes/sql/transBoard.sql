@@ -3,7 +3,7 @@ CREATE TABLE transBoard
     write_no     NUMBER           NOT NULL, 
     category     VARCHAR2(20)     NOT NULL, 
     n_id           VARCHAR2(20)     NOT NULL, 
-    title        VARCHAR2(20)     NOT NULL, 
+    title        VARCHAR2(100)     NOT NULL, 
     content      VARCHAR2(100)    NOT NULL, 
     savedate     DATE            default sysdate, 
     viewCount    NUMBER          DEFAULT 0 , 

@@ -76,16 +76,22 @@ public class TransBoardController {
 	
 	@PostMapping("buyTicket")
 	public String buyTicket(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("writeNo"));
+		String writeNo = req.getParameter("writeNo");
 		System.out.println(req.getParameter("seat"));
 		String conS_id = req.getParameter("seat");
 		System.out.println(req.getParameter("seller"));
 		String name = req.getParameter("seller");
+		model.addAttribute("writeNo", writeNo);
 		model.addAttribute("list", rs.selectTicket(conS_id));
 		model.addAttribute("alist", rs.getAccount(name));
 		return "transboard/buyTicket";
 	}
 	@PostMapping("ticketChk")
 	public String ticketChk(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("writeNo"));
+		String w_No = req.getParameter("writeNo");
+		int writeNo = Integer.parseInt(w_No);
 		System.out.println(req.getParameter("seat"));
 		String conS_id = req.getParameter("seat");
 		String sAccount = req.getParameter("sAccount");
@@ -99,6 +105,7 @@ public class TransBoardController {
 			rs.sellSeat(sAccount, price);
 			rs.presentTicket(con_buyer, conS_id);
 			ts.seatWriteDown(conS_id);
+			ts.transDelete(writeNo);
 		}else {
 			return "redirect:transBoardList";
 		}

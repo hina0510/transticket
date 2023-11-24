@@ -17,6 +17,7 @@
 				<c:set var="cdto" value="${list}" />
 				<c:forEach var="i" begin="0" end="${list.size()-1}">
 					<form action="ticketChk" method="post">
+						<input type="hidden" name="writeNo" value="${writeNo}"><br>
 						좌석 : ${cdto[i].conS_id }
 						<input type="hidden" name="seat" value="${cdto[i].conS_id }"><br>
 						거래자 :${cdto[i].con_buyer }
