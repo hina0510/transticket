@@ -227,7 +227,8 @@
 						가격 : <input type="text" id="total" name="price" readonly value=""><br>
 						선택 좌석 : <input type="text" id="seatList" name="seatList" readonly value=""><br>
 						구매자 : <input type="text" name="mu_buyer" readonly value="${glogin }"><br>
-						<button class="custom-btn btn-3" type="submit" style="float: right;" id="payment"><span>결제</span></button>
+						<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="카드결제">
+						<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="무통장결제">
 					</form>
 				</div>
 				<br>

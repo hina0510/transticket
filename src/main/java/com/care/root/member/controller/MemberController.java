@@ -54,7 +54,7 @@ public class MemberController implements LoginSession{
 			rs.addAttribute("autoLogin", autoLogin);
 			return "redirect:successLogin";
 		}
-		rs.addFlashAttribute("msg", "·Î±×ÀÎ½ÇÆĞ");
+		rs.addFlashAttribute("msg", "ë¡œê·¸ì¸ì‹¤íŒ¨");
 		return "redirect:prelogin";
 	}
 	@PostMapping("logChk1")
@@ -70,35 +70,35 @@ public class MemberController implements LoginSession{
 			rs.addAttribute("autoLogin", autoLogin);
 			return "redirect:successLogin1";
 		}
-		rs.addFlashAttribute("msg", "·Î±×ÀÎ½ÇÆĞ");
+		rs.addFlashAttribute("msg", "ë¡œê·¸ì¸ì‹¤íŒ¨");
 		return "redirect:prelogin";
 	}
 	@GetMapping("successLogin")
 	public String successLogin(@RequestParam String id, @RequestParam String autoLogin, HttpServletResponse res, HttpSession session, RedirectAttributes rs, Model model) {
 		System.out.println("autologin :"+autoLogin);
 		if(autoLogin.equals("on")) {
-			int limitTime = 60*60*24*90; // ÃÊ ºĞ ½Ã ÀÏ ÇØ¼­ 90ÀÏ ¼³Á¤
+			int limitTime = 60*60*24*90; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ø¼ï¿½ 90ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			Cookie cloginCookie = new Cookie("cloginCookie", session.getId());
 			cloginCookie.setPath("/");
 			cloginCookie.setMaxAge(limitTime);
 			res.addCookie(cloginCookie);
 			cms.keepLogin(session.getId(), id);
 		}
-		rs.addFlashAttribute("msg","±â¾÷·Î±×ÀÎ¼º°ø");
+		rs.addFlashAttribute("msg","ê¸°ì—…ë¡œê·¸ì¸ì„±ê³µ");
 		model.addAttribute("cominfo", cms.getMember(id));
 		return "redirect:prelogin";
 	}
 	@GetMapping("successLogin1")
 	public String successLogin1(@RequestParam String id,@RequestParam String autoLogin, HttpServletResponse res, HttpSession session, RedirectAttributes rs, Model model) {
 		if(autoLogin.equals("on")) {
-			int limitTime = 60*60*24*90; // ÃÊ ºĞ ½Ã ÀÏ ÇØ¼­ 90ÀÏ ¼³Á¤
+			int limitTime = 60*60*24*90; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ø¼ï¿½ 90ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			Cookie gloginCookie = new Cookie("gloginCookie", session.getId());
 			gloginCookie.setPath("/");
 			gloginCookie.setMaxAge(limitTime);
 			res.addCookie(gloginCookie);
 			gms.keepLogin(session.getId(), id);
 		}
-		rs.addFlashAttribute("msg","°³ÀÎ·Î±×ÀÎ¼º°ø");
+		rs.addFlashAttribute("msg","ê°œì¸ë¡œê·¸ì¸ì„±ê³µ");
 		model.addAttribute("geninfo", gms.getMember(id));
 		return "redirect:prelogin";
 	}
@@ -113,13 +113,13 @@ public class MemberController implements LoginSession{
 	@PostMapping("comregister")
 	public String comregister(HttpServletRequest req, ComMemberDTO dto, RedirectAttributes rtt) {
 		cms.comregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","°¡ÀÔ¿Ï·á");
+		rtt.addFlashAttribute("msg","ï¿½ï¿½ï¿½Ô¿Ï·ï¿½");
 		return "redirect:prelogin";
 	}
 	@PostMapping("genregister")
 	public String genregister(HttpServletRequest req,GenMemberDTO dto, RedirectAttributes rtt) {
 		gms.genregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","°¡ÀÔ¿Ï·á");
+		rtt.addFlashAttribute("msg","ï¿½ï¿½ï¿½Ô¿Ï·ï¿½");
 		return "redirect:prelogin";
 	}
 	@GetMapping("clogout")

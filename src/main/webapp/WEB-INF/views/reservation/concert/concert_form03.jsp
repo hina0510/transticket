@@ -227,7 +227,7 @@
 				</div>
 			</ul>
 			<div class="showcase">
-					<form action="cSeatCheck" method="post" enctype="multipart/form-data">
+					<form action="cSeatCheck" method="post">
 						콘서트 명 : <input type="text" readonly name="con_title" value="${dto.title}"><br>
 						콘서트 날짜 : <input type="text" readonly name="startDate" value="${dto.con_stDate}"><br>
 						콘서트 장소 : <input type="text" readonly name="con_place" value="${dto.con_place}"><br>
@@ -235,7 +235,8 @@
 						가격 : <input type="text" id="total" name="price" readonly value=""><br>
 						선택 좌석 : <input type="text" id="seatList" name="seatList" readonly value=""><br>
 						구매자 : <input type="text" name="con_buyer" readonly value="${glogin}"><br>
-						<button class="custom-btn btn-3" type="submit" style="float: right;" id="payment"><span>결제</span></button>
+						<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="카드결제">
+						<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="무통장결제">
 					</form>
 				</div>
 				<br>

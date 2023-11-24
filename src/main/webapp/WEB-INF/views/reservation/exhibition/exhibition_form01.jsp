@@ -35,7 +35,8 @@
 					티켓 수 : <input type="text" name="count" class="count" value="0" maxLength="2" data-limit="10" onkeyup="setNumeric(this);autoCal();" /><br>
 					가격 : <input type="text" name="price" id="price" value="0" readonly /><br>
 					구매자 : <input type="text" name="ex_buyer" readonly value="${glogin }"><br>
-					<button class="custom-btn btn-3" type="submit" style="float: right;" id="payment"><span>결제</span></button>
+					<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="카드결제">
+					<input class="custom-btn btn-3" type="submit" style="float: right;" name="button" value="무통장결제">
 				</form>
 			</div>
 				<br>
