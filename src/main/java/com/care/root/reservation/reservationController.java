@@ -62,7 +62,7 @@ public class reservationController implements LoginSession{
 		}
 		model.addAttribute("dto", rs.cGetContent(writeNo));
 		model.addAttribute("genId", id);
-		model.addAttribute("likes", rs.cLikeChk(id, writeNo));
+		//model.addAttribute("likes", rs.cLikeChk(id, writeNo));
 		return "reservation/concert/concert_content";
 	}
 	@PostMapping("likes")
