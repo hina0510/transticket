@@ -257,17 +257,9 @@ public class reservationController implements LoginSession{
 		int price = Integer.parseInt(pri);
 		pdto.setPrice(price);
 		
-		int result = rs.BuySeat(account, price);
-		if(result==1) {
-			rs.cBuySeat(title, name);
-		}else {
-			return "redirect:concert_board";
-		}
-		return "redirect:cSuccessPay";
-	}
-	@GetMapping("cSuccessPay")
-	public String cSuccessPay() {
-		return "reservation/concert/successPay";
+		rs.cBuySeat(account, price, title, name);
+		
+		return "redirect:concert_board";
 	}
 	
 	
@@ -470,17 +462,9 @@ public class reservationController implements LoginSession{
 		int price = Integer.parseInt(pri);
 		pdto.setPrice(price);
 		
-		int result = rs.BuySeat(account, price);
-		if(result==1) {
-			rs.mBuySeat(title, name);
-		}else {
-			return "redirect:musical_board";
-		}
-		return "redirect:mSuccessPay";
-	}
-	@GetMapping("mSuccessPay")
-	public String mSuccessPay() {
-		return "reservation/musical/successPay";
+		rs.mBuySeat(account, price, title, name);
+		
+		return "redirect:musical_board";
 	}
 	
 	
@@ -683,17 +667,9 @@ public class reservationController implements LoginSession{
 		int price = Integer.parseInt(pri);
 		pdto.setPrice(price);
 		
-		int result = rs.BuySeat(account, price);
-		if(result==1) {
-			rs.eBuySeat(title, name);
-		}else {
-			return "redirect:exhibition_board";
-		}
-		return "redirect:eSuccessPay";
-	}
-	@GetMapping("eSuccessPay")
-	public String eSuccessPay() {
-		return "reservation/exhibition/successPay";
+		rs.eBuySeat(account, price, title, name);
+		
+		return "redirect:exhibition_board";
 	}
 	
 	

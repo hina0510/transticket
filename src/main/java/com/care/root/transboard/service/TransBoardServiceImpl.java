@@ -102,7 +102,4 @@ public class TransBoardServiceImpl implements TransBoardService{
 		
 		return map;
 	}
-	public void seatWriteDown(String conS_id) {
-		csmapper.seatWriteDown(conS_id);
-	}
 }

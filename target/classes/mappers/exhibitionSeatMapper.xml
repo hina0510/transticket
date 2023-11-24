@@ -25,4 +25,7 @@
 	<update id="eBuySeat">
 		update seat set s_payed='payed' where s_title=#{ex_title} AND s_buyer=#{ex_buyer}
 	</update>
+	<delete id="eDelSeat">
+		delete from seat where s_title=#{ex_title} AND s_buyer=#{ex_buyer} AND s_payed='unpayed'
+	</delete>
 </mapper>

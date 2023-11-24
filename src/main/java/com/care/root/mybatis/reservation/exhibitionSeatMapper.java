@@ -11,4 +11,5 @@ public interface exhibitionSeatMapper {
 	public int eSeatSave(exhibitionSeatDTO cdto);
 	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer);
 	public void eBuySeat(@Param("ex_title") String ex_title, @Param("ex_buyer") String ex_buyer);
+	public void eDelSeat(@Param("ex_title") String ex_title, @Param("ex_buyer") String ex_buyer);
 }

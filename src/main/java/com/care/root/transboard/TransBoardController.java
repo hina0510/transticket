@@ -100,16 +100,9 @@ public class TransBoardController {
 		String pri = req.getParameter("price");
 		int price = Integer.parseInt(pri);
 		
-		int result = rs.BuySeat(bAccount, price);
-		if(result==1) {
-			rs.sellSeat(sAccount, price);
-			rs.presentTicket(con_buyer, conS_id);
-			ts.seatWriteDown(conS_id);
-			ts.transDelete(writeNo);
-		}else {
-			return "redirect:transBoardList";
-		}
-		return "transboard/successPay";
+		rs.BuySeat(sAccount, bAccount, price, conS_id, con_buyer, writeNo);
+		
+		return "redirect:transBoardList";
 	}
 	
 	

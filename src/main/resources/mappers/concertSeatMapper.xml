@@ -26,6 +26,9 @@
 	<update id="cBuySeat">
 		update seat set s_payed='payed' where s_title=#{con_title} AND s_buyer=#{con_buyer}
 	</update>
+	<delete id="cDelSeat">
+		delete from seat where s_title=#{con_title} AND s_buyer=#{con_buyer} AND s_payed='unpayed'
+	</delete>
 	
 	<update id="seatWriteUpdate">
 		update seat set s_write=s_write+1 where s_id=#{conS_id}	
