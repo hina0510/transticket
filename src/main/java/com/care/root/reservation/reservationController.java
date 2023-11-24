@@ -243,8 +243,6 @@ public class reservationController implements LoginSession{
 		model.addAttribute("buyer", con_buyer);
 		model.addAttribute("price", price);
 		
-		//model.addAttribute("list", rs.cGetSeat(con_buyer));
-		
 		return "reservation/concert/concert_Payment";
 	}
 	@PostMapping("concert_BuySeat")

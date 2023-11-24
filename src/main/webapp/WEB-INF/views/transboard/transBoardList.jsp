@@ -13,7 +13,7 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="con03">
-				<form action="${contextPath }/board/transBoardList" method="get" id="searchFoam" name="search-form">
+				<form action="${contextPath }/transboard/transBoardList" method="get" id="searchFoam" name="search-form">
 			        <select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
 						<option value="title">제목</option>

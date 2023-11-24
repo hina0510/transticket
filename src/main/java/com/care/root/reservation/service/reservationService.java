@@ -11,6 +11,7 @@ import com.care.root.reservation.dto.exhibitionBoardDTO;
 import com.care.root.reservation.dto.exhibitionSeatDTO;
 import com.care.root.reservation.dto.musicalBoardDTO;
 import com.care.root.reservation.dto.musicalSeatDTO;
+import com.care.root.reservation.dto.payDTO;
 
 public interface reservationService {
 	public Map<String, Object> cBoardList(int num);
@@ -47,4 +48,6 @@ public interface reservationService {
 	public List<concertSeatDTO> reservationAllList(String con_buyer);
 	public List<concertSeatDTO> selectTicket(String conS_id);
 	public void presentTicket(String con_buyer, String conS_id);
+	public payDTO getAccount(String name);
+	public void sellSeat(String account, int price);
 }

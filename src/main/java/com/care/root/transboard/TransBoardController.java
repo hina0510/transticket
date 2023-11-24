@@ -40,14 +40,6 @@ public class TransBoardController {
 		return "transboard/transBoardList";
 	}
 	
-	/*
-	@GetMapping("transWrite")
-	public String transWrite(HttpSession session, Model model) {
-		System.out.println("asd : " + session.getAttribute(LoginSession.GLOGIN));
-		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
-		return "transboard/transBoardWrite";
-	}
-	*/
 	@PostMapping("transWrite")
 	public String transWrite(HttpServletRequest req, HttpSession session, Model model) {
 		System.out.println(req.getParameter("seat"));
@@ -82,14 +74,37 @@ public class TransBoardController {
 		return "transboard/transBoardView";
 	}
 	
-	@GetMapping("sellChatList")
-	public String sellChatList() {
-		return "transboard/sellChatList";
+	@PostMapping("buyTicket")
+	public String buyTicket(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		System.out.println(req.getParameter("seller"));
+		String name = req.getParameter("seller");
+		model.addAttribute("list", rs.selectTicket(conS_id));
+		model.addAttribute("alist", rs.getAccount(name));
+		return "transboard/buyTicket";
 	}
-	@GetMapping("buyChatList")
-	public String buyChatList() {
-		return "transboard/buyChatList";
+	@PostMapping("ticketChk")
+	public String ticketChk(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		String sAccount = req.getParameter("sAccount");
+		String con_buyer = req.getParameter("buyer");
+		String bAccount = req.getParameter("bAccount");
+		String pri = req.getParameter("price");
+		int price = Integer.parseInt(pri);
+		
+		int result = rs.BuySeat(bAccount, price);
+		if(result==1) {
+			rs.sellSeat(sAccount, price);
+			rs.presentTicket(con_buyer, conS_id);
+			ts.seatWriteDown(conS_id);
+		}else {
+			return "redirect:transBoardList";
+		}
+		return "transboard/successPay";
 	}
+	
 	
 	@PostMapping("likes")
 	public String likes(@RequestParam String id, @RequestParam int writeNo) {

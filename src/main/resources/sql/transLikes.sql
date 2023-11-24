@@ -11,4 +11,3 @@ ALTER TABLE transLikes
 ALTER TABLE transLikes
     ADD CONSTRAINT transLikes_wNo_Board_wNo FOREIGN KEY (write_no)
         REFERENCES transBoard (write_no) ON DELETE CASCADE;
-

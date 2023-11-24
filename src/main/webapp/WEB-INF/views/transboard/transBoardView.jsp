@@ -43,6 +43,17 @@
 		                    <dl>
 		                        <dt>내용</dt>
 		                        <dd>
+		                        	<c:if test="${genId != 'undefined' }">
+			                        	<c:if test="${genId != dto.id }">
+				                        	<form action="buyTicket" method="post">
+												<input type="hidden" name="seller" value="${dto.id }">
+												<input type="hidden" name="seat" value="${dto.content }">
+												<button class="custom-btn btn-3" type="submit"><span>양도받기</span></button>
+											</form>
+										</c:if>
+									</c:if>
+		                        </dd>
+		                        <dd>
 		                         ${dto.content },  asdsad : ${genId }, likes : ${likes }
 		                        </dd>
 		                    </dl>
@@ -83,8 +94,8 @@
 		                    		</c:choose>
 									</form>
 						 			<c:if test="${genId == dto.id }">
-									<button type="button" onclick="location.href='transModify?writeNo=${dto.writeNo}'">수정</button>
-	                    			<button type="button" onclick="location.href='transDelete?writeNo=${dto.writeNo}'">삭제</button>
+										<button type="button" onclick="location.href='transModify?writeNo=${dto.writeNo}'">수정</button>
+		                    			<button type="button" onclick="location.href='transDelete?writeNo=${dto.writeNo}'">삭제</button>
 									</c:if>
 						  			<button type="button" onclick="location.href='transBoardList'">목록</button>
 								</dd>

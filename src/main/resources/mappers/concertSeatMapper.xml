@@ -30,6 +30,9 @@
 	<update id="seatWriteUpdate">
 		update seat set s_write=s_write+1 where s_id=#{conS_id}	
 	</update>
+	<update id="seatWriteDown">
+		update seat set s_write=s_write-1 where s_id=#{conS_id}	
+	</update>
 	
 	<select id="reservationAllList" resultMap="seat">
 		select * from seat where s_buyer=#{con_buyer}

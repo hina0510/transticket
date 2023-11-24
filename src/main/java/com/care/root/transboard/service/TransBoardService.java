@@ -16,4 +16,5 @@ public interface TransBoardService {
 	public void transLike(String id, int writeNo);
 	public String transLikeChk(String id, int writeNo);
 	public Map<String, Object> selectSearch(@Param("type")Model model, @Param("type")String type, @Param("keyword")String keyword, int num)throws Exception;
+	public void seatWriteDown(String conS_id);
 }

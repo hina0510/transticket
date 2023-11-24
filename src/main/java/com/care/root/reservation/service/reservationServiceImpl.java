@@ -254,4 +254,16 @@ public class reservationServiceImpl implements reservationService{
 	public void presentTicket(String con_buyer, String conS_id) {
 		csmapper.presentTicket(con_buyer, conS_id);
 	}
+	public payDTO getAccount(String name){
+		return pmapper.getAccount(name);
+	}
+	public void sellSeat(String account, int price) {
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		money = money+price;
+		System.out.println("계산 후 금액 : "+money);
+		pdto.setMoney(money);
+		System.out.println("입금 후 금액 : "+pdto.getMoney());
+		pmapper.saveAccount(money, account);
+	}
 }

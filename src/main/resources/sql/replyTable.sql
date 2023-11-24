@@ -14,8 +14,6 @@ MAXVALUE 9999999999999999999999999999
 MINVALUE 1 
 CACHE 20;
 
-drop table replyTable;
-
 ALTER TABLE replyTable
     ADD CONSTRAINT replyTable_wNo_Board_wNo FOREIGN KEY (write_no)
         REFERENCES genBoard (write_no) ON DELETE CASCADE;
@@ -27,5 +25,3 @@ ALTER TABLE replyTable
 ALTER TABLE replyTable
     ADD CONSTRAINT replyTable_cId_cmember_cId FOREIGN KEY (c_id)
         REFERENCES commember (c_id) ON DELETE CASCADE ;
-        
-select * from replyTable;
