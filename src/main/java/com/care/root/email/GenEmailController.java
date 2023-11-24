@@ -46,16 +46,16 @@ public class GenEmailController {
 			
 		if(dto != null) {
 		Random r = new Random();
-		int num = r.nextInt(999999); // ·£´ı³­¼ö¼³Á¤
+		int num = r.nextInt(999999); // ëœë¤ë‚œìˆ˜ì„¤ì •
 		
 		if (dto.getId().equals(id)) {
 			session.setAttribute("email", dto.getEmail());
 
 			String setfrom = "jungeogus@google.com"; // naver 
-			String tomail = email; //¹Ş´Â»ç¶÷
-			String title = "ºñ¹Ğ¹øÈ£º¯°æ ÀÎÁõ ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù"; 
-			String content = System.getProperty("line.separator") + "¾È³çÇÏ¼¼¿ä È¸¿ø´Ô" + System.getProperty("line.separator")
-					+ "ºñ¹Ğ¹øÈ£Ã£±â(º¯°æ) ÀÎÁõ¹øÈ£´Â " + num + " ÀÔ´Ï´Ù." + System.getProperty("line.separator"); // 
+			String tomail = email; //ë°›ëŠ”ì‚¬ëŒ
+			String title = "ë¹„ë°€ë²ˆí˜¸ë³€ê²½ ì¸ì¦ ì´ë©”ì¼ ì…ë‹ˆë‹¤"; 
+			String content = System.getProperty("line.separator") + "ì•ˆë…•í•˜ì„¸ìš” íšŒì›ë‹˜" + System.getProperty("line.separator")
+					+ "ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°(ë³€ê²½) ì¸ì¦ë²ˆí˜¸ëŠ” " + num + " ì…ë‹ˆë‹¤." + System.getProperty("line.separator"); // 
 
 			try {
 				MimeMessage message = mailSender.createMimeMessage();
@@ -78,13 +78,13 @@ public class GenEmailController {
 		}else {
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("member/genmember/gen_pw_find");
-			request.setAttribute("msg", "½ÇÆĞ");
+			request.setAttribute("msg", "ì‹¤íŒ¨");
 			return mv;
 		}
 		}else {
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("member/genmember/gen_pw_find");
-			request.setAttribute("msg", "½ÇÆĞ");
+			request.setAttribute("msg", "ì‹¤íŒ¨");
 			return mv;
 		}
 }
@@ -97,7 +97,7 @@ public class GenEmailController {
 				return "member/genmember/gen_pw_new";
 			}
 			else {
-				req.setAttribute("msg", "½ÇÆĞ");
+				req.setAttribute("msg", "ì‹¤íŒ¨");
 				return "member/genmember/gen_pw_auth";
 			}
 	}

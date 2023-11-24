@@ -12,17 +12,17 @@ public class EMailConfig {
     @Bean
     public static JavaMailSender mailSender() {
    JavaMailSenderImpl jms = new JavaMailSenderImpl();
-   jms.setHost("smtp.gmail.com");//google smtp ¼­¹ö ¼³Á¤
-   jms.setPort(587);//google smtp ¸ŞÀÏ ¼­¹ö Æ÷Æ®
-   jms.setUsername("jungeogus@gmail.com");//º¸³»´Â °èÁ¤
+   jms.setHost("smtp.gmail.com");//google smtp ì„œë²„ ì„¤ì •
+   jms.setPort(587);//google smtp ë©”ì¼ ì„œë²„ í¬íŠ¸
+   jms.setUsername("jungeogus@gmail.com");//ë³´ë‚´ëŠ” ê³„ì •
    jms.setPassword("jholkkusmzlbacgr");
 
-   //¸ŞÀÏ Àü´Ş ÇÁ·ÎÅäÄİ ¼¼ºÎ ¼³Á¤
+   //ë©”ì¼ ì „ë‹¬ í”„ë¡œí† ì½œ ì„¸ë¶€ ì„¤ì •
    Properties prop = new Properties();
    prop.setProperty("mail.transport.protocol", "smtp");
-//true¸é »ç¿ëÀÚ ÀÎÁõÀ» ½ÃµµÇÑ´Ù.
+//trueë©´ ì‚¬ìš©ì ì¸ì¦ì„ ì‹œë„í•œë‹¤.
    prop.setProperty("mail.smtp.auth", "true"); 
-//tls ¹æ½ÄÀ¸·Î Ã³¸®µÇ¸é ¸í½ÃÀû º¸¾ÈÃ³¸®ÀÌ´Ù. ¾Ï½ÃÀûÀºsslÀÌ´Ù
+//tls ë°©ì‹ìœ¼ë¡œ ì²˜ë¦¬ë˜ë©´ ëª…ì‹œì  ë³´ì•ˆì²˜ë¦¬ì´ë‹¤. ì•”ì‹œì ì€sslì´ë‹¤
    prop.setProperty("mail.smtp.starttls.enable", "true");
    prop.setProperty("mail.smtp.debug", "true");
 

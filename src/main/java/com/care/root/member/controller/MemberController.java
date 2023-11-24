@@ -77,7 +77,7 @@ public class MemberController implements LoginSession{
 	public String successLogin(@RequestParam String id, @RequestParam String autoLogin, HttpServletResponse res, HttpSession session, RedirectAttributes rs, Model model) {
 		System.out.println("autologin :"+autoLogin);
 		if(autoLogin.equals("on")) {
-			int limitTime = 60*60*24*90; // �� �� �� �� �ؼ� 90�� ����
+			int limitTime = 60*60*24*90; // 초 분 시 일 해서 90일 설정
 			Cookie cloginCookie = new Cookie("cloginCookie", session.getId());
 			cloginCookie.setPath("/");
 			cloginCookie.setMaxAge(limitTime);
@@ -91,7 +91,7 @@ public class MemberController implements LoginSession{
 	@GetMapping("successLogin1")
 	public String successLogin1(@RequestParam String id,@RequestParam String autoLogin, HttpServletResponse res, HttpSession session, RedirectAttributes rs, Model model) {
 		if(autoLogin.equals("on")) {
-			int limitTime = 60*60*24*90; // �� �� �� �� �ؼ� 90�� ����
+			int limitTime = 60*60*24*90; // 초 분 시 일 해서 90일 설정
 			Cookie gloginCookie = new Cookie("gloginCookie", session.getId());
 			gloginCookie.setPath("/");
 			gloginCookie.setMaxAge(limitTime);
@@ -113,13 +113,13 @@ public class MemberController implements LoginSession{
 	@PostMapping("comregister")
 	public String comregister(HttpServletRequest req, ComMemberDTO dto, RedirectAttributes rtt) {
 		cms.comregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","���ԿϷ�");
+		rtt.addFlashAttribute("msg","가입완료�");
 		return "redirect:prelogin";
 	}
 	@PostMapping("genregister")
 	public String genregister(HttpServletRequest req,GenMemberDTO dto, RedirectAttributes rtt) {
 		gms.genregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","���ԿϷ�");
+		rtt.addFlashAttribute("msg","가입완료�");
 		return "redirect:prelogin";
 	}
 	@GetMapping("clogout")

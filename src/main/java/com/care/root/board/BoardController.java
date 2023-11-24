@@ -192,7 +192,6 @@ public class BoardController {
 		dto.setId(mt.getParameter("id"));
 		dto.setContent(mt.getParameter("content"));
 		
-		// 여기는 새로운 이미지파일을 넣은 것
 		String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
 				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
 		
