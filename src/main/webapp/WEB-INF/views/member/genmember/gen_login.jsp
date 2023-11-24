@@ -14,12 +14,10 @@
 		<form action="${contextPath }/member/logChk1" method="post">
 			<input type="text" name="id" placeholder="ID"><br>
 			<input type="text" name="pwd" placeholder="PWD"><br>
-			<input type="submit" value ="로그인">
-			<a href="${contextPath }/member/gen_register_view">개인회원가입</a>
-			<br>
-			<a href="${contextPath }/member/gen_pw_find">비번찾기</a>
-			<br>	
 			<input type="checkbox" name="autoLogin">자동로그인
+			<input type="submit" value ="로그인"><br>
+			<a href="${contextPath }/member/gen_pw_find">비번찾기</a>
+			<a href="${contextPath }/member/gen_register_view">개인회원가입</a>
 		</form>
 	</div>
 
