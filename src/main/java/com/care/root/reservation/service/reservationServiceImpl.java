@@ -116,6 +116,9 @@ public class reservationServiceImpl implements reservationService{
 			csmapper.cDelSeat(con_title, con_buyer);
 		}
 	}
+	public void concert_CardBuySeat(@RequestParam String con_title, @RequestParam String con_buyer){
+		csmapper.cBuySeat(con_title, con_buyer);
+	}
 	
 	public Map<String, Object> mBoardList(int num){
 		int pageLetter = 9; //몇 개 글
@@ -196,6 +199,9 @@ public class reservationServiceImpl implements reservationService{
 			msmapper.mDelSeat(mu_title, mu_buyer);
 		}
 	}
+	public void musical_CardBuySeat(@RequestParam String mu_title, @RequestParam String mu_buyer) {
+		msmapper.mBuySeat(mu_title, mu_buyer);
+	}
 	
 	public Map<String, Object> eBoardList(int num){
 		int pageLetter = 9; //글 총 개수
@@ -275,6 +281,9 @@ public class reservationServiceImpl implements reservationService{
 		else {
 			esmapper.eDelSeat(ex_title, ex_buyer);
 		}
+	}
+	public void exhibition_CardBuySeat(@RequestParam String ex_title, @RequestParam String ex_buyer) {
+		esmapper.eBuySeat(ex_title, ex_buyer);
 	}
 	
 	public List<concertSeatDTO> reservationAllList(String con_buyer){

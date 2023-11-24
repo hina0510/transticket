@@ -285,6 +285,11 @@ public class reservationController implements LoginSession{
 		
 		return "redirect:concert_board";
 	}
+	@GetMapping("concert_CardBuySeat")
+	public String concert_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
+		rs.concert_CardBuySeat(title, buyer);
+		return "reservation/concert/concert_CardPayment";
+	}
 	
 	
 	//musical
@@ -514,6 +519,11 @@ public class reservationController implements LoginSession{
 		
 		return "redirect:musical_board";
 	}
+	@GetMapping("musical_CardBuySeat")
+	public String musical_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
+		rs.musical_CardBuySeat(title, buyer);
+		return "reservation/musical/musical_CardPayment";
+	}
 	
 	
 	//exhibition
@@ -741,6 +751,11 @@ public class reservationController implements LoginSession{
 		rs.eBuySeat(account, price, title, name);
 		
 		return "redirect:exhibition_board";
+	}
+	@GetMapping("exhibition_CardBuySeat")
+	public String exhibition_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
+		rs.exhibition_CardBuySeat(title, buyer);
+		return "reservation/exhibition/exhibition_CardPayment";
 	}
 	
 	

@@ -23,6 +23,7 @@ public interface reservationService {
 	
 	public List<concertSeatDTO> cGetSeat(@RequestParam String con_buyer);
 	public void cBuySeat(String account, int price, String con_title, String con_buyer);
+	public void concert_CardBuySeat(@RequestParam String con_title, @RequestParam String con_buyer);
 	
 	public Map<String, Object> mBoardList(int num);
 	public musicalBoardDTO mGetContent(int writeNo);
@@ -33,6 +34,7 @@ public interface reservationService {
 	
 	public List<musicalSeatDTO> mGetSeat(@RequestParam String mu_buyer);
 	public void mBuySeat(String account, int price, String mu_title, String mu_buyer);
+	public void musical_CardBuySeat(@RequestParam String mu_title, @RequestParam String mu_buyer);
 	
 	public Map<String, Object> eBoardList(int num);
 	public exhibitionBoardDTO eGetContent(int writeNo);
@@ -43,6 +45,7 @@ public interface reservationService {
 	
 	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer);
 	public void eBuySeat(String account, int price, String ex_title, String ex_buyer);
+	public void exhibition_CardBuySeat(@RequestParam String ex_title, @RequestParam String ex_buyer);
 	
 	public List<concertSeatDTO> reservationAllList(String con_buyer);
 	public List<concertSeatDTO> selectTicket(String conS_id);
