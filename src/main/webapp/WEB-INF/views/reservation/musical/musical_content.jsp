@@ -8,18 +8,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="<%=request.getContextPath() %>/resources/js/contentScript.js"></script>
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	musical_content
 	<div class="con01">
 		<div class="con02">
-			<div class="board_wrap">
-        		<div class="board_title">
-        			<strong>뮤지컬 제목</strong>
-		            <p>뮤지컬 예매</p>
-		        </div>
+			<div class="con03">
 		        <div class="board_view_wrap">
 		            <div class="board_view">
 		            	<div class="board_view_title">
@@ -80,51 +74,51 @@
 															</c:choose>	
 														</c:if>
 				                    		 		</c:if>
-								 				</form></dd>
+								 				</form>
+								 			</dd>
 					                    </dl>
 					                    <dl>
-					                        <div class="frame">
-												<button class="custom-btn btn-3" onclick="location.href='musical_${dto.form}?writeNo=${dto.writeNo }'"><span>예매하기</span></button>
-											</div>
+											<button class="custom-btn btn-3" onclick="location.href='musical_${dto.form}?writeNo=${dto.writeNo }'"><span>예매하기</span></button>
 					                    </dl>
 				                	</div>
 				                </div>
 			        		</section>
 		                </div>
 		                <div class="board_view_info">
-							<h4>공연시간 정보</h4>
-								<h6>예매가능시간: 전일17시(월~토 관람 시)까지/전일 11시(일요일 관람 시)까지<br>
-									금 19시 30분 / 토 18시 / 일 17시</h6><br>
+						<h4>공연시간 정보</h4>
+							<h6>예매가능시간: 전일17시(월~토 관람 시)까지/전일 11시(일요일 관람 시)까지<br>
+								금 19시 30분 / 토 18시 / 일 17시</h6><br>
 										
-								<%@ include file="musical_info01.jsp" %><br>
+							<%@ include file="musical_info01.jsp" %>
 								
-								<h4>공연상세 / 출연진정보<br></h4>
-									<div class="image">
-				                		<c:if test="${dto.imageName1 != 'nan' }">
-				                			<img src="download?file=${dto.imageName1 }" alt="${dto.imageName1 }">
-				                		</c:if>
-				                		<c:if test="${dto.imageName2 != 'nan' }">
-				                			<img src="download?file=${dto.imageName2 }" alt="${dto.imageName2 }">
-				                		</c:if>
-				                		<c:if test="${dto.imageName3 != 'nan' }">
-				                			<img src="download?file=${dto.imageName3 }" alt="${dto.imageName3 }">
-				                		</c:if>
-				                		<c:if test="${dto.imageName4 != 'nan' }">
-				                			<img src="download?file=${dto.imageName4 }" alt="${dto.imageName4 }">
-				                		</c:if>
-				                		<c:if test="${dto.imageName5 != 'nan' }">
-				                			<img src="download?file=${dto.imageName5 }" alt="${dto.imageName5 }">
-				                		</c:if>
-									</div>
-								<p>${dto.content}</p>
-							</div>
-		                </div>
-					</div>
-		            <div class="frame">
-						<button class="custom-btn btn-3" onclick="location.href='modify_musical_form'"><span>수정</span></button>
-						<button class="custom-btn btn-3" onclick="location.href='musical_board'"><span>목록</span></button>
-					</div>
-		        </div>
+							<h4>공연상세 / 출연진정보<br></h4>
+								<div class="image">
+				               		<c:if test="${dto.imageName1 != 'nan' }">
+				               			<img src="download?file=${dto.imageName1 }" alt="${dto.imageName1 }">
+				               		</c:if>
+				                	<c:if test="${dto.imageName2 != 'nan' }">
+				                		<img src="download?file=${dto.imageName2 }" alt="${dto.imageName2 }">
+				               		</c:if>
+				               		<c:if test="${dto.imageName3 != 'nan' }">
+				               			<img src="download?file=${dto.imageName3 }" alt="${dto.imageName3 }">
+				               		</c:if>
+				               		<c:if test="${dto.imageName4 != 'nan' }">
+				               			<img src="download?file=${dto.imageName4 }" alt="${dto.imageName4 }">
+				               		</c:if>
+				               		<c:if test="${dto.imageName5 != 'nan' }">
+				               			<img src="download?file=${dto.imageName5 }" alt="${dto.imageName5 }">
+				               		</c:if>
+								</div>
+							<p>${dto.content}</p>
+						</div>
+		        	</div>
+				</div>
+		        <div class="container">
+	            	<c:if test="${comId == dto.comname }">
+						<button class="custom-btn btn-3" onclick="location.href='modify_musical_form?writeNo=${dto.writeNo }'"><span>수정</span></button>
+					</c:if>
+					<button class="custom-btn btn-3" onclick="location.href='musical_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

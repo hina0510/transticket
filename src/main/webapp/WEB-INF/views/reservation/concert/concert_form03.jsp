@@ -14,7 +14,6 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	concert_form03
 	<div class="con01">
 		<div class="con02">
 			<div class="divSeat">
@@ -23,8 +22,8 @@
 					<option value="${dto.price}">${dto.title}</option>
 				</select>
 			</div>
-			<div id="stDate">${dto.con_stDate}</div>
-			<div id="endDate">${dto.con_endDate}</div>
+			<div id="stDate" style="display:none">${dto.con_stDate}</div>
+			<div id="endDate" style="display:none">${dto.con_endDate}</div>
 			<ul class="showcase">
 				<li>
 					<div class="seat3"></div>
@@ -285,8 +284,7 @@
 				        <div class="dates last-calendar"></div>
 				      </div>
 				    </div>
-				
-				    <div class="checkInOutInfo">
+				    <div class="checkInOutInfo" style="display:none">
 				      <div>
 				        <p>
 				          <span>시작</span>

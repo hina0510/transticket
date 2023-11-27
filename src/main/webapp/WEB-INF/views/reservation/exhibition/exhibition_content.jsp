@@ -8,18 +8,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="<%=request.getContextPath() %>/resources/js/contentScript.js"></script>
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	exhibition_content
 	<div class="con01">
 		<div class="con02">
-			<div class="board_wrap">
-        		<div class="board_title">
-        			<strong>전시 제목</strong>
-		            <p>전시 예매</p>
-		        </div>
+			<div class="con03">
 		        <div class="board_view_wrap">
 		            <div class="board_view">
 		            	<div class="board_view_title">
@@ -83,9 +77,7 @@
 								 				</form></dd>
 					                    </dl>
 					                    <dl>
-					                        <div class="frame">
-												<button class="custom-btn btn-3" onclick="location.href='exhibition_${dto.form}?writeNo=${dto.writeNo }'"><span>예매하기</span></button>
-											</div>
+											<button class="custom-btn btn-3" onclick="location.href='exhibition_${dto.form}?writeNo=${dto.writeNo }'"><span>예매하기</span></button>
 					                    </dl>
 				                	</div>
 				                </div>
@@ -96,7 +88,7 @@
 								<h6>예매가능시간: 전일17시(월~토 관람 시)까지/전일 11시(일요일 관람 시)까지<br>
 									금 19시 30분 / 토 18시 / 일 17시</h6><br>
 										
-								<%@ include file="exhibition_info01.jsp" %><br>
+								<%@ include file="exhibition_info01.jsp" %>
 								
 								<h4>공연상세 / 출연진정보<br></h4>
 									<div class="image">
@@ -120,8 +112,10 @@
 							</div>
 		                </div>
 					</div>
-		            <div class="frame">
-						<button class="custom-btn btn-3" onclick="location.href='modify_exhibition_form'"><span>수정</span></button>
+		            <div class="container">
+		            <c:if test="${comId == dto.comname }">
+						<button class="custom-btn btn-3" onclick="location.href='modify_exhibition_form?writeNo=${dto.writeNo }'"><span>수정</span></button>
+					</c:if>
 						<button class="custom-btn btn-3" onclick="location.href='exhibition_board'"><span>목록</span></button>
 		            </div>
 		        </div>

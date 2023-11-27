@@ -19,10 +19,14 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	modify_concert_form
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>콘서트 게시글 수정</strong>
+		        </div>
+		    </div>
+			<div class="con05">
 				<form action="write_concert_Save"  method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
@@ -129,7 +133,7 @@
 								<b>가격 : </b>
 							</td>
 							<td>
-								<input type="number" name="price" min="0" max="1000000">
+								<input type="number" name="price" min="0" max="1000000" value="${cdto.price}">
 							</td>
 						</tr>
 						<tr style="height: 20px;">
@@ -282,14 +286,16 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="frame">
+								<div class="container">
 									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
-									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
 								</div>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<div class="container">
+					<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

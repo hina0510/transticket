@@ -16,7 +16,6 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	exhibition_form01
 	<div class="con01">
 		<div class="con02">
 			<div class="divSeat">
@@ -25,12 +24,12 @@
 					<option value="${dto.price}">${dto.title}</option>
 				</select>
 			</div>
-			<div id="stDate">${dto.ex_stDate}</div>
-			<div id="endDate">${dto.ex_endDate}</div>
+			<div id="stDate" style="display:none">${dto.ex_stDate}</div>
+			<div id="endDate" style="display:none">${dto.ex_endDate}</div>
 			<div class="showcase">
 				<form action="eSeatCheck" method="post" enctype="multipart/form-data">
 					콘서트 명 : <input type="text" readonly name="ex_title" value="${dto.title}"><br>
-					콘서트 날짜 : <input type="text" readonly name="startDate" value="${dto.ex_stDate}"><br>
+					콘서트 날짜 : <input type="text" readonly name="startDate"><br>
 					콘서트 장소 : <input type="text" readonly name="ex_place" value="${dto.ex_place}"><br>
 					티켓 수 : <input type="text" name="count" class="count" value="0" maxLength="2" data-limit="10" onkeyup="setNumeric(this);autoCal();" /><br>
 					가격 : <input type="text" name="price" id="price" value="0" readonly /><br>
@@ -86,7 +85,7 @@
 				      </div>
 				    </div>
 				
-				    <div class="checkInOutInfo">
+				    <div class="checkInOutInfo" style="display:none">
 				      <div>
 				        <p>
 				          <span>시작</span>

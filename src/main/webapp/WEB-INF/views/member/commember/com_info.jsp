@@ -39,14 +39,14 @@ function delchk(){
         			<strong>기업정보</strong>
 		        </div>
 				<div class="board_view_info">
-					id : ${cominfo.dto.id }<br>
+					<p>id : ${cominfo.dto.id }<br>
 					pwd : ${cominfo.dto.pwd }<br>
 					이름 : ${cominfo.dto.name }<br>
 					기본주소 : ${cominfo.dto.addr }<br>
 					우편번호 : ${cominfo.addr1 }<br>
 					주소 : ${cominfo.addr2 }<br>
 					상세주소 : ${cominfo.addr3 }<br>
-					이메일 : ${cominfo.dto.email }<br>
+					이메일 : ${cominfo.dto.email }<br></p>
 				</div>
 			</div>
 			<button class="custom-btn btn-3" onclick="location.href='com_modify?id=${cominfo.dto.id}'"><span>수정</span></button>

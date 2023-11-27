@@ -309,7 +309,7 @@ public class reservationServiceImpl implements reservationService{
 			System.out.println("계산 후 금액 : "+pdto.getMoney());
 			pmapper.saveAccount(money, bAccount);
 			sellSeat(sAccount, price);
-			presentTicket(con_buyer, conS_id);
+			csmapper.presentTicket(con_buyer, conS_id);
 			csmapper.seatWriteDown(conS_id);
 			tmapper.transDelete(writeNo);
 		}
@@ -328,5 +328,15 @@ public class reservationServiceImpl implements reservationService{
 		pdto.setMoney(money);
 		System.out.println("계산 후 금액 : "+pdto.getMoney());
 		pmapper.saveAccount(money, account);
+	}
+	public void cancelTicket(String con_buyer, String conS_id, int price) {
+		csmapper.cancelTicket(conS_id);
+		payDTO pdto = pmapper.getAccount(con_buyer);
+		int money = pdto.getMoney();
+		price-=2000;
+		money = money+price;
+		pdto.setMoney(money);
+		pmapper.saveMoney(money, con_buyer);
+		tmapper.transDel(conS_id);
 	}
 }

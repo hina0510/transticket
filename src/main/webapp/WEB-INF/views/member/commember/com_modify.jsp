@@ -40,7 +40,7 @@ function modichk(){
 		        </div>
 				<div class="board_view_info">
 					<form action="${contextPath }/member/commodify" method="post">
-						<input type="text" readonly name="id" value="${cominfo.dto.id}"><br>
+						<p><input type="text" readonly name="id" value="${cominfo.dto.id}"><br>
 						<input type="text" name="pwd" placeholder="pwd"><br>
 						<input type="text" name="name" placeholder="이름"><br>
 						<input type="text" id="addr1" name="addr" placeholder="우편번호">
@@ -48,7 +48,7 @@ function modichk(){
 						<input type="text" id="addr2" name="addr" placeholder="주소"><br>
 						<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
 						<input type="text" name="email" placeholder="이메일"><br>
-						<input type="submit" onclick="modichk()" value="수정"><br>
+						<button class="custom-btn btn-3" type="submit" onclick="modichk()"><span>수정</span></button><br></p>
 					</form>
 				</div>
 			</div>

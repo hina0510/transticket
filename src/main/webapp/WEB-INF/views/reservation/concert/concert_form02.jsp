@@ -14,7 +14,6 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>	
-	concert_form02
 	<div class="con01">
 		<div class="con02">
 			<div class="divSeat">
@@ -23,8 +22,8 @@
 					<option value="${dto.price}">${dto.title}</option>
 				</select>
 			</div>
-			<div id="stDate">${dto.con_stDate}</div>
-			<div id="endDate">${dto.con_endDate}</div>
+			<div id="stDate" style="display:none">${dto.con_stDate}</div>
+			<div id="endDate" style="display:none">${dto.con_endDate}</div>
 			<ul class="showcase">
 				<li>
 					<div class="seat2"></div>
@@ -221,7 +220,7 @@
 			<div class="showcase">
 					<form action="cSeatCheck" method="post">
 						콘서트 명 : <input type="text" readonly name="con_title" value="${dto.title}"><br>
-						콘서트 날짜 : <input type="text" readonly name="startDate" value="${dto.con_stDate}"><br>
+						콘서트 날짜 : <input type="text" readonly name="startDate"><br>
 						콘서트 장소 : <input type="text" readonly name="con_place" value="${dto.con_place}"><br>
 						티켓 수 : <input type="text" id="count" name="count" readonly value=""><br>
 						가격 : <input type="text" id="total" name="price" readonly value=""><br>
@@ -278,7 +277,7 @@
 				      </div>
 				    </div>
 				
-				    <div class="checkInOutInfo">
+				    <div class="checkInOutInfo" style="display:none">
 				      <div>
 				        <p>
 				          <span>시작</span>

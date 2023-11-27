@@ -44,13 +44,12 @@
 		update transBoard set viewCount = viewCount+1 where write_no = #{writeNo}
 	</update>
 	
-	<update id="transModifySave">
-		update transBoard set category = #{category}, n_id = #{id}, title = #{title}, 
-		content = #{content} where write_no = #{writeNo}
-	</update>
-	
 	<delete id="transDelete">
 		delete from transBoard where write_no = #{writeNo}
+	</delete>
+	
+	<delete id="transDel">
+		delete from transBoard where content = #{content}
 	</delete>
 	
 	<update id="transLikeUpdate">

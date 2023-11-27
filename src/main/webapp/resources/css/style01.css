@@ -1,7 +1,9 @@
-/* �⺻ ���̾ƿ� */
+/* 기본 */
 .con01 {margin: 0 7%; background: #f8f8f8; border-radius: 20px;}
 .con02 {margin: 5% 17%; flex:1;}
 .con03 {padding: 7% 10%;}
+.con04 {margin: 0 7%;}
+.con05 {padding: 0% 7% 5% 7%;}
 
 #model_wrap{display:none; position: fixed; z-index: 9; margin: auto;
 	top: 0; left: 0; right: 0; width: 100%; height: 100%;
@@ -19,6 +21,8 @@
 .container{
   width: 500px;
   margin: 0 auto;
+  font-family: 'omyu_pretty';
+  font-size:20px;
   text-align: center;
 }
 
@@ -53,10 +57,11 @@ ul.tabs li.current{
 }
 
 /* loginform tab */
-.loginform {
-  text-align:center;
-  margin: 5%;
-  padding: 0 20%;
+.container3{
+  margin: 0 7%;
+  font-family: 'omyu_pretty';
+  font-size:20px;
+  text-align: center;
 }
 
 ul.tabs2{
@@ -81,12 +86,13 @@ ul.tabs2 li.current{
 /* content css */
 .board_wrap {
     width: 100%;
-    margin: 5% auto;
+    margin: 3% auto;
     font-family: 'omyu_pretty';
 }
 
 .board_title {
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .board_title strong {
@@ -110,7 +116,6 @@ ul.tabs2 li.current{
 	order:1;
 	text-align:center;
 	width: 30%;
-	background: pink;
 }
 .board_view_title_nav img {
 	text-align:center;
@@ -125,6 +130,7 @@ ul.tabs2 li.current{
 .board_view_title_sec .title {
     padding: 20px 15px;
     border-bottom: 1px dashed #ddd;
+    font-family: 'omyu_pretty';
     font-size: 3rem;
 }
 
@@ -178,9 +184,12 @@ ul.tabs2 li.current{
 }
 
 .board_view .info dl dt,
-.board_view .info dl dd {
+.board_view .info dl dd,
+.board_view .info2 dl dt,
+.board_view .info2 dl dd {
     display: inline-block;
-    font-size: 1rem;
+    font-family: 'omyu_pretty';
+    font-size: 20px;
 }
 
 .board_view .info dl dd {
@@ -190,11 +199,11 @@ ul.tabs2 li.current{
 
 .board_view .board_view_info {
     padding: 20px 0;
-    font-size: 0;
+    font-family: 'omyu_pretty';
 }
 
 .board_view_info p{
-    font-size: 1rem;
+    font-size: 24px;
 }
 
 .board_view_info .image{
@@ -205,12 +214,6 @@ ul.tabs2 li.current{
 }
 
 /* button css */
-.frame {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  font-size:28px;
-}
 .custom-btn {
   width: 100px;
   height: 25px;
@@ -244,6 +247,8 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   display: block;
   width: 100%;
   height: 100%;
+  font-family: 'omyu_pretty';
+  font-size: 20px;
 }
 
 .btn-3:before,
@@ -321,6 +326,38 @@ background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(210,210,210,1) 10
   border-radius: 5px;
 }
 
+
+/* replybox */
+.replybox{
+    display:flex;
+    flex-flow:row;  
+}
+.replybox .text {
+	order:1;
+	width: 85%;
+}
+.replybox .button {
+	order:2;
+	text-align: center;
+	width: 15%;
+	padding: 1.5% 0;
+}
+
+/* ticketbox */
+.ticketbox{
+    display:flex;
+    flex-flow:row;  
+}
+.ticketbox .text {
+	order:1;
+	width: 70%;
+}
+.ticketbox .button {
+	order:2;
+	text-align: center;
+	width: 30%;
+	padding: 1.5% 0;
+}
 
 /* normal */
 .container2{

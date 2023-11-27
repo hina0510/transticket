@@ -13,7 +13,12 @@
 <%@ include file="../default/header.jsp" %>
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
+		<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>자유게시판</strong>
+		        </div>
+		    </div>
+			<div class="container">
 				<form action="${contextPath }/board/genBoardList" method="get" id="searchFoam" name="search-form">
 			        <select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
@@ -67,7 +72,7 @@
 							</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="6">
+							<td colspan="9">
 							<br>
 								<button class="custom-btn6" onclick="">&lt;</button>
 								<c:forEach var="n" begin="1" end="${repeat }">

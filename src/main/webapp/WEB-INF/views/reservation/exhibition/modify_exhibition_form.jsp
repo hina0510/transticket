@@ -19,11 +19,15 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	modify_exhibition_form
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
-				<form action="write_concert_Save">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>전시 게시글 수정</strong>
+		        </div>
+		    </div>
+			<div class="con05">
+				<form action="write_exhibition_Save">
 					<table>
 						<tr>
 							<td>
@@ -98,11 +102,11 @@
 								    <div class="checkInOutInfo" style="display:none">
 								    	<div>
 									        <p>
-									          <input type="text" id="check_in_day" name="startDate" value="${cdto.con_stDate}">
+									          <input type="text" id="check_in_day" name="startDate" value="${edto.ex_stDate}">
 									        </p>
 									        <p class="space">~</p>
 									        <p>
-									          <input type="text" id="check_out_day" name="endDate" value="${cdto.con_endDate}">
+									          <input type="text" id="check_out_day" name="endDate" value="${edto.ex_endDate}">
 									        </p>
 									    </div>
 								    </div>
@@ -129,7 +133,7 @@
 								<b>가격 : </b>
 							</td>
 							<td>
-								<input type="number" name="price" min="0" max="1000000">
+								<input type="number" name="price" min="0" max="1000000" value="${edto.price}">
 							</td>
 						</tr>
 						<tr style="height: 20px;">
@@ -148,7 +152,7 @@
 						                		<c:when test="${edto.imageName1 != 'nan' }">
 						                			<input type="file" id="img1" name="imageName1"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img1Pre', 'image1')">
 									    			<label for="img1">
-						                				<img src="imgView?name=${edto.imageName1 }" id="img1Pre" onclick="" width="100" height="100" alt="없음">
+						                				<img src="download?file=${edto.imageName1 }" id="img1Pre" onclick="" width="100" height="100" alt="없음">
 						                				<input type="hidden" name="image1" id="image1" value="${edto.imageName1 }">
 						                			</label>
 						                		</c:when>
@@ -167,7 +171,7 @@
 						                		<c:when test="${edto.imageName2 != 'nan' }">
 						                			<input type="file" id="img2" name="imageName2"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img2Pre', 'image2')">
 									    			<label for="img2">
-						                				<img src="imgView?name=${edto.imageName2 }" id="img2Pre" onclick="" width="100" height="100" alt="없음">
+						                				<img src="download?file=${edto.imageName2 }" id="img2Pre" onclick="" width="100" height="100" alt="없음">
 						                				<input type="hidden" name="image2" id="image2" value="${edto.imageName2 }">
 						                			</label>
 						                		</c:when>
@@ -186,7 +190,7 @@
 							               		<c:when test="${edto.imageName3 != 'nan' }">
 							               			<input type="file" id="img3" name="imageName3"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img3Pre', 'image3')">
 									    			<label for="img3">
-							               				<img src="imgView?name=${edto.imageName3 }" id="img3Pre" onclick="" width="100" height="100" alt="없음">
+							               				<img src="download?file=${edto.imageName3 }" id="img3Pre" onclick="" width="100" height="100" alt="없음">
 							               				<input type="hidden" name="image3" id="image3" value="${edto.imageName3 }">
 							               			</label>
 							               		</c:when>
@@ -205,7 +209,7 @@
 							               		<c:when test="${edto.imageName4 != 'nan' }">
 							               			<input type="file" id="img4" name="imageName4"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img4Pre', 'image4')">
 									    			<label for="img4">
-							               				<img src="imgView?name=${edto.imageName4 }" id="img4Pre" onclick="" width="100" height="100" alt="없음">
+							               				<img src="download?file=${edto.imageName4 }" id="img4Pre" onclick="" width="100" height="100" alt="없음">
 							               				<input type="hidden" name="image4" id="image4" value="${edto.imageName4 }">
 							               			</label>
 							               		</c:when>
@@ -224,7 +228,7 @@
 							               		<c:when test="${edto.imageName5 != 'nan' }">
 							               			<input type="file" id="img5" name="imageName5"  style="display: none;" accept="image/*" onchange="imgChg(this, 'img5Pre', 'image5')">
 									    			<label for="img5">
-							               				<img src="imgView?name=${edto.imageName5 }" id="img5Pre" onclick="" width="100" height="100" alt="없음">
+							               				<img src="download?file=${edto.imageName5 }" id="img5Pre" onclick="" width="100" height="100" alt="없음">
 							               				<input type="hidden" name="image5" id="image5" value="${edto.imageName5 }">
 							               			</label>
 							               		</c:when>
@@ -272,14 +276,17 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="frame">
+								<div class="container">
 									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
-									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+									<br><br>
 								</div>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<div class="container">
+					<button class="custom-btn btn-3" onclick="location.href='exhibition_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

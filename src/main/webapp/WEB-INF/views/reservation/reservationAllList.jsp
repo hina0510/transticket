@@ -26,7 +26,11 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="container2">
-				<p style="font-size: 30px;">예약확인<br></p>
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>예약확인</strong>
+		        </div>
+		    </div>
 				<c:choose>
 					<c:when test="${list.size()==0}">
 						예매한 티켓이 없습니다<br>
@@ -34,23 +38,35 @@
 					<c:otherwise>
 					<c:set var="cdto" value="${list}" />
 					<c:forEach var="i" begin="0" end="${list.size()-1}">
-						제목 : ${cdto[i].con_title }<br>
-						구매자 : ${cdto[i].con_buyer }<br>
-						좌석 : ${cdto[i].conS_id }<br>
-						날짜 : ${cdto[i].con_date }<br>
-						장소 : ${cdto[i].con_place }<br>
-						결제 : ${cdto[i].con_payed }<br>
-						가격 : ${cdto[i].conS_price }<br>
-						<form action="presentTicket" method="post">
-							<input type="hidden" name="seat" value="${cdto[i].conS_id }">
-							<button class="custom-btn btn-3" type="submit"><span>선물하기</span></button>
-						</form>
-						<c:if test="${cdto[i].conS_write == 0 }">
-							<form action="/root/transboard/transWrite" method="post">
-								<input type="hidden" name="seat" value="${cdto[i].conS_id }">
-								<button class="custom-btn btn-3" type="submit"><span>양도글 게시</span></button>
-							</form>
-						</c:if>
+						<section class="ticketbox">
+							<div class="text">
+								제목 : ${cdto[i].con_title }<br>
+								구매자 : ${cdto[i].con_buyer }<br>
+								좌석 : ${cdto[i].conS_id }<br>
+								날짜 : ${cdto[i].con_date }<br>
+								장소 : ${cdto[i].con_place }<br>
+								결제 : ${cdto[i].con_payed }<br>
+								가격 : ${cdto[i].conS_price }<br>
+							</div>
+							<div class="button">
+								<form action="presentTicket" method="post">
+									<input type="hidden" name="seat" value="${cdto[i].conS_id }">
+									<button class="custom-btn btn-3" type="submit"><span>선물하기</span></button>
+								</form>
+								<c:if test="${cdto[i].conS_write == 0 }">
+									<form action="/root/transboard/transWrite" method="post">
+										<input type="hidden" name="seat" value="${cdto[i].conS_id }">
+										<button class="custom-btn btn-3" type="submit"><span>양도글 게시</span></button>
+									</form>
+								</c:if>
+								<form action="cancelTicket" method="post" onsubmit="return confirm('환불하시겠습니까?\n수수료 2000원이 차감됩니다.')">
+									<input type="hidden" name="buyer" value="${cdto[i].con_buyer }">
+									<input type="hidden" name="seat" value="${cdto[i].conS_id }">
+									<input type="hidden" name="price" value="${cdto[i].conS_price }">
+									<button class="custom-btn btn-3" type="submit"><span>좌석 환불</span></button>
+								</form>
+							</div>
+						</section>
 						<hr>
 					</c:forEach>
 					</c:otherwise>

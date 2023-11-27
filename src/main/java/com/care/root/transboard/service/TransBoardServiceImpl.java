@@ -47,16 +47,15 @@ public class TransBoardServiceImpl implements TransBoardService{
 		return mapper.transView(writeNo);
 	}
 	
-	public void transModifySave(TransBoardDTO dto) {
-		mapper.transModifySave(dto);
-	}
-	
 	private void upViewCount(int writeNo) {
 		mapper.upViewCount(writeNo);
 	}
 	
 	public void transDelete(int writeNo) {
 		mapper.transDelete(writeNo);
+	}
+	public void transDel(String conS_id) {
+		mapper.transDel(conS_id);
 	}
 	
 	public void transLike(String id, int writeNo) {

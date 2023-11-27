@@ -2,6 +2,7 @@ img {width: 100%; height: 300px;}
 section {margin: 0% 20% ;padding: 1%;}
 .button{background: skyblue; text-align: right; width: 100%; font-size: small; }
 .board {font-family: 'omyu_pretty';}
+.con04 {margin: 0 7%;}
 @font-face {
   font-family: 'omyu_pretty';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');

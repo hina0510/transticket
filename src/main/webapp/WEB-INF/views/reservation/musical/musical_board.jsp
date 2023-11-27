@@ -16,8 +16,12 @@
 	<%@ include file="../../default/header.jsp" %>
 	<div class="con01">
 		<div class="con02">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>뮤지컬</strong>
+		        </div>
+		    </div>
 			<div class="container">
-			<br><br>
 				<c:choose>
 					<c:when test="${list.size()==0}">
 						작성된 글이 없습니다
@@ -52,15 +56,18 @@
 					    </c:forEach>
 					</c:otherwise>
 				</c:choose>
-				<button class="custom-btn6" onclick="">&lt;</button>
-				<c:forEach var="n" begin="1" end="${repeat }">
-					<button class="custom-btn6" onclick="location.href='concert_board?num=${n }'">${n }</button>
-				</c:forEach>
-				<button class="custom-btn6" onclick="">&gt;</button>
-				<br>
-				<c:if test="${clogin!=null}">	
-					<button class="custom-btn btn-3" onclick="location.href='write_musical_form'"><span>글 작성</span></button>
-				</c:if>
+				<div class="container">
+					<br>
+					<button class="custom-btn6" onclick="">&lt;</button>
+					<c:forEach var="n" begin="1" end="${repeat }">
+						<button class="custom-btn6" onclick="location.href='concert_board?num=${n }'">${n }</button>
+					</c:forEach>
+					<button class="custom-btn6" onclick="">&gt;</button>
+					<br><br>
+					<c:if test="${clogin!=null}">	
+						<button class="custom-btn btn-3" onclick="location.href='write_musical_form'"><span>글 작성</span></button>
+					</c:if>
+				</div>
 				<br><br>
 			</div>
 		</div>

@@ -105,31 +105,11 @@ public class TransBoardController {
 		return "redirect:transBoardList";
 	}
 	
-	
 	@PostMapping("likes")
 	public String likes(@RequestParam String id, @RequestParam int writeNo) {
 		System.out.println(id + writeNo);
 		ts.transLike(id, writeNo);
 		return "redirect:transBoardView?writeNo="+ writeNo;
-	}
-	
-	@GetMapping("transModify")
-	public String transModify(@RequestParam int writeNo, Model model) {
-		model.addAttribute("dto", ts.transView(writeNo));
-		return "transboard/transBoardModify";
-	}
-	
-	@PostMapping("transModifySave") 
-	public String transModifySave(@RequestParam int writeNo, MultipartHttpServletRequest mt){
-		TransBoardDTO dto = ts.transView(writeNo);
-		dto.setCategory(mt.getParameter("category"));
-		dto.setTitle(mt.getParameter("title"));
-		dto.setId(mt.getParameter("id"));
-		dto.setContent(mt.getParameter("content"));
-		
-		ts.transModifySave(dto);
-		
-		return "redirect:transBoardView?writeNo="+writeNo;
 	}
 	
 	@GetMapping("transDelete")

@@ -16,7 +16,7 @@
 			<input type="text" name="id" placeholder="ID"><br>
 			<input type="text" name="pwd" placeholder="PWD"><br>
 			<input type="checkbox" name="autoLogin">자동로그인
-			<input type="submit" value ="로그인"><br>	
+			<button class="custom-btn btn-3" type="submit"><span>로그인</span></button><br>
 			<a href="${contextPath }/member/com_pw_find">비번찾기</a>
 			<a href="${contextPath }/member/com_register_view">기업회원가입</a>
 		</form>

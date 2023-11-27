@@ -38,17 +38,17 @@ function modichk(){
 		        </div>
 				<div class="board_view_info">
 					<form action="${contextPath }/member/genmodify" method="post">
-						<input type="text" readonly name="id" value="${geninfo.dto.id}"><br>
+						<p><input type="text" readonly name="id" value="${geninfo.dto.id}"><br>
 						<input type="text" name="pwd" placeholder="pwd"><br>
-						<input type="text" name="name" placeholder="이름"><br>
-						<input type="text" name="birth" placeholder="생년월일"><br>
-						<input type="text" name="email" placeholder="email"><br>
+						<input type="text" name="name" placeholder="이름" value="${geninfo.dto.name}"><br>
+						<input type="text" name="birth" placeholder="생년월일" value="${geninfo.dto.birth}"><br>
+						<input type="text" name="email" placeholder="email" value="${geninfo.dto.email}"><br>
 						<input type="text" id="addr1" name="addr" placeholder="우편번호">
-						<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
+						<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>우편번호 찾기</span></button><br>
 						<input type="text" id="addr2" name="addr" placeholder="주소"><br>
 						<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
-						<input type="text" name="tel" placeholder="tel"><br>
-						<input type="submit" onclick="modichk()" value="수정"><br>
+						<input type="text" name="tel" placeholder="tel" value="${geninfo.dto.tel}"><br>
+						<button class="custom-btn btn-3" type="submit" onclick="modichk()"><span>수정</span></button><br></p>
 					</form>
 				</div>
 			</div>

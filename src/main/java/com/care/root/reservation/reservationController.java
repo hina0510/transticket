@@ -56,15 +56,22 @@ public class reservationController implements LoginSession{
 	public String concertContent(@RequestParam int writeNo, Model model, HttpSession session) {
 		rs.cUpHit(writeNo);
 		
-		String id;
+		String gid;
 		if(session.getAttribute(LoginSession.GLOGIN) == null) {
-			id = "undefined";
+			gid = "undefined";
 		}else {
-			id = (String) session.getAttribute(LoginSession.GLOGIN);
+			gid = (String) session.getAttribute(LoginSession.GLOGIN);
+		}
+		String cid;
+		if(session.getAttribute(LoginSession.CLOGIN) == null) {
+			cid = "undefined";
+		}else {
+			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
 		model.addAttribute("dto", rs.cGetContent(writeNo));
-		model.addAttribute("genId", id);
-		model.addAttribute("likes", rs.cLikeChk(id, writeNo));
+		model.addAttribute("genId", gid);
+		model.addAttribute("comId", cid);
+		model.addAttribute("likes", rs.cLikeChk(gid, writeNo));
 		return "reservation/concert/concert_content";
 	}
 	@PostMapping("likes")
@@ -103,7 +110,17 @@ public class reservationController implements LoginSession{
 		endDate = endDate.replace(" ", "");
 		cdto.setCon_stDate(startDate);
 		cdto.setCon_endDate(endDate);
-		cdto.setCon_place(mt.getParameter("con_place"));
+		
+		String[] addr = mt.getParameterValues("con_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		cdto.setCon_place(ad);
 		cdto.setPrice(price);
 		cdto.setContent(mt.getParameter("content"));
 		cdto.setForm(mt.getParameter("form"));
@@ -145,7 +162,16 @@ public class reservationController implements LoginSession{
 		cdto.setComname(mt.getParameter("comname"));
 		cdto.setCon_stDate(mt.getParameter("startDate"));
 		cdto.setCon_endDate(mt.getParameter("endDate"));
-		cdto.setCon_place(mt.getParameter("con_place"));
+		String[] addr = mt.getParameterValues("con_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		cdto.setCon_place(ad);
 		cdto.setPrice(price);
 		cdto.setContent(mt.getParameter("content"));
 		cdto.setForm(mt.getParameter("form"));
@@ -196,7 +222,13 @@ public class reservationController implements LoginSession{
 		res.setContentType("text/html; charset=UTF-8");
 		
 		cdto.setCon_title(req.getParameter("con_title"));
-		cdto.setCon_date(req.getParameter("startDate"));
+		StringBuilder stDate = new StringBuilder(req.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		cdto.setCon_date(startDate);
 		cdto.setCon_place(req.getParameter("con_place"));
 		cdto.setCon_buyer(req.getParameter("con_buyer"));
 		String cnt = req.getParameter("count");
@@ -305,15 +337,22 @@ public class reservationController implements LoginSession{
 	@GetMapping("musical_content")
 	public String musicalContent(@RequestParam int writeNo, Model model, HttpSession session) {
 		rs.mUpHit(writeNo);
-		String id;
+		String gid;
 		if(session.getAttribute(LoginSession.GLOGIN) == null) {
-			id = "undefined";
+			gid = "undefined";
 		}else {
-			id = (String) session.getAttribute(LoginSession.GLOGIN);
+			gid = (String) session.getAttribute(LoginSession.GLOGIN);
+		}
+		String cid;
+		if(session.getAttribute(LoginSession.CLOGIN) == null) {
+			cid = "undefined";
+		}else {
+			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
 		model.addAttribute("dto", rs.mGetContent(writeNo));
-		model.addAttribute("genId", id);
-		model.addAttribute("likes", rs.mLikeChk(id, writeNo));
+		model.addAttribute("genId", gid);
+		model.addAttribute("comId", cid);
+		model.addAttribute("likes", rs.mLikeChk(gid, writeNo));
 		
 		return "reservation/musical/musical_content";
 	}
@@ -346,7 +385,16 @@ public class reservationController implements LoginSession{
 		endDate = endDate.replace(" ", "");
 		mdto.setMu_stDate(startDate);
 		mdto.setMu_endDate(endDate);
-		mdto.setMu_place(mt.getParameter("mu_place"));
+		String[] addr = mt.getParameterValues("mu_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		mdto.setMu_place(ad);
 		mdto.setPrice(price);
 		mdto.setContent(mt.getParameter("content"));
 		mdto.setForm(mt.getParameter("form"));
@@ -379,7 +427,16 @@ public class reservationController implements LoginSession{
 		mdto.setComname(mt.getParameter("comname"));
 		mdto.setMu_stDate(mt.getParameter("startDate"));
 		mdto.setMu_endDate(mt.getParameter("endDate"));
-		mdto.setMu_place(mt.getParameter("mu_place"));
+		String[] addr = mt.getParameterValues("mu_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		mdto.setMu_place(ad);
 		mdto.setPrice(price);
 		mdto.setContent(mt.getParameter("content"));
 		mdto.setForm(mt.getParameter("form"));
@@ -430,7 +487,13 @@ public class reservationController implements LoginSession{
 		res.setContentType("text/html; charset=UTF-8");
 		
 		mdto.setMu_title(req.getParameter("mu_title"));
-		mdto.setMu_date(req.getParameter("startDate"));
+		StringBuilder stDate = new StringBuilder(req.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		mdto.setMu_date(startDate);
 		mdto.setMu_buyer(req.getParameter("mu_buyer"));
 		mdto.setMu_place(req.getParameter("mu_place"));
 		String cnt = req.getParameter("count");
@@ -539,15 +602,22 @@ public class reservationController implements LoginSession{
 	@GetMapping("exhibition_content")
 	public String exhibitionContent(@RequestParam int writeNo, Model model, HttpSession session) {
 		rs.eUpHit(writeNo);
-		String id;
+		String gid;
 		if(session.getAttribute(LoginSession.GLOGIN) == null) {
-			id = "undefined";
+			gid = "undefined";
 		}else {
-			id = (String) session.getAttribute(LoginSession.GLOGIN);
+			gid = (String) session.getAttribute(LoginSession.GLOGIN);
+		}
+		String cid;
+		if(session.getAttribute(LoginSession.CLOGIN) == null) {
+			cid = "undefined";
+		}else {
+			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
 		model.addAttribute("dto", rs.eGetContent(writeNo));
-		model.addAttribute("genId", id);
-		model.addAttribute("likes", rs.eLikeChk(id, writeNo));
+		model.addAttribute("genId", gid);
+		model.addAttribute("comId", cid);
+		model.addAttribute("likes", rs.eLikeChk(gid, writeNo));
 		
 		return "reservation/exhibition/exhibition_content";
 	}
@@ -580,7 +650,16 @@ public class reservationController implements LoginSession{
 		endDate = endDate.replace(" ", "");
 		edto.setEx_stDate(startDate);
 		edto.setEx_endDate(endDate);
-		edto.setEx_place(mt.getParameter("ex_place"));
+		String[] addr = mt.getParameterValues("ex_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		edto.setEx_place(ad);
 		edto.setPrice(price);
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
@@ -613,7 +692,16 @@ public class reservationController implements LoginSession{
 		edto.setComname(mt.getParameter("comname"));
 		edto.setEx_stDate(mt.getParameter("startDate"));
 		edto.setEx_endDate(mt.getParameter("endDate"));
-		edto.setEx_place(mt.getParameter("ex_place"));
+		String[] addr = mt.getParameterValues("ex_place");
+		String ad = "";
+		for(String a:addr) {
+			System.out.println(a);
+			ad +=a+"/";
+		}
+		System.out.println("============");
+		System.out.println(ad);
+		
+		edto.setEx_place(ad);
 		edto.setPrice(price);
 		edto.setContent(mt.getParameter("content"));
 		edto.setForm(mt.getParameter("form"));
@@ -655,7 +743,13 @@ public class reservationController implements LoginSession{
 		res.setContentType("text/html; charset=UTF-8");
 		
 		edto.setEx_title(req.getParameter("ex_title"));
-		edto.setEx_date(req.getParameter("startDate"));
+		StringBuilder stDate = new StringBuilder(req.getParameter("startDate"));
+		stDate = stDate.deleteCharAt(11);
+		stDate = stDate.deleteCharAt(12);
+		stDate = stDate.deleteCharAt(13);
+		String startDate = stDate.toString();
+		startDate = startDate.replace(" ", "");
+		edto.setEx_date(startDate);
 		edto.setEx_buyer(req.getParameter("ex_buyer"));
 		edto.setEx_place(req.getParameter("ex_place"));
 		String cnt = req.getParameter("count");
@@ -779,6 +873,17 @@ public class reservationController implements LoginSession{
 		String con_buyer = req.getParameter("receiver");
 		String conS_id = req.getParameter("seat");
 		rs.presentTicket(con_buyer, conS_id);
+		return "redirect:reservationAllList";
+	}
+	@PostMapping("cancelTicket")
+	public String cancelTicket(HttpServletRequest req, Model model) {
+		System.out.println(req.getParameter("buyer"));
+		String con_buyer = req.getParameter("buyer");
+		System.out.println(req.getParameter("seat"));
+		String conS_id = req.getParameter("seat");
+		String pri = req.getParameter("price");
+		int price = Integer.parseInt(pri);
+		rs.cancelTicket(con_buyer, conS_id, price);
 		return "redirect:reservationAllList";
 	}
 }

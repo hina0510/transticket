@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/wformstyle02.css">
 </head>
 <body>
-	write_concert_form02
 	<ul class="showcase">
 		<li>
 			<div class="seat"></div>

@@ -20,10 +20,14 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	write_exhibition_form
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>전시 게시글 작성</strong>
+		        </div>
+		    </div>
+			<div class="con05">
 				<form action="write_exhibition_save" method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
@@ -42,6 +46,7 @@
 						</tr>
 						<tr style="height: 20px;">
 						</tr>
+						<tr>
 							<td>
 								<b>작성자 : </b>
 							</td>
@@ -194,17 +199,18 @@
 							</td>
 						</tr>
 						<tr>
-							<tr>
 							<td colspan="2">
-								<div class="frame">
+								<div class="container">
 									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
-									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+								<br><br>
 								</div>
 							</td>
 						</tr>
-						</tr>
 					</table>
 				</form>
+				<div class="container">
+					<button class="custom-btn btn-3" onclick="location.href='exhibition_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

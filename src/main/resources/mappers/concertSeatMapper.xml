@@ -46,4 +46,7 @@
 	<update id="presentTicket">
 		update seat set s_buyer=#{con_buyer} where s_id=#{conS_id}
 	</update>
+	<delete id="cancelTicket">
+		delete from seat where s_id=#{conS_id}
+	</delete>
 </mapper>

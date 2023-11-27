@@ -53,4 +53,5 @@ public interface reservationService {
 	public payDTO getAccount(String name);
 	public void BuySeat(String sAccount, String bAccount, int price, String conS_id, String con_buyer, int writeNo);
 	public void sellSeat(String account, int price);
+	public void cancelTicket(String con_buyer, String conS_id, int price);
 }

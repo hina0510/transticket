@@ -38,7 +38,7 @@ function delchk(){
         			<strong>개인정보</strong>
 		        </div>
 				<div class="board_view_info">
-					id : ${geninfo.dto.id }<br>
+					<p>id : ${geninfo.dto.id }<br>
 					pwd : ${geninfo.dto.pwd }<br>
 					이름 : ${geninfo.dto.name }<br>
 					생년월일 : ${geninfo.dto.birth }<br>
@@ -47,7 +47,7 @@ function delchk(){
 					우편번호 : ${geninfo.addr1 }<br>
 					주소 : ${geninfo.addr2 }<br>
 					상세주소 : ${geninfo.addr3 }<br>
-					전화번호 : ${geninfo.dto.tel }<br>
+					전화번호 : ${geninfo.dto.tel }<br></p>
 				</div>
 			</div>
 			<button class="custom-btn btn-3" onclick="location.href='gen_modify?id=${geninfo.dto.id}'"><span>수정</span></button>

@@ -186,7 +186,7 @@ function prevShow() {
 		<div style="display:inline-block; width : 40%; margin : auto; padding-top: 20px; text-align: center;">
 			<img id="mainImg" width="600" height="600" alt="없음">
 			<hr>
-			<button type="button" onclick="slide_hide()">취소</button>
+			<button class="custom-btn btn-3" type="button" onclick="slide_hide()">취소</button>
 		</div>
 		
 		<div style="text-align:center;  display:inline-block; width:25%;">
@@ -197,22 +197,15 @@ function prevShow() {
 		</div>
 	</div>
 	
-	
-	
-	
 	concert_content
 	<div class="con01">
 		<div class="con02">
 			<div class="board_wrap">
         		<div class="board_title">
-        			<strong>콘서트 제목</strong>
-	            	<p>여러분들의 여행후기를 올려주세요!</p>
+        			<strong>${dto.title }</strong>
 		        </div>
 		        <div class="board_view_wrap">
 		            <div class="board_view">
-		                <div class="title">
-		                	<p>${dto.title }</p>
-		                </div>
 		                <div class="info">
 		                    <dl>
 		                        <dt>글 번호</dt>
@@ -229,50 +222,85 @@ function prevShow() {
 		                    <dl>
 		                        <dt>좋아요</dt>
 		                        <dd>${dto.likes }</dd>
+		                        <dd>
+		                    		<form action="likes" method="post">
+			                    		<c:if test="${genId != 'undefined' }">
+				                    		<c:choose>
+												<c:when test="${genId != dto.id }">
+													<c:choose>
+														<c:when test="${likes == 'none' }">
+															<input type="hidden" value="${genId }" name="id">
+										  					<input type="hidden" value="${dto.writeNo }" name="writeNo">
+									  						<button>♡</button>
+														</c:when>
+														<c:otherwise>
+															<button disabled>♥</button>
+														</c:otherwise>
+													</c:choose>	
+												</c:when>
+													
+												<c:otherwise>
+													<c:choose>
+														<c:when test="${likes == 'none' }">
+															<input type="hidden" value="${genId }" name="id">
+										  					<input type="hidden" value="${dto.writeNo }" name="writeNo">
+										  					<button>♡</button>
+														</c:when>
+														<c:otherwise>
+															<button disabled>♥</button>
+														</c:otherwise>
+													</c:choose>
+												</c:otherwise>
+											</c:choose>
+		                    			</c:if>
+									</form>
+								</dd>
 		                    </dl>
-		                    
 		                </div>
 		                
-		                
-	                	<div style="text-align: center;">
-		                	<c:choose>
-		                		<c:when test="${dto.imageName1 != 'nan' }">
-		                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="imgShow(1)" width="100" height="100" alt="없음">
-		                		</c:when>
-		                	</c:choose>
-	
-							  
-							<c:choose>
-		                		<c:when test="${dto.imageName2 != 'nan' }">
-		                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="imgShow(2)" width="100" height="100" alt="없음">
-		                		</c:when>
-		                	</c:choose>
-							  
-							  <c:choose>
-		                		<c:when test="${dto.imageName3 != 'nan' }">
-		                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="imgShow(3)" width="100" height="100" alt="없음">
-		                		</c:when>
-		                	</c:choose>
-							  
-							  <c:choose>
-		                		<c:when test="${dto.imageName4 != 'nan' }">
-		                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="imgShow(4)" width="100" height="100" alt="없음">
-		                		</c:when>
-		                	</c:choose>
-							  
-							  <c:choose>
-		                		<c:when test="${dto.imageName5 != 'nan' }">
-		                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="imgShow(5)" width="100" height="100" alt="없음">
-		                		</c:when>
-		                	</c:choose>
-							  <br>
-							  <b style="font-size: 12px;">※이미지를 클릭하면 확대됩니다.</b>
-						</div>
-						
-						
 		                <div class="info2">
 		                    <dl>
 		                        <dt>내용</dt>
+		                    </dl>
+		                	<dl>
+		                        <dd>
+			                        <div style="text-align: center;">
+					                	<c:choose>
+					                		<c:when test="${dto.imageName1 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="imgShow(1)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+				
+										  
+										<c:choose>
+					                		<c:when test="${dto.imageName2 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="imgShow(2)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+										  
+										  <c:choose>
+					                		<c:when test="${dto.imageName3 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="imgShow(3)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+										  
+										  <c:choose>
+					                		<c:when test="${dto.imageName4 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="imgShow(4)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+										  
+										  <c:choose>
+					                		<c:when test="${dto.imageName5 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="imgShow(5)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+										  <br>
+										  <b style="font-size: 12px;">※이미지를 클릭하면 확대됩니다.</b>
+									</div>
+		                        </dd>
+		                    </dl>
+		                	<dl>
 		                        <dd>
 									 ${dto.content },  
 									  일반 사용자 : ${genId }, <br>
@@ -283,60 +311,35 @@ function prevShow() {
 		                    <br>
 		                    <dl>
 		                    	<dd>
-		                    		<form action="likes" method="post">
-			                    		<c:if test="${genId != 'undefined' }">
-				                    		<c:choose>
-												<c:when test="${genId != dto.id }">
-													<c:choose>
-															<c:when test="${likes == 'none' }">
-																<input type="hidden" value="${genId }" name="id">
-										  						<input type="hidden" value="${dto.writeNo }" name="writeNo">
-										  						<button>♡</button>
-															</c:when>
-															<c:otherwise>
-																<button disabled>♥</button>
-															</c:otherwise>
-														</c:choose>	
-													</c:when>
-													
-													<c:otherwise>
-														<c:choose>
-															<c:when test="${likes == 'none' }">
-																<input type="hidden" value="${genId }" name="id">
-										  						<input type="hidden" value="${dto.writeNo }" name="writeNo">
-										  						<button>♡</button>
-															</c:when>
-															<c:otherwise>
-																<button disabled>♥</button>
-															</c:otherwise>
-														</c:choose>
-													</c:otherwise>
-												</c:choose>
-		                    		 		</c:if>
-									  </form>
 						 			<c:if test="${genId == dto.id }">
-									<button type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
-	                    			<button type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
+									<button class="custom-btn btn-3" type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
+	                    			<button class="custom-btn btn-3" type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
 									</c:if>
-						  			<button type="button" onclick="location.href='genBoardList'">목록</button>
+						  			<button class="custom-btn btn-3" type="button" onclick="location.href='genBoardList'">목록</button>
 								</dd>
 		                    </dl>
 		                </div>
 		            </div>
 		        </div>
 		        <form action="reply" method="post" style="text-align: center;">	
-					<c:if test="${genId != 'undefined' }">
-						<input type="hidden" value="${genId }" name="gId">
-					</c:if>
-		        	<c:if test="${comId != 'undefined' }">
-		        		<input type="hidden" value="${comId }" name="cId">
-		        	</c:if>
-					<input type="hidden" value="${dto.writeNo }" name="writeNo">
-		        	<textarea rows="3" cols="70%" style="resize: none;" name="content"></textarea>
-		        	<button>답글달기</button>
+					<section class="replybox">
+						<div class="text">
+							<c:if test="${genId != 'undefined' }">
+								<input type="hidden" value="${genId }" name="gId">
+							</c:if>
+				        	<c:if test="${comId != 'undefined' }">
+				        		<input type="hidden" value="${comId }" name="cId">
+				        	</c:if>
+							<input type="hidden" value="${dto.writeNo }" name="writeNo">
+				        	<textarea rows="3" style="width:100%;" name="content"></textarea>
+						</div>
+						<div class="button">
+							<button class="custom-btn btn-3">답글달기</button>
+						</div>
+					</section>
 		        </form>
-		        <hr>
 		        <c:forEach var="rep" items="${reply }">
+		        <hr>
 		        	<c:choose>
 		        		<c:when test="${rep.nId != 'nan' }">
 		        			일반 사용자 : ${rep.nId } 작성일 : ${rep.saveDate }
@@ -388,6 +391,7 @@ function prevShow() {
 		        		</c:otherwise>
 		        	</c:choose>
 		        </c:forEach>
+		        <br>
 			</div>
 		</div>
 	</div>

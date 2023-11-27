@@ -19,4 +19,5 @@ public interface concertSeatMapper {
 	public void seatWriteUpdate(String conS_id);
 	public List<concertSeatDTO> seatWriteChk(String con_buyer);
 	public void seatWriteDown(String conS_id);
+	public void cancelTicket(String conS_id);
 }

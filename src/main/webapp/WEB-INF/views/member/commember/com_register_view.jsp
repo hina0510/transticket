@@ -30,15 +30,15 @@
 		        </div>
 				<div class="board_view_info">
 					<form action="${contextPath }/member/comregister" method="post">
-						<input type="text" name="id" placeholder="id"><br>
+						<p><input type="text" name="id" placeholder="id"><br>
 						<input type="text" name="pwd" placeholder="pwd"><br>
 						<input type="text" name="name" placeholder="이름"><br>
 						<input type="text" readonly id="addr1" name="addr" placeholder="우편번호">
-						<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
+						<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>우편번호 찾기</span></button><br>
 						<input type="text" readonly id="addr2" name="addr" placeholder="주소"><br>
 						<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
 						<input type="text" name="email" placeholder="email"><br>
-						<input type="submit" value="회원가입"><br>
+						<button class="custom-btn btn-3" type="submit"><span>회원가입</span></button><br></p>
 					</form>
 				</div>
 			</div>
