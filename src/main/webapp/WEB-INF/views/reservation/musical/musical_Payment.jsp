@@ -17,10 +17,10 @@
 		        </div>
 				<div class="board_view_info">
 					<form action="musical_BuySeat" method="post">
-						계좌번호 : <input type="text" placeholder="계좌번호13자리" name="account"><br>
-						제목 : <input type="text" name="title" value="${title }"><br>
-						구매자 : <input type="text" name="buyer" value="${buyer }"><br>
-						금액 : <input type="text" name="price" value="${price }"><br>
+						<p>계좌번호 : <input type="text" placeholder="계좌번호13자리" name="account"><br>
+						제목 : ${title }<input type="hidden" name="title" value="${title }"><br>
+						구매자 : ${buyer }<input type="hidden" name="buyer" value="${buyer }"><br>
+						금액 : ${price }<input type="hidden" name="price" value="${price }"><br></p>
 						<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
 					</form>
 				</div>

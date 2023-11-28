@@ -16,25 +16,25 @@
         		<div class="board_title">
         			<strong>list page</strong>
 		        </div>
-				<div class="board_view_info">
-					<table border="1">
+				<div class="container">
+					<table style="text-align: center;">
 						<tr>
-							<th>id</th>
-							<th>pwd</th>
-							<th>name</th>
-							<th>birth</th>
-							<th>email</th>
-							<th>addr</th>
+							<th>id</th><th style="width: 20px;"></th>
+							<th>pwd</th><th style="width: 20px;"></th>
+							<th>name</th><th style="width: 20px;"></th>
+							<th>birth</th><th style="width: 20px;"></th>
+							<th>email</th><th style="width: 20px;"></th>
+							<th>addr</th><th style="width: 20px;"></th>
 							<th>tel</th>
 							</tr>
 						<c:forEach var="dto" items="${glist }">
 							<tr>
-								<td>${dto.id }</td>
-								<td>${dto.pwd }</td>
-								<td>${dto.name }</td>
-								<td>${dto.birth }</td>
-								<td>${dto.email }</td>
-								<td>${dto.addr }</td>
+								<td>${dto.id }</td><td style="width: 20px;"></td>
+								<td>${dto.pwd }</td><td style="width: 20px;"></td>
+								<td>${dto.name }</td><td style="width: 20px;"></td>
+								<td>${dto.birth }</td><td style="width: 20px;"></td>
+								<td>${dto.email }</td><td style="width: 20px;"></td>
+								<td>${dto.addr }</td><td style="width: 20px;"></td>
 								<td>${dto.tel }</td>
 								</tr>
 						</c:forEach>

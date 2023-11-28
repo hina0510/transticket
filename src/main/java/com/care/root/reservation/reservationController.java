@@ -68,7 +68,15 @@ public class reservationController implements LoginSession{
 		}else {
 			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
-		model.addAttribute("dto", rs.cGetContent(writeNo));
+		String place="";
+		concertBoardDTO cdto = rs.cGetContent(writeNo);
+		String ad = cdto.getCon_place();
+		String[] addr=ad.split("/");
+		for(String a1:addr) {
+			place += a1+" ";
+		}
+		cdto.setCon_place(place);
+		model.addAttribute("dto", cdto);
 		model.addAttribute("genId", gid);
 		model.addAttribute("comId", cid);
 		model.addAttribute("likes", rs.cLikeChk(gid, writeNo));
@@ -155,7 +163,7 @@ public class reservationController implements LoginSession{
 		
 		String pri = mt.getParameter("price");
 		int price = Integer.parseInt(pri);
-		
+		System.out.println(writeNo);
 		concertBoardDTO cdto = rs.cGetContent(writeNo);
 		cdto.setTitle(mt.getParameter("title"));
 		cdto.setType(mt.getParameter("type"));
@@ -320,7 +328,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("concert_CardBuySeat")
 	public String concert_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
 		rs.concert_CardBuySeat(title, buyer);
-		return "reservation/concert/concert_CardPayment";
+		return "redirect:concert_board";
 	}
 	
 	
@@ -349,7 +357,15 @@ public class reservationController implements LoginSession{
 		}else {
 			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
-		model.addAttribute("dto", rs.mGetContent(writeNo));
+		String place="";
+		musicalBoardDTO mdto = rs.mGetContent(writeNo);
+		String ad = mdto.getMu_place();
+		String[] addr=ad.split("/");
+		for(String a1:addr) {
+			place += a1+" ";
+		}
+		mdto.setMu_place(place);
+		model.addAttribute("dto", mdto);
 		model.addAttribute("genId", gid);
 		model.addAttribute("comId", cid);
 		model.addAttribute("likes", rs.mLikeChk(gid, writeNo));
@@ -585,7 +601,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("musical_CardBuySeat")
 	public String musical_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
 		rs.musical_CardBuySeat(title, buyer);
-		return "reservation/musical/musical_CardPayment";
+		return "redirect:musical_board";
 	}
 	
 	
@@ -614,7 +630,15 @@ public class reservationController implements LoginSession{
 		}else {
 			cid = (String) session.getAttribute(LoginSession.CLOGIN);
 		}
-		model.addAttribute("dto", rs.eGetContent(writeNo));
+		String place="";
+		exhibitionBoardDTO edto = rs.eGetContent(writeNo);
+		String ad = edto.getEx_place();
+		String[] addr=ad.split("/");
+		for(String a1:addr) {
+			place += a1+" ";
+		}
+		edto.setEx_place(place);
+		model.addAttribute("dto", edto);
 		model.addAttribute("genId", gid);
 		model.addAttribute("comId", cid);
 		model.addAttribute("likes", rs.eLikeChk(gid, writeNo));
@@ -849,7 +873,7 @@ public class reservationController implements LoginSession{
 	@GetMapping("exhibition_CardBuySeat")
 	public String exhibition_CardBuySeat(@RequestParam String title, @RequestParam String buyer) {
 		rs.exhibition_CardBuySeat(title, buyer);
-		return "reservation/exhibition/exhibition_CardPayment";
+		return "redirect:exhibition_board";
 	}
 	
 	

@@ -122,9 +122,9 @@
 							</td>
 							<td>
 								<input type="text" readonly id = "addr1" placeholder="우편번호">
-								<button type="button" onclick="daumPost()">위치 찾기</button><br>
+								<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>위치 찾기</span></button><br>
 							    <input type="text" readonly id = "addr2" name="ex_place" placeholder="주소"><br>
-							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
+							    <input type="text" id="addr3" name="ex_place" placeholder="상세주소"><br>
 							</td>
 						</tr>
 						<tr style="height: 20px;">

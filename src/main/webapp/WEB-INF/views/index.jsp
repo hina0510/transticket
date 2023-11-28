@@ -17,7 +17,7 @@
 		$( '.slider' ).slick( {
           autoplay: true,
           autoplaySpeed: 2000,
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 1,
           prevArrow : "<button type='button' class='slick-prev'><img src='resources/images/icons8-back-30.png' style='width:30px;height:30px;'></button>",		// 이전 화살표 모양 설정
 		  nextArrow : "<button type='button' class='slick-next'><img src='resources/images/icons8-forward-30.png' style='width:30px;height:30px;'></button>",		// 다음 화살표 모양 설정
@@ -27,7 +27,7 @@
 </head>
 <body>
 <%@ include file="./default/header.jsp" %>
-	<section>
+	
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 		        <div class="carousel-item active">
@@ -56,10 +56,20 @@
 			</div>
 		</div>
 	    
-	    <div style="height: 50px;"><span>장르별 랭킹</span></div>
+	    <div style="height: 30px;"></div>
+	    <div class="sbanner">
+	    	<img src="resources/images/light_off.jpg">
+	    	<img src="resources/images/light_off.jpg">
+	    	<img src="resources/images/light_off.jpg"><br>
+	    	<img src="resources/images/light_off.jpg">
+	    	<img src="resources/images/light_off.jpg">
+	    	<img src="resources/images/light_off.jpg"><br>
+	    </div>
 	    
-	    
-	    
+	    <section>
+	    <div style="height: 40px;"></div>
+	    <div style="height: 40px;font-size: 28px;"><span>장르별 랭킹</span></div>
+	   
 	    <div class="slider">
 			<div class="col-md-3">
 		    	<div class="card">
@@ -147,9 +157,10 @@
 		    </div>
 		</div>        
 		
-	    <div style="height: 50px;"></div>
+	    <div style="height: 40px;"></div>
+	    <div style="height: 40px;font-size: 28px;"><span>추천 공연</span></div>
 	    <div class="row">
-	    	<div class="col-4">
+	    	<div class="col-3">
 				<div class="card">
 					<a href="${contextPath }/reservation/concert_content">
 				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
@@ -163,7 +174,7 @@
 				    </div>
 				</div>
 			</div>
-	    	<div class="col-4">
+	    	<div class="col-3">
 				<div class="card">
 					<a href="${contextPath }/reservation/concert_content">
 				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
@@ -177,7 +188,7 @@
 				    </div>
 				</div>
 			</div>
-	    	<div class="col-4">
+	    	<div class="col-3">
 				<div class="card">
 					<a href="${contextPath }/reservation/concert_content">
 				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
@@ -191,8 +202,26 @@
 				    </div>
 				</div>
 			</div>
-	    </div>
+	    	<div class="col-3">
+				<div class="card">
+					<a href="${contextPath }/reservation/concert_content">
+				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+				    </a>
+				    <div class="card-body">
+				    	<a href="${contextPath }/reservation/concert_content">
+				        	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				        </a>
+				        <dd>블루스퀘어 신한카드홀</dd>
+				        <dd>2023.8.19 ~ 11.19</dd>
+				    </div>
+				</div>
+			</div>
+		</div>	
 	</section>
+	<div style="height: 30px;"></div>
+	<div class="lbanner">
+		<img src="resources/images/light_off.jpg">
+	</div>
 <%@ include file="./default/footer.jsp" %>
 </body>
 </html>

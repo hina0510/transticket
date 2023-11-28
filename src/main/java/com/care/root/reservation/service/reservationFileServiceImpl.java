@@ -80,11 +80,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 			 
 		int result = cmapper.cWriteSave(cdto);
 		String msg = "", url="";
-		if(result==1) {//DB¿¡ ¼º°øÀûÀ¸·Î ÀúÀå
-			msg="»õ ±ÛÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù";
+		if(result==1) {
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_board";
-		}else {//DB¿¡ ÀúÀå ½ÇÆĞ
-			msg="¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -206,12 +206,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = cmapper.cModify(cdto);
 		String msg = "", url="";
 		if(result==1) {
-			//±âº» ÀÌ¹ÌÁö »èÁ¦ originName
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+cdto.getWriteNo();
 		}else {
-			//¼öÁ¤ ÀÌ¹ÌÁö »èÁ¦ dto.getImage_file_name()
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+cdto.getWriteNo();
 		}
 		getMessage(msg, url);
@@ -220,7 +218,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {cdto.getImageName1(), cdto.getImageName2(), cdto.getImageName3(), cdto.getImageName4(), cdto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("ÆÄÀÏ : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
@@ -274,11 +272,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = mmapper.mWriteSave(mdto);
 		String msg = "", url="";
-		if(result==1) {//DB¿¡ ¼º°øÀûÀ¸·Î ÀúÀå
-			msg="»õ ±ÛÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù";
+		if(result==1) {//DB ì €ì¥ ì‹œ
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/musical_board";
-		}else {//DB¿¡ ÀúÀå ½ÇÆĞ
-			msg="¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_musical_form";
 		}
 		getMessage(msg, url);
@@ -400,12 +398,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = mmapper.mModify(mdto);
 		String msg = "", url="";
 		if(result==1) {
-			//±âº» ÀÌ¹ÌÁö »èÁ¦ originName
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+mdto.getWriteNo();
 		}else {
-			//¼öÁ¤ ÀÌ¹ÌÁö »èÁ¦ dto.getImage_file_name()
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+mdto.getWriteNo();
 		}
 		getMessage(msg, url);
@@ -414,7 +410,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {mdto.getImageName1(), mdto.getImageName2(), mdto.getImageName3(), mdto.getImageName4(), mdto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("ÆÄÀÏ : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
@@ -468,11 +464,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = emapper.eWriteSave(edto);
 		String msg = "", url="";
-		if(result==1) {//DB¿¡ ¼º°øÀûÀ¸·Î ÀúÀå
-			msg="»õ ±ÛÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù";
+		if(result==1) {//DB ì €ì¥ ì‹œ
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_board";
-		}else {//DB¿¡ ÀúÀå ½ÇÆĞ
-			msg="¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -595,12 +591,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = emapper.eModify(edto);
 		String msg = "", url="";
 		if(result==1) {
-			//±âº» ÀÌ¹ÌÁö »èÁ¦ originName
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+edto.getWriteNo();
 		}else {
-			//¼öÁ¤ ÀÌ¹ÌÁö »èÁ¦ dto.getImage_file_name()
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+edto.getWriteNo();
 		}
 		getMessage(msg, url);
@@ -610,7 +604,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {edto.getImageName1(), edto.getImageName2(), edto.getImageName3(), edto.getImageName4(), edto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("ÆÄÀÏ : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}

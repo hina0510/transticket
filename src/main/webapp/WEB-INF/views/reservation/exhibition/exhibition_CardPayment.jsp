@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/style01.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript">
@@ -51,7 +52,7 @@ function requestPay() {
         			<strong>결제정보 확인</strong>
 		        </div>
 				<div class="board_view_info">
-					<button onclick="requestPay()">카드결제하기</button>
+					<button class="custom-btn btn-3" onclick="requestPay()"><span>카드결제하기</span></button><br><br>
 				</div>
 			</div>
 		</div>

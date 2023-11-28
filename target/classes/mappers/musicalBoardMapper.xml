@@ -45,7 +45,7 @@
 	</insert>
 	<update id="mModify">
 		update performBoard set title=#{title}, pf_stDate=#{mu_stDate}, pf_endDate=#{mu_endDate}, pf_place=#{mu_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
-									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where write_no=#{writeNo}
+									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where writeNo=#{writeNo}
 	</update>
 	<delete id="mDelete">
 		delete from performBoard where writeNo=#{writeNo}
@@ -54,7 +54,7 @@
    		select count(*) from performBoard where type='musical'
    	</select>
    	<update id="mLikeUpdate">
-		update performBoard set likes=likes+1 where writeNo=#{writeNo}	
+		update performBoard set likes=likes+1 where write_no=#{writeNo}	
 	</update>
 	
 	<insert id="mLikeInsert">

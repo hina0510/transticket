@@ -16,21 +16,21 @@
         		<div class="board_title">
         			<strong>list page</strong>
 		        </div>
-				<div class="board_view_info">
-					<table border="1">
+				<div class="container">
+					<table style="text-align: center;">
 						<tr>
-							<th>id</th>
-							<th>pwd</th>
-							<th>name</th>
-							<th>addr</th>
+							<th>id</th><th style="width: 20px;"></th>
+							<th>pwd</th><th style="width: 20px;"></th>
+							<th>name</th><th style="width: 20px;"></th>
+							<th>addr</th><th style="width: 20px;"></th>
 							<th>email</th>
 						</tr>
 						<c:forEach var="dto" items="${clist }">
 							<tr>
-								<td>${dto.id }</td>
-								<td>${dto.pwd }</td>
-								<td>${dto.name }</td>
-								<td>${dto.addr }</td>
+								<td>${dto.id }</td><td style="width: 20px;"></td>
+								<td>${dto.pwd }</td><td style="width: 20px;"></td>
+								<td>${dto.name }</td><td style="width: 20px;"></td>
+								<td>${dto.addr }</td><td style="width: 20px;"></td>
 								<td>${dto.email }</td>
 							</tr>
 						</c:forEach>
