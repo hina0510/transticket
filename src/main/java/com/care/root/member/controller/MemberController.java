@@ -50,7 +50,11 @@ public class MemberController implements LoginSession{
 		int result = cms.logChk(id,pwd);
 		if(result==0) {
 			rs.addAttribute("id", id);
-			session.setAttribute( CLOGIN , id);
+			if(id.equals("admin")) {
+				session.setAttribute(MLOGIN, id);
+			}else {
+				session.setAttribute( CLOGIN , id);
+			}
 			rs.addAttribute("autoLogin", autoLogin);
 			return "redirect:successLogin";
 		}
@@ -211,5 +215,11 @@ public class MemberController implements LoginSession{
 		String id = (String) session.getAttribute(CLOGIN);
 		model.addAttribute("cominfo", cms.getMember(id));
 		return "member/commember/com_mypage";
+	}
+	@GetMapping("admin")
+	public String admin(Model model, HttpSession session) {
+		String id = (String) session.getAttribute(MLOGIN);
+		model.addAttribute("cominfo", cms.getMember(id));
+		return "member/admin";
 	}
 }

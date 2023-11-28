@@ -52,6 +52,7 @@ function delchk(){
 			</div>
 			<button class="custom-btn btn-3" onclick="location.href='gen_modify?id=${geninfo.dto.id}'"><span>수정</span></button>
 			<button class="custom-btn btn-3" onclick="delchk()"><span>삭제</span></button>
+			<br><br>
 		</div>
 	</div>
 <%@ include file="../../default/footer.jsp" %>	

@@ -34,6 +34,7 @@
 					<input type="hidden" type="text" name="keyword" value="${geninfo.dto.id }">
 					<button class="custom-btn btn-3" type="submit"><span>작성한 글</span></button>
 				</form>
+				<br>
 			</div>
 		</div>
 	</div>

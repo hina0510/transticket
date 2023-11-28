@@ -65,7 +65,7 @@
 								<button class="custom-btn6" onclick="location.href='concert_board?num=${n }'">${n }</button>
 							</c:forEach>
 							<button class="custom-btn6" onclick="">&gt;</button>
-							<br>
+							<br><br>
 						</td>
 					</tr>
 				</table>

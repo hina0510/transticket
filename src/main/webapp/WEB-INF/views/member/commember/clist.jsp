@@ -20,21 +20,28 @@
 					<table style="text-align: center;">
 						<tr>
 							<th>id</th><th style="width: 20px;"></th>
-							<th>pwd</th><th style="width: 20px;"></th>
 							<th>name</th><th style="width: 20px;"></th>
 							<th>addr</th><th style="width: 20px;"></th>
 							<th>email</th>
 						</tr>
+						<tr>
+							<th colspan="7" style="border-bottom: 2px solid #000;height: 20px;"></th>
+						</tr>
+						<tr>
+							<th colspan="7" style="height: 20px;"></th>
+						</tr>
 						<c:forEach var="dto" items="${clist }">
+							<c:if test="${dto.id != 'admin' }">
 							<tr>
-								<td>${dto.id }</td><td style="width: 20px;"></td>
-								<td>${dto.pwd }</td><td style="width: 20px;"></td>
+								<td><a href="com_info?id=${dto.id }">${dto.id }</td><td style="width: 20px;"></td>
 								<td>${dto.name }</td><td style="width: 20px;"></td>
 								<td>${dto.addr }</td><td style="width: 20px;"></td>
 								<td>${dto.email }</td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</table>
+					<br><br>
 				</div>
 			</div>
 		</div>

@@ -28,9 +28,9 @@
         		<div class="board_title">
         			<strong>my page</strong>
 		        </div>
-		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/com_info?id=${cominfo.dto.id }'"><span>기업정보</span></button><br><br>
-				<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>작성한 글</span></button>
+		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/com_info?id=${cominfo.dto.id }'"><span>기업정보</span></button>
 			</div>
+			<br>
 		</div>
 	</div>
 <%@ include file="../../default/footer.jsp" %>

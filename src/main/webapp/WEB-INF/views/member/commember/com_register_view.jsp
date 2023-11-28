@@ -30,17 +30,18 @@
 		        </div>
 				<div class="board_view_info">
 					<form action="${contextPath }/member/comregister" method="post">
-						<p><input type="text" name="id" placeholder="id"><br>
-						<input type="text" name="pwd" placeholder="pwd"><br>
-						<input type="text" name="name" placeholder="이름"><br>
-						<input type="text" readonly id="addr1" name="addr" placeholder="우편번호">
-						<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>우편번호 찾기</span></button><br>
-						<input type="text" readonly id="addr2" name="addr" placeholder="주소"><br>
-						<input type="text" id="addr3" name="addr" placeholder="상세주소"><br>
-						<input type="text" name="email" placeholder="email"><br>
-						<button class="custom-btn btn-3" type="submit"><span>회원가입</span></button><br></p>
+						<p><input type="text" name="id" placeholder="id"><br></p>
+						<p><input type="text" name="pwd" placeholder="pwd"><br></p>
+						<p><input type="text" name="name" placeholder="이름"><br></p>
+						<p><input type="text" readonly id="addr1" name="addr" placeholder="우편번호">
+						<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>우편번호 찾기</span></button><br></p>
+						<p><input type="text" readonly id="addr2" name="addr" placeholder="주소"><br></p>
+						<p><input type="text" id="addr3" name="addr" placeholder="상세주소"><br></p>
+						<p><input type="text" name="email" placeholder="email"><br></p>
+						<button class="custom-btn btn-3" type="submit"><span>회원가입</span></button>
 					</form>
 				</div>
+				<br>
 			</div>
 		</div>
 	</div>

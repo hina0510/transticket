@@ -44,8 +44,8 @@
 			<div class="con03">
 				<div class="container3">
 					<ul class="tabs2">
-						<li class="tab-link current" data-tab="tab-1">개인회원 로그인</li>
-						<li class="tab-link" data-tab="tab-2" >기업회원 로그인</li>
+						<li class="tab-link current" data-tab="tab-1">개인 로그인</li>
+						<li class="tab-link" data-tab="tab-2">기업 로그인</li>
 					</ul>
 											
 					<div id="tab-1" class="tab-content current"><%@ include file="genmember/gen_login.jsp" %></div>

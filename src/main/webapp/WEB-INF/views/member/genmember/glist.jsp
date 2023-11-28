@@ -20,25 +20,30 @@
 					<table style="text-align: center;">
 						<tr>
 							<th>id</th><th style="width: 20px;"></th>
-							<th>pwd</th><th style="width: 20px;"></th>
 							<th>name</th><th style="width: 20px;"></th>
 							<th>birth</th><th style="width: 20px;"></th>
 							<th>email</th><th style="width: 20px;"></th>
 							<th>addr</th><th style="width: 20px;"></th>
 							<th>tel</th>
-							</tr>
+						</tr>
+						<tr>
+							<th colspan="11" style="border-bottom: 2px solid #000;height: 20px;"></th>
+						</tr>
+						<tr>
+							<th colspan="11" style="height: 20px;"></th>
+						</tr>
 						<c:forEach var="dto" items="${glist }">
 							<tr>
-								<td>${dto.id }</td><td style="width: 20px;"></td>
-								<td>${dto.pwd }</td><td style="width: 20px;"></td>
+								<td><a href="gen_info?id=${dto.id }">${dto.id }</td><td style="width: 20px;"></td>
 								<td>${dto.name }</td><td style="width: 20px;"></td>
 								<td>${dto.birth }</td><td style="width: 20px;"></td>
 								<td>${dto.email }</td><td style="width: 20px;"></td>
 								<td>${dto.addr }</td><td style="width: 20px;"></td>
 								<td>${dto.tel }</td>
-								</tr>
+							</tr>
 						</c:forEach>
 					</table>
+					<br><br>
 				</div>
 			</div>
 		</div>
