@@ -27,7 +27,7 @@
 						</tr>
 						<c:forEach var="dto" items="${clist }">
 							<tr>
-								<td>${dto.id }</td>
+								<td><a href="com_info?id=${dto.id }">${dto.id }</td>
 								<td>${dto.pwd }</td>
 								<td>${dto.name }</td>
 								<td>${dto.addr }</td>

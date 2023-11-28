@@ -104,6 +104,9 @@ function loginfo(){
 					<c:when test="${glogin!=null }">
 						<a onclick="glogchk()" class="login01">로그아웃</a>
 					</c:when>
+					<c:when test="${mlogin!=null }">
+						<a onclick="glogchk()" class="login01">로그아웃</a>
+					</c:when>
 					<c:otherwise>
 						<a href="${contextPath }/member/prelogin" class="login01">로그인</a>
 					</c:otherwise>
@@ -117,6 +120,9 @@ function loginfo(){
 					</c:when>
 					<c:when test="${glogin!=null }">
 						<a href="${contextPath }/member/gen_mypage" class="login01">마이페이지</a>	
+					</c:when>
+					<c:when test="${mlogin!=null }">
+						<a href="${contextPath }/member/admin" class="login01">마이페이지</a>	
 					</c:when>
 					<c:otherwise>
 						<a onclick="loginfo()" class="login01">마이페이지</a>

@@ -29,7 +29,7 @@
 							</tr>
 						<c:forEach var="dto" items="${glist }">
 							<tr>
-								<td>${dto.id }</td>
+								<td><a href="gen_info?id=${dto.id }">${dto.id }</td>
 								<td>${dto.pwd }</td>
 								<td>${dto.name }</td>
 								<td>${dto.birth }</td>
