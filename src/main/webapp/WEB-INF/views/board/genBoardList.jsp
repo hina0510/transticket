@@ -84,6 +84,7 @@
 							</td>
 						</tr>
 				</table>
+				<br>
 			</div>
 		</div>
 	</div>
