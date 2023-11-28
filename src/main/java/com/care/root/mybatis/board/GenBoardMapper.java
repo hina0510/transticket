@@ -12,6 +12,7 @@ import com.care.root.board.dto.ReplyDTO;
 
 @Repository
 public interface GenBoardMapper {
+	public List<GenBoardDTO> category();
 	public int selectBoardCount();
 	public List<GenBoardDTO> boardAllList(@Param("s") int start, @Param("e") int end);
 	public void saveWrite(GenBoardDTO dto);

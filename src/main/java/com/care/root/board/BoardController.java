@@ -42,6 +42,7 @@ public class BoardController {
 			model.addAttribute("repeat", map.get("repeat"));
 			
 		}else {
+			model.addAttribute("cate", gbs.category());
 			Map<String, Object> map = gbs.boardAllList(num);
 			model.addAttribute("list", map.get("list"));
 			model.addAttribute("repeat", map.get("repeat"));
@@ -50,9 +51,19 @@ public class BoardController {
 	}
 	
 	@GetMapping("genWrite")
-	public String genWrite(HttpSession session, Model model) {
+	public String genWrite(HttpSession session, Model model,
+			   HttpServletResponse response) throws Exception {
 		System.out.println("asd : " + session.getAttribute(LoginSession.GLOGIN));
+		System.out.println("asd : " + session.getAttribute(LoginSession.CLOGIN));
 		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
+		model.addAttribute("comId", session.getAttribute(LoginSession.CLOGIN));
+		if(session.getAttribute(LoginSession.GLOGIN) == null) {
+			if(session.getAttribute(LoginSession.CLOGIN) == null) {
+				return "redirect:/member/prelogin";
+			}else {
+				return "redirect:genBoardList";
+			}
+		}
 		return "board/genWrite";
 	}
 	

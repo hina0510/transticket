@@ -37,16 +37,27 @@
 </head>
 <body>
 	<%@ include file="../default/header.jsp" %>
-	<div class="con01">
-		<div class="con02">
-			<div class="con03">
+		<div id="writeForm">
 			<form action="genWriteSave" method="post" enctype="multipart/form-data">
+			
+			
+			
 				<select name="category">
-					<option value="공지">공지</option>
-					<option value="자유">자유</option>
+					<c:choose>
+						<c:when test="${genId == 'admin' }">
+							<option value="공지">공지</option>
+							<option value="자유">자유</option>
+						</c:when>
+						<c:otherwise>
+							<option value="자유">자유</option>
+						</c:otherwise>
+					</c:choose>
 				</select>
+				
+				
+				
 				제목 : <input type="text" name="title">
-				작성자 :<input type="text" readonly name="id" value="${genId }"><br><br>
+				작성자 :<input type="text" readonly name="id" value="${genId }"><br>
 				<textarea rows="25" cols="80" name="content" id="content"></textarea><br>
 				<table style="margin: auto">
 						<tr>
@@ -93,9 +104,7 @@
 					</table>
 				<input type="submit" value="전송"><br>
 			</form>
-			</div>
 		</div>
-	</div>
 	<%@ include file="../default/footer.jsp" %>
 </body>
 

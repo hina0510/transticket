@@ -37,12 +37,18 @@
 	</resultMap>
 	
 	<select id="selectBoardCount" resultType="Integer">
-		select count(*) from genBoard
+		select count(*) from genBoard where category != '공지'
 	</select>
-
+	
+	<select id="category" resultMap="genboard">
+		SELECT * FROM (
+		    SELECT * FROM genBoard WHERE category = '공지' ORDER BY saveDate DESC
+		) <![CDATA[where rownum <= 4]]>
+	</select>
+	
 	<select id="boardAllList" resultMap="genboard">
 		select B.* from(select rownum rn, A.* from
-		(select * from genBoard order by write_no desc)A)B where rn between #{s} and #{e}
+		(select * from genBoard where category != '공지' order by write_no desc)A)B where rn between #{s} and #{e}
 	</select>
 	
 	<insert id="saveWrite">

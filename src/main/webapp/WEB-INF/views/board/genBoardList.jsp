@@ -13,12 +13,7 @@
 <%@ include file="../default/header.jsp" %>
 	<div class="con01">
 		<div class="con02">
-		<div class="board_wrap">
-        		<div class="board_title">
-        			<strong>자유게시판</strong>
-		        </div>
-		    </div>
-			<div class="container">
+			<div class="con03">
 				<form action="${contextPath }/board/genBoardList" method="get" id="searchFoam" name="search-form">
 			        <select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
@@ -50,17 +45,24 @@
 								<th colspan="9"> 작성된 글이 없습니다.</th>
 							</tr>
 						</c:if>
+						
+						<c:forEach var = "cate" items = "${cate }">
+							<tr style="background: gray;"> 
+								<td>${cate.category }</td>
+								<td style="width: 20px;"></td>
+								<td>${cate.id }</td>
+								<td style="width: 20px;"></td>
+								<td><a href="genBoardView?writeNo=${cate.writeNo }">${cate.title }</a></td>
+								<td style="width: 20px;"></td>
+								<td>${cate.saveDate }</td>
+								<td style="width: 20px;"></td>
+								<td>${cate.viewCount }</td>
+							</tr>
+						</c:forEach>
 			
 						<c:forEach var="dto" items="${list }">
 							<tr>
-								<c:choose>
-									<c:when test="${dto.category != '공지' }">
-										<td>${dto.writeNo }</td>
-									</c:when>
-									<c:otherwise>
-										<td>${dto.category }</td>
-									</c:otherwise>
-								</c:choose>
+								<td>${dto.writeNo }</td>
 								<td style="width: 20px;"></td>
 								<td>${dto.id }</td>
 								<td style="width: 20px;"></td>
@@ -72,7 +74,7 @@
 							</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="9">
+							<td colspan="6">
 							<br>
 								<button class="custom-btn6" onclick="">&lt;</button>
 								<c:forEach var="n" begin="1" end="${repeat }">
@@ -84,7 +86,6 @@
 							</td>
 						</tr>
 				</table>
-				<br>
 			</div>
 		</div>
 	</div>
