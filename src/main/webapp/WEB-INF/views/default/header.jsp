@@ -116,7 +116,7 @@ function loginfo(){
 				</c:if>
 				<c:choose>
 					<c:when test="${clogin!=null }">
-						<a href="${contextPath }/member/com_mypage" class="login01">마이페이지</a>	
+						<a href="${contextPath }/member/com_info?id=${clogin }" class="login01">마이페이지</a>	
 					</c:when>
 					<c:when test="${glogin!=null }">
 						<a href="${contextPath }/member/gen_mypage" class="login01">마이페이지</a>	
