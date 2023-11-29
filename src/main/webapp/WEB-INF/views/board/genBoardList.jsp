@@ -14,9 +14,8 @@
 	<div class="con01">
 		<div class="con02">
 			<div class="con03">
-				<form action="${contextPath }/board/genBoardList" method="get" id="searchFoam" name="search-form">
+				<form action="${contextPath }/board/genBoardList" method="get" name="search-form">
 			        <select name="type" class="type-box">
-						<option value="">검색 유형 선택</option>
 						<option value="title">제목</option>
 						<option value="n_id">작성자</option>
 					</select>
@@ -62,7 +61,15 @@
 			
 						<c:forEach var="dto" items="${list }">
 							<tr>
-								<td>${dto.writeNo }</td>
+								<c:choose>
+									<c:when test="${dto.category == '공지' }">
+										<td>${dto.category }</td>
+									</c:when>
+									
+									<c:otherwise>
+										<td>${dto.writeNo }</td>
+									</c:otherwise>
+								</c:choose>
 								<td style="width: 20px;"></td>
 								<td>${dto.id }</td>
 								<td style="width: 20px;"></td>
@@ -77,9 +84,18 @@
 							<td colspan="6">
 							<br>
 								<button class="custom-btn6" onclick="">&lt;</button>
-								<c:forEach var="n" begin="1" end="${repeat }">
-									<button class="custom-btn6" onclick="location.href='genBoardList?num=${n }'">${n }</button>
-								</c:forEach>
+								<c:choose>
+									<c:when test="${type != null && keyword != null}">
+										<c:forEach var="n" begin="1" end="${repeat }">
+											<button class="custom-btn6" onclick="location.href='genBoardList?type=${type }&keyword=${keyword }&num=${n }'">${n }</button>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="n" begin="1" end="${repeat }">
+											<button class="custom-btn6" onclick="location.href='genBoardList?num=${n }'">${n }</button>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 								<button class="custom-btn6" onclick="">&gt;</button>
 							<br><br>
 							<button class="custom-btn btn-3" onclick="location.href='genWrite'"><span>글 작성</span></button>

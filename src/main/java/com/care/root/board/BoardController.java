@@ -35,9 +35,14 @@ public class BoardController {
 	@Autowired ReplyService rs;
 	
 	@GetMapping("genBoardList")
-	public String boardAllList(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+	public String boardAllList(Model model, 
+							   @RequestParam(value="type", required=false) String type, 
+							   @RequestParam(value="keyword", required=false) String keyword, 
+							   @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		if(type != null  && keyword !=null) {
-			Map<String, Object> map = gbs.selectSearch(model, type, keyword, num);
+			Map<String, Object> map = gbs.selectSearch(type, keyword, num);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
 			model.addAttribute("list", map.get("list"));
 			model.addAttribute("repeat", map.get("repeat"));
 			
@@ -226,10 +231,15 @@ public class BoardController {
 		return "redirect:genBoardList";
 	}
 	@GetMapping("genBoardMypage")
-	public String genBoardMypage(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+	public String genBoardMypage(Model model, 
+								@RequestParam(value="type", required=false) String type, 
+								@RequestParam(value="keyword", required=false) String keyword, 
+								@RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		System.out.println(type);
 		System.out.println(keyword);
-		Map<String, Object> map = gbs.selectSearch(model, type, keyword, num);
+		Map<String, Object> map = gbs.selectSearch(type, keyword, num);
+		model.addAttribute("type", type);
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("repeat", map.get("repeat"));
 		return "board/genBoardMypage";

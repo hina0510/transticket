@@ -79,12 +79,12 @@ public class GenBoardServiceImpl implements GenBoardService{
 		
 	return likesId;
 	}
-	public Map<String, Object> selectSearch(Model model, String type, String keyword, int num)throws Exception{
-		int pageLetter = 5;
+	public Map<String, Object> selectSearch(String type, String keyword, int num)throws Exception{
+		int pageLetter = 10;
 		int allCount = mapper.selectSearchCount(type,keyword);
 		int repeat = allCount / pageLetter;
 		if(allCount % pageLetter != 0) {
-			repeat += 1;
+			repeat ++;
 		}
         
 		int end = num * pageLetter;

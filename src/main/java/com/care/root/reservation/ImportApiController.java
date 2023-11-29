@@ -21,7 +21,7 @@ public class ImportApiController {
 	private IamportClient api;
 
     public ImportApiController() {
-    	// REST API í‚¤ì™€ REST API secret ë¥¼ ì•„ë˜ì²˜ëŸ¼ ìˆœì„œëŒ€ë¡œ ì…ë ¥í•œë‹¤.
+    	// REST API Å°¿Í REST API secret ¸¦ ¾Æ·¡Ã³·³ ¼ø¼­´ë·Î ÀÔ·ÂÇÑ´Ù.
         
     	this.api = new IamportClient("5732631264858326","2rdQQhIGqlTXbiJ5uxmicBDlxnZCjRfUoCqZrVrf8VsR4o5veOjPFCyCdx6iRdm9jTk4db6IkKsojSR9");
    }
@@ -33,7 +33,7 @@ public class ImportApiController {
             , HttpSession session
             , @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
     {
-    	System.out.println("ê²€ì¦ì™„ë£Œ");
+    	System.out.println("°ËÁõ¿Ï·á");
         return api.paymentByImpUid(imp_uid);
     }
 }

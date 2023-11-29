@@ -26,7 +26,10 @@ public class TransBoardController {
 	@Autowired TransBoardService ts;
 	
 	@GetMapping("transBoardList")
-	public String transboardAllList(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+	public String transboardAllList(Model model,
+									@RequestParam(value="type", required=false) String type, 
+									@RequestParam(value="keyword", required=false) String keyword, 
+									@RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		if(type != null  && keyword !=null) {
 			Map<String, Object> map = ts.selectSearch(model, type, keyword, num);
 			model.addAttribute("list", map.get("list"));
@@ -99,6 +102,9 @@ public class TransBoardController {
 		String bAccount = req.getParameter("bAccount");
 		String pri = req.getParameter("price");
 		int price = Integer.parseInt(pri);
+		
+		System.out.println(sAccount);
+		System.out.println(bAccount);
 		
 		rs.BuySeat(sAccount, bAccount, price, conS_id, con_buyer, writeNo);
 		

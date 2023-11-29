@@ -104,16 +104,10 @@
 	</update>
 	
 	<select id="selectSearch" resultMap="genboard">
-		select B.* from(select
-		rownum rn,
-		A.* from
-		(select * from genBoard where
-		${type} like
-		'%'||#{keyword}||'%'
-		order by write_no desc)A)B where rn
-		between #{s}
-		and
-		#{e}
+		select B.* from
+		(select rownum rn, A.* from
+			(select * from genBoard where ${type} like '%'||#{keyword}||'%'
+					order by write_no desc)A)B where rn between #{s} and #{e}
 	</select>
 
 	<select id="selectSearchCount" resultType="Integer">

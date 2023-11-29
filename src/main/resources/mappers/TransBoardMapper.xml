@@ -63,6 +63,7 @@
 	<select id="transLikeChk" resultType="String">
 		select n_id from transLikes where n_id = #{id} and write_no = #{writeNo} 
 	</select>
+	
 	<select id="selectSearch" resultMap="transboard">
 		select B.* from(select
 		rownum rn,

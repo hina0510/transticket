@@ -38,10 +38,10 @@ public class reservationServiceImpl implements reservationService{
 	@Autowired reservationFileService fs;
 	
 	public Map<String, Object> cBoardList(int num){
-		int pageLetter = 9; //ê¸€ ì´ ê°œìˆ˜
-		int allCount = cmapper.selectCBoardCount(); //ê¸€ ì´ ê°œìˆ˜
-		int repeat = allCount/pageLetter; //ì´ íŽ˜ì´ì§€ ìˆ˜
-		if(allCount%pageLetter !=0) {//ë‚˜ë¨¸ì§€ íŽ˜ì´ì§€ê°€ ìžˆìœ¼ë©´
+		int pageLetter = 9; //±Û ÃÑ °³¼ö
+		int allCount = cmapper.selectCBoardCount(); //±Û ÃÑ °³¼ö
+		int repeat = allCount/pageLetter; //ÃÑ ÆäÀÌÁö ¼ö
+		if(allCount%pageLetter !=0) {//³ª¸ÓÁö ÆäÀÌÁö°¡ ÀÖÀ¸¸é
 			repeat++;
 		}
 		int end = num * pageLetter;
@@ -63,10 +63,10 @@ public class reservationServiceImpl implements reservationService{
 		int result = cmapper.cDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			msg="ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤";
+			msg="»èÁ¦µÇ¾ú½À´Ï´Ù";
 			url="/root/reservation/concert_board";
 		}else {
-			msg="ë¬¸ì œ ë°œìƒ";
+			msg="¹®Á¦ ¹ß»ý";
 			url="/root/reservation/concert_content?writeNo="+writeNo;
 		}
 		return fs.getMessage(msg, url);
@@ -103,12 +103,12 @@ public class reservationServiceImpl implements reservationService{
 	public void cBuySeat(String account, int price, String con_title, String con_buyer){
 		payDTO pdto = pmapper.selectAccount(account);
 		int money = pdto.getMoney();
-		System.out.println("ê¸ˆì•¡ : "+money);
+		System.out.println("±Ý¾× : "+money);
 		if(money>=price) {
 			money = money-price;
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+money);
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+money);
 			pdto.setMoney(money);
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+pdto.getMoney());
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+pdto.getMoney());
 			pmapper.saveAccount(money, account);
 			csmapper.cBuySeat(con_title, con_buyer);
 		}
@@ -121,10 +121,10 @@ public class reservationServiceImpl implements reservationService{
 	}
 	
 	public Map<String, Object> mBoardList(int num){
-		int pageLetter = 9; //ëª‡ ê°œ ê¸€
-		int allCount = mmapper.selectMBoardCount(); //ê¸€ ì´ ê°œìˆ˜
-		int repeat = allCount/pageLetter; //ì´ íŽ˜ì´ì§€ ìˆ˜
-		if(allCount%pageLetter !=0) {//ë‚˜ë¨¸ì§€ íŽ˜ì´ì§€ê°€ ìžˆìœ¼ë©´
+		int pageLetter = 9; //¸î °³ ±Û
+		int allCount = mmapper.selectMBoardCount(); //±Û ÃÑ °³¼ö
+		int repeat = allCount/pageLetter; //ÃÑ ÆäÀÌÁö ¼ö
+		if(allCount%pageLetter !=0) {//³ª¸ÓÁö ÆäÀÌÁö°¡ ÀÖÀ¸¸é
 			repeat++;
 		}
 		int end = num * pageLetter;
@@ -146,10 +146,10 @@ public class reservationServiceImpl implements reservationService{
 		int result = mmapper.mDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			msg="ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤";
+			msg="»èÁ¦µÇ¾ú½À´Ï´Ù";
 			url="/root/reservation/musical_board";
 		}else {
-			msg="ë¬¸ì œ ë°œìƒ";
+			msg="¹®Á¦ ¹ß»ý";
 			url="/root/reservation/musical_content?writeNo="+writeNo;
 		}
 		return fs.getMessage(msg, url);
@@ -186,12 +186,12 @@ public class reservationServiceImpl implements reservationService{
 	public void mBuySeat(String account, int price, String mu_title, String mu_buyer){
 		payDTO pdto = pmapper.selectAccount(account);
 		int money = pdto.getMoney();
-		System.out.println("ê¸ˆì•¡ : "+money);
+		System.out.println("±Ý¾× : "+money);
 		if(money>=price) {
 			money = money-price;
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+money);
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+money);
 			pdto.setMoney(money);
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+pdto.getMoney());
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+pdto.getMoney());
 			pmapper.saveAccount(money, account);
 			msmapper.mBuySeat(mu_title, mu_buyer);
 		}
@@ -204,10 +204,10 @@ public class reservationServiceImpl implements reservationService{
 	}
 	
 	public Map<String, Object> eBoardList(int num){
-		int pageLetter = 9; //ê¸€ ì´ ê°œìˆ˜
-		int allCount = emapper.selectEBoardCount(); //ê¸€ ì´ ê°œìˆ˜
-		int repeat = allCount/pageLetter; //ì´ íŽ˜ì´ì§€ ìˆ˜
-		if(allCount%pageLetter !=0) {//ë‚˜ë¨¸ì§€ íŽ˜ì´ì§€ê°€ ìžˆìœ¼ë©´
+		int pageLetter = 9; //±Û ÃÑ °³¼ö
+		int allCount = emapper.selectEBoardCount(); //±Û ÃÑ °³¼ö
+		int repeat = allCount/pageLetter; //ÃÑ ÆäÀÌÁö ¼ö
+		if(allCount%pageLetter !=0) {//³ª¸ÓÁö ÆäÀÌÁö°¡ ÀÖÀ¸¸é
 			repeat++;
 		}
 		int end = num * pageLetter;
@@ -229,10 +229,10 @@ public class reservationServiceImpl implements reservationService{
 		int result = emapper.eDelete(writeNo);
 		String msg = "", url="";
 		if(result==1) {
-			msg="ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤";
+			msg="»èÁ¦µÇ¾ú½À´Ï´Ù";
 			url="/root/reservation/exhibition_board";
 		}else {
-			msg="ë¬¸ì œ ë°œìƒ";
+			msg="¹®Á¦ ¹ß»ý";
 			url="/root/reservation/exhibition_content?writeNo="+writeNo;
 		}
 		return fs.getMessage(msg, url);
@@ -269,12 +269,12 @@ public class reservationServiceImpl implements reservationService{
 	public void eBuySeat(String account, int price, String ex_title, String ex_buyer){
 		payDTO pdto = pmapper.selectAccount(account);
 		int money = pdto.getMoney();
-		System.out.println("ê¸ˆì•¡ : "+money);
+		System.out.println("±Ý¾× : "+money);
 		if(money>=price) {
 			money = money-price;
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+money);
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+money);
 			pdto.setMoney(money);
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+pdto.getMoney());
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+pdto.getMoney());
 			pmapper.saveAccount(money, account);
 			esmapper.eBuySeat(ex_title, ex_buyer);
 		}
@@ -301,12 +301,12 @@ public class reservationServiceImpl implements reservationService{
 	public void BuySeat(String sAccount, String bAccount, int price, String conS_id, String con_buyer, int writeNo){
 		payDTO pdto = pmapper.selectAccount(bAccount);
 		int money = pdto.getMoney();
-		System.out.println("ê¸ˆì•¡ : "+money);
+		System.out.println("±Ý¾× : "+money);
 		if(money>=price) {
 			money = money-price;
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+money);
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+money);
 			pdto.setMoney(money);
-			System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+pdto.getMoney());
+			System.out.println("°è»ê ÈÄ ±Ý¾× : "+pdto.getMoney());
 			pmapper.saveAccount(money, bAccount);
 			sellSeat(sAccount, price);
 			csmapper.presentTicket(con_buyer, conS_id);
@@ -315,7 +315,7 @@ public class reservationServiceImpl implements reservationService{
 		}
 		else {
 			String msg = "", url="";
-			msg="ê±°ëž˜ ë¶ˆê°€";
+			msg="°Å·¡ ºÒ°¡";
 			url="/root/transboard/transBoardList";
 			fs.getMessage(msg, url);
 		}
@@ -324,9 +324,9 @@ public class reservationServiceImpl implements reservationService{
 		payDTO pdto = pmapper.selectAccount(account);
 		int money = pdto.getMoney();
 		money = money+price;
-		System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+money);
+		System.out.println("°è»ê ÈÄ ±Ý¾× : "+money);
 		pdto.setMoney(money);
-		System.out.println("ê³„ì‚° í›„ ê¸ˆì•¡ : "+pdto.getMoney());
+		System.out.println("°è»ê ÈÄ ±Ý¾× : "+pdto.getMoney());
 		pmapper.saveAccount(money, account);
 	}
 	public void cancelTicket(String con_buyer, String conS_id, int price) {

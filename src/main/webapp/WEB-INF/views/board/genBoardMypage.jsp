@@ -62,7 +62,7 @@
 							<br>
 							<button class="custom-btn6" onclick="">&lt;</button>
 							<c:forEach var="n" begin="1" end="${repeat }">
-								<button class="custom-btn6" onclick="location.href='concert_board?num=${n }'">${n }</button>
+								<button class="custom-btn6" onclick="location.href='genBoardMypage?type=${type }&keyword=${keyword }&num=${n }'">${n }</button>
 							</c:forEach>
 							<button class="custom-btn6" onclick="">&gt;</button>
 							<br><br>
