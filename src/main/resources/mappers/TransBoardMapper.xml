@@ -44,13 +44,12 @@
 		update transBoard set viewCount = viewCount+1 where write_no = #{writeNo}
 	</update>
 	
-	<update id="transModifySave">
-		update transBoard set category = #{category}, n_id = #{id}, title = #{title}, 
-		content = #{content} where write_no = #{writeNo}
-	</update>
-	
 	<delete id="transDelete">
 		delete from transBoard where write_no = #{writeNo}
+	</delete>
+	
+	<delete id="transDel">
+		delete from transBoard where content = #{content}
 	</delete>
 	
 	<update id="transLikeUpdate">
@@ -64,6 +63,7 @@
 	<select id="transLikeChk" resultType="String">
 		select n_id from transLikes where n_id = #{id} and write_no = #{writeNo} 
 	</select>
+	
 	<select id="selectSearch" resultMap="transboard">
 		select B.* from(select
 		rownum rn,

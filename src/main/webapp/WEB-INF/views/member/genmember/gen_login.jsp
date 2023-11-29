@@ -9,19 +9,21 @@
 </head>
 <body>
 
-	<div class="loginform">
-		<h3>개인로그인</h3>
+	<div style="height: 40px;"></div>
+	<div class="board_wrap">
 		<form action="${contextPath }/member/logChk1" method="post">
 			<input type="text" name="id" placeholder="ID"><br>
+			<div style="height: 5px;"></div>
 			<input type="text" name="pwd" placeholder="PWD"><br>
-			<input type="submit" value ="로그인">
+			<div style="height: 10px;"></div>
+			<input type="checkbox" name="autoLogin" id="genauto"><label for="genauto">&nbsp;자동로그인&nbsp;</label>
+			<button class="custom-btn btn-3" type="submit"><span>로그인</span></button><br>
+			<div style="height: 10px;"></div>
+			<a href="${contextPath }/member/gen_pw_find">비번찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="${contextPath }/member/gen_register_view">개인회원가입</a>
-			<br>
-			<a href="${contextPath }/member/gen_pw_find">비번찾기</a>
-			<br>	
-			<input type="checkbox" name="autoLogin">자동로그인
 		</form>
 	</div>
+	<div style="height: 20px;"></div>
 
 </body>
 </html>

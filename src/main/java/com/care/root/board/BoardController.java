@@ -20,8 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.dto.GenBoardDTO;
+import com.care.root.board.dto.ReplyDTO;
 import com.care.root.board.service.GenBoardService;
 import com.care.root.board.service.GenFileService;
+import com.care.root.board.service.ReplyService;
 import com.care.root.common.LoginSession;
 
 @Controller
@@ -30,16 +32,22 @@ public class BoardController {
 	
 	@Autowired GenBoardService gbs;
 	@Autowired GenFileService gfs;
-	
+	@Autowired ReplyService rs;
 	
 	@GetMapping("genBoardList")
-	public String boardAllList(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+	public String boardAllList(Model model, 
+							   @RequestParam(value="type", required=false) String type, 
+							   @RequestParam(value="keyword", required=false) String keyword, 
+							   @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		if(type != null  && keyword !=null) {
-			Map<String, Object> map = gbs.selectSearch(model, type, keyword, num);
+			Map<String, Object> map = gbs.selectSearch(type, keyword, num);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
 			model.addAttribute("list", map.get("list"));
 			model.addAttribute("repeat", map.get("repeat"));
 			
 		}else {
+			model.addAttribute("cate", gbs.category());
 			Map<String, Object> map = gbs.boardAllList(num);
 			model.addAttribute("list", map.get("list"));
 			model.addAttribute("repeat", map.get("repeat"));
@@ -48,9 +56,20 @@ public class BoardController {
 	}
 	
 	@GetMapping("genWrite")
-	public String genWrite(HttpSession session, Model model) {
+	public String genWrite(HttpSession session, Model model,
+			   HttpServletResponse response) throws Exception {
 		System.out.println("asd : " + session.getAttribute(LoginSession.GLOGIN));
+		System.out.println("asd : " + session.getAttribute(LoginSession.CLOGIN));
 		model.addAttribute("genId", session.getAttribute(LoginSession.GLOGIN));
+		model.addAttribute("comId", session.getAttribute(LoginSession.CLOGIN));
+		model.addAttribute("admin", session.getAttribute(LoginSession.MLOGIN));
+		if(session.getAttribute(LoginSession.GLOGIN) == null && session.getAttribute(LoginSession.MLOGIN) == null) {
+			if(session.getAttribute(LoginSession.CLOGIN) == null) {
+				return "redirect:/member/prelogin";
+			}else {
+				return "redirect:genBoardList";
+			}
+		}
 		return "board/genWrite";
 	}
 	
@@ -76,18 +95,31 @@ public class BoardController {
 	public String genBoardView(@RequestParam int writeNo,
 							   Model model,
 							   HttpSession session) {
-		String id;
+		String id1 = null;
+		String id2 = null;
+		String id3 = null;
 		System.out.println("chk : " + session.getAttribute(LoginSession.GLOGIN));
-		if(session.getAttribute(LoginSession.GLOGIN) == null) {
-			id = "undefined";
-		}else {
-			id = (String) session.getAttribute(LoginSession.GLOGIN);
+		
+		if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) != null)) {
+			id1 = "undefined";
+			id2 = (String) session.getAttribute(LoginSession.CLOGIN);
+			id3 = "undefined";
+		}else if((session.getAttribute(LoginSession.GLOGIN) != null) && (session.getAttribute(LoginSession.CLOGIN) == null)){
+			id1 = (String) session.getAttribute(LoginSession.GLOGIN);
+			id2 = "undefined";
+			id3 = "undefined";
+		} else if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) == null) && (String) session.getAttribute(LoginSession.MLOGIN)!=null){
+			id1 = "undefined";
+			id2 = "undefined";
+			id3 = (String) session.getAttribute(LoginSession.MLOGIN);
 		}
-		System.out.println("asdsada " +id);
+		
 		model.addAttribute("dto", gbs.genView(writeNo));
-		model.addAttribute("genId", id);
-		System.out.println(id + ", " + writeNo);
-		model.addAttribute("likes", gbs.genLikeChk(id, writeNo));
+		model.addAttribute("genId", id1);
+		model.addAttribute("comId", id2);
+		model.addAttribute("admin", id3);
+		model.addAttribute("likes", gbs.genLikeChk(id1, writeNo));
+		model.addAttribute("reply", rs.viewRep(writeNo));
 		return "board/genBoardView";
 	}
 	
@@ -110,6 +142,61 @@ public class BoardController {
 		in.close();
 	}
 	
+	@PostMapping("reply")
+	public String reply(@RequestParam(required = false) String gId,
+						@RequestParam(required = false) String cId,
+						@RequestParam String content,
+						@RequestParam int writeNo,
+						ReplyDTO dto,
+						Model model) {
+		
+		System.out.println("gggid : " + gId);
+		System.out.println("cccid : " + cId);
+		
+		dto.setWriteNo(writeNo);
+		if(gId == null && cId != null) {
+			dto.setnId("nan");
+			dto.setcId(cId);
+		}else if(gId != null && cId == null){
+			dto.setnId(gId);
+			dto.setcId("nan");
+		} else {
+			dto.setnId("nan");
+			dto.setcId("nan");
+		}
+		dto.setContent(content);
+		
+		if(dto.getcId().equals("nan") && dto.getnId().equals("nan")) {
+			return "redirect:genBoardView?writeNo="+ writeNo;
+		}else {
+			rs.addReply(dto);
+			return "redirect:genBoardView?writeNo="+ writeNo;
+		}
+	}
+	
+	@PostMapping("replyModify")
+	public String repMod(@RequestParam int writeNo,
+			 			 @RequestParam int replyNo,
+			 			 @RequestParam String modify) {
+		System.out.println("writeNo : " + writeNo);
+		System.out.println("replyNo : " + replyNo );
+		System.out.println("modify : " + modify);
+		ReplyDTO dto = new ReplyDTO();
+		dto.setContent(modify);
+		dto.setReplyNo(replyNo);
+		dto.setWriteNo(writeNo);
+		rs.replyModify(dto);
+		
+		return "redirect:genBoardView?writeNo="+ writeNo;
+	}
+	
+	@GetMapping("replyDelete")
+	public String repDel(@RequestParam int writeNo,
+						 @RequestParam int replyNo) {
+		rs.replyDelete(replyNo);
+		return "redirect:genBoardView?writeNo="+ writeNo;
+	}
+	
 	@GetMapping("genModify")
 	public String genModify(@RequestParam int writeNo,
 							Model model) {
@@ -127,7 +214,6 @@ public class BoardController {
 		dto.setId(mt.getParameter("id"));
 		dto.setContent(mt.getParameter("content"));
 		
-		// 여기는 새로운 이미지파일을 넣은 것
 		String[] nan = {mt.getParameter("image1"), mt.getParameter("image2"),
 				mt.getParameter("image3"), mt.getParameter("image4"), mt.getParameter("image5")};
 		
@@ -151,13 +237,17 @@ public class BoardController {
 		return "redirect:genBoardList";
 	}
 	@GetMapping("genBoardMypage")
-	public String genBoardMypage(Model model, @RequestParam(value="type", required=false) String type, @RequestParam(value="keyword", required=false) String keyword, @RequestParam(required = false, defaultValue = "1") int num) throws Exception {
+	public String genBoardMypage(Model model, 
+								@RequestParam(value="type", required=false) String type, 
+								@RequestParam(value="keyword", required=false) String keyword, 
+								@RequestParam(required = false, defaultValue = "1") int num) throws Exception {
 		System.out.println(type);
 		System.out.println(keyword);
-		Map<String, Object> map = gbs.selectSearch(model, type, keyword, num);
+		Map<String, Object> map = gbs.selectSearch(type, keyword, num);
+		model.addAttribute("type", type);
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("repeat", map.get("repeat"));
 		return "board/genBoardMypage";
 	}
 }
-

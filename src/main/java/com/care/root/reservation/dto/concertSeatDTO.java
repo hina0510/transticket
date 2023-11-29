@@ -3,11 +3,17 @@ package com.care.root.reservation.dto;
 import java.util.List;
 
 public class concertSeatDTO {
-	private int conS_num, conS_price;
+	private int conS_num, conS_price, conS_write;
 	private String conS_id, con_title, con_date, con_place, con_buyer, con_payed;
 	private String conSr_id, conS_pwd;
 	private List<String> seatList;
 	
+	public int getConS_write() {
+		return conS_write;
+	}
+	public void setConS_write(int conS_write) {
+		this.conS_write = conS_write;
+	}
 	public String getCon_payed() {
 		return con_payed;
 	}

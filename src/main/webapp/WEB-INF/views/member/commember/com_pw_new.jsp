@@ -27,9 +27,9 @@ function pwnew(){
 				<div class="board_view_info">
 					<form action="com_pw_new" method="POST" class="content">
 						<div class="textbox">
-							<label for="pwd">새비밀번호</label><input id="pwd" name="pwd" type="password">
+							<p><input id="pwd" name="pwd" type="password" placeholder="새비밀번호"></p>
 						</div>
-						<input type="submit" id="check" onclick="pwnew()" value="비밀번호변경">
+					   	<button class="custom-btn btn-3" type="submit" id="check" onclick="pwnew()"><span>비밀번호변경</span></button><br>
 						<input type="hidden" name="email" value=${email }>
 					</form>
 				</div>

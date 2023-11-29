@@ -11,11 +11,11 @@ import com.care.root.transboard.dto.TransLikeDTO;
 public interface TransBoardMapper {
 	public int selectBoardCount();
 	public List<TransBoardDTO> boardAllList(@Param("s") int start, @Param("e") int end);
-	public void transWriteSave(TransBoardDTO dto);
+	public int transWriteSave(TransBoardDTO dto);
 	public TransBoardDTO transView(int writeNo);
-	public void transModifySave(TransBoardDTO dto);
 	public void upViewCount(int writeNo);
 	public void transDelete(int writeNo);
+	public void transDel(String content);
 	public void transLikeUpdate(int writeNo);
 	public void transLikeInsert(TransLikeDTO ld);
 	public String transLikeChk(TransLikeDTO ld);

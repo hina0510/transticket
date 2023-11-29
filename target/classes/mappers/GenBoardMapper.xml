@@ -27,13 +27,28 @@
 		<result property="writeNo" column="write_no"/>
 	</resultMap>
 	
+	<resultMap type="com.care.root.board.dto.ReplyDTO" id="reply">
+		<result property="nId" column="n_id"/>
+		<result property="cId" column="c_id"/>
+		<result property="writeNo" column="write_no"/>
+		<result property="replyNo" column="reply_no"/>
+		<result property="content" column="content"/>
+		<result property="saveDate" column="saveDate"/>
+	</resultMap>
+	
 	<select id="selectBoardCount" resultType="Integer">
-		select count(*) from genBoard
+		select count(*) from genBoard where category != '공지'
 	</select>
-
+	
+	<select id="category" resultMap="genboard">
+		SELECT * FROM (
+		    SELECT * FROM genBoard WHERE category = '공지' ORDER BY saveDate DESC
+		) <![CDATA[where rownum <= 4]]>
+	</select>
+	
 	<select id="boardAllList" resultMap="genboard">
 		select B.* from(select rownum rn, A.* from
-		(select * from genBoard order by write_no desc)A)B where rn between #{s} and #{e}
+		(select * from genBoard where category != '공지' order by write_no desc)A)B where rn between #{s} and #{e}
 	</select>
 	
 	<insert id="saveWrite">
@@ -70,17 +85,29 @@
 	<select id="genLikeChk" resultType="String">
 		select n_id from genLikes where n_id = #{id} and write_no = #{writeNo} 
 	</select>
+	
+	<insert id="addReply">
+		insert into replyTable (reply_no, write_no, n_id, content, c_id)
+			values(replyTable_seq.NEXTVAL, #{writeNo}, #{nId}, #{content}, #{cId})
+	</insert>
+	
+	<select id="viewRep" resultMap="reply">
+		select * from replyTable where write_no = #{writeNo}
+	</select>
+	
+	<delete id="replyDelete">
+		delete from replyTable where reply_no=#{replyNo}
+	</delete>
+	
+	<update id="replyModify">
+		update replyTable set content=#{content} where write_no=#{writeNo} and reply_no = #{replyNo}	
+	</update>
+	
 	<select id="selectSearch" resultMap="genboard">
-		select B.* from(select
-		rownum rn,
-		A.* from
-		(select * from genBoard where
-		${type} like
-		'%'||#{keyword}||'%'
-		order by write_no desc)A)B where rn
-		between #{s}
-		and
-		#{e}
+		select B.* from
+		(select rownum rn, A.* from
+			(select * from genBoard where ${type} like '%'||#{keyword}||'%'
+					order by write_no desc)A)B where rn between #{s} and #{e}
 	</select>
 
 	<select id="selectSearchCount" resultType="Integer">

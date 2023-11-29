@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,11 +20,15 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	modify_concert_form
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
-				<form action="write_concert_Save"  method="post" enctype="multipart/form-data">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>콘서트 게시글 수정</strong>
+		        </div>
+		    </div>
+			<div class="con05">
+				<form action="modify_concert?writeNo=${cdto.writeNo}"  method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
 							<td>
@@ -116,10 +121,10 @@
 								<b>공연장 : </b>
 							</td>
 							<td>
-								<input type="text" readonly id = "addr1" placeholder="우편번호">
-								<button type="button" onclick="daumPost()">위치 찾기</button><br>
-							    <input type="text" readonly id = "addr2" name="con_place" placeholder="주소"><br>
-							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
+								<input type="text" readonly id="addr1" placeholder="우편번호">
+								<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>위치 찾기</span></button><br>
+								<input type="text" readonly id="addr2" name="con_place" placeholder="주소" value="${fn:split(cdto.con_place, '/')[0]}"><br>
+							    <input type="text" id="addr3" name="con_place" placeholder="상세주소" value="${fn:split(cdto.con_place, '/')[1]}"><br>
 							</td>
 						</tr>
 						<tr style="height: 20px;">
@@ -129,7 +134,7 @@
 								<b>가격 : </b>
 							</td>
 							<td>
-								<input type="number" name="price" min="0" max="1000000">
+								<input type="number" name="price" min="0" max="1000000" value="${cdto.price}">
 							</td>
 						</tr>
 						<tr style="height: 20px;">
@@ -241,23 +246,23 @@
 									
 									<tr>
 										<td>
-											<input type="button" onclick="deleteImage('img1Pre', 'image1')" value="삭제">
+											<button class="custom-btn btn-3" type="button" onclick="deleteImage('img1Pre', 'image1')"><span>삭제</span></button>
 										</td>
 										
 										<td>
-											<input type="button" onclick="deleteImage('img2Pre', 'image2')" value="삭제">
+											<button class="custom-btn btn-3" type="button" onclick="deleteImage('img2Pre', 'image2')"><span>삭제</span></button>
 										</td>
 										
 										<td>
-											<input type="button" onclick="deleteImage('img3Pre', 'image3')" value="삭제">
+											<button class="custom-btn btn-3" type="button" onclick="deleteImage('img3Pre', 'image3')"><span>삭제</span></button>
 										</td>
 										
 										<td>
-											<input type="button" onclick="deleteImage('img4Pre', 'image4')" value="삭제">
+											<button class="custom-btn btn-3" type="button" onclick="deleteImage('img4Pre', 'image4')"><span>삭제</span></button>
 										</td>
 										
 										<td>
-											<input type="button" onclick="deleteImage('img5Pre', 'image5')" value="삭제">
+											<button class="custom-btn btn-3" type="button" onclick="deleteImage('img5Pre', 'image5')"><span>삭제</span></button>
 										</td>
 									</tr>					
 								</table>
@@ -282,14 +287,16 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="frame">
+								<div class="container">
 									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
-									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
 								</div>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<div class="container">
+					<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

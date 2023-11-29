@@ -28,9 +28,9 @@ var msg = '${msg}';
 					<form action="com_pw_set" method="post">
 						<input type="hidden" name ="num" value="${num }">
 						<div class="textbox">
-							<label for="injeung">인증번호</label><input type="text" id="injeung" name="email_injeung" placeholder="인증번호를 입력하세요">
-						</div><br>
-						<input type="submit" id="check" value="확인">
+							<p><input type="text" id="injeung" name="email_injeung" placeholder="인증번호를 입력하세요"></p>
+						</div>
+					   	<button class="custom-btn btn-3" type="submit" id="check"><span>확인</span></button><br>
 					</form>
 				</div>
 			</div>

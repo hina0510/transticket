@@ -50,13 +50,12 @@ public class MemberController implements LoginSession{
 		int result = cms.logChk(id,pwd);
 		if(result==0) {
 			rs.addAttribute("id", id);
-			rs.addAttribute("autoLogin", autoLogin);
 			if(id.equals("admin")) {
 				session.setAttribute(MLOGIN, id);
 			}else {
 				session.setAttribute( CLOGIN , id);
 			}
-			
+			rs.addAttribute("autoLogin", autoLogin);
 			return "redirect:successLogin";
 		}
 		rs.addFlashAttribute("msg", "로그인실패");
@@ -71,11 +70,16 @@ public class MemberController implements LoginSession{
 		int result = gms.logChk1(id,pwd);
 		if(result==0) {
 			rs.addAttribute("id", id);
-			session.setAttribute( GLOGIN , id);
+			if(id.equals("admin")) {
+				session.setAttribute(MLOGIN, id);
+			}else {
+				session.setAttribute( GLOGIN , id);
+			}
+			
 			rs.addAttribute("autoLogin", autoLogin);
 			return "redirect:successLogin1";
 		}
-		rs.addFlashAttribute("msg", "�α��ν���");
+		rs.addFlashAttribute("msg", "로그인실패");
 		return "redirect:prelogin";
 	}
 	@GetMapping("successLogin")
@@ -103,7 +107,7 @@ public class MemberController implements LoginSession{
 			res.addCookie(gloginCookie);
 			gms.keepLogin(session.getId(), id);
 		}
-		rs.addFlashAttribute("msg","���ηα��μ���");
+		rs.addFlashAttribute("msg","개인로그인성공");
 		model.addAttribute("geninfo", gms.getMember(id));
 		return "redirect:prelogin";
 	}
@@ -218,9 +222,9 @@ public class MemberController implements LoginSession{
 		return "member/commember/com_mypage";
 	}
 	@GetMapping("admin")
-	public String admin() {
+	public String admin(Model model, HttpSession session) {
+		String id = (String) session.getAttribute(MLOGIN);
+		model.addAttribute("cominfo", cms.getMember(id));
 		return "member/admin";
 	}
-		
 }
-

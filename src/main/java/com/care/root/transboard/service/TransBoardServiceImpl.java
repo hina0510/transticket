@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.care.root.mybatis.reservation.concertSeatMapper;
 import com.care.root.mybatis.transboard.TransBoardMapper;
 import com.care.root.transboard.dto.TransBoardDTO;
 import com.care.root.transboard.dto.TransLikeDTO;
@@ -14,6 +15,8 @@ import com.care.root.transboard.dto.TransLikeDTO;
 @Service
 public class TransBoardServiceImpl implements TransBoardService{
 	@Autowired TransBoardMapper mapper;
+	@Autowired concertSeatMapper csmapper;
+	
 	public Map<String, Object> transboardAllList(int num) {
 		int pageLetter = 3; 
 		int allCount = mapper.selectBoardCount();
@@ -32,17 +35,16 @@ public class TransBoardServiceImpl implements TransBoardService{
 		return map;
 	}
 	
-	public void transWriteSave(TransBoardDTO dto) {
-		mapper.transWriteSave(dto);
+	public void transWriteSave(TransBoardDTO dto, String conS_id) {
+		int result = mapper.transWriteSave(dto);
+		if (result==1) {
+			csmapper.seatWriteUpdate(conS_id);
+		}
 	}
 	
 	public TransBoardDTO transView(int writeNo) {
 		upViewCount(writeNo);
 		return mapper.transView(writeNo);
-	}
-	
-	public void transModifySave(TransBoardDTO dto) {
-		mapper.transModifySave(dto);
 	}
 	
 	private void upViewCount(int writeNo) {
@@ -51,6 +53,9 @@ public class TransBoardServiceImpl implements TransBoardService{
 	
 	public void transDelete(int writeNo) {
 		mapper.transDelete(writeNo);
+	}
+	public void transDel(String conS_id) {
+		mapper.transDel(conS_id);
 	}
 	
 	public void transLike(String id, int writeNo) {

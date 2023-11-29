@@ -38,12 +38,10 @@
 				<div class="board_view_info">
 					<form class = "content" action="com_pw_auth" method="post">
 						<div class="textbox">
-					  		<label for="text">아이디</label><input id="text" name=id type="text" />
-					 	</div>
-						<div class="textbox">
-					  		<label for="email">이메일</label><input id="email" name=email required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
-						</div><br>
-					   	<input type="submit" id="check" value="비밀번호찾기">
+					  		<p><input id="text" name=id type="text" placeholder="아이디"><br>
+					  		<input id="email" name=email required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" placeholder="이메일"></p>
+						</div>
+					   	<button class="custom-btn btn-3" type="submit" id="check"><span>비밀번호찾기</span></button><br>
 					</form>
 				</div>
 			</div>

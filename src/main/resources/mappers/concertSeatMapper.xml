@@ -13,7 +13,9 @@
    		<result property="con_date" column="s_date"/>
    		<result property="con_place" column="s_place"/>
    		<result property="conS_price" column="s_price"/>
+   		<result property="conS_write" column="s_write"/>
 	</resultMap>
+	
 	<insert id="cSeatSave" >
 		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)
 		values(#{con_title}, #{conS_id}, #{con_buyer}, #{con_date}, #{con_place}, #{conS_price})
@@ -24,7 +26,16 @@
 	<update id="cBuySeat">
 		update seat set s_payed='payed' where s_title=#{con_title} AND s_buyer=#{con_buyer}
 	</update>
+	<delete id="cDelSeat">
+		delete from seat where s_title=#{con_title} AND s_buyer=#{con_buyer} AND s_payed='unpayed'
+	</delete>
 	
+	<update id="seatWriteUpdate">
+		update seat set s_write=s_write+1 where s_id=#{conS_id}	
+	</update>
+	<update id="seatWriteDown">
+		update seat set s_write=s_write-1 where s_id=#{conS_id}	
+	</update>
 	
 	<select id="reservationAllList" resultMap="seat">
 		select * from seat where s_buyer=#{con_buyer}
@@ -35,4 +46,7 @@
 	<update id="presentTicket">
 		update seat set s_buyer=#{con_buyer} where s_id=#{conS_id}
 	</update>
+	<delete id="cancelTicket">
+		delete from seat where s_id=#{conS_id}
+	</delete>
 </mapper>

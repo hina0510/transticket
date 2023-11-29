@@ -46,16 +46,16 @@
 	</insert>
 	<update id="cModify">
 		update performBoard set title=#{title}, pf_stDate=#{con_stDate}, pf_endDate=#{con_endDate}, pf_place=#{con_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
-									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where write_no=#{writeNo}
+									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where writeNo=#{writeNo}
 	</update>
 	<delete id="cDelete">
 		delete from performBoard where writeNo=#{writeNo}
 	</delete>
 	<select id="selectCBoardCount" resultType="integer">
-   		select count(*) from performBoard
+   		select count(*) from performBoard where type='concert'
    	</select>
    	<update id="cLikeUpdate">
-		update performBoard set likes=likes+1 where writeNo=#{writeNo}	
+		update performBoard set likes=likes+1 where write_no=#{writeNo}	
 	</update>
 	
 	<insert id="cLikeInsert">

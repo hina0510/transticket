@@ -18,11 +18,10 @@ import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 public class ImportApiController {
-
-    private IamportClient api;
+	private IamportClient api;
 
     public ImportApiController() {
-        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+    	// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
         
     	this.api = new IamportClient("5732631264858326","2rdQQhIGqlTXbiJ5uxmicBDlxnZCjRfUoCqZrVrf8VsR4o5veOjPFCyCdx6iRdm9jTk4db6IkKsojSR9");
    }

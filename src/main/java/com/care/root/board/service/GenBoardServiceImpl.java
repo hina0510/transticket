@@ -1,5 +1,6 @@
 package com.care.root.board.service;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ import com.care.root.mybatis.board.GenBoardMapper;
 public class GenBoardServiceImpl implements GenBoardService{
 	@Autowired GenBoardMapper mapper;
 	
+	public List<GenBoardDTO> category() {
+		return mapper.category();
+	}
+	
 	public Map<String, Object> boardAllList(int num) {
-		int pageLetter = 3; 
+		int pageLetter = 5; 
 		int allCount = mapper.selectBoardCount();
 		int repeat = allCount / pageLetter; 
 		if(allCount % pageLetter != 0) { 
@@ -74,12 +79,12 @@ public class GenBoardServiceImpl implements GenBoardService{
 		
 	return likesId;
 	}
-	public Map<String, Object> selectSearch(Model model, String type, String keyword, int num)throws Exception{
-		int pageLetter = 5;
+	public Map<String, Object> selectSearch(String type, String keyword, int num)throws Exception{
+		int pageLetter = 10;
 		int allCount = mapper.selectSearchCount(type,keyword);
 		int repeat = allCount / pageLetter;
 		if(allCount % pageLetter != 0) {
-			repeat += 1;
+			repeat ++;
 		}
         
 		int end = num * pageLetter;

@@ -7,5 +7,7 @@ CREATE TABLE seat
     s_buyer            VARCHAR2(100)     NOT NULL,
     s_payed            VARCHAR2(100)     default 'unpayed',
     s_date             DATE              NOT NULL,
-    s_place            VARCHAR2(100)     NOT NULL
+    s_place            VARCHAR2(100)     NOT NULL,
+    s_price            INT               NOT NULL,
+    s_write            NUMBER            DEFAULT 0
 );

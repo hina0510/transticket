@@ -26,10 +26,11 @@
 		<div class="con02">
 			<div class="board_wrap">
         		<div class="board_title">
-        			<strong>mypage</strong>
+        			<strong>my page</strong>
 		        </div>
-		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/com_info?id=${cominfo.dto.id }'"><span>기업정보</span></button><br><br>
-				</div>
+		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/com_info?id=${cominfo.dto.id }'"><span>기업정보</span></button>
+			</div>
+			<br>
 		</div>
 	</div>
 <%@ include file="../../default/footer.jsp" %>

@@ -10,7 +10,7 @@ public class FileConfig {
 	public CommonsMultipartResolver multipartResolver() {
 		System.out.println("@Configuration");
 		CommonsMultipartResolver mr = new CommonsMultipartResolver();
-		mr.setMaxUploadSize(52428800); // 50MBÁ¤µµ
+		mr.setMaxUploadSize(52428800); // 50MB
 		mr.setDefaultEncoding("utf-8");
 		return mr;
 	}

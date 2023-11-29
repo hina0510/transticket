@@ -12,42 +12,30 @@
 	<%@ include file="../default/header.jsp" %>
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
-				<form action="transWriteSave" method="post" enctype="multipart/form-data">
-					<select name="category">
-						<option value="공지">공지</option>
-						<option value="자유">자유</option>
-					</select>
-					제목 : <input type="text" name="title">
-					작성자 :<input type="text" readonly name="id" value="${genId }"><br>
-					
-					<c:choose>
-						<c:when test="${list.size()==0}">
-							예매한 티켓이 없습니다<br>
-						</c:when>
-						<c:otherwise>
-						<c:set var="cdto" value="${list}" />
-						<c:forEach var="i" begin="0" end="${list.size()-1}">
-							<label>
-							<input type="radio" name="seat" id="${cdto[i].conS_id }" value="${cdto[i].conS_id }">
-							<!-- <input type="hidden" name="seat" value="${cdto[i].conS_id }"> -->
-							<div>
-							제목 : ${cdto[i].con_title }<br>
-							구매자 : ${cdto[i].con_buyer }<br>
-							좌석 : ${cdto[i].conS_id }<br>
-							날짜 : ${cdto[i].con_date }<br>
-							장소 : ${cdto[i].con_place }<br>
-							결제 : ${cdto[i].con_payed }<br>
-							가격 : ${cdto[i].conS_price }
-							</div>
-							</label>
-							<hr>
-						</c:forEach>
-						</c:otherwise>
-					</c:choose>
-					
-					<input type="submit" value="전송"><br>
-				</form>
+			<div class="container2">
+				<div class="board_wrap">
+	        		<div class="board_title">
+	        			<strong>양도글 게시</strong>
+			        </div>
+			    </div>
+				<c:set var="cdto" value="${list}" />
+				<c:forEach var="i" begin="0" end="${list.size()-1}">
+					<form action="transWriteSave" method="post">
+						<select name="category">
+							<option value="콘서트">콘서트</option>
+							<option value="뮤지컬">뮤지컬</option>
+							<option value="전시">전시</option>
+						</select>
+						<br>
+						제목 : ${cdto[i].conS_id }_양도
+						<input type="hidden" name="title" value="${cdto[i].conS_id }_양도"><br>
+						작성자 :${cdto[i].con_buyer }
+						<input type="hidden" readonly name="id" value="${cdto[i].con_buyer }"><br>
+						좌석 : ${cdto[i].conS_id }
+						<input type="hidden" name="seat" value="${cdto[i].conS_id }"><br>
+						<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
+					</form>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

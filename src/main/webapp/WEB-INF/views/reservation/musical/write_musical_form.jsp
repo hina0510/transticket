@@ -20,10 +20,14 @@
 </head>
 <body>
 <%@ include file="../../default/header.jsp" %>
-	write_musical_form
 	<div class="con01">
 		<div class="con02">
-			<div class="con03">
+			<div class="board_wrap">
+        		<div class="board_title">
+        			<strong>뮤지컬 게시글 작성</strong>
+		        </div>
+		    </div>
+			<div class="con05">
 				<form action="write_musical_save" method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
@@ -116,11 +120,11 @@
 							<td>
 								<b>공연장 : </b>
 							</td>
-							<td>
+							<td style="text-align: left;">
 								<input type="text" readonly id = "addr1" placeholder="우편번호">
-								<button type="button" onclick="daumPost()">위치 찾기</button><br>
+								<button class="custom-btn btn-3" type="button" onclick="daumPost()"><span>위치 찾기</span></button><br>
 							    <input type="text" readonly id = "addr2" name="mu_place" placeholder="주소"><br>
-							    <input type="text" id="addr3" name="con_place" placeholder="상세주소"><br>
+							    <input type="text" id="addr3" name="mu_place" placeholder="상세주소"><br>
 							</td>
 						</tr>
 						<tr style="height: 20px;">
@@ -206,14 +210,16 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="frame">
+								<div class="container">
 									<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
-									<button class="custom-btn btn-3" onclick="location.href='concert_board'"><span>목록</span></button>
 								</div>
 							</td>
 						</tr>
 					</table>
 				</form>
+				<div class="container">
+					<button class="custom-btn btn-3" onclick="location.href='musical_board'"><span>목록</span></button>
+				</div>
 			</div>
 		</div>
 	</div>

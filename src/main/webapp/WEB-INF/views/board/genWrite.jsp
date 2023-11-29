@@ -39,12 +39,32 @@
 	<%@ include file="../default/header.jsp" %>
 		<div id="writeForm">
 			<form action="genWriteSave" method="post" enctype="multipart/form-data">
+			
+			
+			
 				<select name="category">
-					<option value="공지">공지</option>
-					<option value="자유">자유</option>
+					<c:choose>
+						<c:when test="${admin == 'admin' }">
+							<option value="공지">공지</option>
+							<option value="자유">자유</option>
+						</c:when>
+						<c:otherwise>
+							<option value="자유">자유</option>
+						</c:otherwise>
+					</c:choose>
 				</select>
+				
+				
+				
 				제목 : <input type="text" name="title">
-				작성자 :<input type="text" readonly name="id" value="${genId }"><br>
+				작성자 :<c:choose>
+						<c:when test="${admin == 'admin' }">
+							<input type="text" readonly name="id" value="${admin }"><br>
+						</c:when>
+						<c:otherwise>
+							<input type="text" readonly name="id" value="${genId }"><br>
+						</c:otherwise>
+					</c:choose>
 				<textarea rows="25" cols="80" name="content" id="content"></textarea><br>
 				<table style="margin: auto">
 						<tr>

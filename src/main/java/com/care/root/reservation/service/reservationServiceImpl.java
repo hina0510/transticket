@@ -15,6 +15,7 @@ import com.care.root.mybatis.reservation.exhibitionSeatMapper;
 import com.care.root.mybatis.reservation.musicalBoardMapper;
 import com.care.root.mybatis.reservation.musicalSeatMapper;
 import com.care.root.mybatis.reservation.paySeatMapper;
+import com.care.root.mybatis.transboard.TransBoardMapper;
 import com.care.root.reservation.dto.rLikeDTO;
 import com.care.root.reservation.dto.concertBoardDTO;
 import com.care.root.reservation.dto.concertSeatDTO;
@@ -32,11 +33,12 @@ public class reservationServiceImpl implements reservationService{
 	@Autowired musicalSeatMapper msmapper;
 	@Autowired exhibitionBoardMapper emapper;
 	@Autowired exhibitionSeatMapper esmapper;
+	@Autowired TransBoardMapper tmapper;
 	@Autowired paySeatMapper pmapper;
 	@Autowired reservationFileService fs;
 	
 	public Map<String, Object> cBoardList(int num){
-		int pageLetter = 9; //몇 개 글
+		int pageLetter = 9; //글 총 개수
 		int allCount = cmapper.selectCBoardCount(); //글 총 개수
 		int repeat = allCount/pageLetter; //총 페이지 수
 		if(allCount%pageLetter !=0) {//나머지 페이지가 있으면
@@ -98,16 +100,23 @@ public class reservationServiceImpl implements reservationService{
 	public List<concertSeatDTO> cGetSeat(@RequestParam String con_buyer) {
 		return csmapper.cGetSeat(con_buyer);
 	}
-	public int BuySeat(String account, int price){
+	public void cBuySeat(String account, int price, String con_title, String con_buyer){
 		payDTO pdto = pmapper.selectAccount(account);
 		int money = pdto.getMoney();
-		money = money-price;
-		System.out.println("계산 후 금액 : "+money);
-		pdto.setMoney(money);
-		System.out.println("계산 후 금액 : "+pdto.getMoney());
-		return pmapper.saveAccount(money, account);
+		System.out.println("금액 : "+money);
+		if(money>=price) {
+			money = money-price;
+			System.out.println("계산 후 금액 : "+money);
+			pdto.setMoney(money);
+			System.out.println("계산 후 금액 : "+pdto.getMoney());
+			pmapper.saveAccount(money, account);
+			csmapper.cBuySeat(con_title, con_buyer);
+		}
+		else {
+			csmapper.cDelSeat(con_title, con_buyer);
+		}
 	}
-	public void cBuySeat(String con_title, String con_buyer){
+	public void concert_CardBuySeat(@RequestParam String con_title, @RequestParam String con_buyer){
 		csmapper.cBuySeat(con_title, con_buyer);
 	}
 	
@@ -174,12 +183,28 @@ public class reservationServiceImpl implements reservationService{
 	public List<musicalSeatDTO> mGetSeat(@RequestParam String mu_buyer){
 		return msmapper.mGetSeat(mu_buyer);
 	}
-	public void mBuySeat(String mu_title, String mu_buyer){
+	public void mBuySeat(String account, int price, String mu_title, String mu_buyer){
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		System.out.println("금액 : "+money);
+		if(money>=price) {
+			money = money-price;
+			System.out.println("계산 후 금액 : "+money);
+			pdto.setMoney(money);
+			System.out.println("계산 후 금액 : "+pdto.getMoney());
+			pmapper.saveAccount(money, account);
+			msmapper.mBuySeat(mu_title, mu_buyer);
+		}
+		else {
+			msmapper.mDelSeat(mu_title, mu_buyer);
+		}
+	}
+	public void musical_CardBuySeat(@RequestParam String mu_title, @RequestParam String mu_buyer) {
 		msmapper.mBuySeat(mu_title, mu_buyer);
 	}
 	
 	public Map<String, Object> eBoardList(int num){
-		int pageLetter = 9; //몇 개 글
+		int pageLetter = 9; //글 총 개수
 		int allCount = emapper.selectEBoardCount(); //글 총 개수
 		int repeat = allCount/pageLetter; //총 페이지 수
 		if(allCount%pageLetter !=0) {//나머지 페이지가 있으면
@@ -241,7 +266,23 @@ public class reservationServiceImpl implements reservationService{
 	public List<exhibitionSeatDTO> eGetSeat(@RequestParam String ex_buyer){
 		return esmapper.eGetSeat(ex_buyer);
 	}
-	public void eBuySeat(String ex_title, String ex_buyer){
+	public void eBuySeat(String account, int price, String ex_title, String ex_buyer){
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		System.out.println("금액 : "+money);
+		if(money>=price) {
+			money = money-price;
+			System.out.println("계산 후 금액 : "+money);
+			pdto.setMoney(money);
+			System.out.println("계산 후 금액 : "+pdto.getMoney());
+			pmapper.saveAccount(money, account);
+			esmapper.eBuySeat(ex_title, ex_buyer);
+		}
+		else {
+			esmapper.eDelSeat(ex_title, ex_buyer);
+		}
+	}
+	public void exhibition_CardBuySeat(@RequestParam String ex_title, @RequestParam String ex_buyer) {
 		esmapper.eBuySeat(ex_title, ex_buyer);
 	}
 	
@@ -253,5 +294,49 @@ public class reservationServiceImpl implements reservationService{
 	}
 	public void presentTicket(String con_buyer, String conS_id) {
 		csmapper.presentTicket(con_buyer, conS_id);
+	}
+	public payDTO getAccount(String name){
+		return pmapper.getAccount(name);
+	}
+	public void BuySeat(String sAccount, String bAccount, int price, String conS_id, String con_buyer, int writeNo){
+		payDTO pdto = pmapper.selectAccount(bAccount);
+		int money = pdto.getMoney();
+		System.out.println("금액 : "+money);
+		if(money>=price) {
+			money = money-price;
+			System.out.println("계산 후 금액 : "+money);
+			pdto.setMoney(money);
+			System.out.println("계산 후 금액 : "+pdto.getMoney());
+			pmapper.saveAccount(money, bAccount);
+			sellSeat(sAccount, price);
+			csmapper.presentTicket(con_buyer, conS_id);
+			csmapper.seatWriteDown(conS_id);
+			tmapper.transDelete(writeNo);
+		}
+		else {
+			String msg = "", url="";
+			msg="거래 불가";
+			url="/root/transboard/transBoardList";
+			fs.getMessage(msg, url);
+		}
+	}
+	public void sellSeat(String account, int price) {
+		payDTO pdto = pmapper.selectAccount(account);
+		int money = pdto.getMoney();
+		money = money+price;
+		System.out.println("계산 후 금액 : "+money);
+		pdto.setMoney(money);
+		System.out.println("계산 후 금액 : "+pdto.getMoney());
+		pmapper.saveAccount(money, account);
+	}
+	public void cancelTicket(String con_buyer, String conS_id, int price) {
+		csmapper.cancelTicket(conS_id);
+		payDTO pdto = pmapper.getAccount(con_buyer);
+		int money = pdto.getMoney();
+		price-=2000;
+		money = money+price;
+		pdto.setMoney(money);
+		pmapper.saveMoney(money, con_buyer);
+		tmapper.transDel(conS_id);
 	}
 }

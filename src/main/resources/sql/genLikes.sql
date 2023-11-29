@@ -11,4 +11,3 @@ ALTER TABLE genLikes
 ALTER TABLE genLikes
     ADD CONSTRAINT genLikes_writeNo_Board_writeNo FOREIGN KEY (write_no)
         REFERENCES genBoard (write_no) ON DELETE CASCADE;
-

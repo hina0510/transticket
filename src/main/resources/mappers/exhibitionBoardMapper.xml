@@ -45,16 +45,16 @@
 	</insert>
 	<update id="eModify">
 		update performBoard set title=#{title}, pf_stDate=#{ex_stDate}, pf_endDate=#{ex_endDate}, pf_place=#{ex_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
-									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where write_no=#{writeNo}
+									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where writeNo=#{writeNo}
 	</update>
 	<delete id="eDelete">
 		delete from performBoard where writeNo=#{writeNo}
 	</delete>
 	<select id="selectEBoardCount" resultType="integer">
-   		select count(*) from performBoard
+   		select count(*) from performBoard where type='exhibition'
    	</select>
    	<update id="eLikeUpdate">
-		update performBoard set likes=likes+1 where writeNo=#{writeNo}	
+		update performBoard set likes=likes+1 where write_no=#{writeNo}	
 	</update>
 	
 	<insert id="eLikeInsert">

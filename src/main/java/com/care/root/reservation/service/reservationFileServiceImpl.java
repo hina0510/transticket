@@ -80,11 +80,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 			 
 		int result = cmapper.cWriteSave(cdto);
 		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
+		if(result==1) {
+			msg="게시되었습니다";
 			url="/root/reservation/concert_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
+		}else {//DB 저장 실패 시
+			msg="문제 발생";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -206,11 +206,9 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = cmapper.cModify(cdto);
 		String msg = "", url="";
 		if(result==1) {
-			//기본 이미지 삭제 originName
 			msg="수정되었습니다";
 			url="/root/reservation/concert_content?writeNo="+cdto.getWriteNo();
 		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
 			msg="문제 발생";
 			url="/root/reservation/modify_concert_form?writeNo="+cdto.getWriteNo();
 		}
@@ -220,7 +218,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {cdto.getImageName1(), cdto.getImageName2(), cdto.getImageName3(), cdto.getImageName4(), cdto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("파일 : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
@@ -274,11 +272,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = mmapper.mWriteSave(mdto);
 		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
+		if(result==1) {//DB 저장 시
+			msg="게시되었습니다";
 			url="/root/reservation/musical_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
+		}else {//DB 저장 실패 시
+			msg="문제 발생";
 			url="/root/reservation/write_musical_form";
 		}
 		getMessage(msg, url);
@@ -400,11 +398,9 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = mmapper.mModify(mdto);
 		String msg = "", url="";
 		if(result==1) {
-			//기본 이미지 삭제 originName
 			msg="수정되었습니다";
 			url="/root/reservation/concert_content?writeNo="+mdto.getWriteNo();
 		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
 			msg="문제 발생";
 			url="/root/reservation/modify_concert_form?writeNo="+mdto.getWriteNo();
 		}
@@ -414,7 +410,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {mdto.getImageName1(), mdto.getImageName2(), mdto.getImageName3(), mdto.getImageName4(), mdto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("파일 : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}
@@ -468,11 +464,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = emapper.eWriteSave(edto);
 		String msg = "", url="";
-		if(result==1) {//DB에 성공적으로 저장
-			msg="새 글이 추가되었습니다";
+		if(result==1) {//DB 저장 시
+			msg="게시되었습니다";
 			url="/root/reservation/concert_board";
-		}else {//DB에 저장 실패
-			msg="문제가 발생했습니다";
+		}else {//DB 저장 실패 시
+			msg="문제 발생";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -595,11 +591,9 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = emapper.eModify(edto);
 		String msg = "", url="";
 		if(result==1) {
-			//기본 이미지 삭제 originName
 			msg="수정되었습니다";
 			url="/root/reservation/concert_content?writeNo="+edto.getWriteNo();
 		}else {
-			//수정 이미지 삭제 dto.getImage_file_name()
 			msg="문제 발생";
 			url="/root/reservation/modify_concert_form?writeNo="+edto.getWriteNo();
 		}
@@ -610,7 +604,7 @@ public class reservationFileServiceImpl implements reservationFileService{
 		String[] fileNames = {edto.getImageName1(), edto.getImageName2(), edto.getImageName3(), edto.getImageName4(), edto.getImageName5()};
 		
 		for(String fileName : fileNames ) {
-			System.out.println("파일 : " + fileName);
+			System.out.println("fileName : " + fileName);
 			File file = new File(IMAGE_REPO + "/" + fileName);
     		file.delete();
 		}

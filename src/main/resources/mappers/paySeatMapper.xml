@@ -15,4 +15,10 @@
 	<update id="saveAccount">
 		update payAccount set money=#{money} where account=#{account}
 	</update>
+	<select id="getAccount" resultMap="payAccount">
+		select * from payAccount where name=#{name}
+	</select>
+	<update id="saveMoney">
+		update payAccount set money=#{money} where name=#{name}
+	</update>
 </mapper>

@@ -26,14 +26,15 @@
 		<div class="con02">
 			<div class="board_wrap">
         		<div class="board_title">
-        			<strong>mypage</strong>
+        			<strong>my page</strong>
 		        </div>
 		        <button class="custom-btn btn-3" onclick="location.href='${contextPath }/member/gen_info?id=${geninfo.dto.id }'"><span>개인정보</span></button><br><br>
 				<form action="/root/board/genBoardMypage">
-				<input type="hidden" type="text" name="type" value="n_id">
-				<input type="hidden" type="text" name="keyword" value="${geninfo.dto.id }">
-				<button class="custom-btn btn-3" type="submit"><span>작성한 글</span></button>
+					<input type="hidden" type="text" name="type" value="n_id">
+					<input type="hidden" type="text" name="keyword" value="${geninfo.dto.id }">
+					<button class="custom-btn btn-3" type="submit"><span>작성한 글</span></button>
 				</form>
+				<br>
 			</div>
 		</div>
 	</div>

@@ -3,11 +3,17 @@ package com.care.root.reservation.dto;
 import java.util.List;
 
 public class exhibitionSeatDTO {
-	private int exS_num, exS_price;
+	private int exS_num, exS_price, exS_write;
 	private String exS_id, ex_title, ex_date, ex_place, ex_buyer, ex_payed;
 	private String exSr_id, exS_pwd;
 	private List<String> seatList;
-	
+
+	public int getExS_write() {
+		return exS_write;
+	}
+	public void setExS_write(int exS_write) {
+		this.exS_write = exS_write;
+	}
 	public String getExS_id() {
 		return exS_id;
 	}

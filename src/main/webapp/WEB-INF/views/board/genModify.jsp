@@ -38,14 +38,16 @@
 </head>
 <body>
 	<%@ include file="../default/header.jsp" %>
-		<div id="writeForm">
+	<div class="con01">
+		<div class="con02">
+			<div class="con03">
 			<form action="genModifySave?writeNo=${dto.writeNo }" method="post" enctype="multipart/form-data">
 				<select name="category">
 					<option value="공지">공지</option>
 					<option value="자유">자유</option>
 				</select>
 				제목 : <input type="text" name="title" value = ${dto.title }>
-				작성자 : <input type="text" name="id" value="${dto.id }" readonly><br>
+				작성자 : <input type="text" name="id" value="${dto.id }" readonly><br><br>
 				<textarea rows="25" cols="80" name="content" id="content">${dto.content }</textarea><br>
 				
 				<div style="text-align: center;">
@@ -169,12 +171,13 @@
 							</td>
 						</tr>					
 					</table>
-				</div>
-				
-				<input type="submit" value="전송"><br>
-			</form>
+					</div>
+					<br>
+					<button class="custom-btn btn-3" type="submit"><span>전송</span></button><br>
+				</form>
+			</div>
 		</div>
+	</div>
 	<%@ include file="../default/footer.jsp" %>
 </body>
-
 </html>
