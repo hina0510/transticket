@@ -100,15 +100,15 @@ public class BoardController {
 		String id3 = null;
 		System.out.println("chk : " + session.getAttribute(LoginSession.GLOGIN));
 		
-		if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) != null)) {
+		if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) != null) && (session.getAttribute(LoginSession.MLOGIN)==null)) {
 			id1 = "undefined";
 			id2 = (String) session.getAttribute(LoginSession.CLOGIN);
 			id3 = "undefined";
-		}else if((session.getAttribute(LoginSession.GLOGIN) != null) && (session.getAttribute(LoginSession.CLOGIN) == null)){
+		}else if((session.getAttribute(LoginSession.GLOGIN) != null) && (session.getAttribute(LoginSession.CLOGIN) == null)&& (session.getAttribute(LoginSession.MLOGIN)==null)){
 			id1 = (String) session.getAttribute(LoginSession.GLOGIN);
 			id2 = "undefined";
 			id3 = "undefined";
-		} else if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) == null) && (String) session.getAttribute(LoginSession.MLOGIN)!=null){
+		} else if((session.getAttribute(LoginSession.GLOGIN) == null) && (session.getAttribute(LoginSession.CLOGIN) == null) && (session.getAttribute(LoginSession.MLOGIN)!=null)){
 			id1 = "undefined";
 			id2 = "undefined";
 			id3 = (String) session.getAttribute(LoginSession.MLOGIN);
