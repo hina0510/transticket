@@ -33,7 +33,7 @@
 		<div style="display:inline-block; width : 40%; margin : auto; padding-top: 20px; text-align: center;">
 			<img id="mainImg" width="600" height="600" alt="없음">
 			<hr>
-			<button type="button" onclick="slide_hide()">취소</button>
+			<button class="custom-btn btn-3" type="button" onclick="slide_hide()">취소</button>
 		</div>
 		
 		<div style="text-align:center;  display:inline-block; width:25%;">
@@ -216,119 +216,39 @@
 		
 	</script>
 	
-	concert_content
 	<div class="con01">
 		<div class="con02">
 			<div class="board_wrap">
         		<div class="board_title">
-        			<strong>콘서트 제목</strong>
-	            <p>여러분들의 여행후기를 올려주세요!</p>
-	        </div>
-	        <div class="board_view_wrap">
-	            <div class="board_view">
-	                <div class="title">
-	                	<p>${dto.title }</p>
-	                </div>
-	                <div class="info">
-	                    <dl>
-	                        <dt>글 번호</dt>
-	                        <dd>${dto.writeNo }</dd>
-	                    </dl>
-	                    <dl>
-                   			<dt>작성자</dt>
-                       		<dd>${dto.id }</dd>
-	                    </dl>
-	                    <dl>
-	                        <dt>작성일</dt>
-	                        <dd>${dto.saveDate }</dd>
-	                    </dl>
-	                    <dl>
-	                        <dt>좋아요</dt>
-	                        <dd>${dto.likes }</dd>
-	                    </dl>
-	                    
-	                </div>
-	                
-	                
-                	<div style="text-align: center;">
-	                	<c:choose>
-	                		<c:when test="${dto.imageName1 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="imgShow(1)" width="100" height="100" alt="없음">
-	                		</c:when>
-	                	</c:choose>
-
-						  
-						<c:choose>
-	                		<c:when test="${dto.imageName2 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="imgShow(2)" width="100" height="100" alt="없음">
-	                		</c:when>
-	                	</c:choose>
-						  
-						  <c:choose>
-	                		<c:when test="${dto.imageName3 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="imgShow(3)" width="100" height="100" alt="없음">
-	                		</c:when>
-	                	</c:choose>
-						  
-						  <c:choose>
-	                		<c:when test="${dto.imageName4 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="imgShow(4)" width="100" height="100" alt="없음">
-	                		</c:when>
-	                	</c:choose>
-						  
-						  <c:choose>
-	                		<c:when test="${dto.imageName5 != 'nan' }">
-	                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="imgShow(5)" width="100" height="100" alt="없음">
-	                		</c:when>
-	                	</c:choose>
-						  <br>
-						  <b style="font-size: 12px;">※이미지를 클릭하면 확대됩니다.</b>
-					</div>
-					
-					
-	                <div class="info2">
-	                    <dl>
-	                        <dt>내용</dt>
-	                        <dd>
-	                        	<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-									<ul class="nav nav-pills">
-										<li class="nav-item">
-											<a class="nav-link" href="#scrollspyHeading1">First</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#scrollspyHeading2">Second</a>
-										</li>
-										<li class="nav-item dropdown">
-											<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-												<li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-												<li><hr class="dropdown-divider"></li>
-												<li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-											</ul>
-										</li>
-									</ul>
-								</nav>
-								<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-								  ${dto.content },  
-								  일반 사용자 : ${genId }, <br>
-								  기업 사용자 : ${comId }, <br>  
-								  좋아요 : ${likes }
-								</div>
-	                        </dd>
-	                    </dl>
-	                    <br>
-	                    <dl>
-	                    	<dd>
-	                    		 <form action="likes" method="post">
-	                    		 <c:choose>
-	                    		 	<c:when test="${genId != 'undefined' }">
-		                    		 	<c:choose>
+        			<strong>${dto.title }</strong>
+		        </div>
+		        <div class="board_view_wrap">
+		            <div class="board_view">
+		                <div class="info">
+		                    <dl>
+		                        <dt>글 번호</dt>
+		                        <dd>${dto.writeNo }</dd>
+		                    </dl>
+		                    <dl>
+		                        <dt>작성자</dt>
+		                        <dd>${dto.id }</dd>
+		                    </dl>
+		                    <dl>
+		                        <dt>작성일</dt>
+		                        <dd>${dto.saveDate }</dd>
+		                    </dl>
+		                    <dl>
+		                        <dt>좋아요</dt>
+		                        <dd>${dto.likes }</dd>
+		                        <dd>
+		                    		<form action="likes" method="post">
+			                    		<c:if test="${genId != 'undefined' }">
+				                    		<c:choose>
 												<c:when test="${genId != dto.id }">
 													<c:choose>
 														<c:when test="${likes == 'none' }">
 															<input type="hidden" value="${genId }" name="id">
-									  						<input type="hidden" value="${dto.writeNo }" name="writeNo">
+										  					<input type="hidden" value="${dto.writeNo }" name="writeNo">
 									  						<button>♡</button>
 														</c:when>
 														<c:otherwise>
@@ -350,98 +270,157 @@
 													</c:choose>
 												</c:otherwise>
 											</c:choose>
-	                    		 	</c:when>
-	                    		 	<c:otherwise>
-	                    		 	</c:otherwise>
-	                    		 	
-	                    		 </c:choose>
-								  </form>
-					 			<c:if test="${genId == dto.id }">
-								<button type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
-                    			<button type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
-								</c:if>
-					  			<button type="button" onclick="location.href='genBoardList'">목록</button>
-							</dd>
-	                    </dl>
-	                </div>
-	            </div>
-	        </div>
-	        
-	        <hr>
-	        <form action="reply" method="post" style="text-align: center;">	
-				<c:if test="${genId != 'undefined' }">
-					<input type="hidden" value="${genId }" name="gId">
-				</c:if>
-	        	<c:if test="${comId != 'undefined' }">
-	        		<input type="hidden" value="${comId }" name="cId">
-	        	</c:if>
-				<input type="hidden" value="${dto.writeNo }" name="writeNo">
-	        	<textarea rows="3" cols="70%" style="resize: none;" name="content"></textarea>
-	        	<button>답글달기</button>
-	        </form>
-	        <hr>
-	        
-	        <script type="text/javascript">
-				function modArea(replyNo) {
-					$("#modifyArea_"+replyNo).show();
-				}
-				
-				function modCancel(replyNo) {
-					$("#modify_"+replyNo).val("");
-					$("#modifyArea_"+replyNo).hide();
-				}
-			</script>
-			
-	        <c:forEach var="rep" items="${reply }">
-	        	<c:choose>
-	        	
-	        	
-	        		<c:when test="${rep.nId != 'nan' }">
-	        			일반 사용자 : ${rep.nId } 작성일 : ${rep.saveDate }
-	        			<c:if test="${rep.nId == genId }">
-	        				<a onclick="modArea('${rep.replyNo }')">수정</a>
-	        				<a href="replyDelete?replyNo=${rep.replyNo }&writeNo=${dto.writeNo}">삭제</a>
-	        				<div id="modifyArea_${rep.replyNo }" style="display: none;">
-			        			<form action="replyModify" method="post">
-			        				<textarea rows="3" cols="50%" id="modify_${rep.replyNo }" name="modify"></textarea>
-			        				<input type="hidden" value="${dto.writeNo }" name="writeNo">
-			        				<input type="hidden" value="${rep.replyNo }" name="replyNo">
-				        			<button>수정하기</button>
-				        			<input type="button" value="취소" onclick="modCancel('${rep.replyNo }')">
-			        			</form>
-	        				</div>
-	        			</c:if> <br>
-	        			작성 내용 : ${rep.content } <br>
-	        		</c:when>
-	        		
-	        		
-	        		<c:otherwise>
-	        			기업 사용자 : ${rep.cId } 작성일 : ${rep.saveDate } 
-	        			<c:if test="${rep.cId == comId }">
-	        				<a onclick="modArea(this)">수정</a>
-	        				<a href="replyDelete?replyNo=${rep.replyNo }&writeNo=${dto.writeNo}">삭제</a>
-	        				<div id="modifyArea" style="display: none;">
-			        			<form action="replyModify" method="post">
-			        				<textarea rows="3" cols="50%" id="modify" name="modify"></textarea>
-			        				<input type="hidden" value="${dto.writeNo }" name="writeNo">
-			        				<input type="hidden" value="${rep.replyNo }" name="replyNo">
-				        			<button>수정하기</button>
-				        			<input type="button" value="취소" onclick="modCancel()">
-			        			</form>
-	        				</div>
-	        			</c:if> <br>
-	        			작성 내용 : ${rep.content } <br>
-	        		</c:otherwise>
-	        		
-	        		
-	        	</c:choose>
-	        	<hr>
-	        </c:forEach>
-		</div>
-	</div>
-	</div>
-	
+		                    			</c:if>
+									</form>
+								</dd>
+		                    </dl>
+		                </div>
 
+		                <div class="info2">
+		                    <dl>
+		                        <dt>내용</dt>
+		                    </dl>
+		                	<dl>
+		                        <dd>
+			                        <div style="text-align: center;">
+					                	<c:choose>
+					                		<c:when test="${dto.imageName1 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName1 }" id="img1" onclick="imgShow(1)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+					                	<c:choose>
+					                		<c:when test="${dto.imageName2 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName2 }" id="img2"  onclick="imgShow(2)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+
+										  <c:choose>
+					                		<c:when test="${dto.imageName3 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName3 }" id="img3" onclick="imgShow(3)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+
+										  <c:choose>
+					                		<c:when test="${dto.imageName4 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName4 }" id="img4" onclick="imgShow(4)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+
+										  <c:choose>
+					                		<c:when test="${dto.imageName5 != 'nan' }">
+					                			<img src="imgView?name=${dto.imageName5 }" id="img5" onclick="imgShow(5)" width="100" height="100" alt="없음">
+					                		</c:when>
+					                	</c:choose>
+										  <br>
+										  <b style="font-size: 12px;">※이미지를 클릭하면 확대됩니다.</b>
+									</div>
+		                        </dd>
+		                    </dl>
+		                	<dl>
+		                        <dd>
+									 ${dto.content },  
+									  일반 사용자 : ${genId }, <br>
+									  기업 사용자 : ${comId }, <br>  
+									  좋아요 : ${likes }
+		                        </dd>
+		                    </dl>
+		                    <br>
+		                    <dl>
+		                    	<dd>
+						 			<c:if test="${genId == dto.id }">
+									<button class="custom-btn btn-3" type="button" onclick="location.href='genModify?writeNo=${dto.writeNo}'">수정</button>
+	                    			<button class="custom-btn btn-3" type="button" onclick="location.href='genDelete?writeNo=${dto.writeNo}'">삭제</button>
+									</c:if>
+						  			<button class="custom-btn btn-3" type="button" onclick="location.href='genBoardList'">목록</button>
+								</dd>
+		                    </dl>
+		                </div>
+		            </div>
+		        </div>
+		        <form action="reply" method="post" style="text-align: center;">	
+					<section class="replybox">
+						<div class="text">
+							<c:if test="${genId != 'undefined' }">
+								<input type="hidden" value="${genId }" name="gId">
+							</c:if>
+				        	<c:if test="${comId != 'undefined' }">
+				        		<input type="hidden" value="${comId }" name="cId">
+				        	</c:if>
+							<input type="hidden" value="${dto.writeNo }" name="writeNo">
+				        	<textarea rows="3" style="width:100%;" name="content"></textarea>
+						</div>
+						<div class="button">
+							<button class="custom-btn btn-3">답글달기</button>
+						</div>
+					</section>
+		        </form>
+		        
+		        <script type="text/javascript">
+					function modArea(replyNo) {
+						$("#modifyArea_"+replyNo).show();
+					}
+					
+					function modCancel(replyNo) {
+						$("#modify_"+replyNo).val("");
+						$("#modifyArea_"+replyNo).hide();
+					}
+				</script>
+		        
+		        <c:forEach var="rep" items="${reply }">
+		        <hr>
+		        	<c:choose>
+		        		<c:when test="${rep.nId != 'nan' }">
+		        			일반 사용자 : ${rep.nId } 작성일 : ${rep.saveDate }
+		        			<c:if test="${rep.nId == genId }">
+		        				<a onclick="modArea('${rep.replyNo }')">수정</a>
+		        				<a href="replyDelete?replyNo=${rep.replyNo }&writeNo=${dto.writeNo}">삭제</a>
+		        				<div id="modifyArea_${rep.replyNo }" style="display: none;">
+				        			<form action="replyModify" method="post">
+				        				<section class="replybox">
+											<div class="text">
+				        						<textarea rows="3" style="width:100%;" id="modify_${rep.replyNo }" name="modify"></textarea>
+				        						<input type="hidden" value="${dto.writeNo }" name="writeNo">
+				        						<input type="hidden" value="${rep.replyNo }" name="replyNo">
+				        					</div>
+				        					<div class="button">
+							        			<button class="custom-btn btn-3">수정하기</button>
+							        			<button class="custom-btn btn-3" type="button" onclick="modCancel('${rep.replyNo }')"><span>취소</span></button>
+				        					</div>
+										</section>
+				        			</form>
+		        				</div>
+		        			</c:if> <br>
+		        			작성 내용 : ${rep.content } <br>
+		        		</c:when>
+		        		
+		        		<c:otherwise>
+		        			기업 사용자 : ${rep.cId } 작성일 : ${rep.saveDate } 
+		        			<c:if test="${rep.cId == comId }">
+		        				<a onclick="modArea(this)">수정</a>
+		        				<a href="replyDelete?replyNo=${rep.replyNo }&writeNo=${dto.writeNo}">삭제</a>
+		        				<div id="modifyArea_${rep.replyNo }" style="display: none;">
+				        			<form action="replyModify" method="post">
+				        				<section class="replybox">
+											<div class="text">
+					        					<textarea rows="3" style="width:100%;" id="modify_${rep.replyNo }" name="modify"></textarea>
+					        					<input type="hidden" value="${dto.writeNo }" name="writeNo">
+				        						<input type="hidden" value="${rep.replyNo }" name="replyNo">
+					        				</div>
+					        				<div class="button">
+							        			<button class="custom-btn btn-3">수정하기</button>
+							        			<button class="custom-btn btn-3" type="button" onclick="modCancel('${rep.replyNo }')"><span>취소</span></button>
+				        					</div>
+										</section>
+				        			</form>
+		        				</div>
+		        			</c:if> <br>
+		        			작성 내용 : ${rep.content } <br>
+		        		</c:otherwise>
+		        	</c:choose>
+		        </c:forEach>
+		        <br>
+			</div>
+	</div>
 <%@ include file="../default/footer.jsp" %>
 </body>
 </html>
