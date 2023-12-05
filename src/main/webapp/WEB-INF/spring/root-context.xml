@@ -8,11 +8,11 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- DB연결하기 위한 기본 설정해주는 빈 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	   <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-	   <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
-	   <property name="username" value="c##java" />
-	   <property name="password" value="1234" />
-	</bean>
+      <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@care_high?TNS_ADMIN=C:/Wallet_care" />
+      <property name="username" value="ADMIN" />
+      <property name="password" value="TransTicket123" />
+   </bean>
 	   <!-- hikariConfig를 설정된 값을 토대로 DB에 연결된 bean얻어옴 -->
 	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
 	<constructor-arg ref="hikariConfig"/>

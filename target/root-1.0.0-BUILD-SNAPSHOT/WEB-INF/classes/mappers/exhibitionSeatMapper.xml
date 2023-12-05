@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.reservation.exhibitionSeatMapper">
+	<resultMap type="com.care.root.reservation.dto.exhibitionSeatDTO" id="seat">
+   		<id property="ex_title" column="s_title"/><!-- primary key -->
+   		<result property="exS_id" column="s_id"/>
+   		<result property="exSr_id" column="sr_id"/>
+   		<result property="exS_pwd" column="s_pwd"/>
+   		<result property="ex_buyer" column="s_buyer"/>
+   		<result property="ex_payed" column="s_payed"/>
+   		<result property="ex_date" column="s_date"/>
+   		<result property="ex_place" column="s_place"/>
+   		<result property="exS_price" column="s_price"/>
+   		<result property="exS_write" column="s_write"/>
+	</resultMap>
+	<insert id="eSeatSave" >
+		insert into Seat(s_title, s_id, s_buyer, s_date, s_place, s_price)
+		values(#{ex_title}, #{exS_id}, #{ex_buyer}, #{ex_date}, #{ex_place}, #{exS_price})
+	</insert>
+	<select id="eGetSeat" resultMap="seat">
+		select * from seat where s_buyer=#{ex_buyer} AND s_payed='unpayed'
+	</select>
+	<update id="eBuySeat">
+		update seat set s_payed='payed' where s_title=#{ex_title} AND s_buyer=#{ex_buyer}
+	</update>
+	<delete id="eDelSeat">
+		delete from seat where s_title=#{ex_title} AND s_buyer=#{ex_buyer} AND s_payed='unpayed'
+	</delete>
+</mapper>

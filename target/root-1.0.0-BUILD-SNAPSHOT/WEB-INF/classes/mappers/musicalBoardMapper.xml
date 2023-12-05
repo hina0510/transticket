@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.reservation.musicalBoardMapper">
+   	<resultMap type="com.care.root.reservation.dto.musicalBoardDTO" id="board">
+   		<id property="writeNo" column="writeNo"/><!-- primary key -->
+   		<result property="title" column="title"/>
+   		<result property="type" column="type"/>
+   		<result property="comname" column="comname"/>
+   		<result property="mu_stDate" column="pf_stDate"/>
+   		<result property="mu_endDate" column="pf_endDate"/>
+   		<result property="mu_place" column="pf_place"/>
+   		<result property="price" column="price"/>
+   		<result property="content" column="content"/>
+   		<result property="imageName1" column="imageName1"/>
+		<result property="imageName2" column="imageName2"/>
+		<result property="imageName3" column="imageName3"/>
+		<result property="imageName4" column="imageName4"/>
+		<result property="imageName5" column="imageName5"/>
+   		<result property="hit" column="hit"/>
+   		<result property="saveDate" column="saveDate"/>
+   		<result property="form" column="form"/>
+	</resultMap>
+	
+	<resultMap type="com.care.root.reservation.dto.rLikeDTO" id="likes">
+		<result property="id" column="n_id"/>
+		<result property="writeNo" column="write_no"/>
+	</resultMap>
+	
+   	<select id="mBoardList" resultMap="board" >
+	select B.* from(select rownum rn, A.* from
+	(select * from performBoard where type='musical' order by writeNo desc)A)B
+	where rn between #{s} and #{e}
+	</select>
+	<select id="mGetContent" resultMap="board">
+   		select * from performBoard where writeNo=#{writeNo}
+   	</select>
+   	<update id="mUpHit">
+		update performBoard set hit=hit+1 where writeNo=#{writeNo}
+	</update>
+   	<insert id="mWriteSave" >
+		insert into performBoard(writeNo, title, type, comname, pf_stDate, pf_endDate, pf_place, price, content, imageName1, imageName2, imageName3, imageName4, imageName5, form)
+		values(perform_board_seq.nextval, #{title}, #{type}, #{comname}, #{mu_stDate}, #{mu_endDate}, #{mu_place}, #{price}, #{content}, #{imageName1}, #{imageName2}, #{imageName3}, #{imageName4}, #{imageName5}, #{form})
+	</insert>
+	<update id="mModify">
+		update performBoard set title=#{title}, pf_stDate=#{mu_stDate}, pf_endDate=#{mu_endDate}, pf_place=#{mu_place}, price=#{price}, content=#{content}, imageName1 = #{imageName1}, imageName2 = #{imageName2}, imageName3 = #{imageName3}, 
+									imageName4 = #{imageName4}, imageName5 = #{imageName5}, form=#{form} where writeNo=#{writeNo}
+	</update>
+	<delete id="mDelete">
+		delete from performBoard where writeNo=#{writeNo}
+	</delete>
+	<select id="selectMBoardCount" resultType="integer">
+   		select count(*) from performBoard where type='musical'
+   	</select>
+   	<update id="mLikeUpdate">
+		update performBoard set likes=likes+1 where write_no=#{writeNo}	
+	</update>
+	
+	<insert id="mLikeInsert">
+	    insert into Likes (n_id, write_no) values (#{id}, #{writeNo})
+	</insert>
+	
+	<select id="mLikeChk" resultType="String">
+		select n_id from Likes where n_id = #{id} and write_no = #{writeNo} 
+	</select>
+</mapper>
