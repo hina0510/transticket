@@ -310,10 +310,7 @@
 									</ul>
 								</nav>
 								<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-								  ${dto.content },  
-								  일반 사용자 : ${genId }, <br>
-								  기업 사용자 : ${comId }, <br>  
-								  좋아요 : ${likes }
+								  ${dto.content }  
 								</div>
 	                        </dd>
 	                    </dl>

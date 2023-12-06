@@ -24,6 +24,7 @@
 						<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
 					</form>
 				</div>
+				<br>
 			</div>
 		</div>
 	</div>

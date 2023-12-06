@@ -122,13 +122,13 @@ public class MemberController implements LoginSession{
 	@PostMapping("comregister")
 	public String comregister(HttpServletRequest req, ComMemberDTO dto, RedirectAttributes rtt) {
 		cms.comregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","���ԿϷ�");
+		rtt.addFlashAttribute("msg","가입완료");
 		return "redirect:prelogin";
 	}
 	@PostMapping("genregister")
 	public String genregister(HttpServletRequest req,GenMemberDTO dto, RedirectAttributes rtt) {
 		gms.genregister(dto , req.getParameterValues("addr"));
-		rtt.addFlashAttribute("msg","���ԿϷ�");
+		rtt.addFlashAttribute("msg","가입완료");
 		return "redirect:prelogin";
 	}
 	@GetMapping("clogout")

@@ -26,9 +26,9 @@
 						<input type="hidden" name="seat" value="${cdto[i].conS_id }"><br>
 						거래자 :${cdto[i].con_buyer }
 						<input type="hidden" name="sAccount" value="${alist.account }"><br>
-						구매자 : <input type="text" name="buyer" value="${glogin}"><br>
+						구매자 : ${glogin}<input type="hidden" name="buyer" value="${glogin}"><br>
 						계좌번호 : <input type="text" name="bAccount" placeholder="계좌번호13자리"><br>
-						금액 : <input type="text" name="price" value="${cdto[i].conS_price }"><br><br>
+						금액 : ${cdto[i].conS_price }<input type="hidden" name="price" value="${cdto[i].conS_price }"><br><br>
 						<button class="custom-btn btn-3" type="submit"><span>전송</span></button>
 					</form>
 				</c:forEach>

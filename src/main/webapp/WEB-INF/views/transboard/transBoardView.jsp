@@ -91,9 +91,6 @@
 		                <dl>
 		                    <dd>
 								 ${dto.content },  
-								  일반 사용자 : ${genId }, <br>
-								  기업 사용자 : ${comId }, <br>  
-								  좋아요 : ${likes }
 		                    </dd>
 		                </dl>
 		                <br>

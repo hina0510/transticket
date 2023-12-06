@@ -31,19 +31,19 @@
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 		        <div class="carousel-item active">
-		        	<img src="resources/images/light_off.jpg" class="d-block w-100" alt="...">
+		        	<img src="http://ticketimage.interpark.com/TCMS3.0/NMain/BbannerPC/2311/231117090821_23016747.gif" class="d-block w-100" alt="...">
 		        </div>
 		        <div class="carousel-item">
-		        	<img src="resources/images/light_off.jpg" class="d-block w-100" alt="...">
+		        	<img src="http://ticketimage.interpark.com/TCMS3.0/NMain/BbannerPC/2312/231204092630_23017036.gif" class="d-block w-100" alt="...">
 		        </div>
 		        <div class="carousel-item">
-		        	<img src="resources/images/light_off.jpg" class="d-block w-100" alt="...">
+		        	<img src="http://ticketimage.interpark.com/TCMS3.0/NMain/BbannerPC/2310/231004050026_23013512.gif" class="d-block w-100" alt="...">
 		        </div>
 		        <div class="carousel-item">
-		        	<img src="resources/images/light_off.jpg" class="d-block w-100" alt="...">
+		        	<img src="http://ticketimage.interpark.com/TCMS3.0/NMain/BbannerPC/2311/231115045426_23013472.gif" class="d-block w-100" alt="...">
 		        </div>
 		        <div class="carousel-item">
-		        	<img src="resources/images/light_off.jpg" class="d-block w-100" alt="...">
+		        	<img src="http://ticketimage.interpark.com/TCMS3.0/NMain/BbannerPC/2311/231117092951_23016221.gif" class="d-block w-100" alt="...">
 		        </div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -58,161 +58,162 @@
 	    
 	    <div style="height: 30px;"></div>
 	    <div class="sbanner">
-	    	<img src="resources/images/light_off.jpg">
-	    	<img src="resources/images/light_off.jpg">
-	    	<img src="resources/images/light_off.jpg"><br>
-	    	<img src="resources/images/light_off.jpg">
-	    	<img src="resources/images/light_off.jpg">
-	    	<img src="resources/images/light_off.jpg"><br>
+	    	<img src="resources/images/KakaoTalk_20231205_152230177_01.jpg">
+	    	<img src="resources/images/KakaoTalk_20231205_152230177_02.jpg">
+	    	<img src="resources/images/KakaoTalk_20231205_152230177_03.jpg"><br>
+	    	<img src="resources/images/KakaoTalk_20231205_152230177_04.jpg">
+	    	<img src="resources/images/KakaoTalk_20231205_152230177_05.jpg">
+	    	<img src="resources/images/KakaoTalk_20231205_152230177.jpg"><br>
 	    </div>
 	    
 	    <section>
 	    <div style="height: 40px;"></div>
-	    <div style="height: 40px;font-size: 28px;"><span>장르별 랭킹</span></div>
+	    <div style="height: 40px;font-size: 28px;"><span>추천 공연</span></div>
 	   
 	    <div class="slider">
 			<div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/concert_content?writeNo=36">
+						<img src="resources/images/에일리 메인2.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
 						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+							<dt class="card-title">에일리콘서트</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>잠실주경기장</dd>
+						<dd>2023.12.19 ~ 12.23</dd>
 					</div>
 				</div>
 		    </div>
 			<div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/concert_content?writeNo=23">
+						<img src="resources/images/다니엘 시저 메인.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
-						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+						<a href="${contextPath }/reservation/concert_content?writeNo=23">
+							<dt class="card-title">다니엘 시저</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>장충체육관</dd>
+						<dd>2023.12.30 ~ 12.31</dd>
 					</div>
 				</div>
 		    </div>
 			<div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/concert_content?writeNo=39">
+						<img src="resources/images/임영웅 메인2.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
-						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+						<a href="${contextPath }/reservation/concert_content?writeNo=39">
+							<dt class="card-title">임영웅 콘서트</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>경희대학교 평화의전당</dd>
+						<dd>2023.12.24 ~ 12.25</dd>
 					</div>
 				</div>
 		    </div>
-			<div class="col-md-3">
+			
+		    <div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/musical_content?writeNo=24">
+						<img src="resources/images/드라큐라 메인.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
-						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+						<a href="${contextPath }/reservation/musical_content?writeNo=24">
+							<dt class="card-title">뮤지컬 드라큐라</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>청담아트홀</dd>
+						<dd>2023.12.04 ~ 12.25</dd>
 					</div>
 				</div>
 		    </div>
-			<div class="col-md-3">
+		    <div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/musical_content?writeNo=34">
+						<img src="resources/images/벤허 메인.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
-						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+						<a href="${contextPath }/reservation/musical_content?writeNo=34">
+							<dt class="card-title">벤허</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>삼성 블루스퀘어</dd>
+						<dd>2023.12.01 ~ 12.31</dd>
 					</div>
 				</div>
 		    </div>
-			<div class="col-md-3">
+		    <div class="col-md-3">
 		    	<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-						<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="${contextPath }/reservation/musical_content?writeNo=37">
+						<img src="resources/images/셜록홈즈 메인.gif" class="card-img-top" alt="card">
 					</a>
 					<div class="card-body">
-						<a href="${contextPath }/reservation/concert_content">
-							<dt class="card-title">뮤지컬 레베카 1주년 기념 공연</dt>
+						<a href="${contextPath }/reservation/musical_content?writeNo=37">
+							<dt class="card-title">셜록홈즈</dt>
 						</a>
-						<dd>블루스퀘어 신한카드홀</dd>
-						<dd>2023.8.19 ~ 11.19</dd>
+						<dd>코엑스 신한카드아트리움</dd>
+						<dd>2023.12.01 ~ 12.25</dd>
 					</div>
 				</div>
 		    </div>
 		</div>        
 		
 	    <div style="height: 40px;"></div>
-	    <div style="height: 40px;font-size: 28px;"><span>추천 공연</span></div>
+	    <div style="height: 40px;font-size: 28px;"><span>추천 전시</span></div>
 	    <div class="row">
 	    	<div class="col-3">
 				<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="">
+				    	<img src="resources/images/럭스 메인.gif" class="card-img-top" alt="card">
 				    </a>
 				    <div class="card-body">
 				    	<a href="${contextPath }/reservation/concert_content">
-				        	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				        	<dt class="card-title">럭스</dt>
 				        </a>
-				        <dd>블루스퀘어 신한카드홀</dd>
-				        <dd>2023.8.19 ~ 11.19</dd>
+				        <dd>DDP 뮤지엄 전시관</dd>
+				        <dd>2023.11.19 ~ 12.31</dd>
 				    </div>
 				</div>
 			</div>
 	    	<div class="col-3">
 				<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="">
+				    	<img src="resources/images/일리야 밀스타인 메인.jpg" class="card-img-top" alt="card">
 				    </a>
 				    <div class="card-body">
 				    	<a href="${contextPath }/reservation/concert_content">
-				        	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				        	<dt class="card-title">일리야 밀스타인</dt>
 				        </a>
-				        <dd>블루스퀘어 신한카드홀</dd>
-				        <dd>2023.8.19 ~ 11.19</dd>
+				        <dd>마이 아트 뮤지엄</dd>
+				        <dd>2023.11.19 ~ 2024.01.19</dd>
 				    </div>
 				</div>
 			</div>
 	    	<div class="col-3">
 				<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="">
+				    	<img src="resources/images/이경준 사진전 메인.gif" class="card-img-top" alt="card">
 				    </a>
 				    <div class="card-body">
 				    	<a href="${contextPath }/reservation/concert_content">
-				        	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				        	<dt class="card-title">이경준 사진전 메인</dt>
 				        </a>
-				        <dd>블루스퀘어 신한카드홀</dd>
-				        <dd>2023.8.19 ~ 11.19</dd>
+				        <dd>그라운드 시소 센트럴</dd>
+				        <dd>2023.8.19 ~ 12.19</dd>
 				    </div>
 				</div>
 			</div>
 	    	<div class="col-3">
 				<div class="card">
-					<a href="${contextPath }/reservation/concert_content">
-				    	<img src="https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F23%2F23008837_p.gif&w=3840&q=75" class="card-img-top" alt="card">
+					<a href="">
+				    	<img src="resources/images/2023 AGF 메인.gif" class="card-img-top" alt="card">
 				    </a>
 				    <div class="card-body">
 				    	<a href="${contextPath }/reservation/concert_content">
-				        	<dt class="card-title">뮤지컬 레베카 10주년 기념 공연</dt>
+				        	<dt class="card-title">2023 AGF</dt>
 				        </a>
-				        <dd>블루스퀘어 신한카드홀</dd>
-				        <dd>2023.8.19 ~ 11.19</dd>
+				        <dd>일산 킨텍스</dd>
+				        <dd>2023.12.03 ~ 12.05</dd>
 				    </div>
 				</div>
 			</div>
@@ -220,7 +221,7 @@
 	</section>
 	<div style="height: 30px;"></div>
 	<div class="lbanner">
-		<img src="resources/images/light_off.jpg">
+		<img src="resources/images/KakaoTalk_20231205_152230177_06.jpg">
 	</div>
 <%@ include file="./default/footer.jsp" %>
 </body>

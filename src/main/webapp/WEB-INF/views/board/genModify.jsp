@@ -43,8 +43,15 @@
 			<div class="con03">
 			<form action="genModifySave?writeNo=${dto.writeNo }" method="post" enctype="multipart/form-data">
 				<select name="category">
-					<option value="공지">공지</option>
-					<option value="자유">자유</option>
+					<c:choose>
+						<c:when test="${admin == 'admin' }">
+							<option value="공지">공지</option>
+							<option value="자유">자유</option>
+						</c:when>
+						<c:otherwise>
+							<option value="자유">자유</option>
+						</c:otherwise>
+					</c:choose>
 				</select>
 				제목 : <input type="text" name="title" value = ${dto.title }>
 				작성자 : <input type="text" name="id" value="${dto.id }" readonly><br><br>

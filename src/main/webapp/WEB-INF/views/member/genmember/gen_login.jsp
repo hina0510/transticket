@@ -14,7 +14,7 @@
 		<form action="${contextPath }/member/logChk1" method="post">
 			<input type="text" name="id" placeholder="ID"><br>
 			<div style="height: 5px;"></div>
-			<input type="text" name="pwd" placeholder="PWD"><br>
+			<input type="password" name="pwd" placeholder="PWD"><br>
 			<div style="height: 10px;"></div>
 			<input type="checkbox" name="autoLogin" id="genauto"><label for="genauto">&nbsp;자동로그인&nbsp;</label>
 			<button class="custom-btn btn-3" type="submit"><span>로그인</span></button><br>

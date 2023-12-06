@@ -81,10 +81,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = cmapper.cWriteSave(cdto);
 		String msg = "", url="";
 		if(result==1) {
-			msg="°Ô½ÃµÇ¾ú½À´Ï´Ù";
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_board";
-		}else {//DB ÀúÀå ½ÇÆĞ ½Ã
-			msg="¹®Á¦ ¹ß»ı";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -206,10 +206,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = cmapper.cModify(cdto);
 		String msg = "", url="";
 		if(result==1) {
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+cdto.getWriteNo();
 		}else {
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+cdto.getWriteNo();
 		}
 		getMessage(msg, url);
@@ -272,11 +272,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = mmapper.mWriteSave(mdto);
 		String msg = "", url="";
-		if(result==1) {//DB ÀúÀå ½Ã
-			msg="°Ô½ÃµÇ¾ú½À´Ï´Ù";
+		if(result==1) {//DB ì €ì¥ ì‹œ
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/musical_board";
-		}else {//DB ÀúÀå ½ÇÆĞ ½Ã
-			msg="¹®Á¦ ¹ß»ı";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_musical_form";
 		}
 		getMessage(msg, url);
@@ -398,10 +398,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = mmapper.mModify(mdto);
 		String msg = "", url="";
 		if(result==1) {
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+mdto.getWriteNo();
 		}else {
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+mdto.getWriteNo();
 		}
 		getMessage(msg, url);
@@ -464,11 +464,11 @@ public class reservationFileServiceImpl implements reservationFileService{
 		
 		int result = emapper.eWriteSave(edto);
 		String msg = "", url="";
-		if(result==1) {//DB ÀúÀå ½Ã
-			msg="°Ô½ÃµÇ¾ú½À´Ï´Ù";
+		if(result==1) {//DB ì €ì¥ ì‹œ
+			msg="ê²Œì‹œë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_board";
-		}else {//DB ÀúÀå ½ÇÆĞ ½Ã
-			msg="¹®Á¦ ¹ß»ı";
+		}else {//DB ì €ì¥ ì‹¤íŒ¨ ì‹œ
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/write_concert_form";
 		}
 		getMessage(msg, url);
@@ -591,10 +591,10 @@ public class reservationFileServiceImpl implements reservationFileService{
 		int result = emapper.eModify(edto);
 		String msg = "", url="";
 		if(result==1) {
-			msg="¼öÁ¤µÇ¾ú½À´Ï´Ù";
+			msg="ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤";
 			url="/root/reservation/concert_content?writeNo="+edto.getWriteNo();
 		}else {
-			msg="¹®Á¦ ¹ß»ı";
+			msg="ë¬¸ì œ ë°œìƒ";
 			url="/root/reservation/modify_concert_form?writeNo="+edto.getWriteNo();
 		}
 		getMessage(msg, url);
